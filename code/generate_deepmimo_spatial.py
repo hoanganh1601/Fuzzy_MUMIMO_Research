@@ -41,6 +41,15 @@ def parse_args():
         help="Maximum 2D distance from BS in metres",
     )
     parser.add_argument(
+        "--max-pathloss-db",
+        type=float,
+        default=None,
+        help=(
+            "Optional large-scale admission threshold in dB; "
+            "disabled by default"
+        ),
+    )
+    parser.add_argument(
         "--cell-size",
         type=float,
         default=35.0,
@@ -51,6 +60,34 @@ def parse_args():
         type=int,
         default=100,
         help="Exact number of users retained per spatial group",
+    )
+    parser.add_argument(
+        "--grouping-mode",
+        choices=("single-cell", "multi-cell"),
+        default="single-cell",
+        help=(
+            "single-cell reproduces the original local grouping; "
+            "multi-cell forms every K-user geometry from K distinct "
+            "spatial cells"
+        ),
+    )
+    parser.add_argument(
+        "--cohort-search-trials",
+        type=int,
+        default=10000,
+        help=(
+            "Position-only random partitions evaluated when using "
+            "multi-cell grouping"
+        ),
+    )
+    parser.add_argument(
+        "--tuple-search-trials",
+        type=int,
+        default=1000,
+        help=(
+            "Position-only UE permutations evaluated per multi-cell "
+            "cohort"
+        ),
     )
     parser.add_argument(
         "--seed",
@@ -160,6 +197,140 @@ def minimum_pairwise_distance(positions):
     return np.min(distance, axis=(1, 2))
 
 
+def _pairwise_minimum(points):
+    """Minimum Euclidean separation within each row of points."""
+
+    delta = points[:, :, None, :] - points[:, None, :, :]
+    distance = np.linalg.norm(delta, axis=-1)
+    diagonal = np.arange(points.shape[1])
+    distance[:, diagonal, diagonal] = np.inf
+    return np.min(distance, axis=(1, 2))
+
+
+def _circular_pairwise_minimum(angles):
+    """Minimum wrapped angular separation within each row."""
+
+    delta = np.abs(
+        angles[:, :, None]
+        - angles[:, None, :]
+    )
+    delta = np.minimum(delta, 2 * np.pi - delta)
+    diagonal = np.arange(angles.shape[1])
+    delta[:, diagonal, diagonal] = np.inf
+    return np.min(delta, axis=(1, 2))
+
+
+def build_spatial_cohorts(
+    cell_centres,
+    tx_xy,
+    K,
+    seed,
+    trials,
+):
+    """Partition cells into position-diverse, non-overlapping cohorts.
+
+    Cells are first stratified by azimuth. Candidate partitions then
+    permute cells inside each azimuth stratum. Selection uses only UE
+    coordinates: angular separation is prioritised, followed by
+    Euclidean separation. Channel coefficients are never inspected.
+    """
+
+    number_of_groups = len(cell_centres) // K
+    if number_of_groups < 3:
+        raise RuntimeError(
+            "Fewer than three multi-cell spatial cohorts are available"
+        )
+
+    offset = cell_centres - tx_xy[None, :]
+    angles = np.mod(
+        np.arctan2(offset[:, 1], offset[:, 0]),
+        2 * np.pi,
+    )
+    radii = np.linalg.norm(offset, axis=1)
+    order = np.lexsort((radii, angles))
+    strata = np.array_split(order, K)
+
+    rng = np.random.default_rng(seed)
+    best_score = None
+    best_cohorts = None
+    best_distance = None
+    best_angle = None
+
+    for _ in range(trials):
+        cohorts = np.column_stack(
+            [
+                rng.permutation(stratum)[:number_of_groups]
+                for stratum in strata
+            ]
+        )
+
+        centre_distance = _pairwise_minimum(
+            cell_centres[cohorts]
+        )
+        angular_distance = _circular_pairwise_minimum(
+            angles[cohorts]
+        )
+
+        score = (
+            float(np.min(angular_distance)),
+            float(np.percentile(angular_distance, 10)),
+            float(np.min(centre_distance)),
+            float(np.percentile(centre_distance, 10)),
+            float(np.median(centre_distance)),
+        )
+
+        if best_score is None or score > best_score:
+            best_score = score
+            best_cohorts = cohorts.copy()
+            best_distance = centre_distance.copy()
+            best_angle = angular_distance.copy()
+
+    return best_cohorts, best_distance, best_angle
+
+
+def build_position_diverse_tuples(
+    member_columns,
+    positions,
+    rng,
+    trials,
+):
+    """Pair one UE per cell, maximising position-only separation."""
+
+    number_of_geometries = len(member_columns[0])
+    best_score = None
+    best_tuples = None
+
+    for _ in range(trials):
+        tuples = np.column_stack(
+            [
+                column
+                if j == 0
+                else rng.permutation(column)
+                for j, column in enumerate(member_columns)
+            ]
+        )
+        separation = _pairwise_minimum(
+            positions[tuples, :2]
+        )
+        score = (
+            float(np.min(separation)),
+            float(np.percentile(separation, 10)),
+            float(np.median(separation)),
+        )
+
+        if best_score is None or score > best_score:
+            best_score = score
+            best_tuples = tuples.copy()
+
+    if best_tuples.shape != (
+        number_of_geometries,
+        len(member_columns),
+    ):
+        raise RuntimeError("Invalid multi-cell tuple shape")
+
+    return best_tuples
+
+
 def main():
     parser = argparse.ArgumentParser(add_help=False)
     args = parse_args()
@@ -169,10 +340,19 @@ def main():
         raise ValueError("M must be greater than or equal to K")
     if args.radius <= 0 or args.cell_size <= 0:
         raise ValueError("radius and cell size must be positive")
+    if (
+        args.max_pathloss_db is not None
+        and not np.isfinite(args.max_pathloss_db)
+    ):
+        raise ValueError("max-pathloss-db must be finite")
     if args.users_per_group < args.K:
         raise ValueError("users-per-group must be at least K")
     if args.users_per_group % args.K != 0:
         raise ValueError("users-per-group must be divisible by K")
+    if args.cohort_search_trials < 1:
+        raise ValueError("cohort-search-trials must be positive")
+    if args.tuple_search_trials < 1:
+        raise ValueError("tuple-search-trials must be positive")
     if args.noise_w <= 0:
         raise ValueError("noise-w must be positive")
 
@@ -191,6 +371,8 @@ def main():
         & (los != -1)
         & np.isfinite(pathloss)
     )
+    if args.max_pathloss_db is not None:
+        metadata_valid &= pathloss <= args.max_pathloss_db
 
     print("Computing channel matrices...")
     channel_rows = compute_channel_rows(
@@ -237,16 +419,6 @@ def main():
         return_counts=True,
     )
 
-    selected_cell_indices = np.flatnonzero(
-        counts >= args.users_per_group
-    )
-
-    if len(selected_cell_indices) < 3:
-        raise RuntimeError(
-            "Fewer than three spatial groups satisfy "
-            "--users-per-group"
-        )
-
     rng = np.random.default_rng(args.seed)
 
     tuple_indices = []
@@ -257,38 +429,112 @@ def main():
         args.users_per_group // args.K
     )
 
-    for group_label, cell_index in enumerate(
-        selected_cell_indices
-    ):
-        members = eligible_indices[
-            inverse == cell_index
-        ].copy()
+    cohort_centre_distance = np.array([], dtype=float)
+    cohort_angular_distance = np.array([], dtype=float)
 
-        rng.shuffle(members)
-        members = members[:args.users_per_group]
-
-        tuples = members.reshape(
-            geometries_per_group,
-            args.K,
+    if args.grouping_mode == "single-cell":
+        selected_cell_indices = np.flatnonzero(
+            counts >= args.users_per_group
         )
 
-        tuple_indices.append(tuples)
-
-        geometry_groups.append(
-            np.full(
-                geometries_per_group,
-                group_label,
-                dtype=np.int32,
+        if len(selected_cell_indices) < 3:
+            raise RuntimeError(
+                "Fewer than three spatial groups satisfy "
+                "--users-per-group"
             )
+
+        cell_cohorts = selected_cell_indices[:, None]
+
+        for group_label, cohort in enumerate(cell_cohorts):
+            cell_index = cohort[0]
+            members = eligible_indices[
+                inverse == cell_index
+            ].copy()
+
+            rng.shuffle(members)
+            members = members[:args.users_per_group]
+
+            tuples = members.reshape(
+                geometries_per_group,
+                args.K,
+            )
+
+            tuple_indices.append(tuples)
+            geometry_groups.append(
+                np.full(
+                    geometries_per_group,
+                    group_label,
+                    dtype=np.int32,
+                )
+            )
+            geometry_cells.append(
+                np.repeat(
+                    unique_cells[cell_index][None, :],
+                    geometries_per_group,
+                    axis=0,
+                )
+            )
+    else:
+        selected_cell_indices = np.flatnonzero(
+            counts >= geometries_per_group
         )
 
-        geometry_cells.append(
-            np.repeat(
-                unique_cells[cell_index][None, :],
-                geometries_per_group,
-                axis=0,
-            )
+        cell_centres = np.array(
+            [
+                np.mean(
+                    rx[
+                        eligible_indices[inverse == cell_index],
+                        :2,
+                    ],
+                    axis=0,
+                )
+                for cell_index in selected_cell_indices
+            ]
         )
+
+        local_cohorts, cohort_centre_distance, \
+            cohort_angular_distance = build_spatial_cohorts(
+                cell_centres,
+                tx[:2],
+                args.K,
+                args.seed,
+                args.cohort_search_trials,
+            )
+        cell_cohorts = selected_cell_indices[local_cohorts]
+
+        for group_label, cohort in enumerate(cell_cohorts):
+            member_columns = []
+            for cell_index in cohort:
+                members = eligible_indices[
+                    inverse == cell_index
+                ].copy()
+                rng.shuffle(members)
+                member_columns.append(
+                    members[:geometries_per_group]
+                )
+
+            tuples = build_position_diverse_tuples(
+                member_columns,
+                rx,
+                rng,
+                args.tuple_search_trials,
+            )
+
+            tuple_indices.append(tuples)
+            geometry_groups.append(
+                np.full(
+                    geometries_per_group,
+                    group_label,
+                    dtype=np.int32,
+                )
+            )
+            geometry_cells.append(
+                np.repeat(
+                    unique_cells[cohort][None, :, :],
+                    geometries_per_group,
+                    axis=0,
+                )
+            )
 
     ue_indices = np.concatenate(
         tuple_indices,
@@ -331,17 +577,27 @@ def main():
         "M": args.M,
         "K": args.K,
         "radius_m": args.radius,
+        "max_pathloss_db": args.max_pathloss_db,
         "cell_size_m": args.cell_size,
         "users_per_group": args.users_per_group,
         "geometries_per_group": geometries_per_group,
-        "number_of_groups": int(len(selected_cell_indices)),
+        "grouping_mode": args.grouping_mode,
+        "number_of_candidate_cells": int(
+            len(selected_cell_indices)
+        ),
+        "number_of_groups": int(len(cell_cohorts)),
         "number_of_geometries": int(len(H)),
         "seed": args.seed,
         "noise_w": args.noise_w,
         "channel_frequency_index": 0,
         "grouping": (
-            "fixed spatial grid; exact balanced user count "
-            "per retained cell; no UE reuse"
+            "fixed spatial grid; position-only multi-cell cohorts; "
+            "one UE per distinct cell in each geometry; no UE or "
+            "cell reuse between groups"
+            if args.grouping_mode == "multi-cell"
+            else
+            "fixed spatial grid; exact balanced user count per "
+            "retained cell; no UE reuse"
         ),
         "eligibility": (
             "within radius, valid path, finite pathloss, "
@@ -355,8 +611,10 @@ def main():
         f"DeepMIMO {args.scenario}; "
         f"version={deepmimo_version}; "
         f"radius={args.radius}m; "
+        f"max_pathloss_db={args.max_pathloss_db}; "
         f"cell={args.cell_size}m; "
         f"users_per_group={args.users_per_group}; "
+        f"grouping_mode={args.grouping_mode}; "
         f"seed={args.seed}; "
         "spatially grouped without UE reuse"
     )
@@ -394,6 +652,8 @@ def main():
     print("Output:", output.resolve())
     print("H shape:", H.shape)
     print("Groups:", len(np.unique(groups)))
+    print("Grouping mode:", args.grouping_mode)
+    print("Candidate cells:", len(selected_cell_indices))
     print(
         "Geometries per group:",
         np.unique(
@@ -407,6 +667,23 @@ def main():
         "/",
         ue_indices.size,
     )
+    if args.grouping_mode == "multi-cell":
+        print(
+            "Cohort centre separation percentiles [m]:",
+            np.percentile(
+                cohort_centre_distance,
+                [0, 1, 10, 50, 90, 99, 100],
+            ),
+        )
+        print(
+            "Cohort angular separation percentiles [deg]:",
+            np.degrees(
+                np.percentile(
+                    cohort_angular_distance,
+                    [0, 1, 10, 50, 90, 99, 100],
+                )
+            ),
+        )
     print(
         "Minimum tuple separation percentiles [m]:",
         np.percentile(
