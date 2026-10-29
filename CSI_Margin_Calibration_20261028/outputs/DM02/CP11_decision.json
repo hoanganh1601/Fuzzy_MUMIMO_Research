@@ -1,0 +1,6 @@
+{
+  "decision": "STOP_NO_CERTIFICATE",
+  "external_run": false,
+  "calibration_eligible": false,
+  "caution": "No claim of improvement over baseline without paired statistical comparison; no cross-distribution guarantee"
+}

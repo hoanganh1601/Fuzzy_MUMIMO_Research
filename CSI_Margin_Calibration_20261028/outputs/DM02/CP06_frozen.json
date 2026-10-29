@@ -1,0 +1,8 @@
+{
+  "q": 2.9604143746015965,
+  "eligible": false,
+  "epsilon": 0.05,
+  "alpha": 0.05,
+  "state": "STOP_NO_CERTIFICATE",
+  "calibration_checkpoint_sha": "9159890bcdcb7a927e432eeb5a0efbd864a0ada29c4dcf164c7d7c0e02ddcc57"
+}
