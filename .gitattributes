@@ -1,0 +1,6 @@
+# Preserve generated research artifacts byte-for-byte.
+log/**/*.csv -text -diff
+src/**/FILE_SHA256.csv -text -diff
+*.npz -text
+*.pdf -text
+*.zip -text

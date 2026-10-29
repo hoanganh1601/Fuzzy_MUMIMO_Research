@@ -1,0 +1,45 @@
+{
+  "cautions": [
+    "Disjoint UE indices and spatial separation do not prove independent episodes.",
+    "All groups come from one ray-tracing scene and may remain correlated.",
+    "Noise power must be specified and reported consistently when calibration is run."
+  ],
+  "channel": {
+    "antenna_spacing_wavelengths": 0.5,
+    "bandwidth_hz": 10000000.0,
+    "bs_antenna_shape": [
+      16,
+      1
+    ],
+    "domain": "frequency",
+    "matrix_convention": "H[g,:,k] = DeepMIMO channel[user_k,0,:,0]",
+    "max_paths": 10,
+    "normalization": "none; absolute DeepMIMO channel scale retained",
+    "ofdm_total_subcarriers": 512,
+    "selected_subcarrier": 0,
+    "ue_antenna_shape": [
+      1,
+      1
+    ]
+  },
+  "dataset_sha256": "1d479a06b94fff565a8997ceb870c670bda7458dbf5e5cd54c2fc0afc14b1f50",
+  "deepmimo_version": "4.0.5",
+  "dtype": "complex64",
+  "scenario": "asu_campus_3p5",
+  "scenario_params_sha256": "8b4013bb215bd7a3fede33de322b426da39494723e7aa4f769b51a6ba52f16c3",
+  "selection": {
+    "groups": 160,
+    "minimum_group_center_distance_m": 10.0,
+    "minimum_intra_geometry_user_distance_m": 20.0,
+    "minimum_total_path_power_dbw": -100.0,
+    "seed": 20261028,
+    "user_reuse": false,
+    "users_per_geometry": 4
+  },
+  "selection_sha256": "f335063c11368993b3a3871d1b90062f921a4ac50f2f18868ca7136ee1a67d60",
+  "shape": [
+    160,
+    16,
+    4
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "q": 2.9604143746015965,
+  "n_episodes": 80,
+  "n_feasible": 41,
+  "failures": 39,
+  "failure_rate": 0.4875,
+  "upper_95_one_sided": 0.5848050192029324,
+  "conditional_mc_outage": 0.0,
+  "mean_power_w": 0.3812984844163917,
+  "eligible": false,
+  "calibration_status": "FAIL",
+  "independence_assumption": "independent exchangeable group episodes; group metadata alone cannot prove this"
+}

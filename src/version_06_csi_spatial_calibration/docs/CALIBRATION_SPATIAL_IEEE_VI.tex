@@ -1,0 +1,65 @@
+\documentclass[onecolumn,11pt]{IEEEtran}
+\usepackage{fontspec}
+\setmainfont{Noto Serif}
+\usepackage{amsmath,amssymb,booktabs,longtable,array,hyperref}
+\hypersetup{hidelinks}
+\title{Hiệu chuẩn biên bất định CSI theo nhóm không gian độc lập\\Hướng dẫn triển khai và kiểm chứng MU-MIMO downlink}
+\author{Tài liệu kỹ thuật tái lập thí nghiệm}
+\begin{document}\maketitle
+\begin{abstract}
+Trong MU-MIMO downlink, trạm gốc sử dụng CSI ước lượng để xác định hướng RZF và công suất truyền nhằm đáp ứng ngưỡng SINR dưới sai số kênh. Vòng hiệu chuẩn trước chỉ có chín episode độc lập giả định, nên không đủ cơ sở kết luận xác suất thất bại nhỏ hơn 5\%. Tài liệu này quy định việc xây dựng nhóm không gian/scenario, lựa chọn biên từ development, kiểm tra Clopper--Pearson trên calibration, khóa biên và đánh giá trên DeepMIMO test và kênh 3GPP ngoài nguồn. Mọi lần chạy có checkpoint và kiểm tra toàn vẹn.
+\end{abstract}
+\section{Mô hình và phạm vi}
+Trạm gốc có $M$ anten phục vụ $K$ user theo các hướng RZF cố định. Sai số CSI được mô hình hóa bằng $\mathbf h_k=\widehat{\mathbf h}_k+\mathbf e_k$. Với mỗi biên $q$, bộ giải công suất nhận $\widehat{\mathbf H}$, hướng beam, $\sigma_{e,\mathrm{rel}}$, công suất nhiễu và ngưỡng SINR. Nó trả nghiệm $\mathbf p$ hoặc trạng thái không có nghiệm trong tập hướng đã cho.
+\begin{equation}
+\min_{\mathbf p\ge0}\ \mathbf1^T\mathbf p\quad\text{s.t.}\quad \mathrm{SINR}^{\mathrm{rob}}_k(\mathbf p;q)\ge\gamma,\quad \mathbf1^T\mathbf p\le P_{\max}.
+\end{equation}
+Phương trình khống chế công suất phát theo biên sai số CSI và giới hạn SINR; trong mã, ràng buộc được kiểm tra bằng ma trận ghép giao thoa, rồi giải hệ công suất của ma trận $M$ có phần tử ngoài đường chéo không dương. Mã kế thừa \texttt{engine\_original.py}; chưa đánh giá beamforming toàn cục hay phần cứng truyền dẫn.
+
+Một episode calibration lấy một geometry đại diện của một nhóm, một mẫu sai số CSI và đánh dấu thất bại nếu không có nghiệm hoặc xảy ra vi phạm SINR. Với $X$ thất bại trên $n$ episode, cận trên nhị thức Clopper--Pearson một phía là
+\begin{equation}
+U_{1-\alpha}=\begin{cases}1,& X=n,\\ B^{-1}(1-\alpha;X+1,n-X),&X<n,\end{cases}\qquad U_{1-\alpha}\le \varepsilon.
+\end{equation}
+Điều kiện này quyết định chấp nhận biên $q$ theo giả thiết các episode độc lập và đồng phân bố; việc tách nhóm theo vị trí không tự chứng minh giả thiết đó. Với $X=0$, $\alpha=\varepsilon=0.05$, số episode tối thiểu là $n=59$. Khi $X>0$, cần nhiều episode hơn.
+
+\section{Dữ liệu, nhóm và điều kiện đầu vào}
+Tệp NPZ đầu vào phải chứa bốn trường: \texttt{H} phức kích thước $(N,M,K)$, \texttt{groups} độ dài $N$, \texttt{xyz} tọa độ mét kích thước $(N,3)$ và \texttt{scenario} độ dài $N$. Tất cả phần tử thuộc cùng một group phải cùng scenario; chương trình từ chối nhóm có tâm quá gần nhóm khác trong cùng scenario theo \texttt{--min-center-distance-m}. Với tỷ lệ nhóm development/calibration/test là 25/50/25, dữ liệu cần ít nhất 118 nhóm để có tối thiểu 59 nhóm calibration. Nên dự phòng 160--240 nhóm nếu dữ liệu và giả thiết độc lập cho phép.
+
+\textbf{Lưu ý về tính độc lập:} khoảng cách hình học, khác group ID hay khác chỉ số user chưa đủ để khẳng định các phép thử độc lập. Người nghiên cứu cần đối chiếu vị trí, môi trường, cùng ray-tracing scene, liên kết đến trạm gốc, vùng shadowing và phương pháp lấy mẫu. Các group lấy từ một khu vực duy nhất có thể còn tương quan. Khi không thể bảo vệ giả thiết độc lập, không diễn giải cận nhị thức như một bảo đảm thống kê.
+
+\textbf{Quy định về DeepMIMO:} dựng $\mathbf H$ cho từng nhóm $K$ user đồng thời; lưu tọa độ/vùng của nhóm, ID scenario và cấu hình anten, carrier, normalization. Không dùng dữ liệu kênh thực vào quy tắc quyết định margin tại máy phát. \textbf{Quy định về Sionna 3GPP:} xuất cùng định dạng NPZ, kèm file cấu hình simulator ngoài gói; kiểm chứng nguồn kênh trước khi gắn nhãn 3GPP TR 38.901. Không coi một kênh synthetic tự viết là dữ liệu chuẩn 3GPP.
+
+\section{Quy trình chạy theo checkpoint}
+\begin{longtable}{p{0.11\linewidth}p{0.32\linewidth}p{0.48\linewidth}}
+\toprule Checkpoint & Tệp & Nội dung và điều kiện kiểm tra\\\midrule
+CP00 & \texttt{CP00\_manifest.json}, \texttt{CP00\_spatial\_group\_audit.csv}, \texttt{CP00\_split\_groups.json} & Khóa code/dataset/setting; kiểm toán nhãn nhóm, tọa độ, khoảng cách và chia dữ liệu không trùng group.\\
+CP01--02 & \texttt{CP01\_development.csv}, \texttt{CP02\_development\_summary.csv} & Quét biên trên development; xuất tính khả thi, công suất, SINR outage, thất bại episode.\\
+CP03 & \texttt{CP03\_locked\_candidate.json} & Khóa một biên trước khi xem calibration và test.\\
+CP04--05 & \texttt{CP04\_calibration.csv}, \texttt{CP05\_calibration\_decision.json} & Một episode/nhóm; tính cận Clopper--Pearson, chấp nhận khi $U\le\varepsilon$.\\
+CP06 & \texttt{CP06\_frozen.json} & Lưu biên và trạng thái \texttt{CALIBRATION\_PASS} hoặc \texttt{STOP\_NO\_CERTIFICATE}. Không chọn lại biên sau khi thất bại.\\
+CP07--08 & \texttt{CP07\_independent\_test.csv}, \texttt{CP08\_test\_summary.csv} & Kiểm thử DeepMIMO trên nhóm chưa dùng; chỉ đánh giá, không chỉnh luật.\\
+CP09--10 & \texttt{CP09\_external\_test.csv}, \texttt{CP10\_external\_summary.csv}, \texttt{CP10\_external\_provenance.json} & Chuyển nguyên biên khóa sang nguồn 3GPP, báo riêng reliability và công suất; bảo đảm DeepMIMO không chuyển sang 3GPP.\\
+CP11--12 & \texttt{CP11\_decision.json}, \texttt{CP12\_sha256.csv} & Kết luận GO ứng viên/STOP và bảng toàn vẹn tệp.\\\bottomrule
+\end{longtable}
+Mỗi geometry có checkpoint JSON riêng tại \texttt{outputs/<run-id>/tasks/}. Ghi JSON/CSV bằng thay thế nguyên tử; chạy lại cùng tham số tiếp tục các tác vụ còn thiếu. Khi mã, dataset hoặc tham số thay đổi, bắt buộc tạo \texttt{run-id} mới. Nếu CP03 đã khóa và CP05 thất bại, không được quay lại CP01 để chọn ứng viên khác bằng chính calibration đó.
+
+\section{Lệnh chạy và kiểm thử}
+Giải nén gói, mở terminal tại thư mục chứa \texttt{code/}. Cài đặt: \texttt{python -m pip install -r code/requirements.txt}. Tạo dữ liệu synthetic chỉ để smoke test: \texttt{python code/make\_grouped\_smoke.py --output data/grouped\_smoke.npz --groups 140}. Chạy lần lượt:
+\begin{verbatim}
+python code/calibration_v2.py --stage preflight  --dataset data/deepmimo.npz --run-id DM02
+python code/calibration_v2.py --stage develop    --dataset data/deepmimo.npz --run-id DM02
+python code/calibration_v2.py --stage calibrate  --dataset data/deepmimo.npz --run-id DM02
+python code/calibration_v2.py --stage freeze     --dataset data/deepmimo.npz --run-id DM02
+python code/calibration_v2.py --stage test       --dataset data/deepmimo.npz --run-id DM02
+python code/calibration_v2.py --stage transfer   --dataset data/deepmimo.npz --external-dataset data/3gpp.npz --run-id DM02
+python code/calibration_v2.py --stage report     --dataset data/deepmimo.npz --run-id DM02
+\end{verbatim}
+Đối với dữ liệu smoke test, thay \texttt{data/deepmimo.npz} bằng \texttt{data/grouped\_smoke.npz}. Chạy cùng \texttt{run-id} và lệnh khi mất điện để sử dụng kết quả đã lưu; không sửa CP03 hoặc CP06 thủ công. Mỗi lần đổi đường dẫn nguồn sẽ cần sử dụng lại \texttt{run-id} tương ứng với nguồn đã khóa.
+
+\section{Đánh giá khoa học và điều kiện dừng}
+\textbf{GO}: CP05 có $U\le0.05$ trên episode độc lập theo giả thiết đã xác minh, CP07--08 kiểm thử đúng cùng biên khóa, và đối chiếu công suất/độ tin cậy với margin Gaussian trên geometry khả thi chung bằng phân tích thống kê ghép cặp. Đây mới là GO ứng viên; kết luận giảm công suất cần thêm khoảng tin cậy ghép cặp, chưa được tự động chứng nhận bởi CP05.
+
+\textbf{STOP}: Không đủ 59 nhóm; nhóm gần nhau hoặc metadata không hợp lệ; CP05 không đạt; sai khác hash; mất truy vết source 3GPP. Nếu CP05 STOP, CP07--10 chỉ được dùng như kết quả mô tả nếu vẫn chạy, không được viết rằng phương pháp đạt bảo đảm 5\%.
+
+Các phép đánh giá chuyển nguồn sang 3GPP phải báo riêng tỷ lệ khả thi, conditional SINR outage, effective failure, công suất và trạng thái chuyển giao. Xác suất thất bại hiệu chuẩn trên DeepMIMO không chứng minh xác suất thất bại dưới phân bố 3GPP khác. Công suất phụ thuộc chuẩn hóa hệ số kênh và noise; cần lưu đơn vị, reference power và cấu hình path loss.
+\end{document}
