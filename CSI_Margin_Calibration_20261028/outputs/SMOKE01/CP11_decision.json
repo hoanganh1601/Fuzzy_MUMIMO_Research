@@ -1,0 +1,6 @@
+{
+  "decision": "GO_CANDIDATE_ONLY",
+  "external_run": true,
+  "calibration_eligible": true,
+  "caution": "No claim of improvement over baseline without paired statistical comparison; no cross-distribution guarantee"
+}

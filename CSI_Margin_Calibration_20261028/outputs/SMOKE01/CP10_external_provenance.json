@@ -1,0 +1,8 @@
+{
+  "sha256": "6ff61ba0d70df506b3e231eb016f46cb7aa53bb091d534117090701866526846",
+  "scenario_values": [
+    "synthetic"
+  ],
+  "n_groups": 50,
+  "note": "Sionna/3GPP conformity and independence must be documented by simulator provenance. DeepMIMO guarantee does NOT transfer."
+}

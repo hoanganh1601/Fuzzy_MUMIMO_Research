@@ -1,0 +1,8 @@
+{
+  "q": 2.9604143746015965,
+  "eligible": true,
+  "epsilon": 0.05,
+  "alpha": 0.05,
+  "state": "CALIBRATION_PASS",
+  "calibration_checkpoint_sha": "0b40ce37766f3e09e428ceb354dafdc46f1ad35d0d26ec38bd6912c482d6df9d"
+}
