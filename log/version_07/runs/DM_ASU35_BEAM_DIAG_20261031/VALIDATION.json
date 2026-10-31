@@ -1,0 +1,21 @@
+{
+  "source_commit": "6439c5e07bb090c22eb528673c26bd211227ac68",
+  "packaged_workflow_tests": {
+    "command": "python -m unittest discover -s tests -v",
+    "cwd": "src/version_07_beam_feasibility_diagnosis",
+    "tests_run": 4,
+    "failures": 0,
+    "errors": 0
+  },
+  "real_run_original_report_audit": {
+    "cp01_through_cp05_byte_equal": true,
+    "original_six_cp06_checksums_equal": true,
+    "additional_provenance_checksums": 5
+  },
+  "packaged_cp06_verification": {
+    "verified_artifacts": 11,
+    "code_snapshot_match": true,
+    "requires_dataset_or_tasks": false
+  },
+  "status": "DIAGNOSTIC_ONLY"
+}

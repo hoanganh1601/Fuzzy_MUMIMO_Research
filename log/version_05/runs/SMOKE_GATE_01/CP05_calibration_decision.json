@@ -1,0 +1,12 @@
+{
+  "q": 2.2,
+  "n_geometries": 9,
+  "n_feasible": 9,
+  "failed_geometry_episodes": 0,
+  "episode_failure": 0.0,
+  "episode_ucb": 0.28312883556311347,
+  "mean_feasible_power_w": 2.1155867537651213e-08,
+  "mc_outage_conditional": 0.0,
+  "eligible": false,
+  "interpretation": "UCB applies to independent episodes, not deployment or shifted-channel guarantees"
+}

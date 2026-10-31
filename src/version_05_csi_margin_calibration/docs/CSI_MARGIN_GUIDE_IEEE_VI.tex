@@ -1,0 +1,78 @@
+\documentclass[11pt,onecolumn]{IEEEtran}
+\usepackage{fontspec}
+\setmainfont{Noto Serif}
+\setsansfont{Noto Sans}
+\usepackage{amsmath,amssymb,booktabs,geometry,hyperref,enumitem,longtable}
+\geometry{a4paper,left=22mm,right=22mm,top=20mm,bottom=22mm}
+\hypersetup{hidelinks}
+\title{Hiệu chuẩn biên bất định CSI cho phân bổ công suất MU-MIMO có ràng buộc xác suất vi phạm SINR\\\large Mô hình, chương trình kiểm chứng và hướng dẫn tái lập}
+\author{Tài liệu nghiên cứu và hướng dẫn thực nghiệm}
+\begin{document}
+\maketitle
+\section{Bối cảnh và mục tiêu}
+Xét đường xuống nhiều người dùng, trạm gốc có $M$ anten, phục vụ $K$ người dùng bằng regularized zero-forcing (RZF). Thông tin trạng thái kênh (channel state information, CSI) được ước lượng trước khi phân bổ công suất. Sai số CSI làm tăng nguy cơ vi phạm ngưỡng tỷ số tín hiệu trên giao thoa cộng nhiễu (signal-to-interference-plus-noise ratio, SINR). Kết quả khảo sát trước cho thấy biên bất định cố định có thể đủ tốt; do đó nghiên cứu này \emph{không} mặc định cần fuzzy hoặc chính sách thích nghi.
+
+Mục tiêu là thiết lập một quy trình chọn $q$ trên dữ liệu phát triển, hiệu chuẩn riêng trên dữ liệu độc lập, khóa quyết định, sau đó so sánh công suất và xác suất thất bại trên DeepMIMO và một tập kênh 3GPP riêng. Mọi kết quả đo sau khi khóa chỉ được dùng để đánh giá, không dùng chọn lại $q$.
+
+\section{Mô hình và điều kiện khả thi}
+Với vectơ CSI ước lượng $\widehat{\mathbf h}_k$ và vectơ hướng phát cố định $\mathbf v_j$, chọn miền sai số chuẩn Euclid
+\begin{equation}
+\mathcal U_k(q)=\{\mathbf e_k:\|\mathbf e_k\|_2\le q\widehat\sigma_e\|\widehat{\mathbf h}_k\|_2/\sqrt M\}.
+\end{equation}
+Tham số $q$ điều chỉnh mức bảo thủ của ràng buộc robust SINR; miền sai số này không tự thân là tập tin cậy Gaussian được bảo đảm.
+
+Các chặn dưới độ lợi mong muốn và chặn trên độ lợi giao thoa tạo ma trận không âm $\mathbf F(q)$ và vectơ $\mathbf u(q)$, thỏa
+\begin{equation}
+\mathbf p\ge\mathbf F(q)\mathbf p+\mathbf u(q),\quad \mathbf 1^T\mathbf p\le P_{\max},\quad \mathbf p\ge0.
+\end{equation}
+Bất đẳng thức xác định công suất tối thiểu trong mô hình robust đã chọn. Nếu $\rho(\mathbf F(q))<1$, nghiệm tối thiểu theo thành phần là $\mathbf p^*=[\mathbf I-\mathbf F(q)]^{-1}\mathbf u(q)$, sau đó cần kiểm tra giới hạn tổng công suất. Đây là kết luận cho tập beam cố định, không phải chứng nhận khả thi toàn cục của bài toán beamforming.
+
+\section{Hiệu chuẩn và ý nghĩa thống kê}
+Đặt $Y_i(q)=1$ nếu cấu hình độc lập thứ $i$ không có nghiệm hoặc vi phạm SINR trong một lần phát kiểm tra; ngược lại $Y_i(q)=0$. Trên tập calibration gồm $n$ quan sát Bernoulli độc lập có cùng phân bố, đặt $x=\sum_iY_i$. Cận trên Clopper--Pearson một phía mức tin cậy $1-\alpha$ là
+\begin{equation}
+U_\alpha(x,n)=\begin{cases}1,&x=n,\\\mathrm{Beta}^{-1}(1-\alpha;x+1,n-x),&x<n.\end{cases}
+\end{equation}
+Tiêu chí chấp nhận margin đã chọn trước calibration là $U_\alpha(x,n)\le\varepsilon$. Phương trình kiểm soát sai số thống kê khi kiểm định một ứng viên được chọn \emph{trước} calibration; không được thử liên tiếp nhiều ứng viên trên cùng tập calibration mà không hiệu chỉnh mức tin cậy.
+
+Lưu ý: nếu $x=0$, $\varepsilon=0.05$ và $\alpha=0.05$, cần ít nhất $n=59$ quan sát độc lập. Các geometry lân cận hoặc nhiều lần Monte Carlo trên cùng một geometry không tự động tạo ra $n$ độc lập. Mã lấy một geometry có thứ tự cố định trong mỗi nhóm calibration và một mẫu sai số cho geometry đó. Điều kiện độc lập giữa các nhóm cần kiểm toán thực nghiệm; nhãn \texttt{groups} không tự chứng minh độc lập.
+
+\section{Quy trình E1--E4}
+\begin{enumerate}[leftmargin=*]
+\item \textbf{E1 -- Discovery.} Chia nhóm trước khi tính SINR; quét $q$ trên development. Chọn một ứng viên có mức thất bại thực nghiệm dưới $\varepsilon$, ưu tiên công suất nhỏ hơn. Đây chỉ là bước lựa chọn, chưa phải chứng nhận.
+\item \textbf{E2 -- Calibration.} Kiểm tra \emph{duy nhất} ứng viên được chọn trên nhóm calibration không giao nhau. Nếu cận trên vượt $\varepsilon$, khóa trạng thái \texttt{NO\_CERTIFIED\_MARGIN}; không tự gán Gaussian là an toàn.
+\item \textbf{E3 -- Test.} Báo cáo tất cả giá trị $q$ định trước trên nhóm test để mô tả đường đánh đổi; chỉ ứng viên đã khóa có tư cách làm chính sách được đánh giá. Không thay đổi $q$ từ kết quả test.
+\item \textbf{E4 -- Transfer.} Dùng đúng $q$ đã khóa để đánh giá tệp NPZ được xuất từ Sionna 3GPP. Không tái hiệu chuẩn theo 3GPP. Nếu phân bố kênh thay đổi, bảo đảm theo calibration nguồn không mặc nhiên chuyển giao.
+\end{enumerate}
+
+\section{Dữ liệu đầu vào và giới hạn}
+Tệp \texttt{.npz} phải chứa \texttt{H} dạng phức $(N,M,K)$ và \texttt{groups} gồm $N$ nhãn nhóm. Với DeepMIMO, nhóm phải dựa trên vị trí hoặc miền hình học; không dùng nhãn tùy ý để giả định tính độc lập. Với 3GPP, lưu phiên bản Sionna, cấu hình UMi/CDL, tần số, vận tốc, seed và các phương thức xuất ma trận kênh. Chương trình \texttt{calibrate.py} nhận NPZ, không tự chứng nhận dữ liệu tải về tuân thủ 3GPP TR 38.901.
+
+Mô hình kiểm tra hiện tạo sai số điều kiện quanh CSI ước lượng theo Gaussian phức với mức $\sigma_{\mathrm{rel}}$. Kênh DeepMIMO/Sionna cung cấp điểm neo hình học; đây chưa phải mô hình sai số ước lượng từ pilot hay CSI aging đã được xác minh. Muốn tuyên bố độ tin cậy triển khai phải kiểm tra mô hình sai số này bằng dữ liệu độc lập.
+
+\section{Chạy chương trình và checkpoint}
+Tại thư mục chứa \texttt{code/}, dùng Python 3.10 trở lên:
+\begin{verbatim}
+python -m pip install -r code/requirements.txt
+python code/calibrate.py --stage preflight --dataset data/deepmimo.npz --run-id DM01
+python code/calibrate.py --stage develop   --dataset data/deepmimo.npz --run-id DM01
+python code/calibrate.py --stage calibrate --dataset data/deepmimo.npz --run-id DM01
+python code/calibrate.py --stage freeze    --dataset data/deepmimo.npz --run-id DM01
+python code/calibrate.py --stage test      --dataset data/deepmimo.npz --run-id DM01
+python code/calibrate.py --stage transfer  --dataset data/deepmimo.npz --external-dataset data/3gpp_umi.npz --run-id DM01
+python code/calibrate.py --stage report    --dataset data/deepmimo.npz --run-id DM01
+\end{verbatim}
+Dùng \texttt{--mc 300} khi chạy thí nghiệm chính; không dùng \texttt{--limit} khi công bố. Giữ nguyên các đối số và \texttt{run-id} để tiếp tục khi mất điện. Mỗi tác vụ được ghi JSON nguyên tử trong \texttt{outputs/DM01/tasks}; checksum của dữ liệu và mã nằm ở CP00. Khi đổi dữ liệu hoặc mã, phải tạo \texttt{run-id} mới. Ghi chú: hiện chữ ký CP00 không khóa nội dung tệp external trước bước transfer; do đó phải kiểm tra CP10 external manifest khi sử dụng kết quả chuyển nguồn.
+
+\begin{longtable}{p{0.15\linewidth}p{0.77\linewidth}}
+\toprule Checkpoint & Nội dung\\ \midrule
+CP00 & Manifest nguồn, mã, tham số, nhóm và SHA-256.\\
+CP01--CP03 & CSV development, thống kê từng $q$, quyết định chọn ứng viên.\\
+CP04--CP06 & CSV calibration, kiểm định cận trên và chính sách đã khóa.\\
+CP07--CP08 & Kết quả test từng geometry và bảng tổng hợp theo $q$.\\
+CP09--CP10 & Kết quả chuyển nguồn 3GPP và manifest kiểm tra.\\
+CP11--CP12 & Kết luận đủ/chưa đủ điều kiện cùng bảng SHA-256.\\ \bottomrule
+\end{longtable}
+
+\section{Quy tắc GO/STOP}
+\textbf{GO} chỉ khi calibration đạt cận trên $\varepsilon$, tập test độc lập và mức giảm công suất so với fixed margin tham chiếu được kiểm định với số nhóm đủ lớn; việc chuyển nguồn 3GPP phải được báo cáo riêng. \textbf{STOP} nếu calibration không có ứng viên đủ điều kiện, hoặc kết quả power--outage trên nguồn kiểm chứng không cải thiện đáng kể. Mã hiện chứng nhận bước sàng lọc của một ứng viên trong giả thiết Bernoulli độc lập; chưa có kiểm định hơn kém công suất theo nhóm hay bảo đảm dưới dịch chuyển phân bố. Các bước này là điều kiện tiếp theo trước khi khẳng định đóng góp trên tạp chí.
+\end{document}
