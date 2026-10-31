@@ -1,0 +1,50 @@
+{
+  "status": "DIAGNOSTIC_ONLY",
+  "input_audit": {
+    "manifest_sha256": "ae2551de1f64a51f0f5aa992c1f1f7dc4d9891a57f850fcde613791a5a62df84",
+    "cp01_sha256": "92e081233fee59ed4eaf8343bcd0da3e265313aa54c30f3db182e5dfb67bd4d6",
+    "cp01_provenance_sha256": "ee798694fb4e31273a21be35392c1dd469e6775bed9af47ffd7390668350493c",
+    "signature": "819980652d7113fa57c2f614d2a395aa5774991ead03c4670d23f648e8c2c99f",
+    "engine_sha256": "36a0ee286a5650c1adedd50c36bdd6fab5a6b46fc7911f2636310c2cfa071726",
+    "dataset_sha256": "1d479a06b94fff565a8997ceb870c670bda7458dbf5e5cd54c2fc0afc14b1f50",
+    "python_version": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "python_executable": "/media/icnlab/Data/hoanganh/Beam_Feasibility_Study/.venv/bin/python",
+    "numpy_version": "2.5.4",
+    "scipy_version": "1.18.1",
+    "cp02_sha256": "beb189efc25981a3c1e9e759ae6cf5d7a747c61cb684828d7d8a804e742c80dd",
+    "cp02_provenance_sha256": "0f7db3cc8f1503eb33e56725ac44e30db43c90a3c6848fb082899f3a34ac25d6",
+    "cp03_sha256": "4ec22e7cc0b33c5a489180561c21f2b0ea94052b5598af5834be51ed93990737",
+    "cp03_provenance_sha256": "c13556efb55d8bd1899107e000298d5b125673baf46167bd1255428f6b635f32",
+    "cp04_sha256": "1049c4efe4b5d1dbb56666bc9ef8bc871509172db3bbd6bed06a9e776255c087",
+    "cp04_provenance_sha256": "158695df8184ad4857b6a6f7c9fc4b2619bed7ff4847f7074fb88272861790f5",
+    "cp05_sha256": "0baefb0d5375c0d0485410ba0320568503064b96adf95d9d7ed6680bdaf03d58",
+    "cp05_provenance_sha256": "6574ccc044c236982d668b9e593c157705bd284178d3a80195fb4d394f6fa548"
+  },
+  "code_files_sha256": {
+    "beam_feasibility.py": "36a0ee286a5650c1adedd50c36bdd6fab5a6b46fc7911f2636310c2cfa071726",
+    "checkpoint_io.py": "b25a4e42624b7bf4d9807d3e5dbe7070f384cfc7a02b68c8b9cf8382abfece1f",
+    "engine_original.py": "f4c2a904ea9b957d5b8b4312c047404af1a1f1e17922137f57c5951166060423",
+    "make_smoke.py": "18bf37b33b983f7089f6a794963b4bd7af0a643619ee9ac2a0be7313c73b9d33",
+    "requirements.txt": "2872240ad39db3fa61ea202cac35a5579c482437efa38edec506dbdc0f870942",
+    "run_cp01.py": "fe501d66e3a78231ce7d5e0847ef9db8673bcf737a236bad2432926baafe8f4d",
+    "run_cp02.py": "be8c73b023835b7f1491134a5cf9200f94604d5d7ff45bf9f03ba056e9acdb8a",
+    "run_cp03.py": "6cb057256a0bc2d63fae542c9cafeacebe80315cb8854e368c2f9cd23e822413",
+    "run_cp04.py": "874a288bfb38516cffe08759bf6979a8d8587a7ac7e11b116da5724c823677bd",
+    "run_cp05.py": "33513d4e84ac487abfed7f01be2e976452cf143491ae8a2aecf9af704fd71d82",
+    "run_cp06.py": "b022a3158869424493126a8c701e9a4764cec67bb65586eb5ec3f8b530ae99e5"
+  },
+  "artifact_files": [
+    "CP00_manifest.json",
+    "CP01_geometry_beam_budget.csv",
+    "CP02_beam_budget_summary.csv",
+    "CP03_paired_ZF_RZF.csv",
+    "CP04_geometry_diagnosis.csv",
+    "CP05_scope_and_decision.json",
+    "runner_CP01_provenance.json",
+    "runner_CP02_provenance.json",
+    "runner_CP03_provenance.json",
+    "runner_CP04_provenance.json",
+    "runner_CP05_provenance.json"
+  ],
+  "output_sha256": "fa4a9469f3613a62c108eeaf24a06490fa97100ab5e2751a6d93f0823a598af7"
+}

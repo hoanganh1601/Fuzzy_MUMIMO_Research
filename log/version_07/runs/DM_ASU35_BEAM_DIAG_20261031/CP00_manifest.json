@@ -1,0 +1,24 @@
+{
+  "signature": "819980652d7113fa57c2f614d2a395aa5774991ead03c4670d23f648e8c2c99f",
+  "config": {
+    "dataset": "/media/icnlab/Data/hoanganh/datasets/csi_margin_calibration/data/deepmimo.npz",
+    "q": 2.9604143746015965,
+    "sigma_rel": 0.04,
+    "sinr_db": 6.0,
+    "noise": 2e-13,
+    "pmax": 1.0,
+    "alpha_list": "0,0.001,0.01,0.05,0.1,0.3,1",
+    "budget_list": "0.3,0.6,1,2,5",
+    "max_geometries": 0,
+    "dataset_sha256": "1d479a06b94fff565a8997ceb870c670bda7458dbf5e5cd54c2fc0afc14b1f50",
+    "code_sha256": "36a0ee286a5650c1adedd50c36bdd6fab5a6b46fc7911f2636310c2cfa071726"
+  },
+  "N": 160,
+  "M": 16,
+  "K": 4,
+  "unique_groups": 160,
+  "data_metadata": [
+    "xyz",
+    "scenario"
+  ]
+}

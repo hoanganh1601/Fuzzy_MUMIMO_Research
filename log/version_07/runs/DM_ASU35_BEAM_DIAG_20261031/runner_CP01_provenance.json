@@ -1,0 +1,11 @@
+{
+  "manifest_sha256": "ae2551de1f64a51f0f5aa992c1f1f7dc4d9891a57f850fcde613791a5a62df84",
+  "signature": "819980652d7113fa57c2f614d2a395aa5774991ead03c4670d23f648e8c2c99f",
+  "runner_sha256": "fe501d66e3a78231ce7d5e0847ef9db8673bcf737a236bad2432926baafe8f4d",
+  "engine_sha256": "36a0ee286a5650c1adedd50c36bdd6fab5a6b46fc7911f2636310c2cfa071726",
+  "dataset_sha256": "1d479a06b94fff565a8997ceb870c670bda7458dbf5e5cd54c2fc0afc14b1f50",
+  "python_version": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "python_executable": "/media/icnlab/Data/hoanganh/Beam_Feasibility_Study/.venv/bin/python",
+  "numpy_version": "2.5.4",
+  "scipy_version": "1.18.1"
+}

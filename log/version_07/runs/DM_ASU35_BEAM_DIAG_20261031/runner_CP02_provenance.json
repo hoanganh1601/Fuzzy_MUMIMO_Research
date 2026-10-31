@@ -1,0 +1,15 @@
+{
+  "manifest_sha256": "ae2551de1f64a51f0f5aa992c1f1f7dc4d9891a57f850fcde613791a5a62df84",
+  "cp01_sha256": "92e081233fee59ed4eaf8343bcd0da3e265313aa54c30f3db182e5dfb67bd4d6",
+  "cp01_provenance_sha256": "ee798694fb4e31273a21be35392c1dd469e6775bed9af47ffd7390668350493c",
+  "signature": "819980652d7113fa57c2f614d2a395aa5774991ead03c4670d23f648e8c2c99f",
+  "engine_sha256": "36a0ee286a5650c1adedd50c36bdd6fab5a6b46fc7911f2636310c2cfa071726",
+  "dataset_sha256": "1d479a06b94fff565a8997ceb870c670bda7458dbf5e5cd54c2fc0afc14b1f50",
+  "python_version": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "python_executable": "/media/icnlab/Data/hoanganh/Beam_Feasibility_Study/.venv/bin/python",
+  "numpy_version": "2.5.4",
+  "scipy_version": "1.18.1",
+  "runner_sha256": "be8c73b023835b7f1491134a5cf9200f94604d5d7ff45bf9f03ba056e9acdb8a",
+  "checkpoint_io_sha256": "b25a4e42624b7bf4d9807d3e5dbe7070f384cfc7a02b68c8b9cf8382abfece1f",
+  "output_sha256": "beb189efc25981a3c1e9e759ae6cf5d7a747c61cb684828d7d8a804e742c80dd"
+}

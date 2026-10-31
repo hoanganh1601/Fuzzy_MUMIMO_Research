@@ -1,0 +1,15 @@
+{
+  "code_version": "version_07",
+  "source_commit": "6439c5e07bb090c22eb528673c26bd211227ac68",
+  "source_path": "src/version_07_beam_feasibility_diagnosis",
+  "execution_note": "Executed outside Git before import. This commit contains byte-identical code, verified against the original CP06 code snapshot.",
+  "run_id": "DM_ASU35_BEAM_DIAG_20261031",
+  "status": "DIAGNOSTIC_ONLY",
+  "dataset_version": "deepmimo_asu35_v1",
+  "dataset_sha256": "1d479a06b94fff565a8997ceb870c670bda7458dbf5e5cd54c2fc0afc14b1f50",
+  "dataset_lineage": "log/version_06/dataset_provenance/deepmimo_asu35_v1/deepmimo_provenance.json",
+  "dataset_usage": "Exploratory reanalysis of previously viewed version-06 data; not a new independent holdout.",
+  "original_run_dir": "/media/icnlab/Data/hoanganh/Beam_Feasibility_Study/outputs/DM_ASU35_BEAM_DIAG_20261031",
+  "artifact_policy": "Original CP00-CP06 and runner provenance retained unchanged. Real channel matrices, environment and task caches excluded.",
+  "verification_command": "python src/version_07_beam_feasibility_diagnosis/code/run_cp06.py --run-dir log/version_07/runs/DM_ASU35_BEAM_DIAG_20261031 --verify-only"
+}

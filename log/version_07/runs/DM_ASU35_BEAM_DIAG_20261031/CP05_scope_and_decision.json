@@ -1,0 +1,8 @@
+{
+  "status": "DIAGNOSTIC_ONLY",
+  "n_geometries": 160,
+  "groups": 160,
+  "q_fixed": 2.9604143746015965,
+  "note": "No adaptive margin or post-test beam selection claim. ZF and RZF are candidate fixed beams. Full channel data and independent validation required. No claim of globally optimal beamforming.",
+  "next_gate": "If substantial coupling failures persist for all beams, examine scheduling or multiuser grouping rather than CSI margin."
+}

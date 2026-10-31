@@ -1,0 +1,39 @@
+{
+  "manifest_sha256": "ae2551de1f64a51f0f5aa992c1f1f7dc4d9891a57f850fcde613791a5a62df84",
+  "cp01_sha256": "92e081233fee59ed4eaf8343bcd0da3e265313aa54c30f3db182e5dfb67bd4d6",
+  "cp01_provenance_sha256": "ee798694fb4e31273a21be35392c1dd469e6775bed9af47ffd7390668350493c",
+  "signature": "819980652d7113fa57c2f614d2a395aa5774991ead03c4670d23f648e8c2c99f",
+  "engine_sha256": "36a0ee286a5650c1adedd50c36bdd6fab5a6b46fc7911f2636310c2cfa071726",
+  "dataset_sha256": "1d479a06b94fff565a8997ceb870c670bda7458dbf5e5cd54c2fc0afc14b1f50",
+  "python_version": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "python_executable": "/media/icnlab/Data/hoanganh/Beam_Feasibility_Study/.venv/bin/python",
+  "numpy_version": "2.5.4",
+  "scipy_version": "1.18.1",
+  "cp02_sha256": "beb189efc25981a3c1e9e759ae6cf5d7a747c61cb684828d7d8a804e742c80dd",
+  "cp02_provenance_sha256": "0f7db3cc8f1503eb33e56725ac44e30db43c90a3c6848fb082899f3a34ac25d6",
+  "cp03_sha256": "4ec22e7cc0b33c5a489180561c21f2b0ea94052b5598af5834be51ed93990737",
+  "cp03_provenance_sha256": "c13556efb55d8bd1899107e000298d5b125673baf46167bd1255428f6b635f32",
+  "cp04_sha256": "1049c4efe4b5d1dbb56666bc9ef8bc871509172db3bbd6bed06a9e776255c087",
+  "cp04_provenance_sha256": "158695df8184ad4857b6a6f7c9fc4b2619bed7ff4847f7074fb88272861790f5",
+  "runner_sha256": "33513d4e84ac487abfed7f01be2e976452cf143491ae8a2aecf9af704fd71d82",
+  "checkpoint_io_sha256": "b25a4e42624b7bf4d9807d3e5dbe7070f384cfc7a02b68c8b9cf8382abfece1f",
+  "diagnostic_evidence": {
+    "baseline_budget_w": 1.0,
+    "any_beam_feasible": 97,
+    "all_beams_fail": 63,
+    "failed_with_some_power_budget_case": 44,
+    "failed_only_coupling_or_zero_gain": 19,
+    "all_beams_coupling": 14,
+    "numerical_review_required": false,
+    "statistical_certificate_claim_allowed": false,
+    "globally_optimal_beamforming_claim_allowed": false,
+    "post_test_best_alpha_claim_allowed": false,
+    "scope": "Descriptive diagnostics on the supplied dataset; not an independent certification holdout.",
+    "next_steps": [
+      "For power-limited geometries, inspect channel/noise unit consistency and the predeclared budget sensitivity results.",
+      "For coupling or zero-gain failures across the grid, examine scheduling, user grouping, or a broader beam space.",
+      "Lock any new beam rule on development data, then evaluate it on independent data before making a validation claim."
+    ]
+  },
+  "output_sha256": "0baefb0d5375c0d0485410ba0320568503064b96adf95d9d7ed6680bdaf03d58"
+}
