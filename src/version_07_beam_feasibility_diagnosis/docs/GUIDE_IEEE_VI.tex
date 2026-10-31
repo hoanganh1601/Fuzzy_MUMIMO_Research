@@ -1,0 +1,63 @@
+\documentclass[11pt,onecolumn]{IEEEtran}
+\usepackage[T5]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[vietnamese]{babel}
+\usepackage{amsmath,amssymb,booktabs,array,url,geometry}
+\geometry{a4paper,margin=21mm}
+\title{Hướng dẫn kiểm tra tính khả thi SINR và độ nhạy beamforming trong hệ thống MU-MIMO}
+\author{Tài liệu triển khai và kiểm chứng mã nguồn}
+\begin{document}\maketitle
+\begin{abstract}
+Tài liệu mô tả thí nghiệm chẩn đoán các cấu hình MU-MIMO downlink không tìm được nghiệm phân bổ công suất khi sử dụng zero-forcing (ZF) và regularized zero-forcing (RZF). Bán kính bất định thông tin trạng thái kênh (channel state information, CSI) được giữ cố định. Chương trình phân biệt mất tính khả thi do ma trận giao thoa, do ngân sách công suất và do lỗi tính toán số; xuất dữ liệu ở mức từng cấu hình kênh và hỗ trợ tiếp tục sau gián đoạn.
+\end{abstract}
+\section{Kịch bản và mục tiêu}
+Trạm gốc có $M$ anten phục vụ $K$ người dùng một anten trong cùng tài nguyên thời gian--tần số. Với ma trận CSI ước lượng $\widehat{\mathbf H}\in\mathbb C^{M\times K}$, so sánh ZF với họ RZF dùng cùng công suất nhiễu, ngưỡng tỉ số tín hiệu trên giao thoa cộng nhiễu (signal-to-interference-plus-noise ratio, SINR) và bán kính bất định $q_c$ cố định. Mục tiêu là xác định nguyên nhân làm thiếu nghiệm, không tối ưu lại $q_c$ và không tuyên bố tối ưu toàn cục hướng chùm.
+\section{Mô hình toán học}
+Với $\alpha\geq0$, hướng phát RZF được xác định từ
+\begin{equation}
+\widetilde{\mathbf V}_{\alpha}=\widehat{\mathbf H}\left(\widehat{\mathbf H}^{H}\widehat{\mathbf H}+\alpha\,\frac{\mathrm{tr}(\widehat{\mathbf H}^{H}\widehat{\mathbf H})}{K}\mathbf I\right)^{-1},\quad
+\mathbf v_k=\frac{\widetilde{\mathbf v}_k}{\|\widetilde{\mathbf v}_k\|_2}.
+\end{equation}
+Giá trị $\alpha=0$ tương ứng ZF khi ma trận kênh đủ hạng; các giá trị dương tạo các hướng RZF. Đây là tập ứng viên cố định, không phải bài toán tối ưu liên tục theo $\alpha$.
+
+Với $\|\mathbf e_k\|_2\leq r_k=q_c\sigma_{\rm rel}\|\widehat{\mathbf h}_k\|_2/\sqrt M$, dùng chặn dưới độ lợi mong muốn $a_k=(|\widehat{\mathbf h}_k^H\mathbf v_k|-r_k)_+^2$ và chặn trên giao thoa $b_{kj}=(|\widehat{\mathbf h}_k^H\mathbf v_j|+r_k)^2$. Bài toán công suất chặn bảo thủ là
+\begin{equation}
+\min_{\mathbf p\geq0}\ \mathbf1^T\mathbf p,\qquad
+p_k\geq\sum_{j\ne k}F_{kj}p_j+u_k,\quad \mathbf1^T\mathbf p\leq P_{\max},
+\end{equation}
+trong đó $F_{kj}=\gamma_k b_{kj}/a_k$ ($j\ne k$), $F_{kk}=0$, $u_k=\gamma_k\sigma_n^2/a_k$. Chặn này làm tăng mức bảo thủ nhưng cho phép phân loại rõ điều kiện khả thi của bài toán power control theo hướng beam cố định.
+
+Khi $a_k>0$, $\mathbf F\geq0$ và $\mathbf u>0$, điều kiện $\rho(\mathbf F)<1$ cho nghiệm công suất không âm hữu hạn $\mathbf p^\star=(\mathbf I-\mathbf F)^{-1}\mathbf u$ trước giới hạn công suất. Sau đó kiểm tra $\mathbf1^T\mathbf p^\star\leq P_{\max}$. Kết quả giải tích được đối chiếu độc lập bằng linear programming (LP) và phần dư ràng buộc.
+\section{Đầu vào và quy tắc đối sánh}
+Tệp NPZ chứa \texttt{H} (ma trận phức dạng $N\times M\times K$) và \texttt{groups} ($N$ nhãn nhóm); có thể bổ sung \texttt{xyz}, \texttt{scenario}. Ma trận \texttt{H} phải là CSI ước lượng của đúng hệ thống và cùng chuẩn hóa công suất với $\sigma_n^2$. Các tham số \texttt{--q}, \texttt{--sigma-rel}, \texttt{--sinr-db}, \texttt{--noise} được khóa cho mọi beam. Dãy \texttt{--alpha-list} và \texttt{--budget-list} được ấn định trước khi chạy dữ liệu đánh giá.
+
+Kết quả trên cùng geometry được đối sánh theo cặp. Không so sánh trung bình công suất của các tập khả thi khác nhau như thể đây là cùng mẫu. Giá trị $P_{\max}$ chỉ thay đổi miền chấp nhận nghiệm; công suất tối thiểu không giới hạn ngân sách được ghi riêng.
+\section{Các bước chạy và checkpoint}
+Cài đặt: \texttt{python -m pip install -r code/requirements.txt}. Lệnh chạy trên Windows PowerShell hoặc Linux:
+\begin{verbatim}
+python code/beam_feasibility.py --stage preflight \
+ --dataset data/deepmimo.npz --run-id DM_BEAM01
+python code/beam_feasibility.py --stage scan \
+ --dataset data/deepmimo.npz --run-id DM_BEAM01
+python code/beam_feasibility.py --stage report \
+ --dataset data/deepmimo.npz --run-id DM_BEAM01
+\end{verbatim}
+Mỗi geometry được lưu tại \texttt{outputs/DM\_BEAM01/tasks/0000000.json} và được ghi theo cơ chế thay thế nguyên tử. Khi mất điện, chạy lại cùng lệnh và tham số: các tác vụ có chữ ký hợp lệ được bỏ qua. Nếu thay dữ liệu hoặc mã, bắt buộc đổi \texttt{run-id}. Chạy \texttt{--stage all} để thực hiện quét và báo cáo trong một lệnh. Nếu muốn chẩn đoán dữ liệu 3GPP, dùng một \texttt{run-id} riêng; không gộp hai nguồn thành một tập kiểm chứng.
+\section{Danh sách kết quả cần lưu}
+\begin{center}\small
+\begin{tabular}{p{.29\linewidth}p{.62\linewidth}}\toprule
+Tệp & Nội dung\\\midrule
+\texttt{CP00\_manifest.json} & SHA-256 của dữ liệu, mã, tham số và kích thước mẫu.\\
+\texttt{CP01\_geometry\_beam\_budget.csv} & Mỗi geometry--beam--budget; $\rho(\mathbf F)$, công suất chưa giới hạn, công suất chấp nhận, phần dư, thời gian chạy, lý do thất bại.\\
+\texttt{CP02\_beam\_budget\_summary.csv} & Tỉ lệ có nghiệm và số trường hợp thất bại theo từng nguyên nhân.\\
+\texttt{CP03\_paired\_ZF\_RZF.csv} & Tỉ số công suất RZF/ZF chỉ trên geometry có nghiệm chung, và thay đổi trạng thái khả thi.\\
+\texttt{CP04\_geometry\_diagnosis.csv} & Geometry khó; số beam khả thi, $\rho$ nhỏ nhất, beam có công suất thấp nhất trong tập ứng viên.\\
+\texttt{CP05\_scope\_and\_decision.json} & Điều kiện suy luận, phạm vi kết luận, bước tiếp theo.\\
+\texttt{CP06\_sha256.csv} & Mã kiểm tra toàn vẹn các tệp kết quả.\\\bottomrule
+\end{tabular}
+\end{center}
+\section{Điều kiện dừng và phạm vi kết luận}
+Kiểm tra trước: hình dạng dữ liệu đúng, $M\geq K$, CSI hữu hạn, công suất và nhiễu dương, nhóm có ý nghĩa. Dừng chẩn đoán khi các trạng thái lỗi solver hoặc sai lệch LP--nghiệm giải tích xuất hiện; phải sửa tính số trước khi diễn giải kênh. Nếu đa số cấu hình thất bại do $\rho(\mathbf F)\geq1$ với mọi beam, bước tiếp theo là thay đổi scheduling, nhóm người dùng hoặc không gian beam. Nếu nhiều cấu hình có $\rho(\mathbf F)<1$ nhưng công suất tối thiểu vượt $P_{\max}$, cần phân tích ngân sách công suất và lựa chọn beam. Chỉ khi có tập geometry chung đủ lớn mới so sánh công suất ZF--RZF.
+
+Kiểm tra này không chứng minh các geometry độc lập, không xác nhận chất lượng CSI thực tế và không thay thế kiểm chứng ngoài phân bố. Tất cả phép quét phải được báo cáo như phân tích độ nhạy; không chọn một $\alpha$ bằng test rồi tuyên bố cải thiện trên cùng test. Muốn kiểm chứng một cấu hình beam mới phải khóa lựa chọn trên development rồi đánh giá tập mới độc lập.
+\end{document}

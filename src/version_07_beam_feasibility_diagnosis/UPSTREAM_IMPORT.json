@@ -1,0 +1,20 @@
+{
+  "archive_name": "Beam_Feasibility_Diagnosis_Code_Guide_20261029.zip",
+  "archive_sha256": "2c70f44447011615aa0549e865bb9b3ef508fb3009ac1d0f7497811d2d98617c",
+  "archive_package_date": "2026-10-29",
+  "code_version": "version_07",
+  "repository_base_commit": "0642020e41abd96a62de775adf6334bcb4164ff6",
+  "original_engine_sha256": "36a0ee286a5650c1adedd50c36bdd6fab5a6b46fc7911f2636310c2cfa071726",
+  "original_guide_sha256": "be2fbaf92bccddd82d2a648596c58569094de9feaf813b8aaf1dde4d4bf0a6fd",
+  "added_code": [
+    "checkpoint_io.py",
+    "run_cp01.py",
+    "run_cp02.py",
+    "run_cp03.py",
+    "run_cp04.py",
+    "run_cp05.py",
+    "run_cp06.py"
+  ],
+  "scope": "Original engine and guide preserved; separate-CP runners and packaging documentation added.",
+  "bundled_outputs_policy": "Upstream outputs/SMOKE excluded; selected real-run artifacts live under log/version_07."
+}
