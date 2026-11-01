@@ -1,0 +1,15 @@
+{
+  "code_version": "version_08",
+  "source_commit": "2137c3e46751e817510c2a5fcbb66e8f5b829886",
+  "source_path": "src/version_08_robust_user_scheduling",
+  "execution_note": "Run executed outside Git before import; this packaging commit contains byte-identical code verified against original CP06 snapshots.",
+  "run_id": "DM_ASU35_SCHED_DEV_20261101",
+  "evaluation_role": "development",
+  "status": "EXPLORATORY_EVALUATION",
+  "dataset_version": "deepmimo_asu35_v1",
+  "dataset_sha256": "1d479a06b94fff565a8997ceb870c670bda7458dbf5e5cd54c2fc0afc14b1f50",
+  "dataset_usage": "Previously viewed development data; G4 independent validation not established.",
+  "original_run_dir": "/media/icnlab/Data/hoanganh/Robust_User_Scheduling_20261101/outputs/DM_ASU35_SCHED_DEV_20261101",
+  "artifact_policy": "Original CP00-CP06 and six runner receipts preserved byte-for-byte; real matrices, task caches, environments and console logs excluded.",
+  "verification_command": "python src/version_08_robust_user_scheduling/code/run_cp06.py --run-dir log/version_08/runs/DM_ASU35_SCHED_DEV_20261101 --verify-only"
+}

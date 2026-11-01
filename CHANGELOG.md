@@ -1,5 +1,14 @@
 # Changelog
 
+## v8.0.0 — 2026-11-02
+
+- Đóng gói source/IEEE guide ngày 2026-11-01 cho robust user scheduling với fixed CSI margin.
+- Giữ nguyên engine upstream; thêm workflow riêng từng CP và G1 independent scaled-LP/budget audit.
+- Lưu smoke 12 geometry và DeepMIMO development 160 geometry, cùng hoàn tất CP00–CP06.
+- Exhaustive/forward/backward cùng mean admitted users=3.575 trên DeepMIMO; backward khớp nghiệm trong run và dùng 18% số lời gọi exhaustive.
+- Ghi nhận forward ít lời gọi hơn nhưng runtime cao hơn và có một power-ratio outlier; không tuyên bố cải thiện chung.
+- Thêm kiểm thử workflow, provenance/checksum và hướng dẫn tái chạy; trạng thái `EXPLORATORY_EVALUATION`, G4 chưa được xác minh.
+
 ## v6.0.0 — 2026-10-29
 
 - Thêm spatial group metadata `xyz` và `scenario`.

@@ -1,0 +1,15 @@
+{
+  "code_version": "version_08",
+  "source_commit": "2137c3e46751e817510c2a5fcbb66e8f5b829886",
+  "source_path": "src/version_08_robust_user_scheduling",
+  "execution_note": "Run executed outside Git before import; this packaging commit contains byte-identical code verified against original CP06 snapshots.",
+  "run_id": "SYN_SCHED_SMOKE_20261101",
+  "evaluation_role": "smoke",
+  "status": "EXPLORATORY_EVALUATION",
+  "dataset_version": "synthetic_smoke_20261101",
+  "dataset_sha256": "c52e1551158a6556ad8161db560864244beb6958c7e90adac119a4708f4bd2f9",
+  "dataset_usage": "Synthetic program check only.",
+  "original_run_dir": "/media/icnlab/Data/hoanganh/Robust_User_Scheduling_20261101/outputs/SYN_SCHED_SMOKE_20261101",
+  "artifact_policy": "Original CP00-CP06 and six runner receipts preserved byte-for-byte; real matrices, task caches, environments and console logs excluded.",
+  "verification_command": "python src/version_08_robust_user_scheduling/code/run_cp06.py --run-dir log/version_08/runs/SYN_SCHED_SMOKE_20261101 --verify-only"
+}

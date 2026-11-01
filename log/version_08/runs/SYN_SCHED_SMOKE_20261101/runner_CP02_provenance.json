@@ -1,0 +1,30 @@
+{
+  "manifest_sha256": "6d5703611e6bccee510708350c6b1669e8b4f3aef9f9ccb67de6a492e2c35c50",
+  "signature": "ff1ac377b9e175c03e010bc9bd883f70560d8175303fc3cd32c36c80d8498795",
+  "engine_sha256": "163bd7b2fb2b0a1333cf06d8b1f1df9624c2d75b3bf7b864b1fdf26e00b9bba3",
+  "dataset_sha256": "c52e1551158a6556ad8161db560864244beb6958c7e90adac119a4708f4bd2f9",
+  "python_version": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "python_executable": "/media/icnlab/Data/hoanganh/Robust_User_Scheduling_20261101/.venv/bin/python",
+  "numpy_version": "2.5.4",
+  "scipy_version": "1.18.1",
+  "cp01_sha256": "b34cf4a3cc4e16dbfc6e00156df5858130871d029a546c6456b9d33be46e968f",
+  "cp01_provenance_sha256": "f15cf67b75aeaa36e5c56587ca20d74c6301f0e06a595de4220255d765694687",
+  "stage": "CP02",
+  "protocol": "cp01_candidates_then_cp02_decisions_v1",
+  "runner_sha256": "1137121c3dde637d0d29362305065fde262ae1a650de4682f58a7a26505e760e",
+  "helper_sha256": "2c4ad38ce2eddc7184deb6606b2e0e11f16ff776a3a7265ca6088c1dfd19f654",
+  "model_audit_sha256": "eed29010861b807da4dacaf24b8eafcd853852577ccfc49805e279c6cff6f743",
+  "model_audit": {
+    "gate": "G1_PASS",
+    "candidate_count": 1260,
+    "lp_checks": 1148,
+    "budget_monotonicity_checks": 1260,
+    "extra_engine_solve_calls": 2520,
+    "max_relative_lp_gap": 3.612936901707724e-15,
+    "max_scaled_analytic_violation": 5.8414788925196395e-16,
+    "max_scaled_lp_violation": 2.0695918704955223e-14,
+    "audit_calls_excluded_from_algorithm_calls": true,
+    "budget_test": "Below/above required power for stable candidates; half/double Pmax for coupling/zero gain. Audit only, not policy tuning."
+  },
+  "output_sha256": "1fb45d342b5e8a5c2361a793829cd4f7ab959ed9d6d4f30bd98c03429ac485f6"
+}

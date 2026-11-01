@@ -1,0 +1,4 @@
+method,n_geometries,mean_admitted_users,full_service_fraction,at_least_one_fraction,mean_calls,mean_runtime_ms,oracle_cardinality_match_fraction
+exhaustive,160,3.575,0.60625,1.0,105.0,146.33594984425145,
+forward,160,3.575,0.60625,1.0,69.78125,162.33062787496237,1.0
+backward,160,3.575,0.60625,1.0,18.9,24.608096743941132,1.0
