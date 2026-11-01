@@ -1,0 +1,74 @@
+\documentclass[12pt,onecolumn]{IEEEtran}
+\usepackage{fontspec}
+\setmainfont{DejaVu Serif}
+\setsansfont{DejaVu Sans}
+\usepackage{amsmath,amssymb,booktabs,array,geometry,hyperref,longtable}
+\geometry{a4paper,margin=23mm}
+\hypersetup{hidelinks}
+\title{Hướng dẫn kiểm chứng lựa chọn nhóm người dùng và hướng chùm tia dưới ràng buộc SINR robust}
+\author{Gói thí nghiệm MU-MIMO downlink — phiên bản 01/11/2026}
+\begin{document}\maketitle
+\section{Kịch bản và mục tiêu}
+Trạm gốc có $M\ge4$ anten phục vụ tối đa bốn người dùng trên đường xuống MU-MIMO. Khi bốn liên kết đồng thời không đáp ứng SINR robust trong giới hạn công suất, bộ điều khiển có thể tạm thời chỉ chấp nhận một tập con người dùng. Mục tiêu là kiểm tra liệu lựa chọn tập người dùng kết hợp chùm tia ZF hoặc RZF có cải thiện số liên kết được phục vụ so với việc giữ nguyên bốn người dùng hay không. Bán kính bất định CSI được \textbf{giữ cố định}; không hiệu chỉnh từ kết quả thử nghiệm.
+
+\section{Mô hình và điều kiện toán học}
+Dữ liệu $\widehat{\mathbf H}\in\mathbb C^{M\times4}$ là kênh \emph{ước lượng}. Với tập $\mathcal S\subseteq\{1,2,3,4\}$, $\mathcal S\ne\emptyset$, xây lại bộ tiền mã hóa $\mathbf V_{\mathcal S}$ trên các cột thuộc $\mathcal S$. ZF tương ứng $\alpha=0$ và RZF ứng với $\alpha>0$; hệ số chuẩn hóa $\alpha\operatorname{tr}(\widehat{\mathbf H}_{\mathcal S}^{H}\widehat{\mathbf H}_{\mathcal S})/|\mathcal S|$ được ghi rõ trong mã. Các cột chùm tia được chuẩn hóa norm bằng một.
+
+Với sai số $\|\mathbf e_k\|\le r_k=q\sigma_{\mathrm{rel}}\|\widehat{\mathbf h}_k\|/\sqrt M$, các biên tam giác được dùng để xác lập độ lợi tín hiệu thấp nhất $a_k=(|\widehat{\mathbf h}_k^H\mathbf v_k|-r_k)_+^2$ và độ lợi giao thoa lớn nhất $b_{kj}=(|\widehat{\mathbf h}_k^H\mathbf v_j|+r_k)^2$. Đây là miền bất định thiết kế, không tự tạo chứng nhận outage 5\%.
+\begin{equation}
+F_{kj}=\begin{cases}\gamma_k b_{kj}/a_k,&j\ne k,\\0,&j=k,\end{cases}\qquad u_k=\gamma_k\sigma_n^2/a_k.
+\end{equation}
+Các hệ số này chuyển ràng buộc SINR robust thành hệ bất đẳng thức công suất $\mathbf p\ge\mathbf F\mathbf p+\mathbf u$. Nếu $a_k=0$, cấu hình bị loại do không có độ lợi trực tiếp robust. Với $\mathbf F\ge0$, $\mathbf u>0$, điều kiện $\rho(\mathbf F)<1$ cho nghiệm công suất tối thiểu hữu hạn:
+\begin{equation}
+\mathbf p^\star=(\mathbf I-\mathbf F)^{-1}\mathbf u,\qquad P_{\rm req}=\mathbf1^T\mathbf p^\star.
+\end{equation}
+Nghiệm thỏa ngân sách khi $P_{\rm req}\le P_{\max}$. Chương trình đối chiếu với linear programming (LP) có chuẩn hóa tỷ lệ để phát hiện sai khác số. Phép kiểm tra chỉ có hiệu lực trong tập hướng beam và miền bất định nêu trên.
+
+Bài toán lựa chọn được định nghĩa theo thứ tự từ điển:
+\begin{equation}
+\underset{\mathcal S,\alpha}{\operatorname{lex\ max}}\ \left(|\mathcal S|,-P_{\rm req}(\mathcal S,\alpha)\right),\quad
+\rho(\mathbf F_{\mathcal S,\alpha})<1,\quad P_{\rm req}\le P_{\max}.
+\end{equation}
+Tiêu chí ưu tiên số người dùng được phục vụ, sau đó giảm công suất trong cùng số người dùng. Do đó, không so sánh trực tiếp công suất của chính sách phục vụ hai người dùng với chính sách phục vụ bốn người dùng.
+
+\section{Thuật toán và đối chứng}
+Với $K=4$, exhaustive search có $2^4-1=15$ tập con không rỗng. Trên mỗi tập, mã thử ZF và các mức RZF định trước. Với bảy mức $\alpha$, mỗi geometry có 105 cặp tập người dùng–chùm tia. Đây là nghiệm tối ưu \emph{trong tập ứng viên hữu hạn}, không phải nghiệm beamforming liên tục toàn cục.
+
+Hai đối chứng là \texttt{forward} (thêm tuần tự người dùng nếu có nghiệm) và \texttt{backward} (khởi đầu bốn người dùng, loại dần người dùng khi chưa có nghiệm). Cả hai kiểm tra cùng ràng buộc robust SINR, beam codebook và ngân sách công suất. Cần báo cáo độ chênh số người dùng so với exhaustive, tỷ số công suất \emph{chỉ khi số người dùng phục vụ bằng nhau}, số bài toán được kiểm tra và thời gian chạy toàn phần.
+
+\section{Dữ liệu và yêu cầu tiền kiểm tra}
+Đầu vào là NPZ với \texttt{H} kích thước $(N,M,4)$, complex hữu hạn; \texttt{groups} có $N$ phần tử để truy vết nhóm không gian hoặc kịch bản. \texttt{scenario}, \texttt{xyz} được giữ làm metadata nếu có. Cần ghi cách lấy bốn người dùng đồng thời, vị trí anten, chuẩn hóa kênh, nguồn nhiễu và cách ước lượng CSI. Tên nhóm không đủ chứng minh độc lập thống kê.
+
+DeepMIMO được dùng làm dữ liệu chính. Kiểm chứng theo kênh 3GPP phải được tạo riêng từ một mô hình đầy đủ như Sionna, lưu cấu hình mô phỏng và dùng nguyên quy tắc chọn người dùng đã khóa. Dữ liệu synthetic chỉ kiểm tra chương trình. Toàn bộ dữ liệu DeepMIMO đã sử dụng ở các vòng chẩn đoán trước là development, không phải test mới chưa quan sát.
+
+\section{Lệnh chạy và khôi phục}
+Cài đặt \texttt{python -m pip install -r code/requirements.txt}. Từ thư mục gốc của gói, chạy:
+\begin{verbatim}
+python code/admission_beam.py --stage preflight --dataset data/deepmimo.npz --run-id DM01
+python code/admission_beam.py --stage scan      --dataset data/deepmimo.npz --run-id DM01
+python code/admission_beam.py --stage report    --dataset data/deepmimo.npz --run-id DM01
+\end{verbatim}
+Mặc định $q=2.960414$, $\sigma_{\mathrm{rel}}=0.04$, SINR 6 dB, $P_{\max}=1$ W và noise $2\times10^{-13}$ W, phù hợp phép chẩn đoán trước. Các giá trị này cần đối chiếu với đơn vị của ma trận DeepMIMO. Sửa tham số hoặc dữ liệu phải dùng \texttt{run-id} mới.
+
+Sau mỗi geometry, mã ghi \texttt{outputs/DM01/tasks/0000000.json} bằng cơ chế ghi tệp tạm rồi thay thế nguyên tử. Khi máy ngắt, chạy lại \texttt{--stage scan} với đúng mã, dữ liệu và tham số; các geometry hoàn thành sẽ được bỏ qua. Không sửa checkpoint thủ công; checksum chữ ký khác sẽ ngăn dùng lẫn kết quả.
+
+\section{Checkpoint và các CSV cần xuất}
+\begin{center}\small\begin{tabular}{p{0.10\linewidth}p{0.78\linewidth}}\toprule
+CP00 & \texttt{CP00\_manifest.json}: SHA-256 mã và dữ liệu, tham số, số geometry và nhóm.\\
+CP01 & \texttt{CP01\_all\_subset\_beam.csv}: mỗi tập con–beam, $\rho(F)$, $P_{\rm req}$, nguyên nhân không khả thi, residual và runtime.\\
+CP02 & \texttt{CP02\_oracle\_greedy\_decisions.csv}: quyết định exhaustive/greedy trên từng geometry.\\
+CP03 & \texttt{CP03\_paired\_comparison.csv}: cardinality gap, số lần gọi solver và tỷ số công suất khi bằng số user.\\
+CP04 & \texttt{CP04\_summary.csv}: số user phục vụ trung bình, tỷ lệ phục vụ đủ bốn user, runtime và số lời gọi.\\
+CP05 & \texttt{CP05\_scope.json}: giới hạn bằng chứng và phạm vi kết luận.\\
+CP06 & \texttt{CP06\_sha256.csv}: kiểm tra toàn vẹn báo cáo.\\\bottomrule
+\end{tabular}\end{center}
+
+\section{Các cổng kiểm chứng và điều kiện dừng}
+\textbf{G1 — Model audit:} kiểm tra tính đơn điệu của tính khả thi theo ngân sách, $\rho(F)$, residual, sai khác nghiệm giải tích–LP, độ lợi trực tiếp. Không đạt thì dừng, sửa mô hình trước khi đánh giá thuật toán.
+
+\textbf{G2 — Exhaustive reference:} đúng 15 tập con với mỗi geometry và toàn bộ beam ứng viên; xác minh quyết định tối ưu theo thứ tự từ điển. Chỉ số chính là số người dùng được phục vụ.
+
+\textbf{G3 — Computational comparison:} so greedy với exhaustive trên cùng geometry; ghi độ lệch cardinality, công suất chỉ trong các cặp cùng cardinality, số nghiệm thử và runtime. Nếu greedy có độ lệch đáng kể hoặc không giảm chi phí, không tuyên bố cải tiến.
+
+\textbf{G4 — Independent validation:} khóa phương pháp trước khi chạy trên các nhóm DeepMIMO mới hoặc kênh 3GPP riêng; báo cáo khoảng tin cậy theo nhóm. Kết quả hiện có chưa chứng minh lợi ích fairness, throughput hoặc outage xác suất. Cần bổ sung ở giai đoạn công bố.
+\end{document}

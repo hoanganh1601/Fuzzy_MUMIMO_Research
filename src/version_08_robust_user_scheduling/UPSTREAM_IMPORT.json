@@ -1,0 +1,23 @@
+{
+  "archive_name": "Robust_User_Scheduling_Beam_Code_Guide_20261101.zip",
+  "archive_sha256": "82b8128974acb00de81fa4afb9a1ca9e859f34cc64d5a8c8c45daf1b1f97cbdf",
+  "archive_package_date": "2026-11-01",
+  "packaged_date_local": "2026-11-02",
+  "code_version": "version_08",
+  "repository_base_commit": "c545609a1d52654480cfd353e5cfeb5ba9e30ded",
+  "original_engine_sha256": "163bd7b2fb2b0a1333cf06d8b1f1df9624c2d75b3bf7b864b1fdf26e00b9bba3",
+  "original_guide_sha256": "8cc9260d1d5adaef38866a33d4a65505f4d9bde554e406d7564792c6a1f1b334",
+  "added_code": [
+    "scheduling_checkpoints.py",
+    "model_audit.py",
+    "report_inputs.py",
+    "run_cp01.py",
+    "run_cp02.py",
+    "run_cp03.py",
+    "run_cp04.py",
+    "run_cp05.py",
+    "run_cp06.py"
+  ],
+  "scope": "Original engine/fixture/guide retained; separate-CP workflow, independent G1 audit, provenance and packaging tests/docs added.",
+  "bundled_outputs_policy": "Upstream outputs/SMOKE excluded. User smoke and DeepMIMO development artifacts curated under log/version_08 without tasks, logs, real datasets or environment."
+}
