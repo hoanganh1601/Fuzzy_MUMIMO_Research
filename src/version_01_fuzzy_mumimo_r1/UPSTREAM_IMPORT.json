@@ -1,0 +1,14 @@
+{
+  "archive_name": "Fuzzy_MUMIMO_Research_R1_fixed.zip",
+  "archive_sha256": "7e1e3eabca0da0eea93983ad9831d56b2834067ece2d47c587568d5ca0ee8b5c",
+  "archive_size_bytes": 275602,
+  "packaged_date_local": "2026-11-02",
+  "code_version": "version_01",
+  "original_files_verified": 24,
+  "main_engine_sha256": "e9671512fd1eb2f9c30524a7d84bfd4def257832bab411144af34b8d7da2eb84",
+  "scope": "Original code, tests, fixtures and documentation retained byte-for-byte. Bundled example outputs and task caches excluded from src; a fresh DeepMIMO replay is curated under log/version_01.",
+  "upstream_mapping": {
+    "README.md": "README_UPSTREAM.md",
+    "FILE_SHA256.csv": "UPSTREAM_FILE_SHA256.csv"
+  }
+}

@@ -34,6 +34,8 @@ datasets/
 *.npz
 
 # Explicitly retained, small smoke fixtures
+!src/version_01_fuzzy_mumimo_r1/data/synthetic_smoke.npz
+!src/version_01_fuzzy_mumimo_r1/data/umi_smoke.npz
 !src/version_03_deepmimo_spatial_analysis/data/synthetic_smoke.npz
 !src/version_03_deepmimo_spatial_analysis/data/umi_smoke.npz
 !src/version_04_spatial_grouped_dataset/data/synthetic_smoke.npz
