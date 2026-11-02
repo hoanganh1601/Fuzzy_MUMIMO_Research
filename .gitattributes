@@ -10,6 +10,8 @@ src/version_07_beam_feasibility_diagnosis/** -text
 log/version_07/** -text
 src/version_08_robust_user_scheduling/** -text
 log/version_08/** -text
+src/version_09_robust_safe_pruning/** -text
+log/version_09/** -text
 
 # Upstream/output CSV files use standard CRLF record endings.
 *.csv whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

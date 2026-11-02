@@ -1,0 +1,19 @@
+{
+  "archive_name": "Robust_Safe_Pruning_Code_Guide_20261102.zip",
+  "archive_sha256": "5dc1eba9ea5b864c4c8a9f0e1ad81b93c81f1ae5e47a2c51e3f48f827a861435",
+  "archive_package_date": "2026-11-02",
+  "packaged_date_local": "2026-11-02",
+  "code_version": "version_09",
+  "repository_base_commit": "cbd66140b92f463cf3a200e7d0835d0947c80bfc",
+  "safe_pruning_sha256": "d242114c9b45508592054ab39857ecd089816de375bf466b3dc35b35c2d29e0a",
+  "reference_model_sha256": "163bd7b2fb2b0a1333cf06d8b1f1df9624c2d75b3bf7b864b1fdf26e00b9bba3",
+  "guide_sha256": "6bf75d3793231497ffd484922fb34969ce6ec04e25f3e61981c9c70c58e0f076",
+  "added_code": [],
+  "added_tests": [],
+  "scope": "Both original Python files, requirements, tests, smoke fixture and PDF/TeX retained byte-for-byte. Native preflight/scan/report stages used; no separate-CP runners added.",
+  "upstream_mapping": {
+    "README.md": "README_UPSTREAM.md",
+    "FILE_SHA256.csv": "UPSTREAM_FILE_SHA256.csv"
+  },
+  "bundled_outputs_policy": "Archive outputs/SMOKE are examples and excluded. Only the user's DeepMIMO development CP00-CP06 are curated under log/version_09. No user smoke run is claimed."
+}
