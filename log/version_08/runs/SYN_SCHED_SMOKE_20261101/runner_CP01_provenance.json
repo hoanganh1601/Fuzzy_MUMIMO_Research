@@ -1,0 +1,15 @@
+{
+  "manifest_sha256": "6d5703611e6bccee510708350c6b1669e8b4f3aef9f9ccb67de6a492e2c35c50",
+  "signature": "ff1ac377b9e175c03e010bc9bd883f70560d8175303fc3cd32c36c80d8498795",
+  "engine_sha256": "163bd7b2fb2b0a1333cf06d8b1f1df9624c2d75b3bf7b864b1fdf26e00b9bba3",
+  "dataset_sha256": "c52e1551158a6556ad8161db560864244beb6958c7e90adac119a4708f4bd2f9",
+  "python_version": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "python_executable": "/media/icnlab/Data/hoanganh/Robust_User_Scheduling_20261101/.venv/bin/python",
+  "numpy_version": "2.5.4",
+  "scipy_version": "1.18.1",
+  "stage": "CP01",
+  "protocol": "cp01_candidates_then_cp02_decisions_v1",
+  "runner_sha256": "8ca893f5f72f350ec8c42627b241612e6a692590e1d52547d74ac5fdcd36357a",
+  "helper_sha256": "2c4ad38ce2eddc7184deb6606b2e0e11f16ff776a3a7265ca6088c1dfd19f654",
+  "output_sha256": "b34cf4a3cc4e16dbfc6e00156df5858130871d029a546c6456b9d33be46e968f"
+}

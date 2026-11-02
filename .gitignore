@@ -42,6 +42,7 @@ datasets/
 !src/version_05_csi_margin_calibration/data/external_smoke.npz
 !src/version_06_csi_spatial_calibration/data/grouped_smoke.npz
 !src/version_07_beam_feasibility_diagnosis/data/synthetic_diagnostic.npz
+!src/version_08_robust_user_scheduling/data/smoke.npz
 
 # Generated runs: only curated files under log/ are versioned
 outputs/

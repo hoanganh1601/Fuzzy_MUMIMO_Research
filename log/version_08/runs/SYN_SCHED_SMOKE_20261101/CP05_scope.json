@@ -1,0 +1,13 @@
+{
+  "status": "EXPLORATORY_EVALUATION",
+  "fixed_q": 2.9604143746015965,
+  "objective": "lexicographic max user count, then min transmit power for that count",
+  "oracle": "exact across 15 nonempty subsets x enumerated ZF/RZF codebook; not globally optimal beamforming",
+  "data_leakage": "Do not tune policies on prior observed geometries and claim independent test",
+  "caveats": [
+    "Admitted subset recomputes beam and robust coefficients",
+    "Outage not certified by finite uncertainty bound",
+    "Dropped users are not served, and fairness/throughput not yet evaluated",
+    "No statistical independence guaranteed by group names alone"
+  ]
+}

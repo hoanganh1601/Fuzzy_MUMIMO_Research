@@ -1,0 +1,52 @@
+{
+  "status": "EXPLORATORY_EVALUATION",
+  "n_geometries": 12,
+  "input_audit": {
+    "manifest_sha256": "6d5703611e6bccee510708350c6b1669e8b4f3aef9f9ccb67de6a492e2c35c50",
+    "signature": "ff1ac377b9e175c03e010bc9bd883f70560d8175303fc3cd32c36c80d8498795",
+    "engine_sha256": "163bd7b2fb2b0a1333cf06d8b1f1df9624c2d75b3bf7b864b1fdf26e00b9bba3",
+    "dataset_sha256": "c52e1551158a6556ad8161db560864244beb6958c7e90adac119a4708f4bd2f9",
+    "python_version": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "python_executable": "/media/icnlab/Data/hoanganh/Robust_User_Scheduling_20261101/.venv/bin/python",
+    "numpy_version": "2.5.4",
+    "scipy_version": "1.18.1",
+    "cp01_sha256": "b34cf4a3cc4e16dbfc6e00156df5858130871d029a546c6456b9d33be46e968f",
+    "cp01_provenance_sha256": "f15cf67b75aeaa36e5c56587ca20d74c6301f0e06a595de4220255d765694687",
+    "cp02_sha256": "1fb45d342b5e8a5c2361a793829cd4f7ab959ed9d6d4f30bd98c03429ac485f6",
+    "cp02_provenance_sha256": "b984ddefac9436b0d5d1c63f6b3160363a8d6ad31305c8ea9db6683faca3e87d",
+    "cp03_sha256": "6b442bcd5a37dc512096fe733fd137e7b3233da0a000f7e75237e66cf73c8b53",
+    "cp03_provenance_sha256": "a0ccbeb9b7ef742dbd3d23e0b56727e4daa259781be7f5d15f783670988748d0",
+    "cp04_sha256": "d04ae5dcd9819a04b0b91adc8009025454fdd866b795f6396663329bda00535b",
+    "cp04_provenance_sha256": "5ff81b287592048635840b2e6048888c7b5a4ad9dc8c34fce3ea9ceda6d92cbb",
+    "cp05_sha256": "eda0cd30ea1d1e4694f1ca35f3e3646d05731d8f7306ee20a84dd0806db7a631",
+    "cp05_provenance_sha256": "6a04e2b17d17cc8873cd75fd4af6ba2b6c806afbea2fb5bee1b3e4b2c210fa46"
+  },
+  "code_files_sha256": {
+    "admission_beam.py": "163bd7b2fb2b0a1333cf06d8b1f1df9624c2d75b3bf7b864b1fdf26e00b9bba3",
+    "make_smoke.py": "9a76c63f559ccb89ef6a85cb77549ffccfee87cde292918ae0989574458f0d33",
+    "model_audit.py": "eed29010861b807da4dacaf24b8eafcd853852577ccfc49805e279c6cff6f743",
+    "report_inputs.py": "54acc0ef4ae2e6c543cb4325f82597c806f8ce9652c351a607c35ce366ac54d1",
+    "requirements.txt": "a8e8bb7f93883edc7222a84af1497c323b13c9d05a36e22471f2724e1ddf0384",
+    "run_cp01.py": "8ca893f5f72f350ec8c42627b241612e6a692590e1d52547d74ac5fdcd36357a",
+    "run_cp02.py": "1137121c3dde637d0d29362305065fde262ae1a650de4682f58a7a26505e760e",
+    "run_cp03.py": "3a56b55e5b306e30b58247467322b3f95f09b9a8f47ed6df0f3ddbdd70f3a6c1",
+    "run_cp04.py": "361fb3ead293d5c8a09321f2c3cf5e27e927c1f5515977e7852be1844ae02669",
+    "run_cp05.py": "ec5f71d3601495da31fc2cf3bbb308999d3ea15277d650a2610cae5b2b05f029",
+    "run_cp06.py": "f3bc356b195750e1ca3f56b9df478f2130a4790259d819bcca1a2f95e57de734",
+    "scheduling_checkpoints.py": "2c4ad38ce2eddc7184deb6606b2e0e11f16ff776a3a7265ca6088c1dfd19f654"
+  },
+  "artifact_files": [
+    "CP00_manifest.json",
+    "CP01_all_subset_beam.csv",
+    "CP02_oracle_greedy_decisions.csv",
+    "CP03_paired_comparison.csv",
+    "CP04_summary.csv",
+    "CP05_scope.json",
+    "runner_CP01_provenance.json",
+    "runner_CP02_provenance.json",
+    "runner_CP03_provenance.json",
+    "runner_CP04_provenance.json",
+    "runner_CP05_provenance.json"
+  ],
+  "output_sha256": "380fa43101fc9ab02bd747385396dcdabfd1444c0d41d4104e5af25a25016168"
+}

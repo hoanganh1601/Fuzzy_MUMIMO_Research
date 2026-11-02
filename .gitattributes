@@ -8,6 +8,8 @@ src/**/FILE_SHA256.csv -text -diff
 # Preserve the exact bytes covered by source and run checksums on checkout.
 src/version_07_beam_feasibility_diagnosis/** -text
 log/version_07/** -text
+src/version_08_robust_user_scheduling/** -text
+log/version_08/** -text
 
 # Upstream/output CSV files use standard CRLF record endings.
 *.csv whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

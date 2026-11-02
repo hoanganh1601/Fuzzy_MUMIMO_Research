@@ -1,0 +1,22 @@
+{
+  "source_commit": "2137c3e46751e817510c2a5fcbb66e8f5b829886",
+  "packaged_workflow_tests": {
+    "command": "python -m unittest discover -s tests -v",
+    "cwd": "src/version_08_robust_user_scheduling",
+    "tests_run": 6,
+    "failures": 0,
+    "errors": 0
+  },
+  "original_report_audit": {
+    "cp01_through_cp05_byte_equal": true,
+    "original_six_cp06_checksums_equal": true,
+    "additional_provenance_checksums": 5
+  },
+  "packaged_cp06_verification": {
+    "verified_artifacts": 11,
+    "code_snapshot_match": true,
+    "requires_dataset_or_tasks": false
+  },
+  "status": "EXPLORATORY_EVALUATION",
+  "G4": "NOT_ESTABLISHED"
+}

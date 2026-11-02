@@ -4,7 +4,7 @@ Kho nghiên cứu được tổ chức theo ba lớp độc lập:
 
 - `src/`: mã nguồn bất biến theo từng code version.
 - `log/`: kết quả chạy đã chọn lọc, trạng thái PASS/FAIL và provenance; không chứa task checkpoint lớn.
-- `working_plan/`: mục tiêu, cấu hình và tiêu chí chấp nhận được viết trước khi chạy.
+- `working_plan/`: mục tiêu, cấu hình và tiêu chí chấp nhận; mỗi bản ghi nêu rõ được lập trước hay sau run.
 
 ## Version index
 
@@ -15,10 +15,22 @@ Kho nghiên cứu được tổ chức theo ba lớp độc lập:
 | `version_05` | CSI margin calibration pilot | `b51505e` | CP05 failure documented |
 | `version_06` | Spatial CSI calibration with `xyz/scenario` metadata | `0642020` | Real DeepMIMO CP05 FAIL |
 | `version_07` | Fixed-margin ZF/RZF feasibility diagnosis, từng CP | `6439c5e` | CP00–CP06 complete; DIAGNOSTIC_ONLY |
+| `version_08` | Robust user scheduling + finite ZF/RZF codebook, từng CP | `2137c3e` | Smoke + DeepMIMO CP00–CP06 complete; EXPLORATORY_EVALUATION |
 
-Version mới nhất là [`src/version_07_beam_feasibility_diagnosis`](src/version_07_beam_feasibility_diagnosis).
+Version mới nhất là [`src/version_08_robust_user_scheduling`](src/version_08_robust_user_scheduling).
 
 ## Kết quả hiện tại
+
+Run `DM_ASU35_SCHED_DEV_20261101` dùng lại 160 geometry DeepMIMO, giữ q cố định và so exhaustive 15 tập con × 7 beam với forward/backward:
+
+- Cả ba phục vụ trung bình 3.575 người dùng; 97/160 geometry phục vụ đủ 4, mọi geometry phục vụ ít nhất một người.
+- Backward khớp số user/công suất exhaustive trên run, giảm 82% số lời gọi; runtime trung bình quan sát 24.608 ms so với 146.336 ms.
+- Forward khớp số user; tỷ số công suất trung bình 1.00479. Một geometry có tỷ số 1.76619; runtime trung bình cao hơn exhaustive trong phép đo.
+- Smoke và DeepMIMO đều hoàn tất CP00–CP06, 11 artifact/run được xác minh. Đây là **development/exploratory**; G4 độc lập chưa được xác minh.
+
+Xem [run card version 08](log/version_08/runs/DM_ASU35_SCHED_DEV_20261101/RUN.md) và [hướng dẫn từng CP](src/version_08_robust_user_scheduling/docs/RUN_BY_CP_VI.md).
+
+## Chẩn đoán trước đó (version 07)
 
 Run chẩn đoán `DM_ASU35_BEAM_DIAG_20261031` trên DeepMIMO `asu_campus_3p5`:
 
@@ -54,7 +66,7 @@ Version 07 tái phân tích dataset này; không tạo holdout độc lập và 
 
 ## Data policy
 
-Real datasets được lưu ngoài Git. Version 6 và version 7 sử dụng kho cục bộ:
+Real datasets được lưu ngoài Git. Version 6–8 sử dụng kho cục bộ:
 
 ```text
 /media/icnlab/Data/hoanganh/datasets/csi_margin_calibration/

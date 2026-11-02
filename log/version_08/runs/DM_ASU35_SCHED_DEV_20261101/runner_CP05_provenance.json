@@ -1,0 +1,100 @@
+{
+  "manifest_sha256": "82338d73e6196140da7df32b0abd6aa71e67a9572bd227c05d95514a3e53a24e",
+  "signature": "5cba3172974e26202b1573c8f66f917e1b544a3d1da05cafdd2297e8f8078dd5",
+  "engine_sha256": "163bd7b2fb2b0a1333cf06d8b1f1df9624c2d75b3bf7b864b1fdf26e00b9bba3",
+  "dataset_sha256": "1d479a06b94fff565a8997ceb870c670bda7458dbf5e5cd54c2fc0afc14b1f50",
+  "python_version": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "python_executable": "/media/icnlab/Data/hoanganh/Robust_User_Scheduling_20261101/.venv/bin/python",
+  "numpy_version": "2.5.4",
+  "scipy_version": "1.18.1",
+  "cp01_sha256": "3285fe4c07eadae15b818b8a72e78c7c611a7d81539b346f0cfc5d1b3d0f13d6",
+  "cp01_provenance_sha256": "247b0649df11f4d4876200d36e0cc2c1e2a40623887e167c811e3b79a08e0e74",
+  "cp02_sha256": "125dd8912f82325863ab8b282697ca9ff8c7805de3bc8dfe9cd2e71468204812",
+  "cp02_provenance_sha256": "1b654790de9759727a51a76ee4c3dca376e58f5de9ec334a3ce1a0e6573afac6",
+  "cp03_sha256": "e1ff9cd880634712a6638b7d227f41192b41bf8afc34a5bfa92bf1186c51bee1",
+  "cp03_provenance_sha256": "949871abf096d6bd49e869b57463fee85707096e93eda2cd89d61d55f1899421",
+  "cp04_sha256": "7174d3f4f7b88c450949c75129dc0f58a1c2d0a2f2e647afed87b26188836180",
+  "cp04_provenance_sha256": "434cff3a7051d7c5ab01b1c636597137bbc23183af5fe95005ebea69d503ded3",
+  "stage": "CP05",
+  "protocol": "cp01_candidates_then_cp02_decisions_v1",
+  "runner_sha256": "ec5f71d3601495da31fc2cf3bbb308999d3ea15277d650a2610cae5b2b05f029",
+  "report_inputs_sha256": "54acc0ef4ae2e6c543cb4325f82597c806f8ce9652c351a607c35ce366ac54d1",
+  "evaluation_evidence": {
+    "n_geometries": 160,
+    "fixed_q": 2.9604143746015965,
+    "dataset_path": "/media/icnlab/Data/hoanganh/datasets/csi_margin_calibration/data/deepmimo.npz",
+    "gates": {
+      "G1": "PASSED",
+      "G2": "PASSED",
+      "G3": "MEASUREMENTS_RECORDED",
+      "G4": "NOT_ESTABLISHED"
+    },
+    "service_summary": [
+      {
+        "method": "exhaustive",
+        "n_geometries": 160,
+        "mean_admitted_users": 3.575,
+        "full_service_fraction": 0.60625,
+        "at_least_one_fraction": 1.0,
+        "mean_calls": 105.0,
+        "mean_runtime_ms": 146.33594984425145,
+        "oracle_cardinality_match_fraction": ""
+      },
+      {
+        "method": "forward",
+        "n_geometries": 160,
+        "mean_admitted_users": 3.575,
+        "full_service_fraction": 0.60625,
+        "at_least_one_fraction": 1.0,
+        "mean_calls": 69.78125,
+        "mean_runtime_ms": 162.33062787496237,
+        "oracle_cardinality_match_fraction": 1.0
+      },
+      {
+        "method": "backward",
+        "n_geometries": 160,
+        "mean_admitted_users": 3.575,
+        "full_service_fraction": 0.60625,
+        "at_least_one_fraction": 1.0,
+        "mean_calls": 18.9,
+        "mean_runtime_ms": 24.608096743941132,
+        "oracle_cardinality_match_fraction": 1.0
+      }
+    ],
+    "paired_computational_summary": [
+      {
+        "method": "forward",
+        "cardinality_equal_count": 160,
+        "max_user_gap": 0,
+        "positive_same_cardinality_power_pairs": 160,
+        "mean_power_ratio": 1.0047886902797174,
+        "mean_call_ratio": 0.6645833333333333,
+        "mean_runtime_ratio": 1.10930108457788,
+        "observed_no_cardinality_loss": true,
+        "observed_mean_call_reduction": true,
+        "observed_mean_runtime_reduction": false,
+        "independent_improvement_claim_allowed": false
+      },
+      {
+        "method": "backward",
+        "cardinality_equal_count": 160,
+        "max_user_gap": 0,
+        "positive_same_cardinality_power_pairs": 160,
+        "mean_power_ratio": 1.0,
+        "mean_call_ratio": 0.18,
+        "mean_runtime_ratio": 0.16816166341990516,
+        "observed_no_cardinality_loss": true,
+        "observed_mean_call_reduction": true,
+        "observed_mean_runtime_reduction": true,
+        "independent_improvement_claim_allowed": false
+      }
+    ],
+    "independent_validation_completed": false,
+    "statistical_outage_certificate_claim_allowed": false,
+    "globally_optimal_beamforming_claim_allowed": false,
+    "fairness_throughput_latency_evaluated": false,
+    "interpretation": "Observations on the supplied data only; algorithm timings exclude G1 audits and artifact I/O. Timing measurements are not a controlled independent benchmark.",
+    "next_gate": "Lock the method before independent DeepMIMO groups or separate 3GPP evaluation; document simulator/CSI/channel units and report group-level uncertainty. Previously viewed DeepMIMO data remain development data."
+  },
+  "output_sha256": "eda0cd30ea1d1e4694f1ca35f3e3646d05731d8f7306ee20a84dd0806db7a631"
+}
