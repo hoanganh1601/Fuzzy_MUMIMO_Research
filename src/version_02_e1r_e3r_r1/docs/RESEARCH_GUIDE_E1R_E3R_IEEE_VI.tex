@@ -1,0 +1,72 @@
+\documentclass[conference,onecolumn,10pt]{IEEEtran}
+\usepackage[T5]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[vietnamese]{babel}
+\usepackage{amsmath,amssymb,booktabs,longtable,array,hyperref}
+\hypersetup{hidelinks}
+\title{Kiểm chứng lựa chọn biên bất định CSI bằng suy luận mờ có sàng lọc độ tin cậy\\\large Mô hình toán, quy trình E1-R--E3-R và hướng dẫn tái lập}
+\author{Tài liệu kỹ thuật phục vụ nghiên cứu MU-MIMO downlink}
+\begin{document}\maketitle
+\begin{abstract}
+Trong hệ thống multiuser multiple-input multiple-output (MU-MIMO) đường xuống, việc chọn bán kính bất định của channel state information (CSI) làm thay đổi tính khả thi của ràng buộc signal-to-interference-plus-noise ratio (SINR) và công suất phát tối thiểu. Quy trình này kiểm chứng bộ suy luận mờ Sugeno với bộ lọc an toàn thực nghiệm, sử dụng bốn tập nhóm không giao nhau và đối chứng không mờ. Những phép thử không đạt yêu cầu độ tin cậy phải được ghi nhận là kết quả âm tính, không được chọn lại theo tập test. Dữ liệu giả lập chỉ dùng để xác minh chức năng; kết quả công bố phải lấy từ DeepMIMO và bộ sinh kênh 3GPP TR 38.901 độc lập có xuất xứ xác thực.
+\end{abstract}
+\section{Kịch bản truyền thông và bài toán}
+Trạm gốc có $M$ anten phát phục vụ $K$ người dùng bằng regularized zero-forcing (RZF). Với $\widehat{\mathbf h}_k$ là CSI ước lượng, $\mathbf h_k=\widehat{\mathbf h}_k+\mathbf e_k$; cùng bộ hướng chùm cố định $\mathbf V$, bộ giải tìm
+\begin{equation}
+\min_{\mathbf p\geq0}\;\mathbf1^T\mathbf p\quad \text{s.t.}\quad \mathrm{SINR}_k(\mathbf p,\mathbf e;q_c)\geq\gamma,\quad \mathbf1^T\mathbf p\leq P_{\max}.
+\end{equation}
+Biên bất định $q_c$ tác động đến hệ số ghép giao thoa và công suất tối thiểu. Với $\mathbf e_k\sim\mathcal{CN}(\mathbf 0,s_k^2\mathbf I_M)$ và $s_k=\sigma_{\rm rel}\|\widehat{\mathbf h}_k\|_2/\sqrt M$, điều kiện robust có hiệu lực trên tập dải $\mathcal U(q_c)=\{|\mathbf e_k^H\mathbf v_j|\leq q_cs_k,\ \forall j,k\}$, không phải trên hình cầu $\|\mathbf e_k\|_2\leq q_cs_k$. Bộ giải xây $\mathbf p\geq\mathbf F(q_c)\mathbf p+\mathbf u(q_c)$, kiểm tra $\rho(\mathbf F)<1$ và tổng công suất; nghiệm $(\mathbf I-\mathbf F)^{-1}\mathbf u$ là nghiệm LP nhỏ nhất cho hướng RZF cố định (Bổ đề 1, tài liệu R1). Phương án Gaussian dùng
+\begin{equation}
+q_{\rm G}=\sqrt{\ln(K^2/\varepsilon)},
+\end{equation}
+trong đó cận hợp trên $K^2$ dải cho $P(\mathbf e\notin\mathcal U(q_{\rm G}))\leq\varepsilon$. Biểu thức này giới hạn conditional outage của Gaussian ở mức $\varepsilon$ dưới luật sai số mô phỏng, không dưới sai số ước lượng thực. Với $K=4$, $\varepsilon=0{,}05$: $q_{\rm G}=2{,}402$. Bản giao trước dùng $\sqrt{2\ln(K/\varepsilon)}=2{,}960$, không tương ứng với tập bất định nào ở trên.
+
+\section{Thiết kế fuzzy và bộ lọc}
+Hai chỉ tiêu đầu vào được tính chỉ từ CSI ước lượng: chỉ số điều kiện Gram $\log_{10}\kappa(\widehat{\mathbf H}^H\widehat{\mathbf H})$ và bán kính phổ của ma trận ghép giao thoa tại biên tham chiếu. Hệ Sugeno bậc không có chín luật với đầu ra $q_{\rm fuzzy}$; cấu hình an toàn sử dụng
+\begin{equation}
+q_{\rm safe}=\max\{q_{\rm fuzzy},q_{\rm floor}\}.
+\end{equation}
+Biểu thức ngăn suy luận mờ giảm margin dưới sàn; nó không tạo bảo đảm xác suất trừ khi sàn được chứng nhận riêng. Luật có dạng $c_\ell=\mathrm{clip}(c_0+s_1(i_1-1)+s_2(i_2-1),0{,}7,q_{\rm G})$, $\ell=3i_1+i_2$, với $c_0\in\{1{,}0;1{,}4;1{,}8;2{,}2\}$, $s_1\in\{-0{,}2;0;0{,}2\}$, $s_2\in\{-0{,}2;0{,}2\}$ (24 ứng viên \texttt{fuzzy\_raw}). Sàn $q_{\rm floor}\in\{1{,}0;1{,}4;1{,}8\}$ chỉ được giữ khi $\min_\ell c_\ell<q_{\rm floor}<\max_\ell c_\ell$ (18 ứng viên \texttt{fuzzy\_safe}). Nếu sàn lớn hơn mọi luật, \texttt{fuzzy\_safe} suy biến thành margin hằng; bản giao trước có mọi luật $\leq1{,}65$ và sàn $1{,}7$, $2{,}2$, nên 6/9 cấu hình là margin cố định. Lưới fixed $\{0{,}8;1{,}0;\dots;2{,}4\}\cup\{q_{\rm G}\}$ chứa mọi giá trị sàn và phủ miền đầu ra fuzzy; threshold có sáu ứng viên $(q_{\rm lo},q_{\rm hi})$. Như vậy ưu thế của fuzzy không thể đến từ việc lưới baseline thiếu điểm. Tỷ lệ geometry có sàn đang hoạt động (\texttt{floor\_active\_rate}) được báo cáo; khi tỷ lệ này gần 1, \texttt{fuzzy\_safe} thực chất là margin cố định. Đối chứng gồm Gaussian, fixed và threshold đã tinh chỉnh; \texttt{fuzzy\_raw} được giữ để làm ablation.
+
+\section{Phân chia dữ liệu và kiểm soát sai lệch}
+Chia \textbf{theo nhóm không gian hoặc scenario thực} thành development 40\%, validation 20\%, calibration 20\% và test 20\%; các nhóm không trùng nhau. \texttt{groups} của tập DeepMIMO phải được xây từ vị trí người dùng hoặc ô địa lý; việc chia theo thứ tự người dùng không đủ để chứng minh độc lập không gian. Vai trò của bốn tập là: development để quét toàn bộ lưới của từng phương án và giữ bốn finalist khác nhau; validation để chọn một cấu hình cho mỗi phương án; calibration chỉ để \emph{kiểm} (đạt/không đạt) cấu hình đã chọn theo cả conditional SINR outage và effective failure ở mức $\varepsilon=0{,}05$, không được chọn lại trên tập này. Fixed và threshold đi qua đúng quy trình này. Trong bản giao trước, tập development không được dùng; bốn finalist là cùng một cấu hình fuzzy (chỉ khác \texttt{qfixed}); và calibration vừa chọn vừa kiểm trên cùng dữ liệu. Thứ tự xếp hạng là: ứng viên đạt ngưỡng trước, sắp theo công suất trung bình trên tập geometry mà mọi ứng viên đạt ngưỡng đều có nghiệm. Khóa tham số trước test. Một nguồn kênh Sionna 3GPP chỉ được đánh giá bằng tham số khóa từ DeepMIMO, không điều chỉnh lại; vì không có tinh chỉnh, mọi nhóm của tập chuyển miền đều là test.
+\begin{equation}
+\widehat\pi_{\rm eff}=\frac1G\sum_{g=1}^G\bigl[1-I_g+I_g\widehat\pi_{\rm out,g}\bigr].
+\end{equation}
+Chỉ tiêu tính cả nhóm cấu hình không tìm được nghiệm. Báo cáo conditional outage riêng trên các cấu hình có nghiệm; so sánh công suất trên tập khả thi chung. Tất cả tỷ lệ phải đi kèm mẫu số. Khoảng tin cậy dùng bootstrap theo nhóm (lấy lại cả nhóm), vì các geometry trong cùng nhóm tương quan; bootstrap theo geometry làm khoảng hẹp hơn thực tế. Khoảng này chỉ mô tả độ bất định, \textbf{không phải bảo đảm outage}.
+
+\section{Điều kiện dừng xác định trước}
+Một kết quả có lợi cho fuzzy chỉ được ghi nhận khi: (i) fuzzy vượt sàng lọc calibration; (ii) trên test, conditional outage và effective failure đều không vượt $\varepsilon$; (iii) cận trên bootstrap 95\% của trung bình tỷ số công suất fuzzy/đối chứng nhỏ hơn 1 với cả tuned fixed và threshold; (iv) cận trên bootstrap của chênh lệch effective failure không lớn hơn 0,005. Nếu bất cứ điều kiện nào không đạt: \texttt{STOP\_no\_demonstrated\_fuzzy\_advantage}. Điều kiện này là tiêu chí ra quyết định thực nghiệm, không phải định lý bảo đảm tổng quát.
+
+\section{Cấu trúc mã và dữ liệu đầu vào}
+\texttt{code/experiment\_r.py} là chương trình điều phối; \texttt{code/experiment.py} chứa mô hình RZF và bộ giải. Đầu vào NPZ bắt buộc: $H\in\mathbb C^{N\times M\times K}$ hữu hạn, \texttt{groups} đủ ít nhất 12 nhóm có ý nghĩa thực tế. Các tham số phải thống nhất: $M,K,\sigma_{\rm rel},\gamma,P_{\max},\sigma_n^2$, số mẫu Monte Carlo và seed. Không sử dụng kênh thật làm đặc trưng chính sách.
+\section{Các bước chạy và checkpoint}
+Mở terminal tại thư mục chính; cài \texttt{pip install -r code/requirements.txt}. Sử dụng dữ liệu DeepMIMO đã kiểm tra không gian ở \texttt{data/deepmimo.npz} và một \texttt{run-id} chưa dùng:
+\begin{verbatim}
+python code/experiment_r.py --stage preflight --dataset data/deepmimo.npz --run-id DM_R --M 16
+python code/experiment_r.py --stage develop --dataset data/deepmimo.npz --run-id DM_R --M 16
+python code/experiment_r.py --stage calibrate --dataset data/deepmimo.npz --run-id DM_R --M 16
+python code/experiment_r.py --stage freeze --dataset data/deepmimo.npz --run-id DM_R --M 16
+python code/experiment_r.py --stage test --dataset data/deepmimo.npz --run-id DM_R --M 16
+python code/experiment_r.py --stage report --dataset data/deepmimo.npz --run-id DM_R --M 16
+\end{verbatim}
+Không thay tham số giữa các bước; riêng \texttt{--bootstrap} chỉ dùng ở bước report nên được phép đổi. Với kênh 3GPP đã xuất thành NPZ, gọi \texttt{--stage freeze --frozen-from outputs\_r/DM\_R/cp03\_frozen.json} với \texttt{run-id} mới, rồi chạy \texttt{test}, \texttt{report} với cùng \texttt{run-id} và \emph{không} kèm \texttt{--frozen-from}. Chương trình từ chối chuyển miền nếu $M,K,\sigma_{\rm rel},\gamma,\varepsilon$ khác nguồn. Trong bản giao trước, \texttt{--frozen-from} nằm trong chữ ký, nên bước \texttt{test} theo đúng hướng dẫn báo lỗi chữ ký. Công suất nhiễu lấy từ \texttt{--noise} hoặc trường \texttt{noise\_w} của NPZ; với DeepMIMO và 3GPP cần đặt tường minh. Tính năng truyền tham số \textit{không dùng test để hiệu chỉnh lại}.
+
+\section{Danh mục tệp đầu ra}
+\begin{center}\begin{tabular}{ll}\toprule
+Checkpoint & Tệp đầu ra\\\midrule
+CP00 & \texttt{cp00\_manifest.json}: checksum, cấu hình, split\\
+CP01 & \texttt{cp01\_validation\_candidates.json}: ứng viên\\
+CP02 & \texttt{cp02\_calibration\_screen.json}: đánh giá calibration\\
+CP03 & \texttt{cp03\_frozen.json}: margin khóa và trạng thái hợp lệ\\
+CP04 & \texttt{cp04\_test\_geometry.csv}: mỗi geometry, mỗi phương pháp\\
+CP05 & \texttt{cp05\_test\_summary.csv}: reliability, công suất\\
+CP06 & \texttt{cp06\_paired\_comparison.csv}: so sánh ghép cặp\\
+CP07 & \texttt{cp07\_stop\_decision.json}: GO hoặc STOP\\
+CP08 & \texttt{cp08\_checkpoint\_sha256.csv}: truy vết\\
+CP09 & \texttt{cp09\_scope.json}: phạm vi suy luận\\\bottomrule
+\end{tabular}\end{center}
+
+\section{Khôi phục và nguyên tắc sử dụng kết quả}
+Từng geometry test được lưu nguyên tử tại \texttt{outputs\_r/<run-id>/tasks/test/}. Nếu mất điện, chạy lại cùng lệnh và tham số; checkpoint đã hoàn thành và đúng chữ ký được dùng lại. Manifest kiểm tra hash của code và NPZ, ngăn trộn kết quả giữa phiên bản. Thay mã, tập dữ liệu, seed hoặc cài đặt đòi hỏi \texttt{run-id} mới. \texttt{--limit} chỉ phục vụ smoke test, kết quả không dùng công bố. Chương trình chưa kiểm tra độ đúng chuẩn 3GPP của tệp NPZ; cần lưu riêng thông tin cấu hình xuất từ Sionna, vị trí, băng thông, tần số và đơn vị chuẩn hóa.
+\end{document}

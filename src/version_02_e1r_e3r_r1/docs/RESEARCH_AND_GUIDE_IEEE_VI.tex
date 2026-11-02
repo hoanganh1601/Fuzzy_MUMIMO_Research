@@ -1,0 +1,118 @@
+\documentclass[11pt,onecolumn]{IEEEtran}
+\usepackage{fontspec}
+\setmainfont{Noto Serif}
+\usepackage{amsmath,amssymb,booktabs,array,hyperref,longtable,graphicx}
+\hypersetup{colorlinks=true,urlcolor=blue}
+\title{Lựa chọn biên bất định CSI bằng hệ suy luận mờ trong phân bổ công suất MU-MIMO: Mô hình nghiên cứu và hướng dẫn tái lập}
+\author{Tài liệu thiết kế và kiểm chứng thí nghiệm}
+\begin{document}\maketitle
+\begin{abstract}
+Xét một trạm gốc nhiều anten phục vụ đồng thời bốn người dùng đường xuống. Khi thông tin trạng thái kênh (channel state information, CSI) không chính xác, lựa chọn biên bất định quá lớn làm tăng yêu cầu công suất và có thể làm mất nghiệm của bài toán tỷ số tín hiệu trên nhiễu và giao thoa (signal-to-interference-plus-noise ratio, SINR). Nghiên cứu đề xuất kiểm tra hệ suy luận mờ Sugeno để lựa chọn biên CSI trước bước phân bổ công suất. Dữ liệu ray tracing DeepMIMO được sử dụng làm nguồn chính; một tập kênh độc lập từ mô hình 3GPP TR 38.901 được dùng để đánh giá ngoài phân bố. Mọi kết luận về lợi ích của fuzzy phải căn cứ vào so sánh có cùng bộ giải, cùng mẫu sai số và tập test không tham gia lựa chọn tham số. Tài liệu này mô tả nghiên cứu và hướng dẫn phần mềm thử nghiệm, chưa báo cáo kết quả của bộ dữ liệu thật.
+\end{abstract}
+\section{Kịch bản truyền thông và câu hỏi nghiên cứu}
+Một trạm gốc với $M$ anten phục vụ $K$ người dùng đơn anten bằng beamforming zero-forcing chính quy (regularized zero-forcing, RZF). Máy phát biết kênh ước lượng $\widehat{\mathbf H}\in\mathbb C^{M\times K}$ nhưng không biết chính xác kênh thực. Mục tiêu là kiểm tra xem lựa chọn bán kính CSI phụ thuộc điều kiện kênh có giảm công suất mà không làm tăng xác suất vi phạm SINR ngoài giới hạn định trước hay không. Khác với các ứng dụng cảm nhận tích hợp, nghiên cứu này không sử dụng ràng buộc định vị hoặc cận Cramér--Rao (CRB).
+\section{Mô hình toán học}
+Với $\mathbf h_k=\widehat{\mathbf h}_k+\mathbf e_k$, tín hiệu nhận tại người dùng $k$ là
+\begin{equation}
+y_k=\mathbf h_k^H\sum_{j=1}^K\sqrt{p_j}\mathbf v_j s_j+n_k.
+\end{equation}
+Biểu thức xác định mức tín hiệu mong muốn và giao thoa của các luồng đường xuống. Với $\|\mathbf v_j\|_2=1$, yêu cầu SINR là
+\begin{equation}
+\mathrm{SINR}_k=\frac{p_k|\mathbf h_k^H\mathbf v_k|^2}{\sum_{j\neq k}p_j|\mathbf h_k^H\mathbf v_j|^2+\sigma_n^2}\geq\gamma_0.
+\end{equation}
+Bất đẳng thức kiểm soát chất lượng liên kết truyền thông đối với mỗi người dùng. Mô hình sai số CSI là $\mathbf e_k\sim\mathcal{CN}(\mathbf 0,s_k^2\mathbf I_M)$, với
+\begin{equation}
+s_k=\sigma_e\|\widehat{\mathbf h}_k\|_2/\sqrt M,
+\end{equation}
+trong đó $\sigma_e$ là độ lệch chuẩn tương đối của sai số (\texttt{--sigma-rel}). Vì $\|\mathbf v_j\|_2=1$, mỗi hình chiếu $\mathbf e_k^H\mathbf v_j$ có phân bố $\mathcal{CN}(0,s_k^2)$. Thiết kế robust xét tập bất định dạng dải (slab)
+\begin{equation}
+\mathcal U(q)=\big\{\mathbf e_k:\ |\mathbf e_k^H\mathbf v_j|\leq r_k(q),\ j=1,\dots,K,\ k=1,\dots,K\big\},\quad r_k(q)=q\,s_k .
+\end{equation}
+Tập này khác với hình cầu $\|\mathbf e_k\|_2\leq r_k(q)$ mà phiên bản R0 mô tả. Dưới mô hình Gaussian trên, $\|\mathbf e_k\|_2^2/s_k^2$ tuân theo phân bố Gamma$(M,1)$ có kỳ vọng $M$. Với $q=2{,}96$, hình cầu chỉ chứa sai số với xác suất khoảng $0{,}65$ (kiểm Monte Carlo, $M=8$), nên không thể là giả thiết đứng sau các bán kính đã chọn. Trên $\mathcal U(q)$, bất đẳng thức tam giác cho các biên
+\begin{equation}
+a_{kk}^{-}=\big[|\widehat{\mathbf h}_k^H\mathbf v_k|-r_k(q)\big]_{+}^{2},\quad a_{kj}^{+}=\big[|\widehat{\mathbf h}_k^H\mathbf v_j|+r_k(q)\big]^2 .
+\end{equation}
+Các hệ số này làm chặt điều kiện SINR khi bán kính tăng. Chúng là biên đủ, không phải biểu thức SINR chính xác. Với hướng beam cố định,
+\begin{equation}
+p_k\geq\sum_{j\neq k}\frac{\gamma_0 a_{kj}^{+}}{a_{kk}^{-}}p_j+\frac{\gamma_0\sigma_n^2}{a_{kk}^{-}}.
+\end{equation}
+Ràng buộc có dạng $\mathbf p\geq\mathbf F(q)\mathbf p+\mathbf u(q)$, trong đó $\mathbf F(q)\geq\mathbf 0$ có đường chéo bằng không.
+
+\textbf{Bổ đề 1.} Nếu $\rho(\mathbf F)<1$ thì $\mathbf p^\star=(\mathbf I-\mathbf F)^{-1}\mathbf u$ là điểm khả thi nhỏ nhất theo từng thành phần, do đó cũng là nghiệm của bài toán LP $\min\mathbf 1^T\mathbf p$. Nếu $\mathbf 1^T\mathbf p^\star>P_{\max}$ thì không tồn tại nghiệm khả thi. Nếu $\rho(\mathbf F)\geq1$ thì không tồn tại $\mathbf p\geq\mathbf 0$ thỏa ràng buộc.
+
+\textit{Chứng minh.} Với $\rho(\mathbf F)<1$, $(\mathbf I-\mathbf F)^{-1}=\sum_{n\geq0}\mathbf F^n\geq\mathbf 0$. Từ $\mathbf p\geq\mathbf F\mathbf p+\mathbf u$ lặp $n$ lần suy ra $\mathbf p\geq\sum_{i<n}\mathbf F^i\mathbf u+\mathbf F^n\mathbf p\to\mathbf p^\star$. Ngược lại, nếu tồn tại $\mathbf p\geq\mathbf 0$ khả thi thì $\mathbf p\geq\mathbf u>\mathbf 0$ và $\mathbf F\mathbf p<\mathbf p$ theo từng thành phần. Cận Collatz--Wielandt $\rho(\mathbf F)\leq\max_i(\mathbf F\mathbf p)_i/p_i<1$ cho ma trận không âm khi đó dẫn đến mâu thuẫn với $\rho(\mathbf F)\geq1$. $\square$ Bộ mã kiểm tra số bổ đề này bằng cách so với \texttt{linprog} (test \texttt{test\_power\_is\_lp\_optimum}).
+
+\textbf{Mệnh đề 1 (bán kính Gaussian).} Dưới mô hình sai số trên, $P(|\mathbf e_k^H\mathbf v_j|>q s_k)=e^{-q^2}$. Áp dụng cận hợp cho $K^2$ dải:
+\begin{equation}
+P\big(\mathbf e\notin\mathcal U(q)\big)\leq K^2e^{-q^2}=\epsilon\ \Longleftrightarrow\ q_{\mathrm G}=\sqrt{\ln(K^2/\epsilon)} .
+\end{equation}
+Với $K=4$ và $\epsilon=0{,}05$, ta có $q_{\mathrm G}=2{,}402$. Vì $\mathbf e\in\mathcal U(q_{\mathrm G})$ kéo theo $\mathrm{SINR}_k\geq\gamma_0$ với mọi $k$, xác suất outage đồng thời của phương án Gaussian không vượt quá $\epsilon$ trên mọi geometry có nghiệm. Bảo đảm này chỉ đúng dưới luật sai số mô phỏng, không đúng cho sai số ước lượng thực. Phiên bản R0 dùng $q=\sqrt{2\ln(K/\epsilon)}=2{,}960$; giá trị này không tương ứng với tập bất định nào ở trên và bảo thủ hơn cần thiết (tỷ lệ ra ngoài tập là $2{,}5\cdot10^{-3}$, so với mức $\epsilon=0{,}05$).
+
+Bài toán có tính bất biến theo thang đo: thay $\widehat{\mathbf H}\to c\widehat{\mathbf H}$ và $\sigma_n^2\to c^2\sigma_n^2$ thì $\mathbf p^\star$ không đổi. Các ngưỡng số học trong mã vì vậy là ngưỡng tương đối. Các kết luận chỉ áp dụng cho bài toán SINR đã xấp xỉ và cho tập hướng beam RZF đã chọn.
+\section{Hệ suy luận mờ và đối chứng}
+Định nghĩa $z_1=\mathrm{clip}(\log_{10}\kappa(\widehat{\mathbf H}^H\widehat{\mathbf H}),0,8)/8$ và $z_2=\mathrm{clip}(\rho(\mathbf F(q_{\mathrm{ref}}))/2,0,1)$, với $q_{\mathrm{ref}}=q_{\mathrm G}$. Cả hai chỉ dùng CSI ước lượng và không phụ thuộc thang đo kênh. Chín luật Sugeno bậc không, với tập mờ tam giác có tâm $\{0;0{,}5;1\}$ và nửa độ rộng $0{,}55$, tạo đầu ra
+\begin{equation}
+q(\mathbf z)=\frac{\sum_{\ell=1}^{9} w_\ell(\mathbf z)c_\ell}{\sum_{\ell=1}^{9}w_\ell(\mathbf z)},\quad \ell=3i_1+i_2,
+\end{equation}
+trong đó $i_1$ và $i_2$ là chỉ số tập mờ của $z_1$ và $z_2$. Biểu thức điều chỉnh bán kính CSI theo chỉ tiêu kênh trước khi giải công suất. Với $\mathbf z\in[0,1]^2$, tâm gần nhất cách tối đa $0{,}25<0{,}55$, nên $\sum_\ell w_\ell>0$. Đầu ra là tổ hợp lồi của $c_\ell$.
+
+Đối chứng gồm Gaussian ($q_{\mathrm G}$, giải tích, không tinh chỉnh), fixed radius, quy tắc ngưỡng ($q_{\mathrm{lo}}$ khi $z_2>0{,}5$, tức $\rho(\mathbf F(q_{\mathrm{ref}}))>1$; $q_{\mathrm{hi}}$ trong trường hợp ngược lại) và Sugeno. Mọi phương pháp dùng chung RZF, chung mẫu sai số và chung bộ giải công suất. Trong R0, fixed và threshold không được tinh chỉnh riêng: chúng nhận giá trị gắn với ứng viên Sugeno được chọn. R1 cấp cho fixed, threshold và Sugeno mỗi phương án sáu ứng viên trong cùng miền $q\in[0{,}45;1{,}8]$. Sugeno gồm hai họ luật: $c_\ell$ tăng theo $z_2$ (họ của R0) và $c_\ell$ giảm theo $z_2$ (cùng chiều với quy tắc ngưỡng). Validation quyết định họ nào được chọn, không giả định trước.
+\section{Nguồn dữ liệu và điều kiện đầu vào}
+\textbf{DeepMIMO:} tải kịch bản \texttt{asu\_campus\_3p5} qua thư viện DeepMIMO v4; tạo các ma trận phức $\mathbf H$ với cùng anten và tần số. API chính thức xuất dữ liệu dạng $[N_{UE},N_{rx},N_{tx},N_f]$. Phải xác minh rằng cách nhóm người dùng tạo ra các tổ hợp MU-MIMO hợp lý và nhóm không gian không trùng nhau giữa train, validation và test. Loader mẫu nhóm theo thứ tự người dùng là bước khởi tạo, không đủ chứng minh phân chia không gian độc lập. Tài liệu: \url{https://www.deepmimo.net/docs/quickstart.html}.
+
+\textbf{3GPP độc lập:} dùng một bộ sinh kênh tuân thủ 3GPP TR 38.901, chẳng hạn thư viện Sionna với mô hình Urban Micro (UMi), sau đó xuất $\mathbf H\in\mathbb C^{N\times M\times K}$ và nhãn nhóm kịch bản. Chương trình \texttt{import\_3gpp.py} xác thực định dạng. \textit{Bộ sinh \texttt{umi\_inspired} đi kèm chỉ là mô hình kiểm tra rút gọn; không được ghi là kết quả 3GPP TR 38.901.} Tài liệu: \url{https://nvlabs.github.io/sionna/phy/api/channel/wireless/3gpp.html}.
+
+Các ma trận kênh cần có cùng quy ước đơn vị và cùng quy ước $y_k=\mathbf h_k^H\mathbf x$. DeepMIMO xuất hàng $\mathbf a$ với $y=\mathbf a\mathbf x$, nên adapter lấy $\mathbf h=\mathbf a^*$. Không được gộp công suất của các kênh đã chuẩn hóa và các kênh suy hao vật lý rồi diễn giải thành một kết quả Watt chung. Bộ sinh \texttt{umi\_inspired} lưu công suất nhiễu nhiệt $\sigma_n^2=-174\,\mathrm{dBm/Hz}+10\log_{10}B+\mathrm{NF}$ (mặc định $B=20$\,MHz, NF $=9$\,dB, tức $6{,}3\cdot10^{-13}$\,W) vào trường \texttt{noise\_w}. \texttt{experiment.py} dùng giá trị này khi không có \texttt{--noise}. Với $\sigma_n^2=10^{-9}$\,W như R0, gần như mọi geometry UMi đều vượt $P_{\max}$. Với DeepMIMO và 3GPP, cần đặt \texttt{--noise} hoặc \texttt{--noise-w} một cách tường minh.
+\section{Thiết kế đánh giá, ngăn rò rỉ dữ liệu}
+Phân nhóm kịch bản hoặc vùng không gian trước khi chia train--validation--test; không để một nhóm xuất hiện tại nhiều tập. Mỗi tập cần tạo riêng các nhận thức CSI và mẫu sai số. Mọi margin, luật fuzzy, ngưỡng ra quyết định và độ phức tạp phải được khóa trước khi chạy test. Với phương pháp fuzzy hiện tại, bộ mã chỉ kiểm tra một số cấu hình luật thiết kế trước trên validation; chưa có học tham số thống kê từ train. Không được mô tả giai đoạn đó là ``fuzzy training''.
+
+Quy tắc lựa chọn áp dụng riêng cho từng phương án. Ứng viên đủ điều kiện nếu effective failure trên validation không vượt \texttt{--select-target} (mặc định $0{,}10$). Trong các ứng viên đủ điều kiện, chọn ứng viên có công suất trung bình nhỏ nhất trên tập geometry mà mọi ứng viên đủ điều kiện đều có nghiệm. Nếu không có ứng viên nào đủ điều kiện, chọn ứng viên có effective failure nhỏ nhất. R0 so công suất trung bình trên tập có nghiệm riêng của từng ứng viên. Cách đó có lợi cho ứng viên bỏ qua các kênh khó, vì các kênh khó cần công suất cao.
+
+Chỉ tiêu gồm $P_{\mathrm{tx}}$ và tỷ lệ geometry có nghiệm. Xác suất vi phạm SINR có điều kiện được báo cáo dạng gộp, kèm khoảng Wilson (bỏ qua tương quan theo cụm) và khoảng bootstrap theo nhóm. Effective failure tính các geometry không có nghiệm là thất bại, kèm khoảng bootstrap theo nhóm. \texttt{actual\_fail} là kiểm tra nhị phân SINR trên kênh thực của dataset. Tỷ số công suất theo geometry so với Gaussian (dB) chỉ tính trên tập mà mọi phương án đều có nghiệm (\texttt{cp06}). Thời gian \texttt{runtime\_total\_s} gồm RZF, suy luận và bộ giải; với threshold và Sugeno, nó gồm thêm bước tính đặc trưng. Tăng tốc chỉ được kết luận dựa trên đại lượng này. Tập test không được dùng để chỉnh fuzzy.
+\section{Thiết kế các bước kiểm chứng}
+\begin{tabular}{p{.12\linewidth}p{.79\linewidth}}\toprule
+Bước & Nội dung và điều kiện chuyển bước\\\midrule
+E0 & Xác minh dữ liệu phức, kích thước $(N,M,K)$, nhóm độc lập, quy ước kênh và nhiễu.\\
+E1 & Kiểm tra RZF, SINR, bán kính phổ, bộ giải công suất, baseline Gaussian/fixed/threshold. Không chuyển bước nếu residual hoặc đơn vị không nhất quán.\\
+E2 & Xây 9 luật Sugeno với đầu vào chỉ từ CSI ước lượng. Chọn cấu hình trên validation và khóa tệp lựa chọn.\\
+E3 & Đánh giá độc lập DeepMIMO, sau đó dữ liệu 3GPP TR 38.901 từ bộ sinh riêng; lưu failure, power và runtime theo cấu hình.\\\bottomrule\end{tabular}
+\section{Hướng dẫn chạy phần mềm}
+\textbf{Chuẩn bị:} Python $\geq3.10$; cài các thư viện trong \texttt{code/requirements.txt}. Ví dụ chạy thử (không dùng để báo cáo công bố):
+\begin{verbatim}
+python code/generate_data.py --source synthetic --n 360 \
+  --output data/smoke.npz
+python code/experiment.py --stage all --dataset \
+  data/smoke.npz --run-id smoke --limit 5 --n-mc 20
+\end{verbatim}
+\textbf{DeepMIMO chính thức:}
+\begin{verbatim}
+pip install deepmimo
+python code/generate_data.py --source deepmimo \
+  --output data/deepmimo.npz
+python code/experiment.py --stage preflight --dataset \
+  data/deepmimo.npz --run-id DM01
+python code/experiment.py --stage develop --dataset \
+  data/deepmimo.npz --run-id DM01
+python code/experiment.py --stage freeze --dataset \
+  data/deepmimo.npz --run-id DM01
+python code/experiment.py --stage test --dataset \
+  data/deepmimo.npz --run-id DM01
+python code/experiment.py --stage report --dataset \
+  data/deepmimo.npz --run-id DM01
+\end{verbatim}
+Đối với Sionna, xuất ma trận và nhãn nhóm bằng bộ mô phỏng đã chọn; nhập dữ liệu bằng \texttt{import\_3gpp.py}. Để kiểm chứng chuyển miền đúng nghĩa, dùng lệnh \texttt{--stage test --dataset data/3gpp.npz --run-id UMI01 --frozen-from outputs/DM01/cp02\_frozen.json}. Quy tắc Sugeno được chuyển từ DeepMIMO mà không điều chỉnh bằng dữ liệu 3GPP. Sau đó chạy \texttt{--stage report} với \texttt{--frozen-from} giống hệt. Không giả định dữ liệu DeepMIMO có thể dùng trực tiếp làm xác thực 3GPP.
+\section{Checkpoint, đầu ra CSV và khôi phục}
+\begin{tabular}{p{.25\linewidth}p{.65\linewidth}}\toprule
+Checkpoint & Kết quả\\\midrule
+CP00 & \texttt{cp00\_manifest.json}: chữ ký SHA-256 mã, dữ liệu, tham số và cỡ các tập.\\
+CP01 & \texttt{cp01\_candidates.json}: so sánh lựa chọn fuzzy trên validation.\\
+CP02 & \texttt{cp02\_frozen.json}: quy tắc lựa chọn và tham số khóa.\\
+CP03 & \texttt{cp03\_test\_geometry.csv}: nghiệm, công suất, bán kính phổ, outage và runtime theo geometry.\\
+CP04 & \texttt{cp04\_test\_summary.csv}: tổng hợp từng đối chứng.\\
+CP05 & \texttt{cp05\_scope.json}: nguồn dữ liệu, $\sigma_n^2$, $q_{\mathrm G}$, lý do không có nghiệm và giới hạn của thí nghiệm.\\
+CP06 & \texttt{cp06\_common\_set\_power.csv}: tỷ số công suất (dB) so với Gaussian trên tập có nghiệm chung, kèm bootstrap theo nhóm.\\\bottomrule\end{tabular}
+
+Các checkpoint cá thể đặt trong \texttt{outputs/<run-id>/tasks/test/}. Tệp JSON được ghi tạm, đồng bộ ra đĩa và đổi tên nguyên tử. Khi mất điện, chạy lại đúng \texttt{--stage test} và \texttt{--run-id}; các geometry hoàn thành được bỏ qua. Không dùng lại \texttt{run-id} sau khi thay mã, tập dữ liệu, seed hoặc tham số. Nếu quá trình bị dừng trước CP02, thực hiện lại từ bước trước đó. Kết quả smoke không được dùng trong manuscript.
+\section{Điều kiện kết luận và giới hạn}
+Mã thử nghiệm xác nhận kiến trúc xử lý, không cung cấp sẵn bộ dữ liệu DeepMIMO hoặc 3GPP chính thức và chưa tái hiện hiệu năng trên các nguồn dữ liệu này. Đặc biệt, \texttt{experiment.py} dùng mô hình lỗi CSI mô phỏng quanh kênh ước lượng; độ tin cậy không thể được xem là bảo đảm ngoài phân bố. Một phép kiểm chứng 3GPP tuân thủ đầy đủ cần dữ liệu sinh bởi Sionna/3GPP và kiểm toán cách gán người dùng, công suất, fading, correlation và nhóm kịch bản. Nếu fuzzy không vượt quy tắc ngưỡng cổ điển trên tập test độc lập, không công bố ưu thế về tối ưu hóa.
+\end{document}

@@ -1,0 +1,16 @@
+{
+  "archive_name": "Fuzzy_MUMIMO_E1R_E3R_R1_fixed.zip",
+  "archive_sha256": "4ee68a8c66bce982dc14eea946796dffa76ef09a79a561992943ecc03229348b",
+  "archive_size_bytes": 599678,
+  "packaged_date_local": "2026-11-02",
+  "code_version": "version_02",
+  "original_files_verified": 28,
+  "pipeline_sha256": "b2de40cffd650f979078a8a1858182b641c92bd9932e92a1789f3da8093340ae",
+  "base_engine_sha256": "e9671512fd1eb2f9c30524a7d84bfd4def257832bab411144af34b8d7da2eb84",
+  "scope": "Original code, tests, fixtures and documentation retained byte-for-byte. Bundled example outputs and task caches excluded from src; a fresh DeepMIMO replay is curated under log/version_02.",
+  "upstream_mapping": {
+    "README.md": "README_BASE_UPSTREAM.md",
+    "README_E1R_E3R.md": "README_E1R_E3R_UPSTREAM.md",
+    "FILE_SHA256.csv": "UPSTREAM_FILE_SHA256.csv"
+  }
+}

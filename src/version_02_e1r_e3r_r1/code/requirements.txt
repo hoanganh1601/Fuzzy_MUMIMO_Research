@@ -1,0 +1,4 @@
+numpy>=1.24
+scipy>=1.10
+# DeepMIMO loader only: pip install deepmimo
+# Full 3GPP independent export: pip install sionna (follow vendor documentation)
