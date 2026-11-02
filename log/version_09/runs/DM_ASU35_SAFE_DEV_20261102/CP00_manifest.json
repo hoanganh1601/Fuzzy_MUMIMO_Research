@@ -1,0 +1,19 @@
+{
+  "signature": "5e97ac6eda78da4e0cbdb811b50ae1ad255069ff7d4be96341fb8bc2c6f66591",
+  "config": {
+    "dataset": "/media/icnlab/Data/hoanganh/datasets/csi_margin_calibration/data/deepmimo.npz",
+    "limit": 0,
+    "q": 2.960414,
+    "sigma_rel": 0.04,
+    "sinr_db": 6.0,
+    "noise": 2e-13,
+    "pmax": 1.0,
+    "alpha_list": "0,0.001,0.01,0.05,0.1,0.3,1",
+    "data_sha": "1d479a06b94fff565a8997ceb870c670bda7458dbf5e5cd54c2fc0afc14b1f50",
+    "code_sha": "d242114c9b45508592054ab39857ecd089816de375bf466b3dc35b35c2d29e0a",
+    "reference_sha": "163bd7b2fb2b0a1333cf06d8b1f1df9624c2d75b3bf7b864b1fdf26e00b9bba3"
+  },
+  "n": 160,
+  "groups": 160,
+  "candidate_count": 105
+}

@@ -1,0 +1,63 @@
+\documentclass[12pt,onecolumn]{IEEEtran}
+\usepackage{fontspec}
+\setmainfont{DejaVu Serif}
+\usepackage{amsmath,amssymb,booktabs,array,hyperref,enumitem}
+\hypersetup{hidelinks}
+\title{Sàng lọc an toàn tập người dùng và hướng beam dưới ràng buộc robust SINR: Mô hình, chứng minh và hướng dẫn kiểm chứng $K=4$}
+\author{Tài liệu phương pháp và tái lập mô phỏng}
+\begin{document}\maketitle
+\section{Bối cảnh và phạm vi}
+Xét đường xuống đa người dùng nhiều anten (MU-MIMO) có $M\ge4$ anten phát và $K=4$ người dùng. Trạm phát lựa chọn tập $\mathcal S\subseteq\{0,1,2,3\}$ cùng một hướng beamforming zero-forcing (ZF) hoặc regularized zero-forcing (RZF) trong tập hữu hạn $\mathcal A=\{0,0.001,0.01,0.05,0.1,0.3,1\}$. Hướng beam được tính lại cho mỗi tập $\mathcal S$. Bán kính bất định thông tin trạng thái kênh (CSI) $q_c=2.960414$ được cố định; nghiên cứu không điều chỉnh CSI margin.
+Mục tiêu từ điển: tối đa $|\mathcal S|$, rồi tối thiểu tổng công suất phát trong các nghiệm cùng số người dùng. Nghiệm exhaustive là tối ưu \emph{chỉ trong} $15\times7=105$ ứng viên, không phải tối ưu toàn cục đối với mọi beam phức.
+\section{Mô hình robust SINR và điều kiện khả thi}
+Với $\widehat{\mathbf h}_k$ và beam chuẩn hóa $\mathbf w_k$, đặt $r_k=q_c\sigma_e\|\widehat{\mathbf h}_k\|_2/\sqrt M$. Hệ số tín hiệu trực tiếp và giao thoa bảo thủ:
+\begin{align}
+ a_k&=(|\widehat{\mathbf h}_k^H\mathbf w_k|-r_k)_+^2,\\
+ b_{kj}&=(|\widehat{\mathbf h}_k^H\mathbf w_j|+r_k)^2,\quad j\ne k.
+\end{align}
+Đây là cận trong mô hình sai số chuẩn Euclid đang dùng; mọi beam có $\|\mathbf w_j\|_2=1$. Khi $a_k>0$, ràng buộc robust SINR $\ge\gamma$ trở thành
+\begin{equation}
+ \mathbf p\ge \mathbf F\mathbf p+\mathbf u,\quad F_{kj}=\begin{cases}\gamma b_{kj}/a_k,&j\ne k,\\0,&j=k,\end{cases}\quad u_k=\gamma N_0/a_k.
+\end{equation}
+Hệ bất đẳng thức này kiểm soát công suất tối thiểu cần thiết cho tập và hướng beam cố định. Với $\mathbf F\ge0$, $\mathbf u>0$, nếu $\rho(\mathbf F)<1$, nghiệm tối thiểu theo từng thành phần là $\mathbf p^*=(\mathbf I-\mathbf F)^{-1}\mathbf u$. Nghiệm được chấp nhận khi $\mathbf 1^T\mathbf p^*\le P_{\max}$ và phép đối chiếu linear programming (LP) đạt sai số yêu cầu.
+\section{Ba quy tắc sàng lọc có chứng minh}
+\textbf{Quy tắc 1 -- Cận công suất từ chuẩn kênh.} Theo bất đẳng thức Cauchy--Schwarz, $|\widehat{\mathbf h}_k^H\mathbf w_k|\le\|\widehat{\mathbf h}_k\|_2$. Vì vậy $a_k\le A_k=(\|\widehat{\mathbf h}_k\|_2-r_k)_+^2$. Nếu $A_k=0$, không tồn tại độ lợi trực tiếp robust dương. Nếu mọi $A_k>0$ thì mọi nghiệm công suất phải thỏa
+\begin{equation}
+ \mathbf1^T\mathbf p\ge \sum_{k\in\mathcal S}\frac{\gamma N_0}{A_k}=:L_{\rm norm}(\mathcal S).
+\end{equation}
+Do đó $L_{\rm norm}>P_{\max}$ là điều kiện đủ để loại \emph{mọi beam ứng viên} của tập $\mathcal S$, không bỏ sót nghiệm khả thi.
+\textbf{Quy tắc 2 -- Cận Neumann.} Với một beam đã xác định và $\mathbf F\ge0$, bất kỳ nghiệm $\mathbf p\ge\mathbf F\mathbf p+\mathbf u$ nào cũng thỏa
+\begin{equation}
+ \mathbf p\ge\sum_{t=0}^{T}\mathbf F^t\mathbf u,\qquad T=0,1,\ldots.
+\end{equation}
+Suy ra nếu $L_T=\mathbf1^T\sum_{t=0}^T\mathbf F^t\mathbf u>P_{\max}$ thì beam không khả thi dưới ngân sách công suất. Bản mã kiểm tra $T\le4$ trước khi gọi bộ giải đầy đủ.
+\textbf{Quy tắc 3 -- Chu trình giao thoa hai người dùng.} Nếu tồn tại $i\ne j$ sao cho $F_{ij}F_{ji}\ge1$, ma trận con chính $2\times2$ có bán kính phổ $\sqrt{F_{ij}F_{ji}}\ge1$. Tính đơn điệu Perron--Frobenius đối với ma trận không âm cho $\rho(\mathbf F)\ge1$. Vì $\mathbf u>0$, không tồn tại nghiệm công suất hữu hạn; ứng viên được loại an toàn.
+\textbf{Sàng lọc theo số người dùng.} Duyệt $|\mathcal S|=4,3,2,1$. Khi tìm thấy ít nhất một nghiệm khả thi ở kích thước $s$, đánh giá \emph{toàn bộ} ứng viên còn lại của cùng kích thước rồi dừng, vì mọi tập nhỏ hơn không thể thắng mục tiêu từ điển. Không được bỏ các ứng viên cùng kích thước trước khi so sánh công suất. Đặc biệt, không giả định tính đơn điệu khả thi khi thay tập người dùng và tính lại beam.
+\section{Kiểm chứng độc lập ở $K=4$}
+Trong một chương trình, \texttt{reference\_model.py} quét đủ 105 ứng viên và dùng lời giải giải tích đối chiếu LP. Trong chương trình còn lại, \texttt{safe\_pruning.py} sàng lọc rồi giải các ứng viên còn lại. Hai luồng không sử dụng quyết định hoặc bảng công suất của nhau để chọn nghiệm. Chúng chỉ được đối chiếu sau khi hoàn thành.
+Với mỗi cấu hình kênh, kiểm tra: (i) cùng số người dùng; (ii) cùng tập người dùng và hệ số RZF theo quy tắc phá hòa xác định; (iii) sai khác tương đối công suất không vượt $10^{-7}$; (iv) không có ứng viên bị sàng lọc mà exhaustive xác nhận khả thi. Bất kỳ vi phạm nào khiến chương trình dừng bằng \texttt{AssertionError}.
+\section{Dữ liệu và lệnh chạy}
+Cần Python 3.10 trở lên, NumPy và SciPy. Đầu vào \texttt{.npz} có \texttt{H} là mảng phức $(N,M,4)$, \texttt{groups} có độ dài $N$; nguồn dữ liệu DeepMIMO phải có cấu hình nguồn và phép chuẩn hóa kênh được kiểm toán riêng. Không dùng lại 160 cấu hình đã công bố ở vòng trước làm kiểm thử độc lập.
+\begin{verbatim}
+python -m pip install -r code/requirements.txt
+python code/safe_pruning.py --stage preflight \
+ --dataset data/deepmimo.npz --run-id DM_SAFE01
+python code/safe_pruning.py --stage scan \
+ --dataset data/deepmimo.npz --run-id DM_SAFE01
+python code/safe_pruning.py --stage report \
+ --dataset data/deepmimo.npz --run-id DM_SAFE01
+\end{verbatim}
+Mã hỗ trợ \texttt{--limit}, \texttt{--alpha-list}, \texttt{--q}, \texttt{--sigma-rel}, \texttt{--sinr-db}, \texttt{--noise}, \texttt{--pmax}, \texttt{--out-root}. Giữ các thông số như nhau giữa các lần chạy có cùng \texttt{run-id}.
+\section{Checkpoint, CSV và khôi phục}
+\begin{center}\small\begin{tabular}{p{0.13\linewidth}p{0.72\linewidth}}\toprule
+CP00 & \texttt{CP00\_manifest.json}: chữ ký mã, dữ liệu và cấu hình\\
+CP01 & \texttt{CP01\_candidate\_screening.csv}: ứng viên đã xét, quy tắc sàng lọc, chứng cứ số\\
+CP02 & \texttt{CP02\_geometry\_paired.csv}: nghiệm hai luồng, lần gọi bộ giải, runtime\\
+CP03 & \texttt{CP03\_reference\_exhaustive.csv}: kết quả 105 ứng viên/geometry\\
+CP04 & \texttt{CP04\_screening\_reasons.csv}: số lần loại theo nguyên nhân\\
+CP05 & \texttt{CP05\_decision.json}: điều kiện khớp nghiệm, mức giảm phép giải và giới hạn kết luận\\
+CP06 & \texttt{CP06\_SHA256.csv}: hash tệp kết quả\\\bottomrule\end{tabular}\end{center}
+Mỗi geometry được lưu thành \texttt{outputs/<run-id>/tasks/0000000.json} theo thao tác ghi tệp tạm và thay thế nguyên tử. Chạy lại lệnh \texttt{scan} để bỏ qua checkpoint hợp lệ và tính tiếp mục chưa có. Mã kiểm tra chữ ký của tệp nguồn, dữ liệu và tham số; nếu thay đổi, bắt buộc dùng \texttt{run-id} mới. Chạy lại \texttt{report} để tái tạo các CSV từ các checkpoint hoàn chỉnh.
+\section{Tiêu chí quyết định}
+\textbf{PASS kiểm chứng thuật toán}: toàn bộ geometry khớp nghiệm exhaustive, không có ứng viên loại nhầm, và giảm số lần giải đầy đủ. \textbf{STOP}: xuất hiện bất kỳ sai khác nghiệm, lỗi LP hoặc trường hợp loại nhầm. \textbf{Chưa đủ để công bố ưu thế}: chỉ có smoke test hoặc chưa kiểm chứng trên nhóm DeepMIMO/3GPP độc lập; chưa có fairness, throughput và outage thực nghiệm. Cần báo cáo runtime trên cùng máy và không đồng nhất số lần gọi bộ giải với thời gian thực thi.
+\end{document}

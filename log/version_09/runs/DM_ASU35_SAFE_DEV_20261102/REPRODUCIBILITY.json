@@ -1,0 +1,34 @@
+{
+  "code_version": "version_09",
+  "source_commit": "e2a3609950581a1d8e25bb5d2f7fe8f77408cfd1",
+  "source_path": "src/version_09_robust_safe_pruning",
+  "source_execution_note": "The native run executed outside Git before import. This packaging commit contains the byte-identical original code, matched against both source hashes locked in CP00.",
+  "run_id": "DM_ASU35_SAFE_DEV_20261102",
+  "packaged_date_local": "2026-11-02",
+  "evaluation_role": "development",
+  "packaging_status": "ALGORITHM_CHECKS_PASSED_ON_DEVELOPMENT_DATA",
+  "status_note": "Packaging metadata only; original CP05 has no status field and is preserved byte-for-byte.",
+  "workflow": "Original code/safe_pruning.py: preflight, scan, report. No separate-CP wrappers.",
+  "dataset_version": "deepmimo_asu35_v1",
+  "dataset_sha256": "1d479a06b94fff565a8997ceb870c670bda7458dbf5e5cd54c2fc0afc14b1f50",
+  "dataset_lineage_path": "log/version_06/dataset_provenance/deepmimo_asu35_v1/deepmimo_provenance.json",
+  "dataset_usage": "The same 160 DeepMIMO geometries were viewed in previous versions. This is development, not independent validation.",
+  "original_run_dir": "/media/icnlab/Data/hoanganh/Robust_Safe_Pruning_20261102/outputs/DM_ASU35_SAFE_DEV_20261102",
+  "environment_reported_by_user_before_run": {
+    "python": "3.11.15",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1"
+  },
+  "environment_at_packaging": {
+    "python": "3.11.15",
+    "python_executable": "/media/icnlab/Data/hoanganh/Robust_Safe_Pruning_20261102/.venv/bin/python",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1"
+  },
+  "environment_note": "The upstream manifest does not record Python or library versions. User-reported versions and the packaging environment are distinguished; no environment snapshot from scan itself is claimed.",
+  "artifact_policy": "Seven original CP00-CP06 files retained unchanged. Original CP06 hashes CP00-CP05. Added run documentation is covered separately by ARTIFACT_SHA256.csv. No tasks, raw scenarios, real channel matrices, environments, console logs or ZIPs imported.",
+  "independent_validation_completed": false,
+  "globally_optimal_beamforming_claim_allowed": false,
+  "statistical_outage_certificate_claim_allowed": false,
+  "fairness_throughput_latency_evaluated": false
+}
