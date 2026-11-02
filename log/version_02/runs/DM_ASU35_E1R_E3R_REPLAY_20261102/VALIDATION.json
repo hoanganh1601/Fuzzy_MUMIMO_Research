@@ -1,0 +1,18 @@
+{
+  "source_commit": "4217c9208e8ca4620045f2a65cf403b815178a6f",
+  "original_archive_files_verified": 28,
+  "original_tests": {
+    "engine": {"tests_run": 9, "passed": 9, "failed": 0},
+    "e1r_e3r": {"tests_run": 7, "passed": 7, "failed": 0}
+  },
+  "run_audit": {
+    "pipeline_engine_dataset_hashes_match_cp00": true,
+    "test_tasks_verified": 32,
+    "cp08_task_hashes_verified": 32,
+    "cp04_rows": 160,
+    "cp05_summary_recomputed": true,
+    "cp07_decision": "STOP_no_demonstrated_fuzzy_advantage"
+  },
+  "status": "REPLAY_COMPLETED_STOP",
+  "independent_validation_completed": false
+}

@@ -1,0 +1,336 @@
+{
+  "signature": "6e18709e92e2c24c6a27efe3e72be18593d495f033cb49aed29a2efbf8e4413e",
+  "qref": 2.4017329151664164,
+  "methods": {
+    "gaussian": {
+      "selected": 0,
+      "eligible": false,
+      "candidates": [
+        {
+          "candidate": 0,
+          "params": {
+            "qgauss": 2.4017329151664164
+          },
+          "eff": 0.40645833333333337,
+          "feasible": 19,
+          "n": 32,
+          "power_all_feasible": 0.32256292414225146,
+          "power_common": 0.32256292414225146,
+          "n_common": 19
+        }
+      ]
+    },
+    "fixed": {
+      "selected": 5,
+      "eligible": false,
+      "candidates": [
+        {
+          "candidate": 0,
+          "params": {
+            "qfixed": 0.45
+          },
+          "eff": 0.8941666666666667,
+          "feasible": 20,
+          "n": 32,
+          "power_all_feasible": 0.2961079236374788,
+          "power_common": 0.2961079236374788,
+          "n_common": 20
+        },
+        {
+          "candidate": 1,
+          "params": {
+            "qfixed": 0.65
+          },
+          "eff": 0.7742708333333332,
+          "feasible": 20,
+          "n": 32,
+          "power_all_feasible": 0.30003892673661725,
+          "power_common": 0.30003892673661725,
+          "n_common": 20
+        },
+        {
+          "candidate": 2,
+          "params": {
+            "qfixed": 0.85
+          },
+          "eff": 0.6348958333333333,
+          "feasible": 20,
+          "n": 32,
+          "power_all_feasible": 0.3042593376857026,
+          "power_common": 0.3042593376857026,
+          "n_common": 20
+        },
+        {
+          "candidate": 3,
+          "params": {
+            "qfixed": 1.05
+          },
+          "eff": 0.5141666666666667,
+          "feasible": 20,
+          "n": 32,
+          "power_all_feasible": 0.30881509783689426,
+          "power_common": 0.30881509783689426,
+          "n_common": 20
+        },
+        {
+          "candidate": 4,
+          "params": {
+            "qfixed": 1.25
+          },
+          "eff": 0.44010416666666674,
+          "feasible": 20,
+          "n": 32,
+          "power_all_feasible": 0.31376573707974326,
+          "power_common": 0.31376573707974326,
+          "n_common": 20
+        },
+        {
+          "candidate": 5,
+          "params": {
+            "qfixed": 1.45
+          },
+          "eff": 0.4030208333333333,
+          "feasible": 20,
+          "n": 32,
+          "power_all_feasible": 0.3191903842846642,
+          "power_common": 0.3191903842846642,
+          "n_common": 20
+        }
+      ]
+    },
+    "threshold": {
+      "selected": 5,
+      "eligible": false,
+      "candidates": [
+        {
+          "candidate": 0,
+          "params": {
+            "qlo": 0.45,
+            "qhi": 0.8
+          },
+          "eff": 0.6695833333333333,
+          "feasible": 20,
+          "n": 32,
+          "power_all_feasible": 0.3031747870934235,
+          "power_common": 0.3031747870934235,
+          "n_common": 20
+        },
+        {
+          "candidate": 1,
+          "params": {
+            "qlo": 0.45,
+            "qhi": 1.15
+          },
+          "eff": 0.47291666666666665,
+          "feasible": 20,
+          "n": 32,
+          "power_all_feasible": 0.31123666155354585,
+          "power_common": 0.31123666155354585,
+          "n_common": 20
+        },
+        {
+          "candidate": 2,
+          "params": {
+            "qlo": 0.65,
+            "qhi": 1.0
+          },
+          "eff": 0.5404166666666667,
+          "feasible": 20,
+          "n": 32,
+          "power_all_feasible": 0.30764174238898645,
+          "power_common": 0.30764174238898645,
+          "n_common": 20
+        },
+        {
+          "candidate": 3,
+          "params": {
+            "qlo": 0.65,
+            "qhi": 1.35
+          },
+          "eff": 0.4178125,
+          "feasible": 20,
+          "n": 32,
+          "power_all_feasible": 0.31641286974324695,
+          "power_common": 0.31641286974324695,
+          "n_common": 20
+        },
+        {
+          "candidate": 4,
+          "params": {
+            "qlo": 0.85,
+            "qhi": 1.2
+          },
+          "eff": 0.45458333333333334,
+          "feasible": 20,
+          "n": 32,
+          "power_all_feasible": 0.3124871387546918,
+          "power_common": 0.3124871387546918,
+          "n_common": 20
+        },
+        {
+          "candidate": 5,
+          "params": {
+            "qlo": 0.85,
+            "qhi": 1.5499999999999998
+          },
+          "eff": 0.3921875,
+          "feasible": 20,
+          "n": 32,
+          "power_all_feasible": 0.32211280421848104,
+          "power_common": 0.32211280421848104,
+          "n_common": 20
+        }
+      ]
+    },
+    "sugeno": {
+      "selected": 5,
+      "eligible": false,
+      "candidates": [
+        {
+          "candidate": 0,
+          "params": {
+            "rules": [
+              0.45,
+              0.55,
+              0.65,
+              0.65,
+              0.75,
+              0.8500000000000001,
+              0.8500000000000001,
+              0.9500000000000001,
+              1.05
+            ],
+            "family": "rise_with_coupling",
+            "qsmall": 0.45
+          },
+          "eff": 0.8278125000000001,
+          "feasible": 20,
+          "n": 32,
+          "power_all_feasible": 0.29906922906889666,
+          "power_common": 0.29906922906889666,
+          "n_common": 20
+        },
+        {
+          "candidate": 1,
+          "params": {
+            "rules": [
+              0.65,
+              0.55,
+              0.45,
+              0.8500000000000001,
+              0.75,
+              0.65,
+              1.05,
+              0.9500000000000001,
+              0.8500000000000001
+            ],
+            "family": "fall_with_coupling",
+            "qsmall": 0.45
+          },
+          "eff": 0.7255208333333333,
+          "feasible": 20,
+          "n": 32,
+          "power_all_feasible": 0.30121742060170753,
+          "power_common": 0.30121742060170753,
+          "n_common": 20
+        },
+        {
+          "candidate": 2,
+          "params": {
+            "rules": [
+              0.65,
+              0.75,
+              0.8500000000000001,
+              0.8500000000000001,
+              0.9500000000000001,
+              1.05,
+              1.05,
+              1.1500000000000001,
+              1.25
+            ],
+            "family": "rise_with_coupling",
+            "qsmall": 0.65
+          },
+          "eff": 0.688125,
+          "feasible": 20,
+          "n": 32,
+          "power_all_feasible": 0.3032301348801573,
+          "power_common": 0.3032301348801573,
+          "n_common": 20
+        },
+        {
+          "candidate": 3,
+          "params": {
+            "rules": [
+              0.8500000000000001,
+              0.75,
+              0.65,
+              1.05,
+              0.9500000000000001,
+              0.8500000000000001,
+              1.25,
+              1.1500000000000001,
+              1.05
+            ],
+            "family": "fall_with_coupling",
+            "qsmall": 0.65
+          },
+          "eff": 0.5864583333333333,
+          "feasible": 20,
+          "n": 32,
+          "power_all_feasible": 0.30550299137945836,
+          "power_common": 0.30550299137945836,
+          "n_common": 20
+        },
+        {
+          "candidate": 4,
+          "params": {
+            "rules": [
+              0.85,
+              0.95,
+              1.05,
+              1.05,
+              1.1500000000000001,
+              1.25,
+              1.25,
+              1.35,
+              1.45
+            ],
+            "family": "rise_with_coupling",
+            "qsmall": 0.85
+          },
+          "eff": 0.5559375,
+          "feasible": 20,
+          "n": 32,
+          "power_all_feasible": 0.30771790744507105,
+          "power_common": 0.30771790744507105,
+          "n_common": 20
+        },
+        {
+          "candidate": 5,
+          "params": {
+            "rules": [
+              1.05,
+              0.95,
+              0.85,
+              1.25,
+              1.1500000000000001,
+              1.05,
+              1.45,
+              1.35,
+              1.25
+            ],
+            "family": "fall_with_coupling",
+            "qsmall": 0.85
+          },
+          "eff": 0.4822916666666667,
+          "feasible": 20,
+          "n": 32,
+          "power_all_feasible": 0.31013118927217176,
+          "power_common": 0.31013118927217176,
+          "n_common": 20
+        }
+      ]
+    }
+  }
+}

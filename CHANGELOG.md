@@ -1,5 +1,21 @@
 # Changelog
 
+## v2.0.0 — restored 2026-11-02; original revision 2026-10-21
+
+- Khôi phục nguyên source/test/tài liệu từ `Fuzzy_MUMIMO_E1R_E3R_R1_fixed.zip`.
+- Chạy 9 test engine và 7 test E1R–E3R; toàn bộ PASS.
+- Replay native trên 160 geometry DeepMIMO với split 40/20/20/20; calibration không có phương pháp đạt effective-failure gate 5%.
+- Fuzzy-safe chuyển sang Gaussian-equivalent fail-closed fallback; test kết thúc `STOP_no_demonstrated_fuzzy_advantage`.
+- Lưu CP00–CP09, provenance và checksum; ghi rõ đây là dữ liệu dùng lại.
+
+## v1.0.0 — restored 2026-11-02; original revision 2026-10-19
+
+- Khôi phục nguyên source/test/tài liệu từ `Fuzzy_MUMIMO_Research_R1_fixed.zip`.
+- Chạy 9 test gốc; toàn bộ PASS.
+- Replay native trên 160 geometry DeepMIMO với split train/validation/test 96/32/32.
+- Cả bốn phương pháp chỉ khả thi 15/32 geometry test; effective failure vượt xa mục tiêu 5%.
+- Lưu CP00–CP06, provenance và checksum; không nhập bundled smoke output/task cache.
+
 ## v9.0.0 — 2026-11-02
 
 - Nhập nguyên source safe pruning/reference, tests và IEEE guide từ ZIP ngày 2026-11-02; dùng native preflight/scan/report, không có runner tách CP.

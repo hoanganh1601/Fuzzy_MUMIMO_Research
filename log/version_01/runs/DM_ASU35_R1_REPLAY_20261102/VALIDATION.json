@@ -1,0 +1,14 @@
+{
+  "source_commit": "c74dec97e6068d1ba6b642c1a365b7ef5d2d417d",
+  "original_archive_files_verified": 24,
+  "original_tests": {"tests_run": 9, "passed": 9, "failed": 0},
+  "run_audit": {
+    "source_and_dataset_hashes_match_cp00": true,
+    "test_tasks_verified": 32,
+    "cp03_rows": 128,
+    "cp04_summary_recomputed": true,
+    "cp06_common_set_rows": 4
+  },
+  "status": "REPLAY_COMPLETED_RELIABILITY_TARGET_NOT_MET",
+  "independent_validation_completed": false
+}

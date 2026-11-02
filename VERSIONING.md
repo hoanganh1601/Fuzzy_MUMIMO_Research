@@ -39,6 +39,8 @@ Mỗi run card phải ghi code version/Git SHA, dataset version/SHA-256, cấu h
 
 | Tag | Commit | Nội dung |
 |---|---|---|
+| `v1.0.0` | `c74dec9` | Original Fuzzy MU-MIMO R1 package restored |
+| `v2.0.0` | `4217c92` | Original E1R–E3R R1 package restored |
 | `v3.0.0` | `089ab5a` | DeepMIMO spatial analysis |
 | `v4.0.0` | `2aa366f` | Spatially grouped generator |
 | `v5.0.0` | `b51505e` | CSI margin calibration pilot |

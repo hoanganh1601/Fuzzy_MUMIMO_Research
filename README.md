@@ -10,6 +10,8 @@ Kho nghiên cứu được tổ chức theo ba lớp độc lập:
 
 | Version | Nội dung | Mốc gốc | Trạng thái |
 |---|---|---|---|
+| `version_01` | Fuzzy MU-MIMO R1: Gaussian/fixed/threshold/Sugeno | `c74dec9` | Source gốc khôi phục; DeepMIMO replay hoàn tất, reliability gate không đạt |
+| `version_02` | E1R–E3R reliability-screened Sugeno | `4217c92` | Source gốc khôi phục; DeepMIMO replay `STOP_no_demonstrated_fuzzy_advantage` |
 | `version_03` | DeepMIMO spatial analysis | `089ab5a` | Historical |
 | `version_04` | Spatially grouped DeepMIMO generator | `2aa366f` | Historical |
 | `version_05` | CSI margin calibration pilot | `b51505e` | CP05 failure documented |
@@ -19,6 +21,15 @@ Kho nghiên cứu được tổ chức theo ba lớp độc lập:
 | `version_09` | Safe pruning đối chiếu exhaustive, native stages | `e2a3609` | DeepMIMO CP00–CP06 complete; algorithm checks passed on development |
 
 Version mới nhất là [`src/version_09_robust_safe_pruning`](src/version_09_robust_safe_pruning).
+
+## Hai phiên bản đầu tiên được khôi phục
+
+Hai ZIP gốc được đối chiếu checksum và chạy lại ngày 2026-11-02:
+
+- [`version_01`](src/version_01_fuzzy_mumimo_r1): gói `Fuzzy_MUMIMO_Research_R1_fixed.zip`, 9/9 test gốc PASS. Replay dùng 160 geometry DeepMIMO, split 96/32/32. Trên 32 geometry test, cả bốn phương pháp khả thi 15/32; effective failure từ 53.14% đến 61.00%, vượt mục tiêu 5%.
+- [`version_02`](src/version_02_e1r_e3r_r1): gói `Fuzzy_MUMIMO_E1R_E3R_R1_fixed.zip`, 9/9 test engine và 7/7 test E1R–E3R PASS. Split 64/32/32/32; không phương pháp nào qua calibration gate. Fuzzy-safe fail-closed về Gaussian và quyết định test là `STOP_no_demonstrated_fuzzy_advantage`.
+
+Các replay dùng lại dataset `deepmimo_asu35_v1`, vì vậy là tái dựng lịch sử trên development data. Xem [run ver1](log/version_01/runs/DM_ASU35_R1_REPLAY_20261102/RUN.md) và [run ver2](log/version_02/runs/DM_ASU35_E1R_E3R_REPLAY_20261102/RUN.md).
 
 ## Kết quả hiện tại
 

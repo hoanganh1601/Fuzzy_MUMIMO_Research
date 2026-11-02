@@ -1,0 +1,37 @@
+{
+  "no_formal_coverage_guarantee": true,
+  "transferred": false,
+  "group_split": "40/20/20/20 development/validation/calibration/test",
+  "test_geometries": 32,
+  "test_groups": 32,
+  "limited": false,
+  "n_mc": 300,
+  "noise_w": 2e-13,
+  "qgauss": 2.4017329151664164,
+  "infeasible_reasons": {
+    "gaussian": {
+      "spectral_radius_ge_1": 13,
+      "power_gt_pmax": 6
+    },
+    "fixed": {
+      "spectral_radius_ge_1": 13,
+      "power_gt_pmax": 6
+    },
+    "threshold": {
+      "spectral_radius_ge_1": 13,
+      "power_gt_pmax": 6
+    },
+    "fuzzy_raw": {
+      "spectral_radius_ge_1": 13,
+      "power_gt_pmax": 6
+    },
+    "fuzzy_safe": {
+      "spectral_radius_ge_1": 13,
+      "power_gt_pmax": 6
+    }
+  },
+  "selection_uses_test": false,
+  "gaussian_guarantee": "conditional outage <= eps under the simulated CSI law only",
+  "independent_3gpp_requires_actual_sionna_channels": true,
+  "synthetic_data_not_publication_evidence": true
+}

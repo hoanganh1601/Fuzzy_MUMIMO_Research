@@ -1,0 +1,13 @@
+{
+  "code_version": "version_02",
+  "source_commit": "4217c9208e8ca4620045f2a65cf403b815178a6f",
+  "source_path": "src/version_02_e1r_e3r_r1",
+  "run_id": "DM_ASU35_E1R_E3R_REPLAY_20261102",
+  "execution_note": "Run executed outside Git before restoration; CP00 pipeline and engine hashes match the source commit.",
+  "dataset_version": "deepmimo_asu35_v1",
+  "dataset_role": "reused_development_historical_replay",
+  "dataset_sha256": "1d479a06b94fff565a8997ceb870c670bda7458dbf5e5cd54c2fc0afc14b1f50",
+  "original_run_dir": "/media/icnlab/Data/hoanganh/Fuzzy_MUMIMO_Version_02_E1R_E3R_R1/outputs_r/DM_ASU35_E1R_E3R_REPLAY_20261102",
+  "stages": ["preflight", "develop", "calibrate", "freeze", "test", "report"],
+  "artifact_policy": "CP00-CP09 copied byte-for-byte; task cache, real dataset, environment and bundled example outputs excluded."
+}

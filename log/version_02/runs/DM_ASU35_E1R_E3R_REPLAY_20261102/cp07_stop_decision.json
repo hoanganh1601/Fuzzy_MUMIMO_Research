@@ -1,0 +1,10 @@
+{
+  "decision": "STOP_no_demonstrated_fuzzy_advantage",
+  "eligible": false,
+  "baselines_reliable": false,
+  "power_and_risk_better": false,
+  "power_and_outage_better": false,
+  "fuzzy_safe_is_fallback": true,
+  "criteria": "frozen eligible AND test conditional AND effective failure <= eps; fixed and threshold also <= eps on test; vs both: group-bootstrap 95% upper mean power ratio < 1 and upper effective-failure difference <= 0.005",
+  "note": "Exploratory group bootstrap; no formal outage guarantee"
+}

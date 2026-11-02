@@ -1,0 +1,513 @@
+{
+  "signature": "f86137543f294854400b3b8b5e683fc13f21692ec57eae19a194fc18bf3b6cb4",
+  "validation": {
+    "fixed": [
+      {
+        "parameters": {
+          "q": 1.6
+        },
+        "metrics": {
+          "n": 32,
+          "n_feasible": 15,
+          "feasible_rate": 0.46875,
+          "conditional_outage": 0.024,
+          "conditional_outage_wilson_hi": 0.02889418448207246,
+          "effective_failure": 0.5425,
+          "mean_feasible_power_w": 0.33301126398434505,
+          "floor_active_rate": 0.0,
+          "gate_pass": false,
+          "power_common_w": null,
+          "n_common": 0
+        }
+      },
+      {
+        "parameters": {
+          "q": 2.4
+        },
+        "metrics": {
+          "n": 32,
+          "n_feasible": 14,
+          "feasible_rate": 0.4375,
+          "conditional_outage": 0.0004761904761904762,
+          "conditional_outage_wilson_hi": 0.0017347096292908107,
+          "effective_failure": 0.5627083333333334,
+          "mean_feasible_power_w": 0.29635482064750807,
+          "floor_active_rate": 0.0,
+          "gate_pass": false,
+          "power_common_w": null,
+          "n_common": 0
+        }
+      },
+      {
+        "parameters": {
+          "q": 2.401733
+        },
+        "metrics": {
+          "n": 32,
+          "n_feasible": 14,
+          "feasible_rate": 0.4375,
+          "conditional_outage": 0.0002380952380952381,
+          "conditional_outage_wilson_hi": 0.001347521720444721,
+          "effective_failure": 0.5626041666666667,
+          "mean_feasible_power_w": 0.29637320299476944,
+          "floor_active_rate": 0.0,
+          "gate_pass": false,
+          "power_common_w": null,
+          "n_common": 0
+        }
+      },
+      {
+        "parameters": {
+          "q": 2.2
+        },
+        "metrics": {
+          "n": 32,
+          "n_feasible": 14,
+          "feasible_rate": 0.4375,
+          "conditional_outage": 0.0009523809523809524,
+          "conditional_outage_wilson_hi": 0.002446395888921648,
+          "effective_failure": 0.5629166666666667,
+          "mean_feasible_power_w": 0.2942675411780479,
+          "floor_active_rate": 0.0,
+          "gate_pass": false,
+          "power_common_w": null,
+          "n_common": 0
+        }
+      }
+    ],
+    "threshold": [
+      {
+        "parameters": {
+          "qlo": 1.8,
+          "qhi": 2.4017329151664164
+        },
+        "metrics": {
+          "n": 32,
+          "n_feasible": 14,
+          "feasible_rate": 0.4375,
+          "conditional_outage": 0.0002380952380952381,
+          "conditional_outage_wilson_hi": 0.001347521720444721,
+          "effective_failure": 0.5626041666666667,
+          "mean_feasible_power_w": 0.29637320209479323,
+          "floor_active_rate": 0.0,
+          "gate_pass": false,
+          "power_common_w": null,
+          "n_common": 0
+        }
+      },
+      {
+        "parameters": {
+          "qlo": 1.4,
+          "qhi": 2.2
+        },
+        "metrics": {
+          "n": 32,
+          "n_feasible": 14,
+          "feasible_rate": 0.4375,
+          "conditional_outage": 0.0009523809523809524,
+          "conditional_outage_wilson_hi": 0.002446395888921648,
+          "effective_failure": 0.5629166666666667,
+          "mean_feasible_power_w": 0.2942675411780479,
+          "floor_active_rate": 0.0,
+          "gate_pass": false,
+          "power_common_w": null,
+          "n_common": 0
+        }
+      },
+      {
+        "parameters": {
+          "qlo": 1.8,
+          "qhi": 2.2
+        },
+        "metrics": {
+          "n": 32,
+          "n_feasible": 14,
+          "feasible_rate": 0.4375,
+          "conditional_outage": 0.0009523809523809524,
+          "conditional_outage_wilson_hi": 0.002446395888921648,
+          "effective_failure": 0.5629166666666667,
+          "mean_feasible_power_w": 0.2942675411780479,
+          "floor_active_rate": 0.0,
+          "gate_pass": false,
+          "power_common_w": null,
+          "n_common": 0
+        }
+      },
+      {
+        "parameters": {
+          "qlo": 1.0,
+          "qhi": 1.8
+        },
+        "metrics": {
+          "n": 32,
+          "n_feasible": 14,
+          "feasible_rate": 0.4375,
+          "conditional_outage": 0.009285714285714286,
+          "conditional_outage_wilson_hi": 0.012667989162314344,
+          "effective_failure": 0.5665625000000001,
+          "mean_feasible_power_w": 0.29028909457108254,
+          "floor_active_rate": 0.0,
+          "gate_pass": false,
+          "power_common_w": null,
+          "n_common": 0
+        }
+      }
+    ],
+    "fuzzy_raw": [
+      {
+        "parameters": {
+          "rules": [
+            1.8,
+            1.6,
+            1.4000000000000001,
+            2.0,
+            1.8,
+            1.6,
+            2.2,
+            2.0,
+            1.8
+          ],
+          "c0": 1.8,
+          "s1": 0.2,
+          "s2": -0.2
+        },
+        "metrics": {
+          "n": 32,
+          "n_feasible": 14,
+          "feasible_rate": 0.4375,
+          "conditional_outage": 0.007380952380952381,
+          "conditional_outage_wilson_hi": 0.010457425137271565,
+          "effective_failure": 0.5657291666666666,
+          "mean_feasible_power_w": 0.2909446087672807,
+          "floor_active_rate": 0.0,
+          "gate_pass": false,
+          "power_common_w": null,
+          "n_common": 0
+        }
+      },
+      {
+        "parameters": {
+          "rules": [
+            1.6,
+            1.8,
+            2.0,
+            1.6,
+            1.8,
+            2.0,
+            1.6,
+            1.8,
+            2.0
+          ],
+          "c0": 1.8,
+          "s1": 0.0,
+          "s2": 0.2
+        },
+        "metrics": {
+          "n": 32,
+          "n_feasible": 14,
+          "feasible_rate": 0.4375,
+          "conditional_outage": 0.02238095238095238,
+          "conditional_outage_wilson_hi": 0.02731010588380057,
+          "effective_failure": 0.5722916666666668,
+          "mean_feasible_power_w": 0.2886363246554219,
+          "floor_active_rate": 0.0,
+          "gate_pass": false,
+          "power_common_w": null,
+          "n_common": 0
+        }
+      },
+      {
+        "parameters": {
+          "rules": [
+            1.7999999999999998,
+            1.5999999999999999,
+            1.4,
+            1.5999999999999999,
+            1.4,
+            1.2,
+            1.4,
+            1.2,
+            1.0
+          ],
+          "c0": 1.4,
+          "s1": -0.2,
+          "s2": -0.2
+        },
+        "metrics": {
+          "n": 32,
+          "n_feasible": 15,
+          "feasible_rate": 0.46875,
+          "conditional_outage": 0.017555555555555557,
+          "conditional_outage_wilson_hi": 0.021824520395254128,
+          "effective_failure": 0.5394791666666666,
+          "mean_feasible_power_w": 0.33262278038541754,
+          "floor_active_rate": 0.0,
+          "gate_pass": false,
+          "power_common_w": null,
+          "n_common": 0
+        }
+      },
+      {
+        "parameters": {
+          "rules": [
+            1.5999999999999999,
+            1.4,
+            1.2,
+            1.5999999999999999,
+            1.4,
+            1.2,
+            1.5999999999999999,
+            1.4,
+            1.2
+          ],
+          "c0": 1.4,
+          "s1": 0.0,
+          "s2": -0.2
+        },
+        "metrics": {
+          "n": 32,
+          "n_feasible": 15,
+          "feasible_rate": 0.46875,
+          "conditional_outage": 0.027333333333333334,
+          "conditional_outage_wilson_hi": 0.03251547010279962,
+          "effective_failure": 0.5440625,
+          "mean_feasible_power_w": 0.3294901808365587,
+          "floor_active_rate": 0.0,
+          "gate_pass": false,
+          "power_common_w": null,
+          "n_common": 0
+        }
+      }
+    ],
+    "fuzzy_safe": [
+      {
+        "parameters": {
+          "rules": [
+            1.7999999999999998,
+            1.5999999999999999,
+            1.4,
+            1.5999999999999999,
+            1.4,
+            1.2,
+            1.4,
+            1.2,
+            1.0
+          ],
+          "qfloor": 1.4,
+          "c0": 1.4,
+          "s1": -0.2,
+          "s2": -0.2
+        },
+        "metrics": {
+          "n": 32,
+          "n_feasible": 15,
+          "feasible_rate": 0.46875,
+          "conditional_outage": 0.017555555555555557,
+          "conditional_outage_wilson_hi": 0.021824520395254128,
+          "effective_failure": 0.5394791666666666,
+          "mean_feasible_power_w": 0.33262278038541754,
+          "floor_active_rate": 0.0,
+          "gate_pass": false,
+          "power_common_w": null,
+          "n_common": 0
+        }
+      },
+      {
+        "parameters": {
+          "rules": [
+            1.5999999999999999,
+            1.4,
+            1.2,
+            1.5999999999999999,
+            1.4,
+            1.2,
+            1.5999999999999999,
+            1.4,
+            1.2
+          ],
+          "qfloor": 1.4,
+          "c0": 1.4,
+          "s1": 0.0,
+          "s2": -0.2
+        },
+        "metrics": {
+          "n": 32,
+          "n_feasible": 15,
+          "feasible_rate": 0.46875,
+          "conditional_outage": 0.027333333333333334,
+          "conditional_outage_wilson_hi": 0.03251547010279962,
+          "effective_failure": 0.5440625,
+          "mean_feasible_power_w": 0.3294901808365587,
+          "floor_active_rate": 0.0,
+          "gate_pass": false,
+          "power_common_w": null,
+          "n_common": 0
+        }
+      },
+      {
+        "parameters": {
+          "rules": [
+            2.2,
+            2.0,
+            1.8,
+            2.0,
+            1.8,
+            1.6,
+            1.8,
+            1.6,
+            1.4000000000000001
+          ],
+          "qfloor": 1.8,
+          "c0": 1.8,
+          "s1": -0.2,
+          "s2": -0.2
+        },
+        "metrics": {
+          "n": 32,
+          "n_feasible": 14,
+          "feasible_rate": 0.4375,
+          "conditional_outage": 0.002380952380952381,
+          "conditional_outage_wilson_hi": 0.004377525010149572,
+          "effective_failure": 0.5635416666666667,
+          "mean_feasible_power_w": 0.2930511796464231,
+          "floor_active_rate": 0.0,
+          "gate_pass": false,
+          "power_common_w": null,
+          "n_common": 0
+        }
+      },
+      {
+        "parameters": {
+          "rules": [
+            2.0,
+            1.8,
+            1.6,
+            2.0,
+            1.8,
+            1.6,
+            2.0,
+            1.8,
+            1.6
+          ],
+          "qfloor": 1.8,
+          "c0": 1.8,
+          "s1": 0.0,
+          "s2": -0.2
+        },
+        "metrics": {
+          "n": 32,
+          "n_feasible": 14,
+          "feasible_rate": 0.4375,
+          "conditional_outage": 0.004047619047619047,
+          "conditional_outage_wilson_hi": 0.006472904809716766,
+          "effective_failure": 0.5642708333333333,
+          "mean_feasible_power_w": 0.2919884950908389,
+          "floor_active_rate": 0.0,
+          "gate_pass": false,
+          "power_common_w": null,
+          "n_common": 0
+        }
+      }
+    ]
+  },
+  "selected": {
+    "fixed": {
+      "q": 1.6
+    },
+    "threshold": {
+      "qlo": 1.8,
+      "qhi": 2.4017329151664164
+    },
+    "fuzzy_raw": {
+      "rules": [
+        1.7999999999999998,
+        1.5999999999999999,
+        1.4,
+        1.5999999999999999,
+        1.4,
+        1.2,
+        1.4,
+        1.2,
+        1.0
+      ],
+      "c0": 1.4,
+      "s1": -0.2,
+      "s2": -0.2
+    },
+    "fuzzy_safe": {
+      "rules": [
+        1.7999999999999998,
+        1.5999999999999999,
+        1.4,
+        1.5999999999999999,
+        1.4,
+        1.2,
+        1.4,
+        1.2,
+        1.0
+      ],
+      "qfloor": 1.4,
+      "c0": 1.4,
+      "s1": -0.2,
+      "s2": -0.2
+    }
+  },
+  "calibration_gate": {
+    "gaussian": {
+      "n": 32,
+      "n_feasible": 19,
+      "feasible_rate": 0.59375,
+      "conditional_outage": 0.0,
+      "conditional_outage_wilson_hi": 0.0006734862651756509,
+      "effective_failure": 0.40625,
+      "mean_feasible_power_w": 0.28714499178893255,
+      "floor_active_rate": 0.0,
+      "gate_pass": false
+    },
+    "fixed": {
+      "n": 32,
+      "n_feasible": 20,
+      "feasible_rate": 0.625,
+      "conditional_outage": 0.019333333333333334,
+      "conditional_outage_wilson_hi": 0.023137384462705645,
+      "effective_failure": 0.38708333333333333,
+      "mean_feasible_power_w": 0.2769243475103159,
+      "floor_active_rate": 0.0,
+      "gate_pass": false
+    },
+    "threshold": {
+      "n": 32,
+      "n_feasible": 19,
+      "feasible_rate": 0.59375,
+      "conditional_outage": 0.0,
+      "conditional_outage_wilson_hi": 0.0006734862651756509,
+      "effective_failure": 0.40625,
+      "mean_feasible_power_w": 0.28714499178893255,
+      "floor_active_rate": 0.0,
+      "gate_pass": false
+    },
+    "fuzzy_raw": {
+      "n": 32,
+      "n_feasible": 20,
+      "feasible_rate": 0.625,
+      "conditional_outage": 0.013166666666666667,
+      "conditional_outage_wilson_hi": 0.016378258867011313,
+      "effective_failure": 0.3832291666666666,
+      "mean_feasible_power_w": 0.27619448273935643,
+      "floor_active_rate": 0.0,
+      "gate_pass": false
+    },
+    "fuzzy_safe": {
+      "n": 32,
+      "n_feasible": 20,
+      "feasible_rate": 0.625,
+      "conditional_outage": 0.013166666666666667,
+      "conditional_outage_wilson_hi": 0.016378258867011313,
+      "effective_failure": 0.3832291666666666,
+      "mean_feasible_power_w": 0.27619448273935643,
+      "floor_active_rate": 0.0,
+      "gate_pass": false
+    }
+  },
+  "rule": "finalists from development; selection on validation; pass/fail gate on calibration: conditional outage <= eps AND effective failure <= eps"
+}

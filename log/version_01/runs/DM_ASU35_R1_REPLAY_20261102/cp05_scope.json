@@ -1,0 +1,136 @@
+{
+  "signature": "6e18709e92e2c24c6a27efe3e72be18593d495f033cb49aed29a2efbf8e4413e",
+  "dataset": "/media/icnlab/Data/hoanganh/datasets/csi_margin_calibration/data/deepmimo.npz",
+  "noise_w": 2e-13,
+  "qgauss": 2.4017329151664164,
+  "eps": 0.05,
+  "test_groups": 32,
+  "test_geometries": 32,
+  "limited": false,
+  "infeasible_reasons": {
+    "gaussian": {
+      "power_gt_pmax": 4,
+      "spectral_radius_ge_1": 13
+    },
+    "fixed": {
+      "power_gt_pmax": 4,
+      "spectral_radius_ge_1": 13
+    },
+    "threshold": {
+      "power_gt_pmax": 4,
+      "spectral_radius_ge_1": 13
+    },
+    "sugeno": {
+      "power_gt_pmax": 4,
+      "spectral_radius_ge_1": 13
+    }
+  },
+  "frozen": {
+    "signature": "6e18709e92e2c24c6a27efe3e72be18593d495f033cb49aed29a2efbf8e4413e",
+    "physical": {
+      "M": 16,
+      "K": 4,
+      "sigma_rel": 0.04,
+      "sinr_db": 6.0,
+      "eps": 0.05
+    },
+    "selected": {
+      "params": {
+        "qref": 2.4017329151664164,
+        "qgauss": 2.4017329151664164,
+        "qfixed": 1.45,
+        "qlo": 0.85,
+        "qhi": 1.5499999999999998,
+        "rules": [
+          1.05,
+          0.95,
+          0.85,
+          1.25,
+          1.1500000000000001,
+          1.05,
+          1.45,
+          1.35,
+          1.25
+        ]
+      },
+      "per_method": {
+        "gaussian": {
+          "candidate": 0,
+          "params": {
+            "qgauss": 2.4017329151664164
+          },
+          "eff": 0.40645833333333337,
+          "feasible": 19,
+          "n": 32,
+          "power_all_feasible": 0.32256292414225146,
+          "power_common": 0.32256292414225146,
+          "n_common": 19,
+          "eligible": false
+        },
+        "fixed": {
+          "candidate": 5,
+          "params": {
+            "qfixed": 1.45
+          },
+          "eff": 0.4030208333333333,
+          "feasible": 20,
+          "n": 32,
+          "power_all_feasible": 0.3191903842846642,
+          "power_common": 0.3191903842846642,
+          "n_common": 20,
+          "eligible": false
+        },
+        "threshold": {
+          "candidate": 5,
+          "params": {
+            "qlo": 0.85,
+            "qhi": 1.5499999999999998
+          },
+          "eff": 0.3921875,
+          "feasible": 20,
+          "n": 32,
+          "power_all_feasible": 0.32211280421848104,
+          "power_common": 0.32211280421848104,
+          "n_common": 20,
+          "eligible": false
+        },
+        "sugeno": {
+          "candidate": 5,
+          "params": {
+            "rules": [
+              1.05,
+              0.95,
+              0.85,
+              1.25,
+              1.1500000000000001,
+              1.05,
+              1.45,
+              1.35,
+              1.25
+            ],
+            "family": "fall_with_coupling",
+            "qsmall": 0.85
+          },
+          "eff": 0.4822916666666667,
+          "feasible": 20,
+          "n": 32,
+          "power_all_feasible": 0.31013118927217176,
+          "power_common": 0.31013118927217176,
+          "n_common": 20,
+          "eligible": false
+        }
+      }
+    },
+    "criterion": "per method: validation effective failure <= 0.1, then minimum mean power on the common feasible set of eligible candidates; fallback minimum effective failure"
+  },
+  "limitations": [
+    "CSI error is synthetic (circularly symmetric Gaussian, relative variance sigma_rel^2); not estimator residuals",
+    "Outage is evaluated under the same simulated error law centred on the estimated channel; the gaussian guarantee (Proposition 1) holds only under that law",
+    "actual_fail uses a single dataset channel per geometry and is a binary check, not an outage estimate",
+    "Fuzzy, fixed and threshold radii are heuristic (slab coverage << 1-eps); their reliability is empirical only",
+    "Beam directions are fixed RZF on the estimated channel; infeasibility is relative to this beam set and to the triangle-inequality bound, not a certificate of problem infeasibility",
+    "DeepMIMO groups are ordered UE blocks unless replaced by verified spatial blocks",
+    "umi_inspired generator is not a TR 38.901 channel simulator",
+    "Pooled Wilson intervals ignore clustering by channel; use the group-bootstrap intervals for claims"
+  ]
+}
