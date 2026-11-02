@@ -16,10 +16,24 @@ Kho nghiên cứu được tổ chức theo ba lớp độc lập:
 | `version_06` | Spatial CSI calibration with `xyz/scenario` metadata | `0642020` | Real DeepMIMO CP05 FAIL |
 | `version_07` | Fixed-margin ZF/RZF feasibility diagnosis, từng CP | `6439c5e` | CP00–CP06 complete; DIAGNOSTIC_ONLY |
 | `version_08` | Robust user scheduling + finite ZF/RZF codebook, từng CP | `2137c3e` | Smoke + DeepMIMO CP00–CP06 complete; EXPLORATORY_EVALUATION |
+| `version_09` | Safe pruning đối chiếu exhaustive, native stages | `e2a3609` | DeepMIMO CP00–CP06 complete; algorithm checks passed on development |
 
-Version mới nhất là [`src/version_08_robust_user_scheduling`](src/version_08_robust_user_scheduling).
+Version mới nhất là [`src/version_09_robust_safe_pruning`](src/version_09_robust_safe_pruning).
 
 ## Kết quả hiện tại
+
+Run `DM_ASU35_SAFE_DEV_20261102` dùng nguyên `safe_pruning.py`/`reference_model.py` từ ZIP ngày 2026-11-02, theo ba stage gốc `preflight → scan → report`:
+
+- 160/160 geometry khớp nghiệm exhaustive về số user, subset, alpha và công suất; không phát hiện loại nhầm ứng viên khả thi.
+- Số lượt solve giảm từ 16,800 xuống 1,366 (91.87%); 1,728 ứng viên loại bằng điều kiện sàng lọc, 13,706 ứng viên kích thước nhỏ hơn được bỏ theo mục tiêu từ điển.
+- Mean runtime quan sát: pruning 15.954564 ms, exhaustive 132.712190 ms; giảm 87.98%, tỷ số hai thời gian trung bình khoảng 8.32.
+- Mean users=3.575; 97/160 geometry phục vụ đủ 4 user, 58 phục vụ 3 và 5 phục vụ 2.
+- q=2.960414 đúng mặc định PDF version 09. Bảy CP gốc và sáu checksum CP06 được giữ nguyên; không thêm runner tách CP.
+- Trạng thái hồ sơ: **ALGORITHM_CHECKS_PASSED_ON_DEVELOPMENT_DATA**. Dữ liệu dùng lại từ các version trước; chưa có kiểm chứng dữ liệu độc lập, global beamforming optimum hoặc chứng nhận outage/fairness.
+
+Xem [run card version 09](log/version_09/runs/DM_ASU35_SAFE_DEV_20261102/RUN.md) và [source/lệnh chạy gốc](src/version_09_robust_safe_pruning/README.md).
+
+## Kết quả trước đó (version 08)
 
 Run `DM_ASU35_SCHED_DEV_20261101` dùng lại 160 geometry DeepMIMO, giữ q cố định và so exhaustive 15 tập con × 7 beam với forward/backward:
 
@@ -66,7 +80,7 @@ Version 07 tái phân tích dataset này; không tạo holdout độc lập và 
 
 ## Data policy
 
-Real datasets được lưu ngoài Git. Version 6–8 sử dụng kho cục bộ:
+Real datasets được lưu ngoài Git. Version 6–9 sử dụng kho cục bộ:
 
 ```text
 /media/icnlab/Data/hoanganh/datasets/csi_margin_calibration/

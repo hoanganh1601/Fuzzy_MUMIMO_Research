@@ -1,5 +1,14 @@
 # Changelog
 
+## v9.0.0 — 2026-11-02
+
+- Nhập nguyên source safe pruning/reference, tests và IEEE guide từ ZIP ngày 2026-11-02; dùng native preflight/scan/report, không có runner tách CP.
+- Giữ q=2.960414 đúng mặc định PDF; lưu run DeepMIMO development 160 geometry với đủ CP00–CP06.
+- Khớp nghiệm exhaustive 160/160, không phát hiện loại nhầm ứng viên khả thi trong run; giảm 91.87% lượt solve và 87.98% mean runtime quan sát.
+- Phân biệt 1,728 candidate bị loại bằng điều kiện sàng lọc và 13,706 candidate kích thước nhỏ hơn được bỏ theo mục tiêu từ điển.
+- Kiểm tra hai test gốc, source/run hashes, provenance và byte preservation; không nhập real data, task cache, môi trường hoặc output SMOKE ví dụ.
+- Ghi rõ reused development data, phạm vi finite beam family và các giới hạn về kiểm chứng độc lập, runtime, outage/fairness.
+
 ## v8.0.0 — 2026-11-02
 
 - Đóng gói source/IEEE guide ngày 2026-11-01 cho robust user scheduling với fixed CSI margin.

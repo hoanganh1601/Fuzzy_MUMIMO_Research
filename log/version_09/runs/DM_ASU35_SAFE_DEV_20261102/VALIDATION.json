@@ -1,0 +1,73 @@
+{
+  "source_commit": "e2a3609950581a1d8e25bb5d2f7fe8f77408cfd1",
+  "packaged_date_local": "2026-11-02",
+  "upstream_integrity": {
+    "original_files_matched_to_zip": 8,
+    "original_source_and_tests_modified": false,
+    "cp00_source_fingerprints_match": true
+  },
+  "original_tests": {
+    "command": "python -m unittest discover -s tests -v",
+    "cwd": "src/version_09_robust_safe_pruning",
+    "tests_run": 2,
+    "failures": 0,
+    "errors": 0,
+    "exit_code": 0,
+    "captured_output": "test_high_noise_norm_certificate (test_safe_pruning.PruningTests.test_high_noise_norm_certificate) ... ok\ntest_no_false_pruning_random (test_safe_pruning.PruningTests.test_no_false_pruning_random) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.942s\n\nOK\n"
+  },
+  "run_audit": {
+    "checksums_verified": 6,
+    "original_cp_files_preserved": 7,
+    "source_fingerprints_match_manifest": true,
+    "n_geometries": 160,
+    "all_exact_solution_matches": true,
+    "false_pruning_count": 0,
+    "maximum_relative_power_gap": 0,
+    "cp_rows": {
+      "CP01": 3094,
+      "CP02": 160,
+      "CP03": 16800,
+      "CP04": 6
+    },
+    "served_users": {
+      "2": 5,
+      "3": 58,
+      "4": 97
+    },
+    "mean_served_users": 3.575,
+    "counts": {
+      "full_candidates": 16800,
+      "evaluated": 1366,
+      "pruned_by_certificate": 1728,
+      "pruned_by_cardinality": 13706
+    },
+    "screening_reasons": {
+      "ZERO_ROBUST_GAIN": 10,
+      "NOISE_LOWER_BOUND": 593,
+      "NEUMANN_LOWER_BOUND": 840,
+      "SURVIVOR": 1366,
+      "TWO_CYCLE_COUPLING": 40,
+      "NORM_NOISE_LOWER_BOUND": 245
+    },
+    "reference_status_counts": {
+      "FEASIBLE": 14222,
+      "POWER_BUDGET": 1083,
+      "COUPLING_RHO_GE_ONE": 1484,
+      "ZERO_ROBUST_DIRECT_GAIN": 11
+    },
+    "solve_call_reduction_percent": 91.86904761904762,
+    "runtime_reduction_percent": 87.97807174568248,
+    "ratio_of_mean_runtime_speedup": 8.318133155060735,
+    "pruning_faster_geometries": 160,
+    "environment_at_packaging": {
+      "python": "3.11.15",
+      "python_executable": "/media/icnlab/Data/hoanganh/Robust_Safe_Pruning_20261102/.venv/bin/python",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1"
+    }
+  },
+  "algorithm_check": "PASS_ON_REUSED_DEVELOPMENT_DATA",
+  "independent_validation_completed": false,
+  "controlled_repeated_runtime_benchmark_completed": false,
+  "scope_note": "The pruning branch and exhaustive oracle agree on the finite candidate family for this dataset. This does not establish fresh-data validation or global beamforming, outage, fairness, throughput or latency guarantees."
+}
