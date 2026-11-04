@@ -1,0 +1,14 @@
+{
+  "source_directory": "/media/icnlab/Data/hoanganh/Robust_Safe_Pruning_Certified_Audit_20261104",
+  "import_date": "2026-11-04",
+  "version": "10",
+  "source_manifest": "UPSTREAM_FILE_SHA256.csv",
+  "excluded_generated_content": [
+    ".venv",
+    "outputs",
+    "synthetic_smoke_results",
+    "__pycache__"
+  ],
+  "notes": "Original source files are retained byte-for-byte; README.md from the supplied package is stored as README_UPSTREAM.md."
+}
+
