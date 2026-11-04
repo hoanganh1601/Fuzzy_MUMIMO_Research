@@ -45,3 +45,4 @@ Mỗi run card phải ghi code version/Git SHA, dataset version/SHA-256, cấu h
 | `v4.0.0` | `2aa366f` | Spatially grouped generator |
 | `v5.0.0` | `b51505e` | CSI margin calibration pilot |
 | `v6.0.0` | restructuring commit | Spatial CSI calibration and real-run audit |
+| `v10.0.0` | `68069e4` | Certified safe-pruning ablation and numerical audit source |

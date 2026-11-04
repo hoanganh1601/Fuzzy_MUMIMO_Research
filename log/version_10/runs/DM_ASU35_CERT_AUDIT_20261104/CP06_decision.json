@@ -1,0 +1,25 @@
+{
+  "status": "PASS_EXACTNESS",
+  "n_geometries": 160,
+  "n_groups": 160,
+  "candidate_count": 16800,
+  "false_prunes": 0,
+  "n_near_fail_open": 0,
+  "additional_solver_calls_saved_mean": 10.8,
+  "paired_runtime_saved_mean_ms": 1.485963254890521,
+  "solver_calls_ci95": {
+    "lo": 8.862187500000001,
+    "hi": 12.8125,
+    "n_groups": 160,
+    "note": "cluster_bootstrap_descriptive"
+  },
+  "runtime_saved_ci95": {
+    "lo": 1.0599410090435413,
+    "hi": 1.927887794927301,
+    "n_groups": 160,
+    "note": "cluster_bootstrap_descriptive"
+  },
+  "runtime_advantage_confirmed": true,
+  "numerical_scope": "High precision only re-evaluates derived floating-point coefficients; no formal interval proof.",
+  "inference_scope": "Finite candidate family only; already-observed geometries are development."
+}
