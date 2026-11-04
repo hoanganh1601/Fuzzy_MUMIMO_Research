@@ -1,5 +1,14 @@
 # Changelog
 
+## v10.0.0 — 2026-11-04
+
+- Nhập source, tests và IEEE guide của certified safe-pruning ablation audit; giữ nguyên các chương trình reference/version trước để kiểm toán.
+- Thêm bảy cấu hình ablation, exhaustive reference độc lập với quyết định pruning, fail-open sát ngưỡng, chẩn đoán 70 chữ số và checkpoint nguyên tử có chữ ký.
+- Chạy 5/5 unit test và native preflight/scan/report trên 160 geometry DeepMIMO development; lưu CP00–CP07.
+- Kiểm toán 16.800 ứng viên, khớp exhaustive trên 160/160 geometry và không phát hiện false prune.
+- So với CARDINALITY_ONLY, ALL tiết kiệm trung bình 10.8 full solver calls và 1.486 ms/geometry; descriptive bootstrap runtime 95% `[1.0599, 1.9279]` ms.
+- Ghi rõ dữ liệu đã được quan sát trước đó, finite candidate scope, high-precision diagnostic không phải interval proof và chưa có independent 3GPP validation.
+
 ## v2.0.0 — restored 2026-11-02; original revision 2026-10-21
 
 - Khôi phục nguyên source/test/tài liệu từ `Fuzzy_MUMIMO_E1R_E3R_R1_fixed.zip`.

@@ -19,8 +19,9 @@ Kho nghiên cứu được tổ chức theo ba lớp độc lập:
 | `version_07` | Fixed-margin ZF/RZF feasibility diagnosis, từng CP | `6439c5e` | CP00–CP06 complete; DIAGNOSTIC_ONLY |
 | `version_08` | Robust user scheduling + finite ZF/RZF codebook, từng CP | `2137c3e` | Smoke + DeepMIMO CP00–CP06 complete; EXPLORATORY_EVALUATION |
 | `version_09` | Safe pruning đối chiếu exhaustive, native stages | `e2a3609` | DeepMIMO CP00–CP06 complete; algorithm checks passed on development |
+| `version_10` | Certified safe-pruning ablation và numerical audit | `68069e4` | DeepMIMO CP00–CP07 complete; PASS_EXACTNESS on development |
 
-Version mới nhất là [`src/version_09_robust_safe_pruning`](src/version_09_robust_safe_pruning).
+Version mới nhất là [`src/version_10_robust_safe_pruning_certified_audit`](src/version_10_robust_safe_pruning_certified_audit).
 
 ## Hai phiên bản đầu tiên được khôi phục
 
@@ -32,6 +33,19 @@ Hai ZIP gốc được đối chiếu checksum và chạy lại ngày 2026-11-02
 Các replay dùng lại dataset `deepmimo_asu35_v1`, vì vậy là tái dựng lịch sử trên development data. Xem [run ver1](log/version_01/runs/DM_ASU35_R1_REPLAY_20261102/RUN.md) và [run ver2](log/version_02/runs/DM_ASU35_E1R_E3R_REPLAY_20261102/RUN.md).
 
 ## Kết quả hiện tại
+
+Run `DM_ASU35_CERT_AUDIT_20261104` dùng native stages `preflight → scan → report` của certified-ablation audit:
+
+- 160 geometry, 160 group labels, 105 ứng viên/geometry và tổng cộng 16.800 quyết định candidate được kiểm toán.
+- Tất cả bảy cấu hình ablation khớp exhaustive trên 160/160 geometry; không phát hiện false prune.
+- ALL dùng trung bình 8.5375 full solves, so với 19.3375 của CARDINALITY_ONLY; tiết kiệm 10.8 lượt/geometry với descriptive bootstrap 95% `[8.8622, 12.8125]`.
+- Runtime ghép cặp giảm trung bình 1.486 ms/geometry; descriptive bootstrap 95% `[1.0599, 1.9279]`, nên CP06 đặt `runtime_advantage_confirmed=true` cho run đã ghi nhận.
+- CP00–CP07 hoàn tất và checksum hợp lệ; 5/5 unit test gốc PASS.
+- Trạng thái: **PASS_EXACTNESS_ON_DEVELOPMENT_DATA**. Kết luận chỉ áp dụng cho finite ZF/RZF candidate family và dữ liệu đã quan sát; chưa phải independent 3GPP validation, global beamforming certificate hoặc formal interval proof.
+
+Xem [run card version 10](log/version_10/runs/DM_ASU35_CERT_AUDIT_20261104/RUN.md) và [source/lệnh tái chạy](src/version_10_robust_safe_pruning_certified_audit/README.md).
+
+## Kết quả trước đó (version 09)
 
 Run `DM_ASU35_SAFE_DEV_20261102` dùng nguyên `safe_pruning.py`/`reference_model.py` từ ZIP ngày 2026-11-02, theo ba stage gốc `preflight → scan → report`:
 
@@ -91,7 +105,7 @@ Version 07 tái phân tích dataset này; không tạo holdout độc lập và 
 
 ## Data policy
 
-Real datasets được lưu ngoài Git. Version 6–9 sử dụng kho cục bộ:
+Real datasets được lưu ngoài Git. Version 6–10 sử dụng kho cục bộ:
 
 ```text
 /media/icnlab/Data/hoanganh/datasets/csi_margin_calibration/

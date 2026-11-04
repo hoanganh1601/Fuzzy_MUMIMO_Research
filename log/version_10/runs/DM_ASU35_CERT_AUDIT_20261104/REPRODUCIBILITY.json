@@ -1,0 +1,12 @@
+{
+  "run_id": "DM_ASU35_CERT_AUDIT_20261104",
+  "source_entrypoint": "src/version_10_robust_safe_pruning_certified_audit/code/ablation_certified.py",
+  "dataset_external_path": "/media/icnlab/Data/hoanganh/datasets/csi_margin_calibration/data/deepmimo.npz",
+  "dataset_sha256": "1d479a06b94fff565a8997ceb870c670bda7458dbf5e5cd54c2fc0afc14b1f50",
+  "stages": ["preflight", "scan", "report"],
+  "task_cache_committed": false,
+  "console_log_committed": false,
+  "report_bundle_sha256": "65a46cce9ccebdcc1771103fae7ca8c13d519d4ad49388eb4d53a1f85d6fc02d",
+  "report_bundle_location": "/media/icnlab/Data/hoanganh/Results.of.Robust.Safe.Pruning.Certified.Audit.20261104.zip"
+}
+

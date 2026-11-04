@@ -1,0 +1,85 @@
+\documentclass[onecolumn,11pt]{IEEEtran}
+\usepackage{fontspec}
+\setmainfont{DejaVu Serif}
+\usepackage{amsmath,amssymb,booktabs,longtable,geometry,hyperref,array}
+\geometry{a4paper,margin=21mm}
+\hypersetup{hidelinks}
+\title{Kiểm toán sàng lọc an toàn và đối chứng ablation trong lựa chọn người dùng và hướng beam dưới ràng buộc SINR}
+\author{Hướng dẫn tái lập thực nghiệm -- phiên bản 04/11/2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Xét đường xuống nhiều người dùng với $M$ anten trạm gốc, bốn người dùng ứng viên và tập hướng beam zero-forcing (ZF) và regularized zero-forcing (RZF). Bài toán ưu tiên tối đa số người dùng đáp ứng tỷ số tín hiệu trên giao thoa cộng nhiễu (SINR), rồi tối thiểu công suất phát. Chương trình kiểm tra tính đúng của các điều kiện loại ứng viên, định lượng lợi ích tăng thêm so với duyệt theo số lượng người dùng, kiểm toán trường hợp sát ngưỡng và hỗ trợ khôi phục sau gián đoạn. Bán kính bất định thông tin trạng thái kênh (CSI) được giữ cố định. Mọi kết luận tối ưu chỉ áp dụng cho tập ứng viên ZF/RZF hữu hạn đã cho.
+\end{abstract}
+\section{Bài toán và giới hạn chứng minh}
+Với $K=4$, có $2^K-1=15$ tập người dùng khác rỗng. Mỗi tập sử dụng bảy hướng ZF/RZF, tạo $105$ cặp ứng viên cho một cấu hình kênh. Với tập $\mathcal S$ và hướng beam đã chuẩn hóa, mô hình công suất là
+\begin{equation}
+\mathbf p\succeq\mathbf F_{\mathcal S,\alpha}\mathbf p+\mathbf u_{\mathcal S,\alpha},\quad \mathbf p\succeq\mathbf0,\quad \mathbf1^T\mathbf p\leq P_{\max},\label{eq:pc}
+\end{equation}
+trong đó $\mathbf F\succeq0$ là ma trận giao thoa không âm và $\mathbf u\succ0$ biểu diễn yêu cầu công suất do nhiễu. Phương trình (\ref{eq:pc}) quyết định khả năng chấp nhận tập người dùng ở một hướng beam và giới hạn công suất cho trước. Khi $\rho(\mathbf F)<1$, nghiệm công suất tối thiểu theo từng thành phần là $\mathbf p^*=(\mathbf I-\mathbf F)^{-1}\mathbf u$.
+
+Mục tiêu theo thứ tự từ điển là $\max |\mathcal S|$ và sau đó $\min\mathbf1^T\mathbf p$. Sau khi tìm được nghiệm tốt nhất trong toàn bộ các ứng viên có $|\mathcal S|=s$, có thể bỏ các tập nhỏ hơn $s$. Không được suy diễn tính bất khả thi của một tập người dùng sang tập lớn hơn vì beam được thiết kế lại cho từng tập.
+\section{Các điều kiện sàng lọc và kiểm toán số học}
+\textbf{Cận chuẩn kênh:} Với sai số CSI có bán kính $r_k$, chuẩn beam bằng một và $a_k^{\rm ub}=(\|\widehat{\mathbf h}_k\|-r_k)_+^2$, mọi nghiệm khả thi phải thỏa
+\begin{equation}
+L_{\rm norm}=\sum_{k\in\mathcal S}\frac{\gamma_k\sigma_n^2}{a_k^{\rm ub}}\leq P_{\max}.\label{eq:norm}
+\end{equation}
+Cận (\ref{eq:norm}) loại ứng viên nếu yêu cầu công suất tối thiểu lạc quan đã vượt ngân sách. Mẫu số bằng không được xử lý riêng.
+
+\textbf{Cận Neumann:} Với $\mathbf F\succeq0$, $\mathbf u\succ0$ và $T\geq0$, mọi nghiệm của (\ref{eq:pc}) phải thỏa
+\begin{equation}
+\mathbf 1^T\sum_{t=0}^{T}\mathbf F^t\mathbf u\leq P_{\max}.\label{eq:neumann}
+\end{equation}
+Trong mã, $T\leq4$; $T=0$ là cận nhiễu. Tổng riêng phần không âm tạo cận dưới công suất, dùng để loại nghiệm vượt ngân sách mà chưa giải hệ đầy đủ.
+
+\textbf{Chu trình hai người dùng:} Nếu $F_{ij}F_{ji}>1$, tính đơn điệu của bán kính phổ với ma trận không âm cho $\rho(\mathbf F)>1$, nên phương trình (\ref{eq:pc}) không có nghiệm công suất hữu hạn dương. Mã cũng kiểm tra độ lợi tín hiệu robust bằng không. Tại các ngưỡng bằng nhau hoặc sát nhau, không loại ứng viên theo suy luận dấu số thực hữu hạn độ chính xác.
+
+\textbf{Quy tắc fail-open:} Bất kỳ certificate có khoảng cách tương đối tới ngưỡng nhỏ hơn hoặc bằng $\delta_{\rm num}=10^{-5}$ đều phải chuyển sang giải đầy đủ, thay vì bị loại. Chương trình tính lại bất đẳng thức bằng \texttt{mpmath} với 70 chữ số thập phân để chẩn đoán, nhưng vẫn giữ ứng viên. Phép tính chính xác cao sử dụng hệ số kênh/beam đã được tính ở độ chính xác máy, \emph{không phải chứng nhận interval arithmetic} cho toàn bộ quá trình tạo beam. Đây là bảo vệ số học có chủ đích, không phải bảo đảm tuyệt đối với mọi đầu vào thực.
+
+\section{Thiết kế đối chứng và điều kiện kết luận}
+Chương trình chạy \textbf{bảy} cấu hình. Hai cấu hình đầu là \texttt{ALL} và \texttt{CARDINALITY\_ONLY}. Năm cấu hình còn lại lần lượt tắt một điều kiện sàng lọc. Mỗi cấu hình được đối chiếu exhaustive về số người dùng, tập con, hệ số RZF và công suất. Giá trị \texttt{same\_solution} chỉ xác nhận tối ưu trong tập ứng viên hữu hạn. Bộ giải exhaustive không được sử dụng để lựa chọn ứng viên ở nhánh screening; kết quả exhaustive chỉ dùng kiểm toán sau khi tính toán.
+
+Lợi ích riêng của các certificate được đánh giá bằng hiệu số ghép cặp
+\begin{equation}
+\Delta N_g=N_{g,\rm cardinality}-N_{g,\rm all},\qquad
+\Delta t_g=t_{g,\rm cardinality}-t_{g,\rm all}.
+\end{equation}
+Hai hiệu số đo số lần giải đầy đủ tiết kiệm và chênh lệch runtime trên cùng geometry. Tính khoảng tin cậy bootstrap theo nhóm, đồng thời báo cáo số nhóm; tên nhóm không tự chứng minh độc lập thống kê. Thời gian phải tính cả sàng lọc, tạo beam và xử lý ràng buộc.
+
+\textbf{PASS tính đúng} khi mọi nghiệm khớp exhaustive và không phát hiện certificate loại nhầm. \textbf{GO lợi ích tính toán} chỉ khi số lần giải giảm bổ sung và runtime giảm ổn định so với \texttt{CARDINALITY\_ONLY} trên kênh kiểm thử độc lập. Nếu khoảng tin cậy runtime chứa 0, chỉ ghi nhận mức giảm lời gọi bộ giải; không khẳng định tăng tốc riêng của certificate.
+\section{Đầu vào, checkpoint và khôi phục}
+Tệp NPZ có \texttt{H} phức, kích thước $N\times M\times4$, \texttt{groups} có $N$ nhãn và tùy chọn \texttt{xyz}, \texttt{scenario}. Dùng cùng margin $q_c$, sai số CSI, ngưỡng SINR, công suất nhiễu, $P_{\max}$ và danh sách hệ số RZF cho mọi ablation. Không điều chỉnh tham số dựa trên test đã quan sát. Khi dùng dữ liệu mới, kiểm tra đơn vị công suất và chuẩn hóa kênh.
+
+\small
+\begin{longtable}{p{.10\linewidth}>{\raggedright\arraybackslash}p{.78\linewidth}}
+\toprule Checkpoint & Tệp xuất và mục đích\\ \midrule\endhead
+CP00 & \texttt{CP00\_manifest.json}: cấu hình, số geometry, số nhóm, SHA-256 nguồn và dữ liệu.\\
+CP01 & \texttt{CP01\_ablation\_geometry.csv}: kết quả từng geometry và cấu hình ablation, số lời gọi giải, thời gian sàng lọc, thời gian giải.\\
+CP02 & \texttt{CP02\_all\_candidate\_audit.csv}: đủ 105 ứng viên/geometry, quyết định screening, trạng thái exhaustive, độ lệch ngưỡng, fail-open và kiểm tra số học chính xác cao.\\
+CP03 & \texttt{CP03\_ablation\_summary.csv}: độ chính xác, số lần giải và runtime trung bình của từng cấu hình.\\
+CP04 & \texttt{CP04\_numerical\_audit.csv}: số certificate được loại, số trường hợp fail-open, số lần kiểm tra độ chính xác cao và số lần loại nhầm.\\
+CP05 & \texttt{CP05\_paired\_incremental.csv}: so sánh ghép cặp ALL và CARDINALITY\_ONLY theo geometry.\\
+CP06 & \texttt{CP06\_decision.json}: PASS/FAIL, bootstrap theo nhóm, giới hạn bằng chứng.\\
+CP07 & \texttt{CP07\_sha256.csv}: chữ ký toàn vẹn CP00--CP06.\\ \bottomrule
+\end{longtable}
+\normalsize
+
+Checkpoint riêng được lưu tại \texttt{outputs/<run-id>/tasks/<geometry>.json}; mỗi tệp được ghi nguyên tử. Chạy lại cùng lệnh \texttt{--stage scan} sẽ bỏ qua geometry hoàn chỉnh. Khi mã, dữ liệu hoặc tham số thay đổi, chữ ký SHA-256 không khớp và chương trình từ chối tiếp tục; bắt buộc dùng \texttt{run-id} mới. Nếu một checkpoint bị hỏng, phải giữ bản hỏng để kiểm toán rồi chạy lại bằng run-id khác.
+\section{Lệnh chạy trên Windows/PowerShell}
+Giải nén vào thư mục có tên \texttt{Robust\_Safe\_Pruning\_Certified\_Audit\_20261104}, mở PowerShell tại đây và chạy:
+\begin{footnotesize}
+\begin{verbatim}
+python -m pip install -r code/requirements.txt
+python -m unittest discover -s tests -v
+python code/ablation_certified.py --stage preflight `
+  --dataset data/deepmimo.npz --run-id DM_CERT01
+python code/ablation_certified.py --stage scan `
+  --dataset data/deepmimo.npz --run-id DM_CERT01
+python code/ablation_certified.py --stage report `
+  --dataset data/deepmimo.npz --run-id DM_CERT01
+\end{verbatim}
+\end{footnotesize}
+Nếu bị mất điện, lặp lại lệnh \texttt{--stage scan}, sau đó chạy \texttt{--stage report}. Để thử trước với synthetic, dùng \texttt{--dataset data/smoke.npz --run-id SMOKE\_CERT01 --limit 12}. Các tham số tùy chọn: \texttt{--numeric-guard 1e-5}, \texttt{--bootstrap 2000}, \texttt{--q 2.960414}, \texttt{--pmax 1}. Phải lặp lại cùng tham số ở tất cả các bước. Một tập 3GPP độc lập sử dụng NPZ cùng định dạng, \texttt{run-id} mới và giữ nguyên cấu hình.
+\section{Giới hạn công bố}
+Kết quả synthetic chỉ kiểm tra luồng mã. Chưa xác nhận runtime/độ chính xác trên DeepMIMO hoặc 3GPP độc lập trong gói phát hành này. Kết quả 160 geometry v9 trước đó thuộc dữ liệu phát triển, không phải kiểm chứng độc lập mới. Những bằng chứng cần báo cáo trong manuscript là tính đúng theo mô hình, ablation của certificate so với cardinality-only, kiểm toán sát ngưỡng, đánh giá trên kênh độc lập và runtime trên cùng phần cứng. Không quy toàn bộ mức giảm so với exhaustive cho các certificate.
+\end{document}

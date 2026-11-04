@@ -1,0 +1,13 @@
+{
+  "status": "PASS_EXACTNESS_ON_DEVELOPMENT_DATA",
+  "unit_tests": "5/5 PASS",
+  "geometry_checkpoints": 160,
+  "candidate_count": 16800,
+  "exact_matches": 160,
+  "false_prunes": 0,
+  "runtime_advantage_confirmed_on_recorded_run": true,
+  "independent_validation": false,
+  "global_beamforming_optimality": false,
+  "formal_interval_certificate": false
+}
+
