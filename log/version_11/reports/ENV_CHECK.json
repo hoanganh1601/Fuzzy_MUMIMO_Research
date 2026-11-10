@@ -1,0 +1,31 @@
+{
+ "machine": "Linux-7.0.0-42-generic-x86_64-with-glibc2.39",
+ "processor": "x86_64",
+ "versions": {
+  "python": "3.12.3",
+  "numpy": "2.5.4",
+  "scipy": "1.18.1"
+ },
+ "tests": {
+  "run": 23,
+  "failures": 0,
+  "errors": 0
+ },
+ "fingerprint": "MATCH",
+ "dataset": {
+  "path": "/media/icnlab/Data/hoanganh/datasets/csi_margin_calibration/data/deepmimo.npz",
+  "sha256": "1d479a06b94fff565a8997ceb870c670bda7458dbf5e5cd54c2fc0afc14b1f50",
+  "shape": [
+   160,
+   16,
+   4
+  ],
+  "groups": 160,
+  "is_v10_development_set": true,
+  "metadata": [
+   "scenario",
+   "xyz"
+  ]
+ },
+ "outcome": "PASS"
+}

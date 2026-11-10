@@ -1,0 +1,173 @@
+{
+  "dataset_label": "DeepMIMO v10 development set",
+  "A": {
+    "n": 160,
+    "candidates": 105,
+    "exact_matches": {
+      "EXHAUSTIVE": 160,
+      "ALL": 160,
+      "CARDINALITY_ONLY": 160,
+      "WITHOUT_NORM_NOISE_LOWER_BOUND": 160,
+      "WITHOUT_ZERO_ROBUST_GAIN": 160,
+      "WITHOUT_NOISE_LOWER_BOUND": 160,
+      "WITHOUT_NEUMANN_LOWER_BOUND": 160,
+      "WITHOUT_TWO_CYCLE_COUPLING": 160
+    },
+    "cardinality_distribution": {
+      "4": 97,
+      "3": 58,
+      "2": 5,
+      "1": 0,
+      "0": 0
+    },
+    "mean_admitted_users": 3.575,
+    "mean_power_w_by_cardinality": {
+      "4": 0.34846406204612523,
+      "3": 0.27857785456317213,
+      "2": 0.09674987933475929
+    },
+    "beam_type_of_optimum": {
+      "ZF": 42,
+      "RZF": 118
+    },
+    "false_prunes": 0,
+    "fail_open": 0
+  },
+  "B": {
+    "solves": {
+      "exhaustive": 105.0,
+      "cardinality_only": 19.3375,
+      "all": 8.5375
+    },
+    "runtime_ms": {
+      "exhaustive": 140.89233678723758,
+      "cardinality_only": 15.583804837751813,
+      "all": 16.40463885059944
+    },
+    "solve_reduction_vs_cardinality_pct": 55.850032320620564,
+    "runtime_reduction_vs_cardinality_pct": -5.26722466941548,
+    "runtime_reduction_vs_exhaustive_pct": 88.35661383388637,
+    "runtime_saved_vs_cardinality_ci95": {
+      "lo": -1.267453111213399,
+      "hi": -0.37825079411049967,
+      "n_groups": 160,
+      "note": "cluster_bootstrap_descriptive"
+    },
+    "runtime_saved_vs_exhaustive_ci95": {
+      "lo": 118.90784161023248,
+      "hi": 130.33567066627256,
+      "n_groups": 160,
+      "note": "cluster_bootstrap_descriptive"
+    },
+    "solver_calls_saved_ci95": {
+      "lo": 8.862187500000001,
+      "hi": 12.8125,
+      "n_groups": 160,
+      "note": "cluster_bootstrap_descriptive"
+    },
+    "runtime_advantage_vs_cardinality_confirmed": false,
+    "pruned_by_reference_status": {
+      "ZERO_ROBUST_DIRECT_GAIN": 11,
+      "COUPLING_RHO_GE_ONE": 1481,
+      "POWER_BUDGET": 1023
+    },
+    "solve_cost_by_status_ms": {
+      "COUPLING_RHO_GE_ONE": {
+        "beam": 0.11863589267859254,
+        "power_solve": 0.025079803076661203,
+        "n": 1484
+      },
+      "FEASIBLE": {
+        "beam": 0.20416777056911084,
+        "power_solve": 1.4343164221091913,
+        "n": 14222
+      },
+      "POWER_BUDGET": {
+        "beam": 0.14431258011157844,
+        "power_solve": 0.05279958353696919,
+        "n": 1083
+      },
+      "ZERO_ROBUST_DIRECT_GAIN": {
+        "beam": 0.27138591394759715,
+        "power_solve": 0.001354539893906225,
+        "n": 11
+      }
+    },
+    "repeats": 5,
+    "screening_cost_ms": 1.36774391421568,
+    "estimated_power_solve_time_avoided_ms": 0.5698253890855481
+  },
+  "B2": [
+    {
+      "rule": "NORM_NOISE_LOWER_BOUND",
+      "delta_solves": 0.0,
+      "delta_runtime_ms": -0.4652676617297402,
+      "prunes_under_all": 1.53125
+    },
+    {
+      "rule": "ZERO_ROBUST_GAIN",
+      "delta_solves": 0.0625,
+      "delta_runtime_ms": 0.10984024283970939,
+      "prunes_under_all": 0.0625
+    },
+    {
+      "rule": "NOISE_LOWER_BOUND",
+      "delta_solves": 0.0,
+      "delta_runtime_ms": 0.04415305547809112,
+      "prunes_under_all": 3.70625
+    },
+    {
+      "rule": "NEUMANN_LOWER_BOUND",
+      "delta_solves": 0.875,
+      "delta_runtime_ms": -0.47927903797244653,
+      "prunes_under_all": 5.25
+    },
+    {
+      "rule": "TWO_CYCLE_COUPLING",
+      "delta_solves": 0.25,
+      "delta_runtime_ms": -0.17327992427453864,
+      "prunes_under_all": 0.25
+    }
+  ],
+  "C": {
+    "n_cases": 1030,
+    "false_prunes": 0,
+    "fail_open_cases": 324,
+    "feasible_reference_cases": 515,
+    "pruned_cases": 161,
+    "by_family": {
+      "algebraic:COUPLING": {
+        "cases": 10,
+        "feasible_truth": 5,
+        "prune": 2,
+        "fail_open": 1,
+        "false_prune": 0
+      },
+      "algebraic:POWER": {
+        "cases": 10,
+        "feasible_truth": 5,
+        "prune": 1,
+        "fail_open": 0,
+        "false_prune": 0
+      },
+      "algebraic:POWER_TIGHT": {
+        "cases": 10,
+        "feasible_truth": 5,
+        "prune": 2,
+        "fail_open": 1,
+        "false_prune": 0
+      },
+      "channel:POWER": {
+        "cases": 1000,
+        "feasible_truth": 500,
+        "prune": 156,
+        "fail_open": 322,
+        "false_prune": 0
+      }
+    },
+    "outcome": "PASS",
+    "fail_reasons": [],
+    "scope": "Positive-F,u algebraic boundary and single-user CSI-derived power boundary; exact rational reference on double coefficients, not interval guarantee for beam generation."
+  },
+  "D": {}
+}

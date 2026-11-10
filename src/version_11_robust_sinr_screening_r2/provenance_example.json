@@ -1,0 +1,10 @@
+{
+ "source": "DeepMIMO",
+ "scenario": "NEW_SCENARIO_NOT_USED_IN_DEVELOPMENT",
+ "split": "new_independent_test",
+ "generation_method": "Record DeepMIMO version, ray-tracing scenario and export script",
+ "independence_basis": "Document disjoint location blocks, nonoverlap with development, propagation correlation limitations",
+ "channel_units": "Complex channel gain, physical or normalized; record noise calibration",
+ "group_definition": "Nonoverlapping spatial blocks, with coordinates retained in the original dataset",
+ "created_before_test": true
+}

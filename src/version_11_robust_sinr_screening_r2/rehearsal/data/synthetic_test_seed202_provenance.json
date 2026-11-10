@@ -1,0 +1,10 @@
+{
+ "source": "other_independent",
+ "scenario": "SYNTHETIC_REHEARSAL seed=202",
+ "split": "new_independent_test",
+ "generation_method": "code/make_synthetic.py clustered ULA multipath; NOT DeepMIMO/3GPP",
+ "independence_basis": "Different generator seed drawn after protocol lock; rehearsal only, no physical independence claim",
+ "channel_units": "Complex baseband gain incl. log-distance path loss (35 dB/decade) and 4 dB shadowing",
+ "group_definition": "One spatial block per group (centre azimuth, distance, user spread)",
+ "created_before_test": true
+}

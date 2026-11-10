@@ -1,0 +1,24 @@
+{
+  "dataset_sha": "04ee0d15c1d7673dd58698721bf8a670fad7a5de380fd470308e669cb0c51ad5",
+  "dataset_path": "/media/icnlab/Data/hoanganh/Robust_SINR_Screening_R2_20261106/rehearsal/data/synthetic_test_seed202.npz",
+  "provenance_sha": "da2415b50d21216f4bf5d78e39df9f0e0ac213eecc643d8a92b3001999d3d0c1",
+  "provenance": {
+    "source": "other_independent",
+    "scenario": "SYNTHETIC_REHEARSAL seed=202",
+    "split": "new_independent_test",
+    "generation_method": "code/make_synthetic.py clustered ULA multipath; NOT DeepMIMO/3GPP",
+    "independence_basis": "Different generator seed drawn after protocol lock; rehearsal only, no physical independence claim",
+    "channel_units": "Complex baseband gain incl. log-distance path loss (35 dB/decade) and 4 dB shadowing",
+    "group_definition": "One spatial block per group (centre azimuth, distance, user spread)",
+    "created_before_test": true
+  },
+  "n": 160,
+  "n_groups": 32,
+  "metadata_fields": [
+    "scenario",
+    "xyz"
+  ],
+  "smoke": false,
+  "development_groups_sha": null,
+  "independence_caveat": "Independence is asserted by data provenance, not verified statistically by this program."
+}

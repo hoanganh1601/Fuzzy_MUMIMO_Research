@@ -50,6 +50,8 @@ datasets/
 !src/version_08_robust_user_scheduling/data/smoke.npz
 !src/version_09_robust_safe_pruning/data/smoke.npz
 !src/version_10_robust_safe_pruning_certified_audit/data/smoke.npz
+!src/version_11_robust_sinr_screening_r2/smoke.npz
+!src/version_11_robust_sinr_screening_r2/rehearsal/data/*.npz
 
 # Generated runs: only curated files under log/ are versioned
 outputs/
@@ -65,6 +67,8 @@ reports/
 # Archives are ignored except curated run bundles
 *.zip
 !log/**/*.zip
+!log/version_11/reports/
+!log/version_11/reports/**
 
 # LaTeX intermediate files
 *.aux
