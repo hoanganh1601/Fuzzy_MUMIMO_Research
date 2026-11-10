@@ -1,0 +1,13 @@
+{
+  "code_version": "11",
+  "source_commit": "1b0bca02bbf515a01a4104280b3530ea5a5c9c2f",
+  "development_dataset_sha256": "1d479a06b94fff565a8997ceb870c670bda7458dbf5e5cd54c2fc0afc14b1f50",
+  "synthetic_test_sha256": "04ee0d15c1d7673dd58698721bf8a670fad7a5de380fd470308e669cb0c51ad5",
+  "python": "3.12.3",
+  "numpy": "2.5.4",
+  "scipy": "1.18.1",
+  "task_caches_committed": false,
+  "console_logs_committed": false,
+  "real_channel_matrix_committed": false,
+  "report_bundle": "reports/Results.Robust.SINR.Screening.R2.V11.20261110.zip"
+}

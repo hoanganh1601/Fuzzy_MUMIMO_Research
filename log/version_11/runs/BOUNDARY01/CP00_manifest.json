@@ -1,0 +1,21 @@
+{
+  "signature": "5a45b0ee6e3a10ad64b4d78e3fecdb56cbe9f170aa78dbc1c2b1bbc26af05d53",
+  "config": {
+    "dataset": "/media/icnlab/Data/hoanganh/datasets/csi_margin_calibration/data/deepmimo.npz",
+    "limit": 50,
+    "delta_list": "1e-3,1e-5,1e-7,1e-9,1e-11",
+    "guard": 1e-05,
+    "q": 2.960414,
+    "sigma_rel": 0.04,
+    "sinr_db": 6.0,
+    "noise": 2e-13,
+    "dataset_sha": "1d479a06b94fff565a8997ceb870c670bda7458dbf5e5cd54c2fc0afc14b1f50",
+    "code_sha": "76b885d3d6b3d4248472998f71a00e86d7f76990c5b50d8425e5b3b6b9280ecd",
+    "dependency_sha": {
+      "reference_model.py": "1a420499f48f88a8ee75ada1d833723a810187bf5974f92cfff8426a62a79db8",
+      "ablation_audit.py": "c283faa4d84a045162f4763d5c10c7e58821b96eef0006d9da9acd19ace6f10a",
+      "ablation_certified.py": "6de914ad38e8b59be4ab0bf0bad679f0f87375059c4a9504178911eb18adea33"
+    }
+  },
+  "scope": "stress, not field reliability"
+}

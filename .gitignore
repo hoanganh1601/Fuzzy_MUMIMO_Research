@@ -67,6 +67,8 @@ reports/
 # Archives are ignored except curated run bundles
 *.zip
 !log/**/*.zip
+!log/version_11/reports/
+!log/version_11/reports/**
 
 # LaTeX intermediate files
 *.aux

@@ -20,8 +20,9 @@ Kho nghiên cứu được tổ chức theo ba lớp độc lập:
 | `version_08` | Robust user scheduling + finite ZF/RZF codebook, từng CP | `2137c3e` | Smoke + DeepMIMO CP00–CP06 complete; EXPLORATORY_EVALUATION |
 | `version_09` | Safe pruning đối chiếu exhaustive, native stages | `e2a3609` | DeepMIMO CP00–CP06 complete; algorithm checks passed on development |
 | `version_10` | Certified safe-pruning ablation và numerical audit | `68069e4` | DeepMIMO CP00–CP07 complete; PASS_EXACTNESS on development |
+| `version_11` | Robust SINR Screening R2, repeated runtime và locked validation workflow | `1b0bca0` | A+B+C complete; synthetic D rehearsal complete; no runtime GO |
 
-Version mới nhất là [`src/version_10_robust_safe_pruning_certified_audit`](src/version_10_robust_safe_pruning_certified_audit).
+Version mới nhất là [`src/version_11_robust_sinr_screening_r2`](src/version_11_robust_sinr_screening_r2).
 
 ## Hai phiên bản đầu tiên được khôi phục
 
@@ -33,6 +34,19 @@ Hai ZIP gốc được đối chiếu checksum và chạy lại ngày 2026-11-02
 Các replay dùng lại dataset `deepmimo_asu35_v1`, vì vậy là tái dựng lịch sử trên development data. Xem [run ver1](log/version_01/runs/DM_ASU35_R1_REPLAY_20261102/RUN.md) và [run ver2](log/version_02/runs/DM_ASU35_E1R_E3R_REPLAY_20261102/RUN.md).
 
 ## Kết quả hiện tại
+
+Version 11 chạy lại R2 trên 160 geometry DeepMIMO development với năm lần lặp runtime:
+
+- 16.800 ứng viên; mọi biến thể khớp exhaustive 160/160 và không phát hiện false prune.
+- ALL giảm full solves từ 19.3375 xuống 8.5375 so với cardinality-only (55.85%).
+- ALL mất 16.4046 ms so với 15.5838 ms của cardinality-only, tức chậm hơn 5.27%; CI95 của runtime saving là `[-1.2675,-0.3783]` ms, nên không có runtime GO.
+- Boundary C PASS trên 1.030 ca, 0 false prune và 324 fail-open.
+- Synthetic D rehearsal AUDIT_PASS, giảm 17.6313 calls/geometry nhưng chậm hơn cardinality-only 5.47%; đây không phải independent validation thật.
+- Môi trường PASS, 23/23 test và smoke fingerprint MATCH.
+
+Xem [run log version 11](log/version_11/README.md), [bảng manuscript](log/version_11/reports/V11_MANUSCRIPT_TABLES.md) và [source R2](src/version_11_robust_sinr_screening_r2/README.md).
+
+## Kết quả trước đó (version 10)
 
 Run `DM_ASU35_CERT_AUDIT_20261104` dùng native stages `preflight → scan → report` của certified-ablation audit:
 
@@ -105,7 +119,7 @@ Version 07 tái phân tích dataset này; không tạo holdout độc lập và 
 
 ## Data policy
 
-Real datasets được lưu ngoài Git. Version 6–10 sử dụng kho cục bộ:
+Real datasets được lưu ngoài Git. Version 6–11 sử dụng kho cục bộ:
 
 ```text
 /media/icnlab/Data/hoanganh/datasets/csi_margin_calibration/

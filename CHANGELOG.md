@@ -1,5 +1,14 @@
 # Changelog
 
+## v11.0.0 — 2026-11-10
+
+- Nhập source R2 ngày 2026-11-06, IEEE boundary/independent guide, Windows launcher, five-test-module suite và smoke decision fingerprint.
+- Chạy 23/23 test PASS và fingerprint MATCH trên Python 3.12.3, NumPy 2.5.4, SciPy 1.18.1.
+- Chạy A+B trên 160 geometry DeepMIMO development với năm runtime repeats: 160/160 exact, 0 false prune, giảm 55.85% full solves so với cardinality-only.
+- Ghi nhận ALL chậm hơn cardinality-only 5.27%; không xác nhận runtime advantage. Boundary C PASS trên 1.030 ca với 324 fail-open.
+- Hoàn tất locked synthetic D rehearsal: AUDIT_PASS, 0 false prune, giảm solver calls nhưng runtime chậm hơn 5.47%; không gọi đây là independent DeepMIMO/3GPP validation.
+- Lưu CP chọn lọc, manuscript tables, ENV check, provenance và checksum; loại task cache, console log và real channel matrices.
+
 ## v10.0.0 — 2026-11-04
 
 - Nhập source, tests và IEEE guide của certified safe-pruning ablation audit; giữ nguyên các chương trình reference/version trước để kiểm toán.

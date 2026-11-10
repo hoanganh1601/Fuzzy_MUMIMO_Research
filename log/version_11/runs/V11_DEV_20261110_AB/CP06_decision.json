@@ -1,0 +1,78 @@
+{
+  "status": "PASS_EXACTNESS",
+  "n_geometries": 160,
+  "n_groups": 160,
+  "candidate_count": 16800,
+  "false_prunes": 0,
+  "n_near_fail_open": 0,
+  "additional_solver_calls_saved_mean": 10.8,
+  "paired_runtime_saved_mean_ms": -0.8208340128476266,
+  "solver_calls_ci95": {
+    "lo": 8.862187500000001,
+    "hi": 12.8125,
+    "n_groups": 160,
+    "note": "cluster_bootstrap_descriptive"
+  },
+  "runtime_saved_ci95": {
+    "lo": -1.267453111213399,
+    "hi": -0.37825079411049967,
+    "n_groups": 160,
+    "note": "cluster_bootstrap_descriptive"
+  },
+  "runtime_saved_vs_exhaustive_ci95": {
+    "lo": 118.90784161023248,
+    "hi": 130.33567066627256,
+    "n_groups": 160,
+    "note": "cluster_bootstrap_descriptive"
+  },
+  "exactness": {
+    "cardinality_distribution": {
+      "4": 97,
+      "3": 58,
+      "2": 5,
+      "1": 0,
+      "0": 0
+    },
+    "mean_admitted_users": 3.575,
+    "mean_power_w_by_cardinality": {
+      "4": 0.34846406204612523,
+      "3": 0.27857785456317213,
+      "2": 0.09674987933475929
+    },
+    "beam_type_of_optimum": {
+      "ZF": 42,
+      "RZF": 118
+    }
+  },
+  "repeats": 5,
+  "runtime_advantage_confirmed": false,
+  "numerical_scope": "Exact rational recheck only re-evaluates derived floating-point coefficients; no formal interval proof.",
+  "inference_scope": "Finite candidate family only; already-observed geometries are development.",
+  "pruned_candidates_by_reference_status": {
+    "ZERO_ROBUST_DIRECT_GAIN": 11,
+    "COUPLING_RHO_GE_ONE": 1481,
+    "POWER_BUDGET": 1023
+  },
+  "solve_cost_by_status_ms": {
+    "COUPLING_RHO_GE_ONE": {
+      "beam": 0.11863589267859254,
+      "power_solve": 0.025079803076661203,
+      "n": 1484
+    },
+    "FEASIBLE": {
+      "beam": 0.20416777056911084,
+      "power_solve": 1.4343164221091913,
+      "n": 14222
+    },
+    "POWER_BUDGET": {
+      "beam": 0.14431258011157844,
+      "power_solve": 0.05279958353696919,
+      "n": 1083
+    },
+    "ZERO_ROBUST_DIRECT_GAIN": {
+      "beam": 0.27138591394759715,
+      "power_solve": 0.001354539893906225,
+      "n": 11
+    }
+  }
+}
