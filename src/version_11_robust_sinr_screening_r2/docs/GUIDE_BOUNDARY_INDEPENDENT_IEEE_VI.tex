@@ -1,0 +1,108 @@
+\documentclass[11pt,onecolumn]{IEEEtran}
+\usepackage{fontspec}
+\setmainfont{DejaVu Serif}
+\usepackage{amsmath,amssymb,booktabs,longtable,array,geometry,hyperref}
+\geometry{a4paper,left=21mm,right=20mm,top=20mm,bottom=20mm}
+\hypersetup{hidelinks}
+\title{Kiểm chứng sàng lọc tính khả thi SINR:\\ Thử nghiệm sát ngưỡng và đánh giá trên kênh độc lập}
+\author{Tài liệu thiết kế và chạy thực nghiệm -- phiên bản 06/11/2026 (R1)}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+Trong mạng đa người dùng MIMO đường xuống, lựa chọn tập người dùng và hướng tạo búp phải thỏa mãn đồng thời giới hạn công suất và tỷ số tín hiệu trên giao thoa cộng nhiễu (SINR). Nghiên cứu kiểm tra tính an toàn của các điều kiện loại ứng viên trước khi giải bài toán công suất, sau đó đánh giá lợi ích runtime so với thuật toán duyệt theo số người dùng. Tất cả kết luận chỉ áp dụng cho tập hữu hạn gồm 15 tập con người dùng và bảy lựa chọn zero-forcing (ZF)/regularized zero-forcing (RZF) khi $K=4$.
+\end{abstract}
+
+\section{Bối cảnh và phạm vi}
+Trạm gốc có $M=16$ anten phục vụ tối đa $K=4$ người dùng với thông tin trạng thái kênh (CSI) ước lượng. Giữ cố định biên bất định CSI $q_c=2.960414$, sai số tương đối $0.04$, ngưỡng SINR $6$ dB và giới hạn công suất danh định $P_{\max}=1$ W. Không điều chỉnh lại margin, không thay thuật toán beamforming và không sử dụng dữ liệu kiểm thử để lựa chọn certificate.
+
+Với tập người dùng $\mathcal S$ và hướng beam $\alpha$, điều kiện robust SINR trong mô hình nguồn được viết dưới dạng
+\begin{equation}
+\mathbf p\geq\mathbf F_{\mathcal S,\alpha}\mathbf p+\mathbf u_{\mathcal S,\alpha},\qquad
+\mathbf p\geq\mathbf 0,\quad \mathbf 1^T\mathbf p\leq P_{\max}.
+\label{eq:power}
+\end{equation}
+Ma trận $\mathbf F\geq\mathbf 0$ mô tả coupling giao thoa; $\mathbf u>\mathbf0$ chứa yêu cầu công suất do nhiễu. Hệ khả thi không giới hạn công suất khi $\rho(\mathbf F)<1$; lúc đó $\mathbf p^*=(\mathbf I-\mathbf F)^{-1}\mathbf u$ là nghiệm thành phần nhỏ nhất. Điều kiện công suất cuối là $\mathbf1^T\mathbf p^*\leq P_{\max}$.
+
+\section{Các điều kiện sàng lọc an toàn}
+Các điều kiện dưới đây là \emph{điều kiện đủ để loại ứng viên}, không phải mô hình dự đoán có xác suất. Chúng được áp dụng riêng cho từng cặp $(\mathcal S,\alpha)$; không suy diễn từ tập nhỏ sang tập lớn khi beam được tính lại.
+
+\subsection{Cận công suất}
+Vì $\mathbf F\geq0$ và $\mathbf u\geq0$, mọi nghiệm khả thi thỏa mãn
+\begin{equation}
+\mathbf p\geq\sum_{j=0}^{L}\mathbf F^j\mathbf u,\qquad L=0,1,\dots.
+\label{eq:neumann}
+\end{equation}
+Nếu tổng các phần tử của cận dưới này vượt $P_{\max}$ thì ứng viên không khả thi. Phép kiểm tra xác định mức công suất tối thiểu đã bị vượt trước khi giải đầy đủ. Cận công suất do nhiễu và cận lạc quan từ chuẩn kênh được kiểm tra tương tự, với điều kiện mọi đại lượng được tính từ beam và CSI tương ứng.
+
+\subsection{Chu trình giao thoa}
+Từ $p_i\geq F_{ij}p_j+u_i$ và $p_j\geq F_{ji}p_i+u_j$, suy ra nếu $F_{ij}F_{ji}\geq1$ và $u_i,u_j>0$ thì không tồn tại nghiệm hữu hạn không âm. Điều kiện này chỉ kiểm tra một cặp người dùng; không thay thế việc tính bán kính phổ cho tất cả trường hợp.
+
+\subsection{Quy tắc xử lý sai số số học}
+Chỉ loại ứng viên nếu bất đẳng thức vi phạm giới hạn với khoảng cách tương đối lớn hơn $\epsilon_{\mathrm{prune}}=10^{-8}$; giá trị này không được nhỏ hơn dung sai $\epsilon_{\mathrm{solve}}=10^{-9}$ mà bộ giải đầy đủ chấp nhận là khả thi, vì nếu nhỏ hơn thì một ứng viên được bộ giải chấp nhận có thể bị loại nhầm. Hai hằng số được khai báo một lần trong \texttt{reference\_model.py} và dùng chung cho mọi module. Với khoảng cách tương đối không quá $\tau=10^{-5}$, đưa ứng viên trở lại bộ giải đầy đủ (\emph{fail-open}) và ghi phép kiểm tra lại bằng số học hữu tỷ chính xác. Kiểm toán này chuyển chính xác từng hệ số dấu phẩy động sang phân số và dùng các hệ số $\mathbf F,\mathbf u$ đã tạo bằng số chấm động; nó không chứng minh chính xác khoảng của toàn bộ chuỗi tạo beam.
+
+\section{Thử nghiệm A1: Boundary stress}
+Tạo hai họ ma trận $\mathbf F\geq0$ để kiểm tra vùng sát ngưỡng:
+\begin{equation}
+\mathbf F_c(\delta)=\begin{bmatrix}0&1\pm\delta\\1&0\end{bmatrix},\quad
+\rho(\mathbf F_c)=\sqrt{1\pm\delta},
+\label{eq:cycle}
+\end{equation}
+đồng thời đặt $P_{\max}=P_{\mathrm{req}}/(1\pm\delta)$ với $\rho(\mathbf F)<1$ để khảo sát biên ngân sách. Các mức $\delta\in\{10^{-3},10^{-5},10^{-7},10^{-9},10^{-11}\}$ được dùng cho cả hai phía ngưỡng. Họ coupling đặt $P_{\max}=2P_{\mathrm{req}}$ ở phía $\rho(\mathbf F)<1$ để phía này khả thi; họ công suất chặt dùng $\mathbf F=\begin{bmatrix}0&0.2\\0&0\end{bmatrix}$ (lũy linh) để cận Neumann trùng với $P_{\mathrm{req}}$, nhờ đó guard và fail-open được kiểm tra đúng tại biên. Phép tính tham chiếu bằng số học hữu tỷ chính xác xác định trạng thái ứng viên từ hệ số đã được mã hóa; điều kiện $\rho(\mathbf F)<1$ được kiểm tra qua tính chất M-matrix của $\mathbf I-\mathbf F$ (mọi pivot khử Gauss dương), không dùng trị riêng dấu phẩy động; bắt buộc không có trường hợp \emph{PRUNE} đối với ứng viên tham chiếu khả thi. Để kiểm tra trực tiếp đường xử lý CSI--beam--power, thêm thử nghiệm một người dùng với $P_{\max}$ đặt quanh công suất yêu cầu. Kết quả xuất tại CP01--CP03.
+
+\section{Thử nghiệm A2: Independent validation}
+Khóa toàn bộ mã, hệ số beam, margin, numerical guard, số lần lặp, số mẫu bootstrap, số nhóm tối thiểu và các seed tại CP00 trước khi nạp dữ liệu test. Tập DeepMIMO kiểm thử phải có hash và nhóm không gian khác tập phát triển; tập Sionna 3GPP TR 38.901 phải được tạo bằng cấu hình kênh độc lập, lưu rõ vận tốc, carrier, băng thông, scenario, seed, đơn vị và chuẩn hóa. Tệp \texttt{provenance.json} ghi nguồn, cách sinh, chia tập, định nghĩa nhóm và căn cứ về tính độc lập. Mã loại từ đầu dữ liệu có hash trùng tập phát triển v10 và có thể đối chiếu nhãn nhóm phát triển bằng tệp JSON. Tên nhóm khác nhau không tự chứng minh độc lập thống kê.
+
+Mỗi geometry chạy exhaustive oracle và hai cấu hình \texttt{ALL}, \texttt{CARDINALITY\_ONLY} trên cùng kênh. Cấu hình \texttt{CARDINALITY\_ONLY} không thực hiện bất kỳ phép screening nào, để runtime baseline chỉ gồm vòng lặp bộ giải theo số người dùng. Lặp runtime tối thiểu năm lần, đảo thứ tự chạy, xuất thời gian xây dựng beam/screening/solver nếu có và so sánh bằng bootstrap theo nhóm. Một nghiệm sai khác về số user, tập user, beam hoặc công suất là FAIL. Các nghiệm chỉ tối ưu trong tập beam hữu hạn, không chứng minh tối ưu beam liên tục.
+
+\section{Điểm kiểm soát và đầu ra}
+\begin{longtable}{p{0.12\linewidth}p{0.39\linewidth}p{0.40\linewidth}}
+\toprule
+Điểm & Tệp & Nội dung bắt buộc\\\midrule
+\endhead
+B-CP00 & \texttt{CP00\_manifest.json} & SHA-256, cấu hình và các mức $\delta$\\
+B-CP01 & \texttt{CP01\_boundary\_cases.csv} & Mỗi trường hợp hai phía ngưỡng, oracle, fail-open\\
+B-CP02 & \texttt{CP02\_boundary\_decision.json} & Số loại nhầm và kết luận PASS/FAIL\\
+B-CP03 & \texttt{CP03\_sha256.csv} & Chữ ký các tệp stress\\
+I-CP00 & \texttt{CP00\_locked\_protocol.json} & Cấu hình khóa trước khi mở test\\
+I-CP01 & \texttt{CP01\_dataset\_audit.json} & Nguồn kênh, provenance, hash, số nhóm\\
+I-CP02 & \texttt{CP02\_runtime\_repetitions.csv} & Runtime từng lần chạy và số lần giải\\
+I-CP03 & \texttt{CP03\_candidate\_audit.csv} & Toàn bộ ứng viên, certificate và oracle\\
+I-CP04 & \texttt{CP04\_paired\_geometry.csv} & Độ lệch ghép cặp so với cardinality-only\\
+I-CP05 & \texttt{CP05\_independent\_decision.json} & Exactness, bootstrap và GO/STOP\\
+I-CP06 & \texttt{CP06\_sha256.csv} & Chữ ký các bảng kiểm chứng\\\bottomrule
+\end{longtable}
+
+Mỗi tác vụ được ghi dạng JSON tại thư mục \texttt{outputs/RUN\_ID/tasks/}. Ghi tệp tạm, đồng bộ xuống đĩa và thay thế nguyên tử. Khi mất điện, chạy lại \texttt{scan} với cùng dữ liệu, mã và tham số để tiếp tục. Chữ ký không hợp lệ buộc mở \texttt{run-id} mới. Không sửa một kết quả đã được khóa bằng cách chạy lại trên test.
+
+\section{Lệnh chạy và kiểm tra}
+Các lệnh nhiều dòng sau dùng Bash với dấu \texttt{\textbackslash} để nối dòng. Trên Windows PowerShell, viết mỗi lệnh trên một dòng hoặc thay dấu nối dòng bằng dấu backtick.\par
+\noindent\textbf{Cài đặt và unit test:}
+\begin{verbatim}
+python -m pip install -r code/requirements.txt
+python -m unittest discover -s tests -v
+\end{verbatim}
+\noindent\textbf{A1: Kiểm tra sát ngưỡng trên synthetic và CSI đầu vào:}
+\begin{verbatim}
+python code/boundary_stress.py --stage all \
+  --run-id BOUNDARY01 --dataset data/new_test.npz --limit 50
+\end{verbatim}
+\noindent\textbf{A2: Khóa trước khi đọc test:}
+\begin{verbatim}
+python code/independent_validation.py --stage lock \
+  --run-id DM_NEW01
+python code/independent_validation.py --stage preflight \
+  --run-id DM_NEW01 --dataset data/new_test.npz \
+  --provenance data/deepmimo_provenance.json
+python code/independent_validation.py --stage scan \
+  --run-id DM_NEW01 --dataset data/new_test.npz \
+  --provenance data/deepmimo_provenance.json
+python code/independent_validation.py --stage report \
+  --run-id DM_NEW01 --dataset data/new_test.npz \
+  --provenance data/deepmimo_provenance.json
+\end{verbatim}
+Đối với Sionna 3GPP, dùng \texttt{run-id} riêng, cùng cấu hình khóa và \texttt{source=Sionna\_3GPP} trong provenance; tuyệt đối không hiệu chỉnh lại beam codebook hoặc guard sau khi xem DeepMIMO test. Mặc định yêu cầu tối thiểu 20 nhóm phục vụ phép tổng hợp; đây chỉ là ngưỡng vận hành, không bảo đảm độ chính xác thống kê. Tăng số nhóm độc lập khi muốn khẳng định mức tăng tốc.
+
+\section{Tiêu chí dừng và kết luận khoa học}
+\textbf{A1 PASS}: mọi trường hợp gần ngưỡng không có certificate loại nhầm; có kích hoạt fail-open thực tế; có trường hợp tham chiếu khả thi trong mỗi lần chạy (nếu không, kết luận ``không loại nhầm'' là rỗng). Mã kiểm tra cả ba điều kiện tại B-CP02. \textbf{A2 GO có điều kiện}: khớp exhaustive trên tất cả geometry, không loại nhầm, cận dưới khoảng bootstrap 95\% của chênh lệch runtime \texttt{CARDINALITY\_ONLY - ALL} lớn hơn 0, có provenance thuyết phục và kết quả nhất quán trên DeepMIMO mới và 3GPP. Nếu không đạt, báo cáo rõ phần lợi ích về số lời gọi giải thay vì khẳng định tăng tốc. Các ranh giới được tạo tổng hợp và chứng nhận số học từ hệ số làm tròn chỉ là kiểm toán tính toán, không phải chứng minh hình thức toàn bộ mô hình RF.
+\end{document}

@@ -16,6 +16,8 @@ src/version_08_robust_user_scheduling/** -text
 log/version_08/** -text
 src/version_09_robust_safe_pruning/** -text
 log/version_09/** -text
+src/version_11_robust_sinr_screening_r2/** -text
+src/version_11_robust_sinr_screening_r2/CHAY_TOAN_BO.ps1 -diff
 
 # Upstream/output CSV files use standard CRLF record endings.
 *.csv whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

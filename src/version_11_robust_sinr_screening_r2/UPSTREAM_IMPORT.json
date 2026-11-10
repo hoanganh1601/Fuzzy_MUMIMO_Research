@@ -1,0 +1,21 @@
+{
+  "source_directory": "/media/icnlab/Data/hoanganh/Robust_SINR_Screening_R2_20261106",
+  "import_date": "2026-11-10",
+  "version": "11",
+  "upstream_revision_date": "2026-11-06",
+  "source_manifest": "UPSTREAM_FILE_SHA256.csv",
+  "preserved_source_files": 29,
+  "supplemental_guides": [
+    "docs/RUN_A_D_VI.md",
+    "docs/HUONG_DAN_CHAY_CODE_VI.md"
+  ],
+  "excluded_generated_content": [
+    "rehearsal/outputs",
+    "rehearsal/run_log.txt",
+    "outputs",
+    "tasks",
+    "__pycache__",
+    ".venv"
+  ],
+  "notes": "Original README.md is stored as README_UPSTREAM.md. The complete upstream checksum table is retained even though bundled generated outputs and task caches are excluded from this source snapshot."
+}
