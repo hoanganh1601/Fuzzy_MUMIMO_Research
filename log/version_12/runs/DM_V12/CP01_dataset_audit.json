@@ -1,0 +1,53 @@
+{
+  "dataset_sha256": "f62313a96c17c18b416929a12b6a117cfe03ee82717ad285b531bb121f6b467f",
+  "provenance_sha256": "a79b450dc06dfa55c06ef1ea9900a2156f309187a7cad6cc33cf8c46d623b7de",
+  "dataset_path": "/media/icnlab/Data/hoanganh/datasets/robust_sinr_v12/deepmimo_new.npz",
+  "provenance": {
+    "cautions": [
+      "Different scenario and non-overlapping group IDs support separation but do not prove statistical independence.",
+      "Finite ZF/RZF candidate-family validation is not global beamforming optimality.",
+      "Test data must not be used to retune thresholds or screening rules."
+    ],
+    "channel_units": "Absolute DeepMIMO complex channel scale retained without post-generation normalization; receiver noise fixed later by frozen V12 protocol at 2e-13 W",
+    "created_before_test": true,
+    "dataset_dtype": "complex64",
+    "dataset_sha256": "f62313a96c17c18b416929a12b6a117cfe03ee82717ad285b531bb121f6b467f",
+    "dataset_shape": [
+      160,
+      16,
+      4
+    ],
+    "deepmimo_version": "4.0.5",
+    "development_groups_sha256": "6669048fd031e23437a7280dfc84d914b5cff50b990ebabe63910ca437d4ca1e",
+    "frequency_hz": 3500000000.0,
+    "generation_method": "DeepMIMO 4.0.5; Remcom Wireless InSite scenario; BS1 transmitter 0; 16x1 BS ULA; 1x1 UE; 10 paths; frequency-domain channel; fixed seed 20261111",
+    "group_definition": "40 fixed 35 m spatial grid cells; 4 geometries per cell; 4 users per geometry; 640 unique UEs without reuse",
+    "independence_basis": "Different ray-tracing city scenario from development: Seoul city_37_seoul_3p5 test versus ASU Campus asu_campus_3p5 development; test groups have zero identifier overlap with development groups",
+    "n_geometries": 160,
+    "n_spatial_groups": 40,
+    "scenario": "city_37_seoul_3p5",
+    "scenario_params_sha256": "8d2df83eb60c049e511223e69cc60e3985d49f003d5cab35b5301de832d5c11a",
+    "selection_parameters": {
+      "cell_size_m": 35.0,
+      "geometries_per_group": 4,
+      "minimum_total_path_power_dbw": -100.0,
+      "seed": 20261111,
+      "spatial_groups": 40,
+      "user_reuse": false,
+      "users_per_geometry": 4
+    },
+    "selection_sha256": "e5806d8aa335d56a019df09a7acb09e147b43f42f295c873062f2441afa91587",
+    "source": "DeepMIMO",
+    "split": "new_independent_test",
+    "statistical_independence_verified": false
+  },
+  "n": 160,
+  "n_groups": 40,
+  "smoke": false,
+  "development_groups_sha": "6669048fd031e23437a7280dfc84d914b5cff50b990ebabe63910ca437d4ca1e",
+  "metadata": [
+    "scenario",
+    "xyz"
+  ],
+  "statistical_independence_verified": false
+}

@@ -1,0 +1,36 @@
+{
+  "version": "V12-frozen",
+  "code_hashes": {
+    "final_runtime_validation.py": "90c225e96c782688168edea40922981efbd43ed11938884a71c6bd7ea79b7374",
+    "reference_model.py": "163bd7b2fb2b0a1333cf06d8b1f1df9624c2d75b3bf7b864b1fdf26e00b9bba3",
+    "ablation_certified.py": "37f3a9dfd7c22c8f2117ed7007836d5105a433ec8988e592d6ee0424d149c866",
+    "ablation_audit.py": "bb425163bb71da1036d8addfb5d7edab6fe1164752c25a33bcf23cb971792fa3"
+  },
+  "config": {
+    "q": 2.960414,
+    "sigma": 0.04,
+    "gamma": 3.9810717055349722,
+    "noise": 2e-13,
+    "pmax": 1.0
+  },
+  "alphas": [
+    0.0,
+    0.001,
+    0.01,
+    0.05,
+    0.1,
+    0.3,
+    1.0
+  ],
+  "guard": 1e-05,
+  "variants": [
+    "CARDINALITY_ONLY",
+    "FAST",
+    "LITE"
+  ],
+  "objective": "lexicographic maximum cardinality then minimum power",
+  "primary_comparator": "CARDINALITY_ONLY",
+  "primary_variant": "FAST",
+  "decision_rule": "PASS iff exact oracle match, zero false screening, 95pct cluster CI runtime saving >0 on each independent source",
+  "caveat": "No claims about continuous beam directions; data independence requires provenance"
+}

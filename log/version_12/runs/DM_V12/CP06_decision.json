@@ -1,0 +1,33 @@
+{
+  "status": "STOP_NO_FAST_RUNTIME_ADVANTAGE",
+  "source": "DeepMIMO",
+  "n": 160,
+  "groups": 40,
+  "false_prune": 0,
+  "all_candidates": 16800,
+  "fail_open": 0,
+  "comparisons": [
+    {
+      "variant": "FAST",
+      "n": 160,
+      "groups": 40,
+      "mean_runtime_saved_ms": -0.8026166069612373,
+      "runtime_ci_lo": -0.9431064931050059,
+      "runtime_ci_hi": -0.6629120528123167,
+      "mean_calls_saved": 32.7375,
+      "runtime_go": false
+    },
+    {
+      "variant": "LITE",
+      "n": 160,
+      "groups": 40,
+      "mean_runtime_saved_ms": -0.8199001817047247,
+      "runtime_ci_lo": -0.9944961031669663,
+      "runtime_ci_hi": -0.6523923416307298,
+      "mean_calls_saved": 30.51875,
+      "runtime_go": false
+    }
+  ],
+  "manuscript_lock": "NOT_YET: both DeepMIMO and Sionna_3GPP independently validated with GO and provenance audit",
+  "caveat": "Group bootstrap descriptive; numerical oracle is finite candidate, floating point; test data never used to tune code"
+}

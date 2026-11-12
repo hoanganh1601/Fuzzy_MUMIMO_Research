@@ -70,6 +70,8 @@ reports/
 !log/**/*.zip
 !log/version_11/reports/
 !log/version_11/reports/**
+!log/version_12/reports/
+!log/version_12/reports/**
 
 # LaTeX intermediate files
 *.aux

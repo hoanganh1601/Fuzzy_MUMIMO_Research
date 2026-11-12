@@ -47,3 +47,4 @@ Mỗi run card phải ghi code version/Git SHA, dataset version/SHA-256, cấu h
 | `v6.0.0` | restructuring commit | Spatial CSI calibration and real-run audit |
 | `v10.0.0` | `68069e4` | Certified safe-pruning ablation and numerical audit source |
 | `v11.0.0` | `1b0bca0` | Robust SINR Screening R2 source and locked validation workflow |
+| `v12.0.0` | `59f4bab` | Robust SINR final-validation source and cross-source manuscript gate |

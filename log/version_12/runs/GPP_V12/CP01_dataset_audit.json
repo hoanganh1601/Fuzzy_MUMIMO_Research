@@ -1,0 +1,60 @@
+{
+  "dataset_sha256": "daac3826f568b9e4cf7cf6f8858a4fe6bdb9e46ce294b73a189bfbf1c9b47f18",
+  "provenance_sha256": "2ef8eeda1672d2bb8564f7a5ee93b03bc75b16b4c5444988b21e070eac28c515",
+  "dataset_path": "/media/icnlab/Data/hoanganh/datasets/robust_sinr_v12/3gpp_new.npz",
+  "provenance": {
+    "carrier_frequency_hz": 3500000000.0,
+    "cautions": [
+      "The 3GPP protocol was locked before generating and evaluating the 3GPP dataset, but after observing the DeepMIMO branch result.",
+      "Fresh simulation drops support source separation but do not prove statistical independence.",
+      "No GPP_V12 outcome has been observed or used to tune this dataset.",
+      "Finite ZF/RZF candidate validation is not global beamforming optimality."
+    ],
+    "channel_units": "Absolute complex Sionna frequency response at zero baseband subcarrier; pathloss and shadow fading enabled; no channel normalization; noise fixed by V12 at 2e-13 W",
+    "created_before_test": true,
+    "cross_source_protocol_locked_before_deepmimo_result": false,
+    "dataset_dtype": "complex64",
+    "dataset_sha256": "daac3826f568b9e4cf7cf6f8858a4fe6bdb9e46ce294b73a189bfbf1c9b47f18",
+    "dataset_shape": [
+      160,
+      16,
+      4
+    ],
+    "generation_method": "Sionna 2.2.0 official UMi implementation; 3GPP TR 38.901 V19.2; PyTorch CPU; single-sector topology; fixed seed 20261112; 16-element BS panel and single-antenna UEs",
+    "generation_protocol_sha256": "5699a487ca610625f8372e262d98cc7f0d9476e4fe086cc7d1c1f1dcddf40643",
+    "group_definition": "160 independent topology drops; one group identifier per four-user geometry",
+    "independence_basis": "Fresh Sionna 3GPP UMi simulation source and seed, distinct from the DeepMIMO ray-tracing development and test scenarios; each geometry is a newly generated drop",
+    "indoor_users": 0,
+    "n_geometries": 160,
+    "n_groups": 160,
+    "path_delay_range_s": [
+      0.0,
+      10.943551063537598
+    ],
+    "scenario": "3GPP_TR_38.901_UMi_single_sector",
+    "seed": 20261112,
+    "selected_baseband_frequency_hz": 0.0,
+    "sionna_version": "2.2.0",
+    "source": "Sionna_3GPP",
+    "spec_version": "19.2",
+    "split": "new_independent_test",
+    "standard": "3GPP TR 38.901",
+    "statistical_independence_verified": false,
+    "subcarrier_spacing_hz": 30000.0,
+    "topology_audit_sha256": "9c8f53a72071ef786b2cc3d7af22661e793d92997332e237dbbeb997900525fe",
+    "torch_version": "2.15.0+cpu",
+    "velocity_range_mps": [
+      0.0,
+      0.0
+    ]
+  },
+  "n": 160,
+  "n_groups": 160,
+  "smoke": false,
+  "development_groups_sha": null,
+  "metadata": [
+    "scenario",
+    "xyz"
+  ],
+  "statistical_independence_verified": false
+}
