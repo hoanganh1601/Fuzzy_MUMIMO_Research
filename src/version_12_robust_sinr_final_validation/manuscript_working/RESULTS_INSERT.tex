@@ -1,0 +1,72 @@
+% Insert into an existing IEEEtran manuscript after its experimental protocol.
+% Check labels and bibliography in the target before merging.
+
+\section{Numerical Results and Discussion}
+\subsection{Exactness and user admission}
+All 160 DeepMIMO development geometries produced matching exhaustive, cardinality-only, and screened lexicographic decisions. The number of admitted users is four for 97 geometries, three for 58, and two for five, yielding a mean of 3.575 admitted users. The selected optimum uses ZF on 42 geometries and RZF on 118. None of 16,800 audited candidate decisions exhibits a false prune; no fail-open is recorded on this development set. These results establish observed exactness for the tested finite candidate set, not the numerical correctness of every possible beam-generation input.
+
+\subsection{Incremental computational benefit}
+\begin{table}[t]
+\caption{Development-set efficiency: repeated runtime measurements, $160$ geometries.}
+\label{tab:main}
+\centering\footnotesize
+\begin{tabular}{lrr}
+\toprule
+Metric (per geometry) & Cardinality-only & All certificates\\
+\midrule
+Full power solves & 19.3375 & 8.5375\\
+Beams generated & 19.3375 & 17.8062\\
+Mean runtime (ms) & 15.5838 & 16.4046\\
+Screening time (ms) & 0 & 1.3677\\
+Power-solver time (ms) & 12.5238 & 12.5417\\
+Matches exhaustive & 160/160 & 160/160\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:main} shows a 55.85\% reduction in full solver calls but a 5.27\% \emph{increase} in mean runtime relative to cardinality-only enumeration. For the paired runtime saving $T_{\rm card}-T_{\rm all}$, the reported descriptive 95\% group-bootstrap interval is $[-1.2675,-0.3783]$~ms. It is therefore not supported to state that the certificates accelerate the current implementation over cardinality-only search. Relative to exhaustive search, mean runtime decreases from 140.8923 to 16.4046~ms, but much of that gain arises from cardinality ordering rather than the additional certificates.
+
+The measured screening cost averages 1.3677~ms per geometry, whereas the estimated power-solve time avoided is only 0.5698~ms. Most rejected candidates already fail at inexpensive coupling or budget checks. The screening overhead therefore exceeds the time removed from the power solver, explaining why fewer solver calls do not yield a lower end-to-end runtime.
+
+\begin{table}[t]
+\caption{One-rule-removed ablation relative to ALL. A negative runtime difference means the simpler variant is faster.}
+\label{tab:ablation}
+\centering\footnotesize
+\begin{tabular}{lrr}
+\toprule
+Removed condition & Extra solves & Extra runtime (ms)\\
+\midrule
+Norm--noise lower bound & 0 & $-0.4653$\\
+Zero robust gain & 0.0625 & $+0.1098$\\
+Noise lower bound & 0 & $+0.0442$\\
+Neumann lower bound & 0.8750 & $-0.4793$\\
+Two-user cycle & 0.2500 & $-0.1733$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:ablation} distinguishes fewer full solves from shorter runtime. Removing the Neumann rule increases solver calls by 0.875 per geometry but reduces measured runtime by about 0.479~ms. No certificate can yet be credited with an isolated, repeatable end-to-end acceleration. A reduced certificate set and a cheaper ordering of tests are potential engineering directions, not demonstrated contributions.
+
+\subsection{Boundary stress and fail-open behavior}
+\begin{table}[t]
+\caption{Constructed boundary stress tests.}
+\label{tab:boundary}
+\centering\footnotesize
+\begin{tabular}{lrrrr}
+\toprule
+Case family & Cases & Pruned & Fail-open & False prune\\
+\midrule
+Algebraic coupling & 10 & 2 & 1 & 0\\
+Algebraic power & 10 & 1 & 0 & 0\\
+Tight power boundary & 10 & 2 & 1 & 0\\
+Channel-derived power & 1000 & 156 & 322 & 0\\
+\midrule
+Total & 1030 & 161 & 324 & 0\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Across 1,030 stress cases, Table~\ref{tab:boundary} shows zero false pruning and 324 fail-open actions; 515 cases are feasible under the reference calculation. Constructed near-threshold inputs thus activate the intended safeguard. The high-precision reference uses exact arithmetic for represented double-precision coefficients, not interval bounds on upstream channel and beam calculations. The audit supports the observed behavior of the screening stage, not a complete end-to-end numerical certificate.
+
+\subsection{Synthetic rehearsal and independent-validation status}
+A separate 160-geometry, 32-group synthetic-channel rehearsal also reports no false pruning and retains the exhaustive oracle. Cardinality-only runtime is 13.1913~ms versus 13.9126~ms for ALL, a 5.47\% runtime penalty. The descriptive 95\% bootstrap interval for runtime saved is $[-0.8417,-0.5985]$~ms. Although the rehearsal uses a separate generator seed, it does not constitute independent DeepMIMO or 3GPP channel validation. The supplied V11 evidence contains no final results from a new DeepMIMO holdout or a standardized 3GPP channel model.

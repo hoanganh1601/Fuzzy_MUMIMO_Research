@@ -1,0 +1,17 @@
+{
+  "unit_tests": "12/12 PASS",
+  "boundary": "PASS",
+  "boundary_false_prunes": 0,
+  "deepmimo_decision": "STOP_NO_FAST_RUNTIME_ADVANTAGE",
+  "deepmimo_false_prunes": 0,
+  "deepmimo_runtime_go": false,
+  "sionna_3gpp_decision": "STOP_NO_FAST_RUNTIME_ADVANTAGE",
+  "sionna_3gpp_false_prunes": 0,
+  "sionna_3gpp_runtime_go": false,
+  "manuscript_gate": "STOP_MANUSCRIPT_NOT_LOCKED",
+  "finite_candidate_exactness_observed": true,
+  "verified_computational_superiority": false,
+  "statistical_independence_verified": false,
+  "global_beamforming_optimality": false,
+  "formal_interval_certificate": false
+}

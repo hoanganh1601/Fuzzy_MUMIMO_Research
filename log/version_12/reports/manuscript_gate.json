@@ -1,0 +1,29 @@
+{
+  "status": "STOP_MANUSCRIPT_NOT_LOCKED",
+  "blocking_reasons": [
+    "DeepMIMO: no verified FAST runtime advantage",
+    "Sionna_3GPP: no verified FAST runtime advantage"
+  ],
+  "sources": [
+    {
+      "source": "DeepMIMO",
+      "scenario": "city_37_seoul_3p5",
+      "decision": "STOP_NO_FAST_RUNTIME_ADVANTAGE",
+      "groups": 40
+    },
+    {
+      "source": "Sionna_3GPP",
+      "scenario": "3GPP_TR_38.901_UMi_single_sector",
+      "decision": "STOP_NO_FAST_RUNTIME_ADVANTAGE",
+      "groups": 160
+    }
+  ],
+  "boundary": {
+    "n_cases": 1020,
+    "false_prunes": 0,
+    "fail_open_cases": 323,
+    "outcome": "PASS",
+    "scope": "Positive-F,u algebraic boundary and single-user CSI-derived power boundary; not interval guarantee for beam generation."
+  },
+  "caution": "Passing technical gates does not verify 3GPP generator or publications, statistical independence, or full floating-point interval certification; scientific review required."
+}

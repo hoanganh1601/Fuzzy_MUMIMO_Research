@@ -21,8 +21,9 @@ Kho nghiên cứu được tổ chức theo ba lớp độc lập:
 | `version_09` | Safe pruning đối chiếu exhaustive, native stages | `e2a3609` | DeepMIMO CP00–CP06 complete; algorithm checks passed on development |
 | `version_10` | Certified safe-pruning ablation và numerical audit | `68069e4` | DeepMIMO CP00–CP07 complete; PASS_EXACTNESS on development |
 | `version_11` | Robust SINR Screening R2, repeated runtime và locked validation workflow | `1b0bca0` | A+B+C complete; synthetic D rehearsal complete; no runtime GO |
+| `version_12` | Final robust-SINR validation trên DeepMIMO mới và Sionna 3GPP UMi | `59f4bab` | Boundary PASS; cả hai nguồn zero false prune nhưng runtime STOP; manuscript chưa khóa |
 
-Version mới nhất là [`src/version_11_robust_sinr_screening_r2`](src/version_11_robust_sinr_screening_r2).
+Version mới nhất là [`src/version_12_robust_sinr_final_validation`](src/version_12_robust_sinr_final_validation).
 
 ## Hai phiên bản đầu tiên được khôi phục
 
@@ -33,7 +34,28 @@ Hai ZIP gốc được đối chiếu checksum và chạy lại ngày 2026-11-02
 
 Các replay dùng lại dataset `deepmimo_asu35_v1`, vì vậy là tái dựng lịch sử trên development data. Xem [run ver1](log/version_01/runs/DM_ASU35_R1_REPLAY_20261102/RUN.md) và [run ver2](log/version_02/runs/DM_ASU35_E1R_E3R_REPLAY_20261102/RUN.md).
 
-## Kết quả hiện tại
+## Kết quả hiện tại (version 12)
+
+Version 12 chạy protocol final validation trên hai nguồn mới và boundary branch:
+
+- Boundary PASS trên 1.020 ca, không có false prune và có 323 fail-open sát ngưỡng.
+- DeepMIMO `city_37_seoul_3p5`: 160 geometry/40 spatial group, 16.800 ứng viên,
+  zero false prune. FAST tiết kiệm 32.7375 solver calls nhưng chậm hơn trung bình
+  0.8026 ms; CI95 runtime saving `[-0.9431,-0.6629]` ms.
+- Sionna 2.2.0 UMi theo 3GPP TR 38.901 V19.2: 160 geometry/160 group, 16.800
+  ứng viên, zero false prune. FAST chỉ tiết kiệm 1.7 calls và chậm hơn 0.7271 ms;
+  CI95 `[-0.7693,-0.6819]` ms.
+- Cả hai nguồn kết thúc `STOP_NO_FAST_RUNTIME_ADVANTAGE`; final gate trả
+  `STOP_MANUSCRIPT_NOT_LOCKED`. Screening bảo toàn nghiệm finite-codebook nhưng
+  không có verified computational superiority.
+- 12/12 unit test và toàn bộ checkpoint checksum PASS; real channel matrices,
+  task cache và downloaded scenarios không được commit.
+
+Xem [run log version 12](log/version_12/README.md),
+[final gate](log/version_12/reports/manuscript_gate.json) và
+[source V12](src/version_12_robust_sinr_final_validation/README.md).
+
+## Kết quả trước đó (version 11)
 
 Version 11 chạy lại R2 trên 160 geometry DeepMIMO development với năm lần lặp runtime:
 
@@ -119,10 +141,11 @@ Version 07 tái phân tích dataset này; không tạo holdout độc lập và 
 
 ## Data policy
 
-Real datasets được lưu ngoài Git. Version 6–11 sử dụng kho cục bộ:
+Real datasets được lưu ngoài Git. Version 6–12 sử dụng kho cục bộ:
 
 ```text
 /media/icnlab/Data/hoanganh/datasets/csi_margin_calibration/
+/media/icnlab/Data/hoanganh/datasets/robust_sinr_v12/
 ```
 
 Git chỉ lưu provenance, group audit và checksum cần thiết để kiểm toán.

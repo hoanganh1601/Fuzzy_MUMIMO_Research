@@ -1,0 +1,18 @@
+{
+  "source_directory": "/media/icnlab/Data/hoanganh/Robust_SINR_Final_Validation_V12",
+  "import_date": "2026-11-11",
+  "version": "12",
+  "upstream_revision_date": "2026-11-10",
+  "source_manifest": "UPSTREAM_FILE_SHA256.csv",
+  "preserved_upstream_files": 24,
+  "excluded_generated_content": [
+    "smoke_results",
+    "outputs",
+    "tasks",
+    "scan.log",
+    "scan.pid",
+    "__pycache__",
+    ".venv"
+  ],
+  "notes": "Original README.md is stored as README_UPSTREAM.md. The full upstream checksum table is retained. Bundled smoke results and task checkpoints are excluded; the repository records the subsequently executed boundary, DeepMIMO, and Sionna/3GPP runs under log/version_12."
+}

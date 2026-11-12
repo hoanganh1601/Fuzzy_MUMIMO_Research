@@ -1,0 +1,21 @@
+{
+  "code_version": "12",
+  "source_commit": "59f4bab63b9c3c4fc9922ab9830e8b07199f064a",
+  "source_tag": "v12.0.0",
+  "python": "3.12.3",
+  "numpy": "2.5.4",
+  "scipy": "1.18.1",
+  "mpmath": "1.3.0",
+  "deepmimo_version": "4.0.5",
+  "sionna_version": "2.2.0",
+  "torch_version": "2.15.0+cpu",
+  "deepmimo_dataset_sha256": "f62313a96c17c18b416929a12b6a117cfe03ee82717ad285b531bb121f6b467f",
+  "sionna_3gpp_dataset_sha256": "daac3826f568b9e4cf7cf6f8858a4fe6bdb9e46ce294b73a189bfbf1c9b47f18",
+  "development_groups_sha256": "6669048fd031e23437a7280dfc84d914b5cff50b990ebabe63910ca437d4ca1e",
+  "task_caches_committed": false,
+  "console_logs_committed": false,
+  "real_channel_matrices_committed": false,
+  "downloaded_scenarios_committed": false,
+  "report_bundle": "reports/Results.Robust.SINR.Final.Validation.V12.zip",
+  "report_bundle_sha256": "6c3b9043c0987ce30291b688d2d6871d5b40c6129c3346b486800070c4a4698f"
+}

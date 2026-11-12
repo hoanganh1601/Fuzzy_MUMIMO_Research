@@ -1,5 +1,15 @@
 # Changelog
 
+## v12.0.0 — 2026-11-12
+
+- Nhập source final-validation, 12 unit test, IEEE guide, PowerShell launcher và provenance templates; bảo toàn 24 file upstream ngoài bundled smoke output/task cache.
+- Chạy boundary stress trên 1.020 ca: 0 false prune, 323 fail-open, kết quả PASS.
+- Chạy DeepMIMO mới `city_37_seoul_3p5` trên 160 geometry/40 spatial group: zero false prune nhưng FAST chậm hơn cardinality-only 0.803 ms, CI95 hoàn toàn âm.
+- Sinh nguồn Sionna 2.2.0 UMi theo 3GPP TR 38.901 V19.2 và chạy 160 geometry: zero false prune nhưng FAST chậm hơn 0.727 ms, CI95 hoàn toàn âm.
+- Final gate trả `STOP_MANUSCRIPT_NOT_LOCKED`; giữ kết luận exactness của finite candidate family nhưng không tuyên bố runtime superiority.
+- Lưu 21 checkpoint, provenance và report ZIP; loại real matrices, downloaded scenarios, per-geometry tasks, logs, PID và environments.
+- Ghi rõ protocol 3GPP được khóa trước chính GPP generation/evaluation nhưng sau khi đã thấy kết quả DeepMIMO.
+
 ## v11.0.0 — 2026-11-10
 
 - Nhập source R2 ngày 2026-11-06, IEEE boundary/independent guide, Windows launcher, five-test-module suite và smoke decision fingerprint.

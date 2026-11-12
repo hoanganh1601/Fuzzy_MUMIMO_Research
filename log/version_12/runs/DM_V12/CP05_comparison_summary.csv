@@ -1,0 +1,3 @@
+variant,n,groups,mean_runtime_saved_ms,runtime_ci_lo,runtime_ci_hi,mean_calls_saved,runtime_go
+FAST,160,40,-0.8026166069612373,-0.9431064931050059,-0.6629120528123167,32.7375,False
+LITE,160,40,-0.8199001817047247,-0.9944961031669663,-0.6523923416307298,30.51875,False
