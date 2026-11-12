@@ -1,0 +1,152 @@
+\documentclass[journal]{IEEEtran}
+\usepackage{amsmath,amssymb,booktabs,array,graphicx,cite}
+\usepackage[hidelinks]{hyperref}
+\title{Safe Feasibility Screening for Robust User Scheduling and Beam Selection in MU-MIMO Downlink}
+\author{Manuscript working draft\\\thanks{Author information, bibliography, and independent-channel results will be incorporated after verification.}}
+\begin{document}
+\maketitle
+\begin{abstract}
+In multiuser multiple-input multiple-output (MU-MIMO) downlink systems, selecting users and beam directions under imperfect channel state information (CSI) requires repeated robust signal-to-interference-plus-noise ratio (SINR) feasibility tests. This paper studies exact user admission over a prescribed finite set of zero-forcing (ZF) and regularized zero-forcing (RZF) beam candidates. Nonnegative interference coupling and transmit-power lower bounds permit infeasible candidates to be screened without changing the lexicographically optimal solution within that candidate set. On 160 previously used DeepMIMO development geometries with four users and 105 candidates per geometry, screening preserves all exhaustive-search decisions and reduces full power-solver calls by 55.85\% relative to cardinality-only enumeration. Nevertheless, repeated timing measurements increase mean runtime from 15.58 to 16.40~ms because screening overhead exceeds the cost of the solves avoided. In 1,030 constructed near-boundary tests, no false pruning is observed and 324 cases invoke the fail-open path. Independent-channel confirmation and a positive runtime advantage remain unverified. These results establish the tested screening behavior and its computational limitation rather than a demonstrated runtime superiority.
+\end{abstract}
+\begin{IEEEkeywords}
+MU-MIMO downlink, user scheduling, beam selection, robust SINR, feasibility screening, power allocation, numerical verification.
+\end{IEEEkeywords}
+\section{Introduction}
+A multi-antenna downlink transmitter may be unable to serve all candidate users simultaneously when estimated channels are strongly coupled and the total transmit power is limited. Under imperfect CSI, the difficulty is not only to design a feasible beam but also to decide which subset of users can be admitted while meeting robust SINR targets. Enumerating all user subsets and candidate beams provides an exact reference within a finite beam set, at the cost of repeated power feasibility calculations.
+
+This work considers a fixed finite collection of ZF/RZF beam-generation rules for each user subset. We examine whether algebraically justified tests on direct gains, nonnegative interference coupling, and power lower bounds can exclude infeasible candidates before completing power allocation. We distinguish two sources of reduced computation: stopping the search over smaller user subsets once the maximum admitted-user cardinality is found, and skipping individual infeasible beam candidates using feasibility certificates. Both must be separated in runtime evaluation.
+
+The present contribution is limited to three items. First, we formulate certificate-based tests for a fixed-beam robust power-control model. Second, we specify conditions under which the finite-candidate lexicographic optimum is preserved. Third, we quantify solver-call savings, complete runtime, certificate ablation, and near-boundary behavior. The reported DeepMIMO results come from a previously used development set; a separate synthetic rehearsal tests the evaluation pipeline but is not presented as independent DeepMIMO or standardized Third Generation Partnership Project (3GPP) propagation validation.
+
+\section{System Model and Optimization Problem}
+Consider a base station with $M$ transmit antennas and $K$ candidate single-antenna users. For an admitted-user subset $\mathcal S\subseteq\{1,\ldots,K\}$ and a candidate beam configuration $b\in\mathcal B(\mathcal S)$, the transmitted signal is
+\begin{equation}
+ \mathbf x=\sum_{k\in\mathcal S}\sqrt{p_k}\,\mathbf w_k^{(b)}s_k,\qquad \|\mathbf w_k^{(b)}\|_2=1.
+\end{equation}
+This expression allocates power $p_k\ge0$ to a normalized downlink beam for each admitted user. The estimated CSI is $\widehat{\mathbf h}_k$, with actual channel $\mathbf h_k=\widehat{\mathbf h}_k+\mathbf e_k$ and a prescribed uncertainty model for $\mathbf e_k$. Conservative direct-gain lower bounds and interference upper bounds are computed once the user subset and beam directions have been fixed.
+
+Under the resulting robust power-control approximation, SINR requirements become
+\begin{equation}
+ \mathbf p\ge\mathbf F_{\mathcal S,b}\mathbf p+\mathbf u_{\mathcal S,b}, \quad \mathbf F_{\mathcal S,b}\ge0,\quad \mathbf u_{\mathcal S,b}>0.
+ \label{eq:pc}
+\end{equation}
+Equation~\eqref{eq:pc} defines the nonnegative interference-coupling model used to test power feasibility; all conclusions below concern this precise fixed-beam model rather than unrestricted complex beamforming. An eligible candidate additionally satisfies $\mathbf1^T\mathbf p\le P_{\max}$.
+
+The finite-candidate scheduling problem has the lexicographic objective
+\begin{equation}
+ \operatorname{lex\,max}_{\mathcal S,b,\mathbf p}
+ \bigl(|\mathcal S|,-\mathbf1^T\mathbf p\bigr),
+ \label{eq:lex}
+\end{equation}
+subject to \eqref{eq:pc}, $\mathbf1^T\mathbf p\le P_{\max}$, $\mathcal S\ne\varnothing$, $b\in\mathcal B(\mathcal S)$, and $\mathbf p\ge0$.
+The first priority in~\eqref{eq:lex} is the number of admitted users; the second is minimum power among candidates with the same admitted-user cardinality. Ties require a deterministic candidate ordering. With $K=4$ and seven ZF/RZF configurations per nonempty user subset, exhaustive evaluation covers $7(2^4-1)=105$ candidates per geometry.
+
+\section{Safe Feasibility Screening}
+\subsection{Nonnegative power control}
+For $\mathbf F\ge0$ and strictly positive $\mathbf u$, the system $\mathbf p\ge\mathbf F\mathbf p+\mathbf u$ admits a finite nonnegative solution if and only if $\rho(\mathbf F)<1$. In that case the componentwise least solution is
+\begin{equation}
+ \mathbf p^\star=(\mathbf I-\mathbf F)^{-1}\mathbf u
+ =\sum_{n=0}^{\infty}\mathbf F^n\mathbf u.
+ \label{eq:least}
+\end{equation}
+Equation~\eqref{eq:least} determines the minimum transmit-power vector for fixed beams before checking $P_{\max}$. This established property of nonnegative linear systems is used here as a feasibility test, not claimed as a new mathematical theorem.
+
+\subsection{Power and interference certificates}
+The nonnegative partial sum $\mathbf p^{(N)}=\sum_{n=0}^{N}\mathbf F^n\mathbf u$ satisfies $\mathbf p^{(N)}\le\mathbf p^\star$ whenever $\rho(\mathbf F)<1$. Therefore,
+\begin{equation}
+ L_N=\mathbf1^T\sum_{n=0}^{N}\mathbf F^n\mathbf u>P_{\max}
+ \quad\Longrightarrow\quad\text{candidate infeasible}.
+ \label{eq:neumann}
+\end{equation}
+The bound in~\eqref{eq:neumann} permits early rejection without computing the full inverse or completing the power solver. Additional safe noise/direct-gain bounds may reject a candidate only when they are valid lower bounds on its required transmit power.
+
+For $i\ne j$, the nonnegative two-user principal cycle provides
+\begin{equation}
+ F_{ij}F_{ji}\ge1\quad\Longrightarrow\quad\rho(\mathbf F)\ge1.
+ \label{eq:cycle}
+\end{equation}
+Equation~\eqref{eq:cycle} detects a sufficient condition for fixed-beam SINR infeasibility without requiring the full spectral-radius computation. A zero conservative direct gain with a positive SINR target is another sufficient reason to reject that beam candidate.
+
+\subsection{Preservation of the finite-candidate optimum}
+\emph{Claim 1 (conditional exactness):} Suppose each screening rule rejects only candidates that violate the specified robust power-control constraints; all remaining candidates of the highest feasible admitted-user cardinality are evaluated sufficiently accurately; and the search stops only after every candidate of that cardinality has been considered. Then the returned lexicographic optimum of~\eqref{eq:lex} equals exhaustive enumeration over the same finite beam set.
+
+\emph{Argument:} Safe screening removes no feasible candidate. Descending-cardinality enumeration cannot lose an improvement in the primary objective after the first feasible cardinality has been exhaustively processed. Evaluating all survivors at that cardinality and selecting the least-power feasible candidate preserves the secondary objective. This argument does not establish optimality over continuously variable beam directions. In floating-point execution, uncertain signs near a screening threshold must trigger a fail-open decision, whereby the candidate is retained for full evaluation.
+
+\section{Experimental Protocol}
+The development experiment uses $M=16$, $K=4$, seven candidate ZF/RZF beam configurations, and a fixed CSI uncertainty margin. Exhaustive enumeration, cardinality-only enumeration, all-certificate screening, and one-rule-removed ablations are evaluated on identical geometries. The primary exactness checks compare admitted-user cardinality, selected subset, beam candidate, and transmit power. The primary efficiency comparison is ALL versus CARDINALITY\_ONLY, not ALL versus exhaustive alone.
+
+Runtime is measured from repeated executions on the same machine, including beam generation, screening, and solver time. Geometry-level paired differences are reported together with a descriptive cluster-bootstrap interval. The DeepMIMO set of 160 geometries was already used during method development and is not called an independent holdout. Constructed algebraic and CSI-derived boundary cases test screening decisions near spectral and power thresholds. A separate synthetic-channel rehearsal validates the test pipeline but is not used to claim generalization to independent DeepMIMO or 3GPP propagation data.
+
+\section{Numerical Results and Discussion}
+\subsection{Exactness and user admission}
+All 160 DeepMIMO development geometries produced matching exhaustive, cardinality-only, and screened lexicographic decisions. The number of admitted users is four for 97 geometries, three for 58, and two for five, yielding a mean of 3.575 admitted users. The selected optimum uses ZF on 42 geometries and RZF on 118. None of 16,800 audited candidate decisions exhibits a false prune; no fail-open is recorded on this development set. These results establish observed exactness for the tested finite candidate set, not the numerical correctness of every possible beam-generation input.
+
+\subsection{Incremental computational benefit}
+\begin{table}[t]
+\caption{Development-set efficiency: repeated runtime measurements, $160$ geometries.}
+\label{tab:main}
+\centering\footnotesize
+\begin{tabular}{lrr}
+\toprule
+Metric (per geometry) & Cardinality-only & All certificates\\
+\midrule
+Full power solves & 19.3375 & 8.5375\\
+Beams generated & 19.3375 & 17.8062\\
+Mean runtime (ms) & 15.5838 & 16.4046\\
+Screening time (ms) & 0 & 1.3677\\
+Power-solver time (ms) & 12.5238 & 12.5417\\
+Matches exhaustive & 160/160 & 160/160\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:main} shows a 55.85\% reduction in full solver calls but a 5.27\% \emph{increase} in mean runtime relative to cardinality-only enumeration. For the paired runtime saving $T_{\rm card}-T_{\rm all}$, the reported descriptive 95\% group-bootstrap interval is $[-1.2675,-0.3783]$~ms. It is therefore not supported to state that the certificates accelerate the current implementation over cardinality-only search. Relative to exhaustive search, mean runtime decreases from 140.8923 to 16.4046~ms, but much of that gain arises from cardinality ordering rather than the additional certificates.
+
+The measured screening cost averages 1.3677~ms per geometry, whereas the estimated power-solve time avoided is only 0.5698~ms. Most rejected candidates already fail at inexpensive coupling or budget checks. The screening overhead therefore exceeds the time removed from the power solver, explaining why fewer solver calls do not yield a lower end-to-end runtime.
+
+\begin{table}[t]
+\caption{One-rule-removed ablation relative to ALL. A negative runtime difference means the simpler variant is faster.}
+\label{tab:ablation}
+\centering\footnotesize
+\begin{tabular}{lrr}
+\toprule
+Removed condition & Extra solves & Extra runtime (ms)\\
+\midrule
+Norm--noise lower bound & 0 & $-0.4653$\\
+Zero robust gain & 0.0625 & $+0.1098$\\
+Noise lower bound & 0 & $+0.0442$\\
+Neumann lower bound & 0.8750 & $-0.4793$\\
+Two-user cycle & 0.2500 & $-0.1733$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:ablation} distinguishes fewer full solves from shorter runtime. Removing the Neumann rule increases solver calls by 0.875 per geometry but reduces measured runtime by about 0.479~ms. No certificate can yet be credited with an isolated, repeatable end-to-end acceleration. A reduced certificate set and a cheaper ordering of tests are potential engineering directions, not demonstrated contributions.
+
+\subsection{Boundary stress and fail-open behavior}
+\begin{table}[t]
+\caption{Constructed boundary stress tests.}
+\label{tab:boundary}
+\centering\footnotesize
+\begin{tabular}{lrrrr}
+\toprule
+Case family & Cases & Pruned & Fail-open & False prune\\
+\midrule
+Algebraic coupling & 10 & 2 & 1 & 0\\
+Algebraic power & 10 & 1 & 0 & 0\\
+Tight power boundary & 10 & 2 & 1 & 0\\
+Channel-derived power & 1000 & 156 & 322 & 0\\
+\midrule
+Total & 1030 & 161 & 324 & 0\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Across 1,030 stress cases, Table~\ref{tab:boundary} shows zero false pruning and 324 fail-open actions; 515 cases are feasible under the reference calculation. Constructed near-threshold inputs thus activate the intended safeguard. The high-precision reference uses exact arithmetic for represented double-precision coefficients, not interval bounds on upstream channel and beam calculations. The audit supports the observed behavior of the screening stage, not a complete end-to-end numerical certificate.
+
+\subsection{Synthetic rehearsal and independent-validation status}
+A separate 160-geometry, 32-group synthetic-channel rehearsal also reports no false pruning and retains the exhaustive oracle. Cardinality-only runtime is 13.1913~ms versus 13.9126~ms for ALL, a 5.47\% runtime penalty. The descriptive 95\% bootstrap interval for runtime saved is $[-0.8417,-0.5985]$~ms. Although the rehearsal uses a separate generator seed, it does not constitute independent DeepMIMO or 3GPP channel validation. The supplied V11 evidence contains no final results from a new DeepMIMO holdout or a standardized 3GPP channel model.
+
+\section{Conclusion}
+For robust SINR-constrained admission and beam selection over a prescribed ZF/RZF beam set, feasibility certificates preserve the exhaustive-search decisions on the tested development geometries and show no false pruning in a constructed boundary audit. However, the additional screening reduces full solver calls without improving end-to-end runtime relative to cardinality-only enumeration. These findings support safe finite-candidate rejection within the specified mathematical model, but not a claim of computational superiority or independent-channel generalization. Future work should optimize certificate evaluation cost, establish a new spatially disjoint DeepMIMO holdout and an independently configured 3GPP channel test, and repeat paired runtime measurements before asserting an efficiency gain.
+\end{document}

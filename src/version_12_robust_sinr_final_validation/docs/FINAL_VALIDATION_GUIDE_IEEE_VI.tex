@@ -1,0 +1,99 @@
+\documentclass[11pt,onecolumn]{IEEEtran}
+\usepackage{fontspec}
+\setmainfont{DejaVu Serif}
+\usepackage{amsmath,amssymb,booktabs,longtable,array,geometry,hyperref}
+\geometry{a4paper,left=21mm,right=20mm,top=19mm,bottom=19mm}
+\hypersetup{hidelinks}
+\title{Kiểm chứng cuối cho sàng lọc tính khả thi robust SINR\\Đánh giá runtime, kiểm thử biên và dữ liệu kênh độc lập}
+\author{Tài liệu kỹ thuật và hướng dẫn tái lập -- 10/11/2026}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+Trong đường xuống đa người dùng nhiều anten (MU-MIMO), trạm gốc lựa chọn tập người dùng và hướng tạo búp sao cho các ràng buộc tỷ số tín hiệu trên giao thoa cộng nhiễu (SINR) được đáp ứng dưới sai số thông tin trạng thái kênh (CSI). Kết quả R2.V11 đã xác nhận bảo toàn nghiệm trong tập ứng viên hữu hạn và giảm số lời gọi bộ giải, nhưng screening làm tăng runtime trung bình. Gói này triển khai một kiểm chứng tiếp theo nhằm xác định liệu kiểm tra nhanh các điều kiện cần về tính khả thi có đem lại lợi ích runtime riêng hay không. Mọi kết quả thất bại hoặc chưa đủ bằng chứng đều phải được báo cáo; bản thảo chỉ được xét khóa khi có kết quả kiểm chứng độc lập đáp ứng điều kiện quy định trước.
+\end{abstract}
+
+\section{Bài toán và phạm vi cố định}
+Trạm gốc có $M=16$ anten, xét $K=4$ người dùng và $L=7$ bộ hướng tạo búp zero-forcing (ZF) hoặc regularized zero-forcing (RZF) tính lại cho mỗi tập con. Mỗi cấu hình xét $L(2^K-1)=105$ ứng viên. Giữ nguyên $q_c=2.960414$, sai số CSI tương đối $0.04$, SINR mục tiêu $6$ dB, công suất nhiễu $2\cdot10^{-13}$ W và $P_{\max}=1$ W. Các thông số phải được kiểm tra phù hợp với chuẩn hóa kênh thực tế trước khi mở dữ liệu kiểm thử. Không tối ưu CSI margin hoặc hệ số RZF bằng tập kiểm thử.
+
+Với tập người dùng $\mathcal S$ và một hướng beam đã cố định, điều kiện robust SINR có dạng
+\begin{equation}
+\mathbf p\geq \mathbf F\mathbf p+\mathbf u,\qquad \mathbf F\geq0,\quad\mathbf u>0,\quad\mathbf1^T\mathbf p\leq P_{\max}.
+\label{eq:pc}
+\end{equation}
+Phương trình~\eqref{eq:pc} xác định yêu cầu công suất khi giao thoa giữa những liên kết đã được chấp nhận phải được kiểm soát. Bài toán ưu tiên tối đa số người dùng phục vụ đồng thời, sau đó tối thiểu tổng công suất trong số phương án có cùng số người dùng. Exhausive search trên tập hữu hạn được dùng làm oracle; không suy diễn tối ưu toàn cục trên mọi beam phức liên tục.
+
+\section{Cơ chế screening và nguyên tắc đo công bằng}
+Cận do nhiễu $\mathbf1^T\mathbf u>P_{\max}$ và cận tổng riêng Neumann
+\begin{equation}
+L_r=\mathbf1^T\sum_{n=0}^{r}\mathbf F^n\mathbf u>P_{\max},\quad r\leq4,
+\label{eq:n}
+\end{equation}
+cho phép loại ứng viên trước khi giải đầy đủ, vì $L_r$ là cận dưới tổng công suất của mọi nghiệm đáp ứng~\eqref{eq:pc}. Với cặp $(i,j)$, điều kiện $F_{ij}F_{ji}>1$ cũng đủ loại ứng viên theo cấu trúc ma trận giao thoa không âm. Trường hợp độ lợi trực tiếp robust không dương được giữ lại để giải đầy đủ nếu gần ngưỡng số học.
+
+Đặt $\tau=10^{-5}$ là khoảng bảo vệ tương đối. Nếu khoảng cách của bất đẳng thức tới ngưỡng không vượt $\tau$, ứng viên không bị loại (\emph{fail-open}). Bước này không phải chứng nhận interval arithmetic cho toàn bộ phép tính kênh và beam.
+
+Đối chứng \texttt{CARDINALITY\_ONLY} gọi trực tiếp bộ giải nguồn, không chịu chi phí dựng ma trận cho screening. \texttt{FAST} sử dụng bốn kiểm tra trên, còn \texttt{LITE} bỏ cận Neumann để đánh giá overhead. Cả ba cùng sử dụng hàm giải công suất và cùng tập ứng viên. Runtime đo từ đầu đến cuối mỗi lần lựa chọn, bao gồm sinh beam, screening và bộ giải, không đưa runtime oracle vào runtime thuật toán. Đảo thứ tự các phương pháp giữa các lượt lặp để giảm sai lệch do thứ tự chạy.
+
+\section{Thiết kế dữ liệu kiểm chứng}
+\textbf{DeepMIMO:} Nhập $\widehat{\mathbf H}$ có kích thước $(N,M,4)$ dưới dạng số phức, trường \texttt{groups} và metadata tọa độ/scenario. Dữ liệu kiểm thử phải thuộc nhóm không gian chưa xuất hiện trong phát triển v9--v11, được ghi trong \texttt{provenance.json}. Đối chiếu tập nhãn nhóm phát triển bằng tùy chọn \texttt{--development-groups}. Việc không trùng mã nhóm chỉ là phép kiểm tra tối thiểu; không chứng minh độc lập thống kê.
+
+\textbf{3GPP TR 38.901:} Xuất kênh từ mô phỏng Sionna UMi hoặc kịch bản 3GPP đã cấu hình thực sự, lưu thông tin scenario, tần số, vận tốc, seed, độ trễ, chuẩn hóa và noise model. Không sử dụng bộ tạo \texttt{umi-inspired} rút gọn để công bố là kết quả 3GPP. Bản mã nhận kênh qua NPZ, không tự tạo dữ liệu chuẩn. Các phép so sánh phải dùng cùng quy trình cho cả hai nguồn và giữ nguyên tham số đã khóa.
+
+\section{Điều kiện dừng và kiểm định}
+Tại mỗi geometry, nghiệm FAST, LITE và CARDINALITY\_ONLY phải trùng oracle về số người dùng, tập người dùng, lựa chọn beam và công suất trong dung sai số học đã định sẵn. Mỗi ứng viên bị loại bằng FAST được so sánh với exhaustive; một trường hợp loại nhầm là FAIL. Chênh lệch runtime chính là $\Delta t=t_{\rm CARD}-t_{\rm FAST}$, tính theo trung vị những lần chạy lặp của cùng geometry. Bootstrap ghép cặp theo nhóm không gian cho khoảng tin cậy 95\% mô tả. Chỉ xét đủ điều kiện GO riêng cho FAST khi cận dưới khoảng này lớn hơn 0; kết luận chính thức đòi hỏi cả hai nguồn độc lập đều đạt. Quyết định trên tập test tuyệt đối không được dùng để lựa chọn lại quy tắc hoặc tham số rồi tuyên bố cùng tập đó vẫn là holdout.
+
+\section{Checkpoint và danh sách tệp}
+\begin{longtable}{p{0.14\linewidth}p{0.41\linewidth}p{0.36\linewidth}}
+\toprule
+Mốc & Tệp kết quả & Kiểm tra bắt buộc\\\midrule\endhead
+CP00 & \texttt{CP00\_frozen\_protocol.json} & Hash mã, tập beam, ngưỡng, quy tắc GO\\
+CP01 & \texttt{CP01\_dataset\_audit.json} & SHA-256 dữ liệu, metadata, tách nhóm\\
+CP02 & \texttt{CP02\_repeated\_runtime.csv} & Từng geometry, lần lặp, runtime, lời gọi giải\\
+CP03 & \texttt{CP03\_all\_candidate\_audit.csv} & Từng ứng viên, certificate và oracle\\
+CP04 & \texttt{CP04\_paired\_geometry.csv} & Thời gian tiết kiệm và lời gọi giải ghép cặp\\
+CP05 & \texttt{CP05\_comparison\_summary.csv} & Runtime, khoảng tin cậy, FAST/LITE\\
+CP06 & \texttt{CP06\_decision.json} & PASS/STOP và giới hạn kết luận\\
+CP07 & \texttt{CP07\_SHA256.csv} & Chữ ký của các checkpoint\\
+B-CP00--03 & \texttt{boundary\_stress.py} & Các thử nghiệm sát ngưỡng và fail-open\\
+Final & \texttt{manuscript\_gate.py} & Tổng hợp quyết định ba nhánh độc lập\\\bottomrule
+\end{longtable}
+
+Mỗi geometry có tệp JSON trong \texttt{outputs/RUN\_ID/tasks/}. Tệp được ghi bằng tệp tạm, \texttt{fsync} và thay thế nguyên tử. Chạy lại cùng lệnh \texttt{scan} sẽ bỏ qua geometry hoàn thành; chữ ký mismatch làm dừng, yêu cầu run-id mới. Chạy \texttt{report} chỉ khi toàn bộ geometry đã hoàn thành. Không chép các kết quả smoke test vào các bảng chính của manuscript.
+
+\section{Lệnh chạy Windows PowerShell}
+Mở PowerShell trong thư mục gốc của gói. Trước khi dùng dữ liệu thực, cài đặt thư viện và chạy unit test:
+\begin{verbatim}
+python -m pip install -r code/requirements.txt
+python -m unittest discover -s tests -v
+\end{verbatim}
+Kiểm tra sát ngưỡng. Không sử dụng tập test độc lập để chọn lại ngưỡng:
+\begin{verbatim}
+python code/boundary_stress.py --stage all \
+  --run-id BORDER_V12 \
+  --dataset data/development_stress.npz --limit 50
+\end{verbatim}
+Chương trình \texttt{scripts/run\_validation.ps1} thực hiện tuần tự \texttt{lock}, \texttt{preflight}, \texttt{scan}, \texttt{report}; nếu đã có checkpoint hợp lệ, chạy lại cùng lệnh sẽ tiếp tục phần chưa hoàn thành.
+\begin{verbatim}
+.\scripts\run_validation.ps1 `
+  -Source DeepMIMO `
+  -Dataset data\deepmimo_new.npz `
+  -Provenance data\deepmimo_provenance.json `
+  -DevelopmentGroups data\development_groups.json `
+  -RunId DM_V12
+\end{verbatim}
+Đối với kênh 3GPP độc lập, đổi \texttt{-Source} thành \texttt{Sionna\_3GPP}, đổi đường dẫn dataset và provenance, đồng thời sử dụng run-id \texttt{GPP\_V12}. Giữ nguyên thuật toán và tham số vật lý. Nếu chính sách thực thi PowerShell không cho phép chạy script, dùng \texttt{powershell -ExecutionPolicy Bypass -File scripts/run\_validation.ps1} cùng các tham số trên.
+
+Ghi lại phần cứng, số luồng, phiên bản Python/NumPy/SciPy và tải hệ thống. Script đặt số luồng BLAS và OpenMP bằng 1 cho từng lần chạy. Không thay đổi mã hoặc dữ liệu trong một run-id đã khóa.
+
+Chỉ thực hiện cổng quyết định khóa bản thảo sau khi cả ba nhánh đã chạy xong:
+\begin{verbatim}
+python code/manuscript_gate.py `
+  --deepmimo-dir outputs/DM_V12 `
+  --threegpp-dir outputs/GPP_V12 `
+  --boundary-dir outputs/BORDER_V12 `
+  --out outputs/manuscript_gate.json
+\end{verbatim}
+\section{Kết quả kiểm tra chương trình và kết luận}
+Bộ mã đã vượt 12 bài unit test và một smoke test 4 geometry/420 ứng viên với nghiệm khớp exhaustive; đây là kiểm tra tính đúng chương trình, không phải kết quả khoa học. Chưa có kết quả independent DeepMIMO hoặc 3GPP chính thức trong gói này. Không sửa Abstract/Conclusion để tuyên bố tăng tốc trước khi cổng khóa bài đáp ứng. Nếu FAST không giảm runtime so với cardinality-only trên dữ liệu độc lập, phải giữ kết luận về tính đúng của screening, nhưng dừng tuyên bố về lợi thế runtime.
+\end{document}
