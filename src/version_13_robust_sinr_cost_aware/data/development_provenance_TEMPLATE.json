@@ -1,0 +1,12 @@
+{
+  "source": "DeepMIMO",
+  "scenario": "FILL_SCENARIO_NAME",
+  "group_definition": "FILL_SPATIAL_BLOCK_OR_TOPOLOGY",
+  "independence_basis": "FILL_SAMPLING_PROCESS_AND_SEPARATION",
+  "prior_use": "development",
+  "dataset_generation_code_sha256": "FILL",
+  "channel_normalization": "FILL",
+  "noise_power_W": 2e-13,
+  "recording_or_topology_id": "FILL",
+  "software_versions": "FILL"
+}

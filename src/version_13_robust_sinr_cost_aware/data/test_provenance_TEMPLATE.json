@@ -1,0 +1,12 @@
+{
+  "source": "Sionna_3GPP",
+  "scenario": "UMi TR 38.901",
+  "group_definition": "topology_drop_id with cross-source namespace",
+  "independence_basis": "FILL_SEPARATE_SEED_SET_AND_CONFIG",
+  "prior_use": "never_seen",
+  "dataset_generation_code_sha256": "FILL",
+  "channel_normalization": "FILL",
+  "noise_power_W": 2e-13,
+  "path_delay_units": "s (verify values against physical delay range)",
+  "software_versions": "FILL"
+}

@@ -1,0 +1,20 @@
+{
+  "source_directory": "/media/icnlab/Data/hoanganh/Robust_SINR_Cost_Aware_V13",
+  "import_date": "2026-11-15",
+  "version": "13",
+  "upstream_revision_date": "2026-11-11",
+  "source_manifest": "UPSTREAM_FILE_SHA256.csv",
+  "preserved_upstream_files": 28,
+  "excluded_generated_content": [
+    ".venv",
+    "outputs",
+    "tasks",
+    "develop.log",
+    "develop.pid",
+    "scan.log",
+    "scan.pid",
+    "__pycache__",
+    "Results.Robust.SINR.Cost.Aware.V13.CP01-CP08.zip"
+  ],
+  "notes": "Original README.md is stored as README_UPSTREAM.md and the supplied checksum table as UPSTREAM_FILE_SHA256.csv. The repository records the official DeepMIMO run and the exact post-lock data-generation scripts under log/version_13; real channel matrices, selection arrays, downloaded scenarios and task caches are excluded."
+}

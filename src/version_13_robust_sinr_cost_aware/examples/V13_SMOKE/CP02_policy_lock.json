@@ -1,0 +1,68 @@
+{
+  "settings": {
+    "cfg": {
+      "q": 2.960414,
+      "sigma": 0.04,
+      "gamma": 3.9810717055349722,
+      "noise": 2e-13,
+      "pmax": 1.0
+    },
+    "alphas": [
+      0.0,
+      0.001,
+      0.01,
+      0.05,
+      0.1,
+      0.3,
+      1.0
+    ],
+    "guard": 1e-05,
+    "repeats": 3,
+    "bootstrap": 200,
+    "min_gain_ms": 0.1,
+    "code_hashes": {
+      "cost_aware_v13.py": "4cc74431fcf570863be8a5eeea90be25f1bd1af96102728b0b48755da0e9760d",
+      "reference_model.py": "163bd7b2fb2b0a1333cf06d8b1f1df9624c2d75b3bf7b864b1fdf26e00b9bba3",
+      "ablation_certified.py": "37f3a9dfd7c22c8f2117ed7007836d5105a433ec8988e592d6ee0424d149c866",
+      "ablation_audit.py": "bb425163bb71da1036d8addfb5d7edab6fe1164752c25a33bcf23cb971792fa3"
+    }
+  },
+  "dev_sha256": "c52e1551158a6556ad8161db560864244beb6958c7e90adac119a4708f4bd2f9",
+  "development_groups": [
+    "0",
+    "1",
+    "2",
+    "3"
+  ],
+  "development_geometry_hashes": [
+    "7456cf40ccb477fa05bb6032a5c7874833edeadf96b7279df76ed5df65b53a45",
+    "7c7583fb60dc0a1b7c2cd8ed73a7e39aef44a23fa144ad59ec37f0152739b9be",
+    "81d42ccc5bb88f9b1a4a8b7b6dee117ad9162e645478a003845c065cf08af3d6",
+    "dfa7a7a92b4b866fbef458b75b2d6a7de5c613ff68703ae5dbc2480b28dbb2be"
+  ],
+  "selected_policy": "CARD",
+  "candidate_results": [
+    {
+      "policy": "EARLY",
+      "mean_saved_ms": -0.4678660000081436,
+      "ci_lo": -0.9406039999930726,
+      "ci_hi": 0.11507199991456218,
+      "passes": false
+    },
+    {
+      "policy": "CACHED",
+      "mean_saved_ms": -0.26233625010263495,
+      "ci_lo": -0.43746625010498974,
+      "ci_hi": -0.07707649990607024,
+      "passes": false
+    },
+    {
+      "policy": "HYBRID",
+      "mean_saved_ms": -0.529808000067078,
+      "ci_lo": -1.0058935000074598,
+      "ci_hi": -0.2388765001342108,
+      "passes": false
+    }
+  ],
+  "scope": "selection from development only"
+}
