@@ -22,8 +22,9 @@ Kho nghiên cứu được tổ chức theo ba lớp độc lập:
 | `version_10` | Certified safe-pruning ablation và numerical audit | `68069e4` | DeepMIMO CP00–CP07 complete; PASS_EXACTNESS on development |
 | `version_11` | Robust SINR Screening R2, repeated runtime và locked validation workflow | `1b0bca0` | A+B+C complete; synthetic D rehearsal complete; no runtime GO |
 | `version_12` | Final robust-SINR validation trên DeepMIMO mới và Sionna 3GPP UMi | `59f4bab` | Boundary PASS; cả hai nguồn zero false prune nhưng runtime STOP; manuscript chưa khóa |
+| `version_13` | Cost-aware robust-SINR screening với policy khóa trên development | `16cc1d7` | CP01–CP08 complete; 0 false reject; CARD fallback và STOP_NO_RUNTIME_GAIN |
 
-Version mới nhất là [`src/version_12_robust_sinr_final_validation`](src/version_12_robust_sinr_final_validation).
+Version mới nhất là [`src/version_13_robust_sinr_cost_aware`](src/version_13_robust_sinr_cost_aware).
 
 ## Hai phiên bản đầu tiên được khôi phục
 
@@ -34,7 +35,27 @@ Hai ZIP gốc được đối chiếu checksum và chạy lại ngày 2026-11-02
 
 Các replay dùng lại dataset `deepmimo_asu35_v1`, vì vậy là tái dựng lịch sử trên development data. Xem [run ver1](log/version_01/runs/DM_ASU35_R1_REPLAY_20261102/RUN.md) và [run ver2](log/version_02/runs/DM_ASU35_E1R_E3R_REPLAY_20261102/RUN.md).
 
-## Kết quả hiện tại (version 12)
+## Kết quả hiện tại (version 13)
+
+Version 13 kiểm tra bốn policy `CARD`, `EARLY`, `CACHED`, `HYBRID` và chỉ khóa
+screening khi cận dưới bootstrap runtime trên development vượt 0.1 ms:
+
+- Development dùng 160 geometry/160 group ASU. `EARLY` tiết kiệm trung bình
+  0.1139 ms nhưng cận dưới CI95 chỉ 0.0107 ms; `CACHED` và `HYBRID` chậm hơn.
+  Vì vậy CP02 khóa baseline `CARD` trước khi tạo test.
+- Test mới dùng DeepMIMO `city_0_newyork_3p5`, 160 geometry/40 spatial group,
+  640 UE không lặp; selection/channel được sinh sau khi CP02 đã niêm phong.
+- CP03 ghi nhận 0 group overlap và 0 exact-channel overlap với development.
+- CP08 kiểm toán đủ 16.800 ứng viên, 0 false reject và CP06 có 0 oracle mismatch.
+- Do policy khóa là CARD, runtime/call saving đều bằng 0 và kết luận là
+  `STOP_NO_RUNTIME_GAIN`; không có verified computational superiority.
+- 5/5 unit test, CP07 8/8 checksum và report ZIP 9 checkpoint đều PASS.
+
+Xem [run log version 13](log/version_13/README.md),
+[run card](log/version_13/runs/DM_ASU35_COST_V13_20261112/RUN.md) và
+[source V13](src/version_13_robust_sinr_cost_aware/README.md).
+
+## Kết quả trước đó (version 12)
 
 Version 12 chạy protocol final validation trên hai nguồn mới và boundary branch:
 
