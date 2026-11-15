@@ -1,0 +1,84 @@
+{
+  "dev_sha256": "1d479a06b94fff565a8997ceb870c670bda7458dbf5e5cd54c2fc0afc14b1f50",
+  "test_sha256": "cf3a58de6a6519921e308753858798c61c94b11bca4faafac8afb1f49248d557",
+  "n_test": 160,
+  "groups": 40,
+  "group_overlap": 0,
+  "exact_channel_overlap": 0,
+  "test_provenance": {
+    "development": {
+      "source": "DeepMIMO",
+      "scenario": "asu_campus_3p5",
+      "split": "development",
+      "prior_use": "development",
+      "group_definition": "160 geometry-level spatial groups; four users per geometry; no user reuse; minimum group-center distance 10 m and minimum intra-geometry user distance 20 m",
+      "independence_basis": "Development-only ASU Campus ray-tracing set reused from the v9-v12 development workflow; no independent-test claim is made for this dataset",
+      "dataset_sha256": "1d479a06b94fff565a8997ceb870c670bda7458dbf5e5cd54c2fc0afc14b1f50",
+      "selection_sha256": "f335063c11368993b3a3871d1b90062f921a4ac50f2f18868ca7136ee1a67d60",
+      "scenario_params_sha256": "8b4013bb215bd7a3fede33de322b426da39494723e7aa4f769b51a6ba52f16c3",
+      "dataset_shape": [
+        160,
+        16,
+        4
+      ],
+      "dataset_dtype": "complex64",
+      "deepmimo_version": "4.0.5",
+      "channel_normalization": "none; absolute DeepMIMO channel scale retained",
+      "noise_power_W": 2e-13,
+      "selection_seed": 20261028,
+      "statistical_independence_verified": false,
+      "cautions": [
+        "This is development data and must not be reported as an independent V13 test.",
+        "Disjoint user indices and spatial separation do not prove independent channel episodes."
+      ]
+    },
+    "test": {
+      "source": "DeepMIMO",
+      "scenario": "city_0_newyork_3p5",
+      "split": "new_independent_test",
+      "prior_use": "never_seen",
+      "created_after_policy_lock": true,
+      "group_definition": "40 fixed 15 m spatial grid cells; four geometries per cell; four users per geometry; 640 unique UEs without reuse",
+      "independence_basis": "New York city_0_newyork_3p5 ray-tracing scenario is distinct from the ASU Campus development scenario; selection and channel generation occurred only after the V13 CP02 policy lock",
+      "statistical_independence_verified": false,
+      "dataset_sha256": "cf3a58de6a6519921e308753858798c61c94b11bca4faafac8afb1f49248d557",
+      "dataset_shape": [
+        160,
+        16,
+        4
+      ],
+      "dataset_dtype": "complex64",
+      "selection_sha256": "45ae9175c59452f7209fea5d03a42ddb3ae687b09b57e2664ecff09a3fa4f1a1",
+      "selection_protocol_sha256": "8066d1e898449440d2c9876a77445f6215fa7ab83d622a7c540faeb5ae302fa3",
+      "cp02_policy_lock_sha256": "ede58de7c0f2791327b54e929e6da4921db17b8d5c870a3dec5bdc9ef1b8b5be",
+      "dataset_generation_code_sha256": "a2ea92fe60524d537059f130b2c5ce0e7d9ad6d4ee5d563add89404e34aa9743",
+      "deepmimo_version": "4.0.5",
+      "transmitter": "BS1 / TX set 3 / index 0",
+      "channel_normalization": "none; absolute DeepMIMO complex channel scale retained",
+      "channel_matrix_convention": "H[geometry, bs_antenna, user]",
+      "max_paths": 10,
+      "bs_antenna_shape": [
+        16,
+        1
+      ],
+      "ue_antenna_shape": [
+        1,
+        1
+      ],
+      "antenna_spacing_wavelengths": 0.5,
+      "frequency_domain": true,
+      "ofdm_bandwidth_hz": 10000000.0,
+      "ofdm_total_subcarriers": 512,
+      "selected_subcarrier": 0,
+      "path_delay_units": "seconds",
+      "noise_power_W": 2e-13,
+      "cautions": [
+        "Different scenarios and a post-lock selection support separation but do not prove statistical independence.",
+        "The finite ZF/RZF candidate audit is not global beamforming optimality.",
+        "This test dataset must not be used to retune the locked V13 policy."
+      ]
+    }
+  },
+  "independence_not_proven_by_group_ids": true,
+  "selected_policy": "CARD"
+}

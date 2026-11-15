@@ -1,0 +1,46 @@
+{
+  "source": "DeepMIMO",
+  "scenario": "city_0_newyork_3p5",
+  "split": "new_independent_test",
+  "prior_use": "never_seen",
+  "created_after_policy_lock": true,
+  "group_definition": "40 fixed 15 m spatial grid cells; four geometries per cell; four users per geometry; 640 unique UEs without reuse",
+  "independence_basis": "New York city_0_newyork_3p5 ray-tracing scenario is distinct from the ASU Campus development scenario; selection and channel generation occurred only after the V13 CP02 policy lock",
+  "statistical_independence_verified": false,
+  "dataset_sha256": "cf3a58de6a6519921e308753858798c61c94b11bca4faafac8afb1f49248d557",
+  "dataset_shape": [
+    160,
+    16,
+    4
+  ],
+  "dataset_dtype": "complex64",
+  "selection_sha256": "45ae9175c59452f7209fea5d03a42ddb3ae687b09b57e2664ecff09a3fa4f1a1",
+  "selection_protocol_sha256": "8066d1e898449440d2c9876a77445f6215fa7ab83d622a7c540faeb5ae302fa3",
+  "cp02_policy_lock_sha256": "ede58de7c0f2791327b54e929e6da4921db17b8d5c870a3dec5bdc9ef1b8b5be",
+  "dataset_generation_code_sha256": "a2ea92fe60524d537059f130b2c5ce0e7d9ad6d4ee5d563add89404e34aa9743",
+  "deepmimo_version": "4.0.5",
+  "transmitter": "BS1 / TX set 3 / index 0",
+  "channel_normalization": "none; absolute DeepMIMO complex channel scale retained",
+  "channel_matrix_convention": "H[geometry, bs_antenna, user]",
+  "max_paths": 10,
+  "bs_antenna_shape": [
+    16,
+    1
+  ],
+  "ue_antenna_shape": [
+    1,
+    1
+  ],
+  "antenna_spacing_wavelengths": 0.5,
+  "frequency_domain": true,
+  "ofdm_bandwidth_hz": 10000000.0,
+  "ofdm_total_subcarriers": 512,
+  "selected_subcarrier": 0,
+  "path_delay_units": "seconds",
+  "noise_power_W": 2e-13,
+  "cautions": [
+    "Different scenarios and a post-lock selection support separation but do not prove statistical independence.",
+    "The finite ZF/RZF candidate audit is not global beamforming optimality.",
+    "This test dataset must not be used to retune the locked V13 policy."
+  ]
+}

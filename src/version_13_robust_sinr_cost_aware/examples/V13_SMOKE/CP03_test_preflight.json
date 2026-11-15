@@ -1,0 +1,11 @@
+{
+  "dev_sha256": "c52e1551158a6556ad8161db560864244beb6958c7e90adac119a4708f4bd2f9",
+  "test_sha256": "4439500bd9457ed66b58f5b4b0354daab3483c036f1dbaef5d4a582be079182c",
+  "n_test": 4,
+  "groups": 4,
+  "group_overlap": 0,
+  "exact_channel_overlap": 0,
+  "test_provenance": {},
+  "independence_not_proven_by_group_ids": true,
+  "selected_policy": "CARD"
+}

@@ -1,5 +1,20 @@
 # Changelog
 
+## v13.0.0 — 2026-11-15
+
+- Nhập nguyên source cost-aware screening, 5 unit test, IEEE guide, smoke fixtures,
+  PowerShell runner và manuscript examples; bảo toàn 28/28 file upstream.
+- Chạy development trên 160 geometry ASU với bảy lần lặp và 2.000 bootstrap draws;
+  không policy screening nào vượt cận dưới 0.1 ms nên CP02 khóa `CARD`.
+- Niêm phong CP02 trước khi chọn/sinh test DeepMIMO New York mới gồm 160 geometry,
+  40 spatial group và 640 UE không lặp; lưu generation code và provenance hash.
+- CP03 xác nhận zero group/exact-channel overlap với development; CP08 kiểm toán
+  16.800 ứng viên với zero false rejection và zero oracle mismatch.
+- CP06 trả `STOP_NO_RUNTIME_GAIN`; không tuyên bố tăng tốc khi baseline CARD được
+  chọn. Giữ kết luận exactness của finite candidate family và các giới hạn khoa học.
+- Lưu CP01–CP08, report ZIP, provenance và checksum; loại real channel matrices,
+  selection arrays, downloaded scenario, per-geometry tasks, logs, PID và environment.
+
 ## v12.0.0 — 2026-11-12
 
 - Nhập source final-validation, 12 unit test, IEEE guide, PowerShell launcher và provenance templates; bảo toàn 24 file upstream ngoài bundled smoke output/task cache.

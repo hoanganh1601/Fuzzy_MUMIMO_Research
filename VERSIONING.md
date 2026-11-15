@@ -48,3 +48,4 @@ Mỗi run card phải ghi code version/Git SHA, dataset version/SHA-256, cấu h
 | `v10.0.0` | `68069e4` | Certified safe-pruning ablation and numerical audit source |
 | `v11.0.0` | `1b0bca0` | Robust SINR Screening R2 source and locked validation workflow |
 | `v12.0.0` | `59f4bab` | Robust SINR final-validation source and cross-source manuscript gate |
+| `v13.0.0` | `16cc1d7` | Cost-aware robust SINR screening and development-locked policy workflow |

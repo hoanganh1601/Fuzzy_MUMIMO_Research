@@ -1,0 +1,93 @@
+\documentclass[11pt,onecolumn]{IEEEtran}
+\usepackage{fontspec}
+\setmainfont{DejaVu Serif}
+\usepackage{amsmath,amssymb,booktabs,array,geometry,hyperref,enumitem}
+\geometry{a4paper,left=21mm,right=20mm,top=19mm,bottom=19mm}
+\hypersetup{hidelinks}
+\setlist{nosep,leftmargin=6mm}
+\title{Sàng lọc sớm có xét chi phí cho lựa chọn người dùng và hướng búp sóng MU--MIMO\\Hướng dẫn thực nghiệm, kiểm toán và tái lập kết quả}
+\author{Tài liệu kỹ thuật nghiên cứu --- 11/11/2026}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+Trong đường xuống nhiều người dùng, nhiều anten (MU--MIMO), trạm gốc cần chọn người dùng và hướng búp sóng dưới ràng buộc tỷ số công suất tín hiệu trên giao thoa cộng nhiễu (SINR) và công suất phát. Kết quả V12 xác nhận giảm số lần gọi bộ giải nhưng không giảm thời gian chạy tổng thể so với phương pháp chỉ duyệt theo số người dùng. Bản này bổ sung sàng lọc sớm trước khi tạo beam, tái sử dụng hệ số giao thoa trong bộ giải, và một quy tắc lựa chọn chính sách từ dữ liệu phát triển. Mục tiêu là kiểm chứng lợi ích thời gian từ đầu đến cuối trên dữ liệu độc lập; nếu không có lợi ích, chương trình khóa phương án không sàng lọc và báo dừng đóng góp tăng tốc.
+\end{abstract}
+
+\section{Mô hình và giới hạn nghiên cứu}
+Xét một trạm gốc $M=16$ anten, $K=4$ người dùng và bảy lựa chọn zero-forcing (ZF), regularized zero-forcing (RZF) tại từng tập người dùng. Bán kính bất định thông tin trạng thái kênh (CSI) được giữ cố định $q_c=2.960414$; mục tiêu SINR là $6$ dB, sai số CSI tương đối $0.04$, công suất nhiễu $2\times10^{-13}$ W và $P_{\max}=1$ W. Đây là thông số để đối sánh với V12, không phải thông số vô tuyến đã hiệu chuẩn theo một triển khai thực tế.
+
+Với tập người dùng $\mathcal S$ và bộ hướng tạo búp đã cho, điều kiện robust SINR được biểu diễn bằng
+\begin{equation}
+\mathbf p\geq\mathbf F\mathbf p+\mathbf u,\quad
+\mathbf F\geq0,\quad \mathbf u>0,\quad
+\mathbf1^T\mathbf p\leq P_{\max}.
+\label{eq:sinr}
+\end{equation}
+Phương trình~\eqref{eq:sinr} xác định miền công suất đáp ứng yêu cầu đường xuống; nghiệm tốt nhất ưu tiên số người dùng được phục vụ, rồi tối thiểu hóa tổng công suất trong các tập có cùng số người dùng. Tập hữu hạn có $7(2^4-1)=105$ ứng viên; đây không phải nghiệm tối ưu toàn cục đối với mọi hướng búp liên tục.
+
+\section{Sàng lọc sớm và chính sách có xét chi phí}
+\subsection{Cận trước khi tạo búp sóng}
+Kênh ước lượng của người dùng $k$ là $\widehat{\mathbf h}_k$. Với hướng beam chuẩn hóa $\|\mathbf w_k\|_2=1$, sai số bằng không thuộc miền bất định, và giao thoa không âm, mọi nghiệm robust khả thi phải thỏa
+\begin{equation}
+P_{\mathrm{tx}}\geq
+L_{\mathrm{early}}(\mathcal S)
+=\sum_{k\in\mathcal S}\frac{\gamma_k\sigma_k^2}{\|\widehat{\mathbf h}_k\|_2^2}.
+\label{eq:early}
+\end{equation}
+Cận~\eqref{eq:early} là điều kiện cần, tính trực tiếp từ CSI trước khi dựng ZF/RZF. Nếu $L_{\mathrm{early}}>P_{\max}$ với khoảng bảo vệ số học, tất cả bảy hướng beam của cùng tập người dùng có thể bị loại. Nếu cận nằm sát ngưỡng hoặc kênh có chuẩn quá nhỏ, thuật toán \emph{fail-open}, giữ ứng viên để giải đầy đủ.
+
+\subsection{Tái sử dụng hệ số robust SINR}
+Khi không loại được trước khi tạo beam, chương trình có thể dựng một lần $\mathbf F,\mathbf u$ cho mỗi ứng viên. Các điều kiện $\sum_k u_k>P_{\max}$, $F_{ij}F_{ji}>1$, và
+\begin{equation}
+L_r=\mathbf1^T\sum_{n=0}^{r}\mathbf F^n\mathbf u>P_{\max},\qquad r\leq4
+\label{eq:neumann}
+\end{equation}
+được dùng để sàng lọc. Phương trình~\eqref{eq:neumann} cung cấp cận dưới tổng công suất từ khai triển Neumann của hệ không âm. Nếu ứng viên sống sót, bộ giải dùng lại $\mathbf F,\mathbf u$ để kiểm tra nghiệm giải tích và bài toán quy hoạch tuyến tính (LP), thay vì dựng beam lần thứ hai. Mọi trường hợp sát ngưỡng được chuyển sang kiểm tra đầy đủ; bản này không khẳng định chứng nhận số học bằng số học khoảng.
+
+\subsection{Chính sách phát triển được khóa}
+Bốn phương pháp được kiểm tra: \texttt{CARD} (cardinality-only), \texttt{EARLY} (chỉ dùng cận~\eqref{eq:early}), \texttt{CACHED} (dựng hệ số một lần, kiểm tra certificate rồi tái sử dụng), và \texttt{HYBRID} (kết hợp hai bước). Trên \emph{development}, thời gian tổng thể được đo ghép cặp với thứ tự phương pháp được hoán đổi giữa các lần lặp. Chỉ chấp nhận phương pháp có cận dưới bootstrap theo nhóm 95\% của tiết kiệm thời gian lớn hơn ngưỡng $\delta_T=0.1$ ms. Nếu không có ứng viên đạt, chọn \texttt{CARD}. Quy tắc này chỉ chọn một chính sách chung, không học hoặc điều chỉnh trên test.
+
+\section{Thiết kế dữ liệu và ngăn rò rỉ}
+\begin{enumerate}
+\item \textbf{Development:} ma trận kênh \texttt{H} dạng số phức kích thước $(N,M,4)$, \texttt{groups} mô tả nhóm không gian hoặc topology. Đo cả bốn chính sách, khóa thuật toán và ngưỡng trước khi mở test.
+\item \textbf{Test DeepMIMO:} lấy nhóm chưa sử dụng ở những khu vực hoặc scenario riêng; không dùng lại 160 cấu hình đã tham gia phát triển các bản v9--v12.
+\item \textbf{Test 3GPP:} dùng ma trận sinh độc lập từ mô hình 3GPP TR 38.901 (ví dụ Sionna UMi), không sử dụng các kết quả này để lựa chọn lại chính sách. Ghi rõ phiên bản mô hình, tốc độ, path loss, đơn vị path delay và cách chia nhóm.
+\item \textbf{Độc lập thống kê:} không coi nhãn nhóm khác nhau hoặc các mẫu sai số trên cùng một geometry là bằng chứng độc lập. Phải lưu metadata mô tả quá trình lấy mẫu và loại trừ chồng lấn các bản ghi kênh.
+\end{enumerate}
+Tệp dữ liệu thử của gói chỉ dùng kiểm tra pipeline; mọi kết quả trên synthetic không được đưa vào phần Numerical Results của manuscript.
+
+\section{Checkpoint và các CSV cần xuất}
+\begin{center}\small
+\begin{tabular}{p{15mm}p{54mm}p{95mm}}
+\toprule
+\textbf{CP} & \textbf{Tệp} & \textbf{Nội dung}\\
+\midrule
+01 & \texttt{CP01\_development\_runtime.csv} & Runtime từng phép đo và lời gọi bộ giải trên development.\\
+01b & \texttt{CP01\_policy\_candidates.csv} & Khoảng tin cậy, mức tiết kiệm và quyết định hợp lệ của từng chính sách.\\
+02 & \texttt{CP02\_policy\_lock.json} & Tham số và mã SHA-256 được khóa, danh sách nhóm và hash từng kênh development.\\
+03 & \texttt{CP03\_test\_preflight.json} & Hash dữ liệu test, kiểm toán trùng lặp và provenance.\\
+04 & \texttt{CP04\_runtime\_repetitions.csv} & Runtime end-to-end và thời gian tách thành phần theo geometry và lần lặp.\\
+05 & \texttt{CP05\_paired\_geometry.csv} & Chênh lệch thời gian ghép cặp với cardinality-only.\\
+06 & \texttt{CP06\_decision.json} & GO/STOP, cận bootstrap 95\%, số nhóm và trạng thái đối chiếu exhaustive.\\
+07 & \texttt{CP07\_SHA256.csv} & Kiểm tra toàn vẹn tệp kết quả.\\
+08 & \texttt{CP08\_candidate\_}\newline\texttt{certificate\_audit.csv} & Kiểm tra toàn bộ 105 ứng viên/geometry, lý do loại, trạng thái exhaustive, loại nhầm.\\
+\bottomrule
+\end{tabular}
+\end{center}
+Mỗi geometry có \texttt{tasks/XXXXXXX.json}, được ghi nguyên tử. Khi dừng máy, chạy lại cùng lệnh \texttt{scan} rồi \texttt{report}. Không sửa mã, dữ liệu, cấu hình trong cùng \texttt{run-id}; nếu thay đổi phải tạo \texttt{run-id} mới.
+
+\section{Lệnh chạy và điều kiện kết luận}
+Tại thư mục gốc sau giải nén:
+\begin{verbatim}
+python -m pip install -r code/requirements.txt
+python -m unittest discover -s tests -v
+\end{verbatim}
+Dùng \texttt{scripts/run\_v13.ps1} để chạy chuỗi phát triển, preflight, scan và report. Script nhận đường dẫn dataset, file metadata provenance và run-id bằng tham số. Hãy chỉnh đường dẫn đầu vào thực, không sửa ngưỡng sau khi đã đọc test. Với dữ liệu 3GPP, sử dụng run-id riêng và kiểm tra báo cáo độc lập.
+
+\textbf{GO}: Nghiệm của chính sách được chọn khớp exhaustive trên toàn bộ test; không có certificate loại nhầm; chính sách không phải \texttt{CARD}; cận dưới bootstrap ghép cặp theo nhóm 95\% của tiết kiệm runtime lớn hơn 0 trên từng nguồn kênh độc lập. Phải báo cáo cả runtime chuẩn và số lần gọi bộ giải; không coi số lời gọi giảm là tăng tốc nếu runtime tăng.
+
+\textbf{STOP}: Không có chính sách được chọn ở development hoặc lợi ích runtime không tái xác nhận trên test. Trong trường hợp này, manuscript chỉ có thể trình bày tính đúng và giới hạn computational cost của safe screening, không tuyên bố tăng tốc.
+
+\textbf{Giới hạn}: Tập ZF/RZF hữu hạn; kết quả được xác nhận với bộ giải số và cận bảo vệ, không phải chứng minh tính tối ưu trên mọi hướng beam. Dữ liệu test cần được giữ độc lập và kiểm toán được nếu sử dụng để đưa ra kết luận công bố.
+\end{document}
