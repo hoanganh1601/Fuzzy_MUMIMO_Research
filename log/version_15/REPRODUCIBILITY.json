@@ -1,0 +1,17 @@
+{
+  "code_version": "15",
+  "source_commit": "7632acc77b77966b967a0d7b2af40853858eb0f6",
+  "source_tag": "v15.0.0",
+  "recorded_user_environment": "not embedded in the smoke checkpoints",
+  "repository_reverification_python": "3.11.15",
+  "repository_reverification_numpy": "2.4.4",
+  "repository_reverification_scipy": "1.17.1",
+  "development_dataset_sha256": "3f71fab89857553bb0961c1ff32b3d00f71663e7c31278f891b302446537694b",
+  "test_dataset_sha256": "99e75f4825a901af5db7e288a57faf814cd7c4e4256f6ec335c02a0a4de50a6e",
+  "config_signature": "07e9415a597fbbabc67c30ab58aeb5b8b0adf6e6eb1a323d7f4eed274afb692f",
+  "task_caches_committed": false,
+  "console_logs_committed": false,
+  "real_channel_matrices_committed": false,
+  "report_bundle": "reports/Results.Robust.MUMIMO.V15.SMOKE.zip",
+  "report_bundle_sha256": "406bc31dfe69a702083eb94e51affc72b56d2af8aac53791371880eb852c4871"
+}

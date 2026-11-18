@@ -1,0 +1,18 @@
+{
+  "scope": "SYNTHETIC_SMOKE_ONLY",
+  "unit_tests": "4/4 PASS",
+  "development_source": "synthetic smoke seed 12",
+  "test_source": "synthetic smoke seed 34",
+  "development_geometries_used": 4,
+  "test_geometries_used": 4,
+  "configurations": [[4, 3], [6, 3], [8, 3]],
+  "locked_non_card_cells": 0,
+  "oracle_mismatch": 0,
+  "decision": "SMOKE_ONLY",
+  "runtime_advantage_claim_allowed": false,
+  "independent_validation_completed": false,
+  "deepmimo_result_included": false,
+  "gpp_result_included": false,
+  "global_beamforming_optimality": false,
+  "formal_interval_certificate": false
+}

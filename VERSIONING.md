@@ -50,3 +50,4 @@ Mỗi run card phải ghi code version/Git SHA, dataset version/SHA-256, cấu h
 | `v12.0.0` | `59f4bab` | Robust SINR final-validation source and cross-source manuscript gate |
 | `v13.0.0` | `16cc1d7` | Cost-aware robust SINR screening and development-locked policy workflow |
 | `v14.0.0` | `187c905` | Robust cost limits and development-locked cost-aware switching workflow |
+| `v15.0.0` | `7632acc` | Unified robust MU-MIMO computational break-even smoke workflow |

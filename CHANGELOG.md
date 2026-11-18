@@ -1,5 +1,19 @@
 # Changelog
 
+## v15.0.0 — 2026-11-18
+
+- Nhập subset source V15 cần cho smoke workflow trong IEEE guide: unified
+  entrypoint, dependency, synthetic generator/fixtures, test, guide và launcher.
+- Bảo toàn byte-for-byte 29 file upstream thuộc phạm vi smoke; loại bytecode,
+  per-geometry task cache, official runner/packer, evidence archive và paper.
+- Chạy 4/4 unit test và pipeline synthetic với K=4,6,8, L=3, bốn geometry mỗi
+  nguồn; lưu 12 checkpoint CP00--CP09.
+- CP03 khóa toàn bộ cell về CARD; CP08 ghi zero oracle mismatch và `SMOKE_ONLY`.
+- Lưu report ZIP và checksum curated artifact; không nhập ASU/Singapore run,
+  real matrices, logs, PID hoặc environment.
+- Ghi rõ smoke chỉ xác minh chương trình, không phải independent validation hay
+  bằng chứng computational superiority.
+
 ## v14.0.0 — 2026-11-18
 
 - Nhập source robust cost limits, 11 unit test, IEEE guide, smoke fixtures và

@@ -1,0 +1,13 @@
+{
+  "test_sha256": "99e75f4825a901af5db7e288a57faf814cd7c4e4256f6ec335c02a0a4de50a6e",
+  "source": {
+    "source": "synthetic",
+    "scenario": "smoke",
+    "prior_use": "smoke"
+  },
+  "test_n": 4,
+  "test_groups": 4,
+  "group_overlap": 0,
+  "exact_channel_overlap": 0,
+  "statistical_independence_requires_source_audit": true
+}
