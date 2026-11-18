@@ -1,0 +1,24 @@
+{
+  "policy_cells": {
+    "K4_L3_high": "CARD",
+    "K4_L3_low": "CARD",
+    "K4_L3_medium": "CARD",
+    "K6_L3_high": "CARD",
+    "K6_L3_low": "CARD",
+    "K6_L3_medium": "CARD",
+    "K8_L3_high": "CARD",
+    "K8_L3_medium": "CARD"
+  },
+  "config_signature": "07e9415a597fbbabc67c30ab58aeb5b8b0adf6e6eb1a323d7f4eed274afb692f",
+  "development_sha256": "3f71fab89857553bb0961c1ff32b3d00f71663e7c31278f891b302446537694b",
+  "fit_groups": [
+    "DEV_00000",
+    "DEV_00001"
+  ],
+  "valid_groups": [
+    "DEV_00002",
+    "DEV_00003"
+  ],
+  "min_gain_ms": 0.1,
+  "conditioned_on": "K,L,coherence_bin; no test tuning"
+}

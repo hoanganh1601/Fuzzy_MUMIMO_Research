@@ -1,0 +1,9 @@
+K,L,difficulty,fit_groups,valid_groups,fit_best_policy,fit_best_saved_ms,valid_saved_ms,valid_ci_lo,valid_ci_hi,accepted,locked_policy
+4,3,high,0,1,CARD,-1e+100,,,,0,CARD
+4,3,low,0,1,CARD,-1e+100,,,,0,CARD
+4,3,medium,2,0,CARD,-0.3002627499999999,,,,0,CARD
+6,3,high,0,1,CARD,-1e+100,,,,0,CARD
+6,3,low,0,1,CARD,-1e+100,,,,0,CARD
+6,3,medium,2,0,CARD,-0.14614975000000052,,,,0,CARD
+8,3,high,0,1,CARD,-1e+100,,,,0,CARD
+8,3,medium,2,1,CARD,-0.1946677500000002,,,,0,CARD

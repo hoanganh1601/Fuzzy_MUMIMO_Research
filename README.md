@@ -24,8 +24,9 @@ Kho nghiên cứu được tổ chức theo ba lớp độc lập:
 | `version_12` | Final robust-SINR validation trên DeepMIMO mới và Sionna 3GPP UMi | `59f4bab` | Boundary PASS; cả hai nguồn zero false prune nhưng runtime STOP; manuscript chưa khóa |
 | `version_13` | Cost-aware robust-SINR screening với policy khóa trên development | `16cc1d7` | CP01–CP08 complete; 0 false reject; CARD fallback và STOP_NO_RUNTIME_GAIN |
 | `version_14` | Computational limits và cost-aware switching khóa trước test | `187c905` | CP00–CP09 complete; 0 oracle mismatch; CARD fallback và STOP_NO_RUNTIME_GAIN |
+| `version_15` | Unified robust MU-MIMO computational break-even smoke workflow | `7632acc` | 4/4 test; CP00–CP09 smoke complete; 0 oracle mismatch; SMOKE_ONLY |
 
-Version mới nhất là [`src/version_14_robust_cost_limits`](src/version_14_robust_cost_limits).
+Version mới nhất là [`src/version_15_robust_mumimo_unified`](src/version_15_robust_mumimo_unified).
 
 ## Hai phiên bản đầu tiên được khôi phục
 
@@ -36,7 +37,27 @@ Hai ZIP gốc được đối chiếu checksum và chạy lại ngày 2026-11-02
 
 Các replay dùng lại dataset `deepmimo_asu35_v1`, vì vậy là tái dựng lịch sử trên development data. Xem [run ver1](log/version_01/runs/DM_ASU35_R1_REPLAY_20261102/RUN.md) và [run ver2](log/version_02/runs/DM_ASU35_E1R_E3R_REPLAY_20261102/RUN.md).
 
-## Kết quả hiện tại (version 14)
+## Kết quả hiện tại (version 15 smoke)
+
+Version 15 hợp nhất entrypoint kiểm tra điểm hòa vốn cho `K=4,6,8`. Bản ghi
+repository hiện tại chỉ bao gồm phạm vi smoke trong PDF:
+
+- 4/4 unit test PASS.
+- Synthetic development/test đều có tám user; run dùng bốn geometry mỗi nguồn.
+- Ba cấu hình `(K,L)=(4,3),(6,3),(8,3)` hoàn tất CP00--CP09.
+- Mọi cell quan sát được khóa về `CARD`; frozen policy không kích hoạt screening.
+- CP08 có zero oracle mismatch và trả `SMOKE_ONLY`.
+- 12 checkpoint tổng hợp và report ZIP đã được ký hash; task cache không commit.
+- Không nhập run ASU/Singapore, dataset thật, 3GPP, evidence archive hoặc paper.
+
+Kết quả này chỉ xác minh chương trình, không phải bằng chứng DeepMIMO/3GPP hoặc
+tuyên bố runtime advantage.
+
+Xem [run log version 15](log/version_15/README.md),
+[run card](log/version_15/runs/V15_SMOKE/RUN.md) và
+[source V15](src/version_15_robust_mumimo_unified/README.md).
+
+## Kết quả trước đó (version 14)
 
 Version 14 kiểm tra một cost-aware switch được fit/validation trên development
 trước khi mở tập test mới:

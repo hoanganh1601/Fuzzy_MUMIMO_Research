@@ -1,0 +1,28 @@
+{
+  "date": "2026-11-18",
+  "unit_tests": 4,
+  "unit_tests_passed": 4,
+  "smoke": "SMOKE_ONLY",
+  "smoke_oracle_mismatch": 0,
+  "configurations": [
+    [
+      4,
+      3
+    ],
+    [
+      6,
+      3
+    ],
+    [
+      8,
+      3
+    ]
+  ],
+  "pdf_pages": 4,
+  "limitations": [
+    "Synthetic smoke test only; no V15 DeepMIMO/3GPP claim",
+    "PowerShell wrapper not executed in Linux; its Python commands were exercised",
+    "No generator source data included for historical DeepMIMO/3GPP archives",
+    "Paper not submission-locked"
+  ]
+}

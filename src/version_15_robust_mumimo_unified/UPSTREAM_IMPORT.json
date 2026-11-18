@@ -1,0 +1,21 @@
+{
+  "source_directory": "/media/icnlab/Data/hoanganh/Robust_MUMIMO_Unified_20261118",
+  "import_date": "2026-11-18",
+  "version": "15",
+  "scope": "PDF smoke-test workflow only",
+  "source_manifest": "UPSTREAM_FILE_SHA256.csv",
+  "preserved_upstream_files": 29,
+  "excluded_content": [
+    "code/pack_deepmimo_users.py",
+    "scripts/run_v15.ps1",
+    "examples/UNIFIED_FINAL_SMOKE/tasks",
+    "evidence",
+    "paper",
+    "code/__pycache__",
+    "tests/__pycache__",
+    "outputs",
+    "real DeepMIMO/3GPP datasets",
+    "console logs and PID files"
+  ],
+  "notes": "This subset preserves every file needed for the smoke commands in GUIDE_COMPUTATIONAL_BREAK_EVEN_IEEE_VI.pdf plus the supplied top-level smoke example. The actual Linux V15_SMOKE CP00-CP09 outputs are curated separately under log/version_15. No official V15 real-data result is imported."
+}
