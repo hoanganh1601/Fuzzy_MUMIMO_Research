@@ -1,0 +1,26 @@
+{
+  "source": "DeepMIMO",
+  "scenario": "asu_campus_3p5",
+  "split": "development",
+  "prior_use": "development",
+  "group_definition": "160 geometry-level spatial groups; four users per geometry; no user reuse; minimum group-center distance 10 m and minimum intra-geometry user distance 20 m",
+  "independence_basis": "Development-only ASU Campus ray-tracing set reused from the v9-v12 development workflow; no independent-test claim is made for this dataset",
+  "dataset_sha256": "1d479a06b94fff565a8997ceb870c670bda7458dbf5e5cd54c2fc0afc14b1f50",
+  "selection_sha256": "f335063c11368993b3a3871d1b90062f921a4ac50f2f18868ca7136ee1a67d60",
+  "scenario_params_sha256": "8b4013bb215bd7a3fede33de322b426da39494723e7aa4f769b51a6ba52f16c3",
+  "dataset_shape": [
+    160,
+    16,
+    4
+  ],
+  "dataset_dtype": "complex64",
+  "deepmimo_version": "4.0.5",
+  "channel_normalization": "none; absolute DeepMIMO channel scale retained",
+  "noise_power_W": 2e-13,
+  "selection_seed": 20261028,
+  "statistical_independence_verified": false,
+  "cautions": [
+    "This is development data and must not be reported as an independent V13 test.",
+    "Disjoint user indices and spatial separation do not prove independent channel episodes."
+  ]
+}

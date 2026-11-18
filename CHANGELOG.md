@@ -1,5 +1,21 @@
 # Changelog
 
+## v14.0.0 — 2026-11-18
+
+- Nhập source robust cost limits, 11 unit test, IEEE guide, smoke fixtures và
+  PowerShell runner; bảo toàn 38 file upstream ngoài 40 task-cache JSON.
+- Profile bốn policy trên 160 geometry ASU, fit/validation 96/64 group; rule
+  `EARLY` không qua gate cận dưới 0.1 ms nên CP03 khóa `CARD`.
+- Sau khi khóa rule, sinh test DeepMIMO Denver mới gồm 92 geometry, 23 spatial
+  group và 368 UE không lặp; lưu selection/channel generation code và provenance.
+- CP04 ghi nhận zero group/exact-channel overlap; CP06 kiểm toán 9.660 ứng viên
+  với zero false certificate và CP08 có zero oracle mismatch.
+- Test không kích hoạt screening, không tiết kiệm solver call và có runtime CI95
+  hoàn toàn không dương; kết luận `STOP_NO_RUNTIME_GAIN`.
+- Lưu CP00–CP09, report ZIP và provenance; loại real matrices, selection arrays,
+  downloaded scenario, task caches, logs, PID và environment. Chưa chạy nhánh
+  transfer 3GPP thứ hai.
+
 ## v13.0.0 — 2026-11-15
 
 - Nhập nguyên source cost-aware screening, 5 unit test, IEEE guide, smoke fixtures,
