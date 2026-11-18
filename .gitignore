@@ -55,6 +55,8 @@ datasets/
 !src/version_12_robust_sinr_final_validation/data/synthetic_smoke/smoke.npz
 !src/version_13_robust_sinr_cost_aware/data/smoke.npz
 !src/version_13_robust_sinr_cost_aware/data/smoke_test.npz
+!src/version_14_robust_cost_limits/data/smoke.npz
+!src/version_14_robust_cost_limits/data/smoke_test.npz
 
 # Generated runs: only curated files under log/ are versioned
 outputs/

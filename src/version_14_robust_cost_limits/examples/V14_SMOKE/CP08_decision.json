@@ -1,0 +1,24 @@
+{
+  "status": "SMOKE_ONLY",
+  "policy": {
+    "policy": "CARD",
+    "feature": "",
+    "threshold": 0.0,
+    "direction": ""
+  },
+  "n_geometries": 8,
+  "n_groups": 8,
+  "activated_geometries": 0,
+  "activation_fraction": 0.0,
+  "mean_saved_ms": -0.047960874999999514,
+  "median_saved_ms": -0.04055999999999926,
+  "ci95_saved_ms": [
+    -0.08224979062499954,
+    -0.018832696874999666
+  ],
+  "mean_calls_saved": 0.0,
+  "runtime_ratio": 0.9929915247913803,
+  "oracle_mismatch": 0,
+  "false_certificate": 0,
+  "scope": "No claim of exactness outside finite codebook or runtime benefit without independent GO; group independence requires source-level validation"
+}

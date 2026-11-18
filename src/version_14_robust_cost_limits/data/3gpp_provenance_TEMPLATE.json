@@ -1,0 +1,13 @@
+{
+ "source": "Sionna 3GPP TR 38.901",
+ "scenario": "UMi or UMa: SPECIFY",
+ "group_definition": "Independent topology drop identifiers: SPECIFY",
+ "independence_basis": "Independent scenario and random seeds: SPECIFY",
+ "prior_use": "never_seen",
+ "channel_shape": "N x M x 4 complex estimated CSI",
+ "path_delay_unit": "seconds: CHECK CONVERSION",
+ "sionna_version": "REPLACE",
+ "carrier_frequency_hz": null,
+ "transmitter_power_normalization": "REPLACE",
+ "simulation_config_path": "REPLACE_WITH_PATH"
+}
