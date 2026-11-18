@@ -39,8 +39,7 @@ Các replay dùng lại dataset `deepmimo_asu35_v1`, vì vậy là tái dựng l
 
 ## Kết quả hiện tại (version 15 smoke)
 
-Version 15 hợp nhất entrypoint kiểm tra điểm hòa vốn cho `K=4,6,8`. Bản ghi
-repository hiện tại chỉ bao gồm phạm vi smoke trong PDF:
+Version 15 hợp nhất entrypoint kiểm tra điểm hòa vốn cho `K=4,6,8`:
 
 - 4/4 unit test PASS.
 - Synthetic development/test đều có tám user; run dùng bốn geometry mỗi nguồn.
@@ -48,7 +47,6 @@ repository hiện tại chỉ bao gồm phạm vi smoke trong PDF:
 - Mọi cell quan sát được khóa về `CARD`; frozen policy không kích hoạt screening.
 - CP08 có zero oracle mismatch và trả `SMOKE_ONLY`.
 - 12 checkpoint tổng hợp và report ZIP đã được ký hash; task cache không commit.
-- Không nhập run ASU/Singapore, dataset thật, 3GPP, evidence archive hoặc paper.
 
 Kết quả này chỉ xác minh chương trình, không phải bằng chứng DeepMIMO/3GPP hoặc
 tuyên bố runtime advantage.
