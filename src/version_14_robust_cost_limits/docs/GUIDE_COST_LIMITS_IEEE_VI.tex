@@ -1,0 +1,85 @@
+\documentclass[11pt,onecolumn]{IEEEtran}
+\usepackage{fontspec}
+\setmainfont{DejaVu Serif}
+\usepackage{amsmath,amssymb,booktabs,geometry,array,hyperref,xcolor,enumitem}
+\geometry{a4paper,left=19mm,right=19mm,top=18mm,bottom=18mm}
+\hypersetup{hidelinks}
+\setlist{nosep,leftmargin=7mm}
+\title{Giới hạn chi phí tính toán và sàng lọc có xét chi phí\\trong lập lịch người dùng MU--MIMO dưới ràng buộc robust SINR}
+\author{Đề cương thí nghiệm V14 và hướng dẫn tái lập kết quả --- 13/11/2026}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+Trong đường xuống đa người dùng nhiều anten (MU--MIMO), lựa chọn tập người dùng và hướng búp sóng có thể được giải chính xác trên một tập ứng viên hữu hạn. Các vòng V11--V13 xác nhận rằng sàng lọc tính khả thi giúp giảm số lần gọi bộ giải nhưng chưa giảm được thời gian thực thi tổng thể so với duyệt theo số người dùng. V14 nghiên cứu chi phí sàng lọc và thời gian giải có điều kiện trên trạng thái kênh, sau đó học một quy tắc bật/tắt sàng lọc đơn giản từ dữ liệu phát triển và khóa trước tập kiểm tra. Tiêu chí thành công là giảm thời gian xử lý tổng thể trên dữ liệu độc lập mà không làm thay đổi nghiệm tối ưu trong tập ZF/RZF đã quy định.
+\end{abstract}
+\section{Bài toán và phạm vi}
+Xét một trạm gốc $M$ anten, phục vụ tối đa $K=4$ người dùng bằng zero-forcing (ZF) và regularized zero-forcing (RZF). Giữ nguyên $q_c=2.960414$, ngưỡng tỷ số tín hiệu trên giao thoa cộng nhiễu (SINR) bằng $6$ dB, sai số thông tin trạng thái kênh (CSI) tương đối $0.04$, $P_{\max}=1$ W và công suất nhiễu $2\times10^{-13}$ W khi đối sánh V13. Các con số là cấu hình mô phỏng, chưa được hiệu chuẩn thành một hệ thống vô tuyến thương mại. Với tập người dùng $\mathcal S$ và hướng búp cố định, điều kiện công suất robust là
+\begin{equation}
+\mathbf p\geq\mathbf F_{\mathcal S}\mathbf p+\mathbf u_{\mathcal S},\quad \mathbf F_{\mathcal S}\geq0,\quad \mathbf1^T\mathbf p\leq P_{\max}.
+\label{eq:pc}
+\end{equation}
+Phương trình~\eqref{eq:pc} xác định tính khả thi của từng tập người dùng--beam theo mô hình robust SINR đã xấp xỉ. Mục tiêu từ điển ưu tiên số người dùng được phục vụ, sau đó chọn công suất nhỏ nhất. Chuẩn đối chiếu exhaustive duyệt $7(2^4-1)=105$ ứng viên; không tuyên bố tối ưu trên tập beam liên tục hoặc cho ràng buộc worst-case nguyên thủy chưa chứng minh tương đương.
+
+\section{Giả thuyết và quy tắc có xét chi phí}
+Kết quả V12--V13 cho thấy các phương án không khả thi đôi khi được bộ giải phát hiện rất nhanh. Vì vậy cần kiểm tra thời gian giải có điều kiện, không chỉ đếm số lần gọi. Nếu $\pi_j(\mathbf z)$ là xác suất loại ứng viên trong điều kiện CSI $\mathbf z$, $T_{j}$ là chi phí sàng lọc, và $T_{\rm solve\mid reject}$ là thời gian giải nếu không loại, điều kiện lợi ích kỳ vọng tại một ứng viên có dạng
+\begin{equation}
+\pi_j(\mathbf z)\,\mathbb E[T_{\rm solve\mid reject}\mid\mathbf z]
+>\mathbb E[T_j\mid\mathbf z].\label{eq:benefit}
+\end{equation}
+Biểu thức~\eqref{eq:benefit} chỉ là quan hệ chi phí kỳ vọng, không phải bảo đảm tăng tốc. V14 đánh giá trực tiếp thời gian \emph{end-to-end}, bao gồm đo đặc trưng, lựa chọn chính sách, dựng beam, sàng lọc và giải công suất. Hai chỉ tiêu đầu vào tính trước khi dựng beam là
+\begin{equation}
+ z_1=\frac{\sum_{k=1}^{4}\gamma\sigma_n^2/\|\widehat{\mathbf h}_k\|_2^2}{P_{\max}},\qquad
+ z_2=\log_{10}\frac{\max_k\|\widehat{\mathbf h}_k\|_2^2}{\min_k\|\widehat{\mathbf h}_k\|_2^2}.
+\label{eq:features}
+\end{equation}
+Phương trình~\eqref{eq:features} cung cấp hai chỉ báo rẻ về cận công suất và độ chênh lệch độ lợi kênh; đây không phải phép dự đoán chính xác xác suất lỗi hoặc thời gian solver. Chính sách $\pi$ là quy tắc ngưỡng một chiều: dùng CARD hoặc kích hoạt EARLY/CACHED/HYBRID khi $z_i$ vượt (hoặc thấp hơn) một ngưỡng. V14 cũng thử chính sách cố định để kiểm tra liệu điều chỉnh theo kênh có thật sự cần thiết.
+
+\section{Quy trình phát triển và khóa trước test}
+\begin{enumerate}
+\item \textbf{PROFILE:} dùng nhóm development chưa mở test. Đo CARD, EARLY, CACHED, HYBRID nhiều lần và hoán đổi thứ tự. Đối chiếu mọi quyết định với exhaustive. Ghi $T_{\rm feature}$ riêng để quy tắc điều chỉnh chịu đủ overhead.
+\item \textbf{SELECT:} chia development theo nhóm thành tập xây dựng (60\%) và xác nhận (40\%). Chọn một quy tắc có runtime dự đoán tiết kiệm cao nhất trên phần xây dựng; đánh giá \emph{duy nhất quy tắc đó} trên phần xác nhận. Chỉ chấp nhận khi cận dưới bootstrap 95\% của mức giảm thời gian vượt $\delta_T=0.1$ ms. Nếu không, khóa CARD.
+\item \textbf{PREFLIGHT:} kiểm tra SHA-256, không trùng nhóm hoặc ma trận kênh với development. Metadata phải chỉ rõ scenario, cách lấy mẫu và lịch sử sử dụng. Nhãn nhóm khác nhau không đủ chứng minh độc lập thống kê.
+\item \textbf{SCAN:} trên test, đo ghép cặp CARD và chính sách đã khóa, kể cả chi phí tính đặc trưng. Đối chiếu exhaustive trên toàn bộ 105 ứng viên và kiểm tra các certificate, ngoài vùng đo runtime.
+\item \textbf{REPORT:} xuất bảng ghép cặp, khoảng tin cậy theo nhóm và kết luận GO/STOP. Kênh 3GPP dùng lại nguyên tệp khóa của DeepMIMO bằng \texttt{--lock-from}; không chọn lại tham số.
+\end{enumerate}
+Không dùng tập DeepMIMO hoặc 3GPP từng mở trong V11--V13 làm một kiểm tra độc lập mới. Nếu không còn dữ liệu hoàn toàn mới, đánh dấu nghiên cứu là \emph{exploratory replication}.
+
+\section{Điều kiện đầu vào và kiểm toán mô hình}
+Tệp \texttt{.npz} phải chứa ma trận phức \texttt{H} có kích thước $(N,M,4)$ và nhãn \texttt{groups} chiều dài $N$. Với dữ liệu chính thức, cần tối thiểu 40 nhóm development để tạo hai phần riêng và 20 nhóm test; các giới hạn này là yêu cầu phần mềm, không chứng nhận thống kê. DeepMIMO cần ghi scenario, tọa độ/nhóm vùng, quy ước chuẩn hóa kênh, nhiễu và thông số anten. Với mô hình 3GPP TR 38.901 cần kiểm tra loại kênh UMi/UMa, carrier frequency, shadowing, path loss, đơn vị path delay, seed và phiên bản Sionna. Các mẫu synthetic chỉ dùng kiểm tra code.
+
+\section{Checkpoint, CSV và phục hồi}
+\begin{center}\footnotesize
+\begin{tabular}{p{14mm}p{58mm}p{78mm}}
+\toprule
+\textbf{CP} & \textbf{Tệp} & \textbf{Nội dung}\\ \midrule
+CP00 & \texttt{CP00\_manifest.json} & Cấu hình, SHA-256 code/dữ liệu, chữ ký run.\\
+CP01 & \texttt{CP01\_development\_profile.csv}, \texttt{CP01\_candidate\_cost.csv} & Runtime theo geometry và trạng thái từng ứng viên; chi phí giải có điều kiện và kiểm tra certificate.\\
+CP02 & \texttt{CP02\_rule\_search.csv} & Quy tắc ứng viên và kết quả trên nhóm xây dựng.\\
+CP03 & \texttt{CP03\_locked\_rule.json} & Một quy tắc đã khóa, cổng xác nhận và dấu vết dữ liệu.\\
+CP04 & \texttt{CP04\_preflight.json} & Độc lập nguồn dữ liệu, nhóm và checksum test.\\
+CP05 & \texttt{CP05\_runtime\_repetitions.csv} & Runtime từng lần lặp, chính sách áp dụng, full calls, thời gian beam/solver.\\
+CP06 & \texttt{CP06\_oracle\_audit.csv}, \texttt{CP06\_candidate\_certificates.csv} & Kiểm toán oracle và 105 chứng nhận/geometry, số loại nhầm.\\
+CP07 & \texttt{CP07\_paired\_geometry.csv} & Chênh lệch runtime ghép cặp và số lời gọi theo geometry.\\
+CP08 & \texttt{CP08\_decision.json} & GO/STOP, CI 95\%, mức kích hoạt và giới hạn kết luận.\\
+CP09 & \texttt{CP09\_SHA256.csv} & Hash của toàn bộ checkpoint đầu ra.\\
+\bottomrule
+\end{tabular}
+\end{center}
+Mỗi geometry có tệp JSON riêng trong \texttt{profile\_tasks/} hoặc \texttt{tasks/}. Chương trình ghi tệp tạm, đồng bộ xuống đĩa rồi thay thế nguyên tử. Khi mất điện, chạy lại đúng stage, run-id, code và dữ liệu; phần đã hoàn tất được bỏ qua. Nếu đổi mã hoặc tham số, dùng run-id mới; không xóa checkpoint để che lỗi checksum.
+
+\section{Lệnh chạy và kiểm tra}
+Mở PowerShell tại thư mục gốc, cài các gói và chạy kiểm thử theo các lệnh trong README. Chạy toàn bộ quy trình bằng script có tham số:
+\begin{quote}\small\ttfamily
+.\textbackslash scripts\textbackslash run\_v14.ps1\newline
+\hspace*{3mm}-Development data/dev.npz\newline
+\hspace*{3mm}-Test data/test.npz\newline
+\hspace*{3mm}-DevProvenance data/dev.json\newline
+\hspace*{3mm}-TestProvenance data/test.json\newline
+\hspace*{3mm}-RunId DM\_V14\newline
+\end{quote}
+Trong PowerShell, nhập lệnh với tất cả tham số trên cùng một dòng (các dòng ở trên được ngắt để trình bày). Với nguồn 3GPP, gọi lại script kèm tham số \texttt{-LockFrom} trỏ tới tệp CP03 đã khóa của DeepMIMO, sử dụng run-id mới. Các lệnh riêng theo stage và ví dụ đường dẫn đầy đủ được cung cấp trong README.
+
+\section{Quyết định nghiên cứu và phạm vi phát biểu}
+GO chỉ khi không có sai nghiệm hoặc certificate loại nhầm, và \emph{trên mỗi nguồn kênh được yêu cầu xác nhận} cận dưới bootstrap nhóm 95\% của chênh lệch $T_{\rm CARD}-T_{\rm adaptive}$ lớn hơn $0.1$ ms. Nếu cổng development không đạt thì khóa CARD; nếu test không đạt thì STOP. Báo cáo tách giảm số lời gọi solver khỏi giảm runtime. Kết quả trên test không được dùng sửa ngưỡng hoặc chọn lại chính sách. Cần báo cáo các lần chạy không thuận lợi cùng trường hợp có lợi. Nếu không chứng minh được cải thiện runtime trên cả DeepMIMO và 3GPP, định vị bài báo theo hướng giới hạn chi phí screening, không gọi đây là thuật toán tăng tốc vượt trội.
+\end{document}

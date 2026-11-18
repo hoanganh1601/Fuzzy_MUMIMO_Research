@@ -1,0 +1,21 @@
+{
+  "source_directory": "/media/icnlab/Data/hoanganh/Robust_Cost_Limits_V14",
+  "import_date": "2026-11-18",
+  "version": "14",
+  "upstream_revision_date": "2026-11-13",
+  "source_manifest": "UPSTREAM_FILE_SHA256.csv",
+  "preserved_upstream_files": 38,
+  "excluded_generated_content": [
+    ".venv",
+    "outputs",
+    "examples/V14_SMOKE/profile_tasks",
+    "examples/V14_SMOKE/tasks",
+    "examples/V14_SMOKE_TRANSFER/tasks",
+    "__pycache__",
+    "profile.log",
+    "profile.pid",
+    "scan.log",
+    "scan.pid"
+  ],
+  "notes": "The original README.md is stored as README_UPSTREAM.md and the supplied checksum table as UPSTREAM_FILE_SHA256.csv. Forty supplied per-geometry task JSON files are excluded as generated resume caches. The curated DeepMIMO run and exact post-lock data-generation scripts are under log/version_14; real channel matrices, selection arrays, downloaded scenarios and task caches are excluded."
+}

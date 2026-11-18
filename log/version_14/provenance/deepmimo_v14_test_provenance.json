@@ -1,0 +1,46 @@
+{
+  "source": "DeepMIMO 4.0.5",
+  "scenario": "city_18_denver_3p5",
+  "split": "new_independent_test",
+  "prior_use": "never_seen",
+  "created_after_rule_lock": true,
+  "group_definition": "23 fixed 25 m spatial grid cells; four geometries per cell; four users per geometry; 368 unique UEs without reuse",
+  "independence_basis": "Denver city_18_denver_3p5 is a newly downloaded ray-tracing scenario distinct from ASU development and all DeepMIMO tests used in V11-V13; selection and channel generation occurred after the V14 CP03 rule lock",
+  "statistical_independence_verified": false,
+  "dataset_sha256": "7b8ca0a588db002029aa5e746e3289f5ece72291dc2ac48a4591fc73fa61aaf7",
+  "dataset_shape": [
+    92,
+    16,
+    4
+  ],
+  "dataset_dtype": "complex64",
+  "selection_sha256": "a943bd266407e7fbcc52f2ab7301b94c64e9ef75842807781985746d49872fd2",
+  "selection_protocol_sha256": "41a887fd41fd5c9ea28d62a69a446beee362a22609b2b13f7729dadc046941b2",
+  "cp03_locked_rule_sha256": "19259a0cc12b86160169a46b90f8e99140171c11d7e5549305dbdd5c16020567",
+  "dataset_generation_code_sha256": "24ee459e2d7c1fe5297e44319143ac10dfa5d90d7f0ff0bd721e6897219cbbf2",
+  "deepmimo_version": "4.0.5",
+  "transmitter": "BS1 / TX set 3 / index 0",
+  "channel_normalization": "none; absolute DeepMIMO complex channel scale retained",
+  "channel_matrix_convention": "H[geometry, bs_antenna, user]",
+  "max_paths": 10,
+  "bs_antenna_shape": [
+    16,
+    1
+  ],
+  "ue_antenna_shape": [
+    1,
+    1
+  ],
+  "antenna_spacing_wavelengths": 0.5,
+  "frequency_domain": true,
+  "ofdm_bandwidth_hz": 10000000.0,
+  "ofdm_total_subcarriers": 512,
+  "selected_subcarrier": 0,
+  "path_delay_unit": "seconds",
+  "noise_power_W": 2e-13,
+  "cautions": [
+    "Different scenarios and post-lock generation support separation but do not prove statistical independence.",
+    "The finite ZF/RZF candidate audit is not global beamforming optimality.",
+    "The V14 test dataset must not be used to retune the locked rule."
+  ]
+}

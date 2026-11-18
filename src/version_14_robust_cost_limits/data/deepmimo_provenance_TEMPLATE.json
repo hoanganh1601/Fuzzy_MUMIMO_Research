@@ -1,0 +1,10 @@
+{
+ "source": "DeepMIMO 4.x",
+ "scenario": "REPLACE_WITH_EXACT_SCENARIO",
+ "group_definition": "REPLACE_WITH_SPATIAL_OR_SITE_LEVEL_DEFINITION",
+ "independence_basis": "REPLACE_WITH_GEOMETRY_AND_PROVENANCE_JUSTIFICATION",
+ "prior_use": "never_seen",
+ "channel_shape": "N x M x 4 complex estimated CSI",
+ "simulation_config_path": "REPLACE_WITH_PATH",
+ "notes": "Distinct group IDs are not proof of statistical independence."
+}

@@ -23,8 +23,9 @@ Kho nghiên cứu được tổ chức theo ba lớp độc lập:
 | `version_11` | Robust SINR Screening R2, repeated runtime và locked validation workflow | `1b0bca0` | A+B+C complete; synthetic D rehearsal complete; no runtime GO |
 | `version_12` | Final robust-SINR validation trên DeepMIMO mới và Sionna 3GPP UMi | `59f4bab` | Boundary PASS; cả hai nguồn zero false prune nhưng runtime STOP; manuscript chưa khóa |
 | `version_13` | Cost-aware robust-SINR screening với policy khóa trên development | `16cc1d7` | CP01–CP08 complete; 0 false reject; CARD fallback và STOP_NO_RUNTIME_GAIN |
+| `version_14` | Computational limits và cost-aware switching khóa trước test | `187c905` | CP00–CP09 complete; 0 oracle mismatch; CARD fallback và STOP_NO_RUNTIME_GAIN |
 
-Version mới nhất là [`src/version_13_robust_sinr_cost_aware`](src/version_13_robust_sinr_cost_aware).
+Version mới nhất là [`src/version_14_robust_cost_limits`](src/version_14_robust_cost_limits).
 
 ## Hai phiên bản đầu tiên được khôi phục
 
@@ -35,7 +36,29 @@ Hai ZIP gốc được đối chiếu checksum và chạy lại ngày 2026-11-02
 
 Các replay dùng lại dataset `deepmimo_asu35_v1`, vì vậy là tái dựng lịch sử trên development data. Xem [run ver1](log/version_01/runs/DM_ASU35_R1_REPLAY_20261102/RUN.md) và [run ver2](log/version_02/runs/DM_ASU35_E1R_E3R_REPLAY_20261102/RUN.md).
 
-## Kết quả hiện tại (version 13)
+## Kết quả hiện tại (version 14)
+
+Version 14 kiểm tra một cost-aware switch được fit/validation trên development
+trước khi mở tập test mới:
+
+- Development dùng 160 geometry/160 group ASU. Rule ứng viên `EARLY` có mean
+  saving 0.0840 ms trên validation nhưng CI95 `[-0.0369, 0.2553]` ms không vượt
+  gate 0.1 ms, nên CP03 khóa baseline `CARD`.
+- Test mới dùng DeepMIMO `city_18_denver_3p5`, gồm 92 geometry/23 spatial group
+  và 368 UE không lặp; selection/channel được sinh sau khi CP03 đã niêm phong.
+- CP04 ghi nhận 0 group overlap và 0 exact-channel overlap với development.
+- CP06 kiểm toán 9.660 ứng viên; CP08 có 0 oracle mismatch và 0 false certificate.
+- `CARD` không kích hoạt screening và không tiết kiệm solver call. Mean runtime
+  saving là -0.0145 ms với CI95 `[-0.0319,-0.00004]` ms, nên kết luận
+  `STOP_NO_RUNTIME_GAIN`.
+- 11/11 unit test và toàn bộ checksum CP09 PASS. Chưa chạy transfer V14 trên
+  nguồn 3GPP thứ hai, nên không có tuyên bố cross-source acceleration.
+
+Xem [run log version 14](log/version_14/README.md),
+[run card](log/version_14/runs/DM_ASU35_COST_LIMITS_V14_20261117/RUN.md) và
+[source V14](src/version_14_robust_cost_limits/README.md).
+
+## Kết quả trước đó (version 13)
 
 Version 13 kiểm tra bốn policy `CARD`, `EARLY`, `CACHED`, `HYBRID` và chỉ khóa
 screening khi cận dưới bootstrap runtime trên development vượt 0.1 ms:

@@ -1,0 +1,14 @@
+{
+  "lock_hash": "e4ae32a6e9e7bd993110a441b32495f1143265c03c37d1451064954d436c5a91",
+  "test_hash": "4439500bd9457ed66b58f5b4b0354daab3483c036f1dbaef5d4a582be079182c",
+  "test_groups": 8,
+  "n": 8,
+  "test_provenance": {
+    "source": "synthetic_smoke",
+    "scenario": "synthetic",
+    "prior_use": "smoke"
+  },
+  "group_overlap": 0,
+  "exact_channel_overlap": 0,
+  "independence_not_proven_by_group_labels": true
+}
