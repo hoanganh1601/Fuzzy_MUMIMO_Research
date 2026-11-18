@@ -1,0 +1,49 @@
+{
+  "status": "SMOKE_ONLY",
+  "oracle_mismatch": 0,
+  "test_source": {
+    "source": "synthetic",
+    "scenario": "smoke",
+    "prior_use": "smoke"
+  },
+  "per_config": [
+    {
+      "K": 4,
+      "L": 3,
+      "geometries": 4,
+      "groups": 4,
+      "mean_saved_ms": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.0,
+      "mean_calls_saved": 0.0,
+      "activated_fraction": 0.0,
+      "pass_runtime": 0
+    },
+    {
+      "K": 6,
+      "L": 3,
+      "geometries": 4,
+      "groups": 4,
+      "mean_saved_ms": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.0,
+      "mean_calls_saved": 0.0,
+      "activated_fraction": 0.0,
+      "pass_runtime": 0
+    },
+    {
+      "K": 8,
+      "L": 3,
+      "geometries": 4,
+      "groups": 4,
+      "mean_saved_ms": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.0,
+      "mean_calls_saved": 0.0,
+      "activated_fraction": 0.0,
+      "pass_runtime": 0
+    }
+  ],
+  "interpretation": "GO requires each predeclared K,L configuration to improve; no selection from test",
+  "source_validation": "3GPP must be run as separate untouched test with same frozen lock"
+}

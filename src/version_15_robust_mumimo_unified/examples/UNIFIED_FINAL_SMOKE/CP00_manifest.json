@@ -1,0 +1,40 @@
+{
+  "signature": "07e9415a597fbbabc67c30ab58aeb5b8b0adf6e6eb1a323d7f4eed274afb692f",
+  "settings": {
+    "q": 2.960414,
+    "sigma_rel": 0.04,
+    "sinr_db": 6.0,
+    "noise": 2e-13,
+    "pmax": 1.0,
+    "ks": "4,6,8",
+    "alphas": "0,0.001,0.01,0.05,0.1,0.3,1",
+    "beam_counts": [
+      3
+    ],
+    "guard": 1e-05,
+    "repeats": 2,
+    "bootstrap": 100,
+    "min_gain_ms": 0.1,
+    "min_cell_groups": 1,
+    "smoke": true,
+    "limit": 4,
+    "profile_candidates": false,
+    "seed": 20261117,
+    "dev_hash": "3f71fab89857553bb0961c1ff32b3d00f71663e7c31278f891b302446537694b",
+    "code_hashes": {
+      "run_experiment.py": "d16333b46127b2696c64101e409188b362a9f5881b9f176c9c0ab70b291382d9",
+      "robust_model.py": "163bd7b2fb2b0a1333cf06d8b1f1df9624c2d75b3bf7b864b1fdf26e00b9bba3",
+      "screening_policy.py": "b61a27675e1cfeb127551a889547c9bbd2f674938a7f4af2a1be56a5de97cb71",
+      "certified_screening.py": "da9cfd42c5b12398ee01aaef7106cece6c2061b00f9c65d3aa5dbc7beee0e3c1",
+      "screening_bounds.py": "edacac604a8afb29349db34b4f8b1d6ae63ebfae71d6a26ed7718d90c3849a7e"
+    }
+  },
+  "source": {
+    "source": "synthetic",
+    "scenario": "smoke",
+    "prior_use": "smoke"
+  },
+  "development_n": 4,
+  "development_groups": 4,
+  "scope": "development only"
+}

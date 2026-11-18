@@ -1,0 +1,111 @@
+\documentclass[11pt,onecolumn]{IEEEtran}
+\usepackage{fontspec}
+\setmainfont{Noto Serif}
+\usepackage{amsmath,amssymb,booktabs,array,longtable}
+\usepackage[margin=2.0cm]{geometry}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+\usepackage{enumitem}
+\setlist[itemize]{leftmargin=1.6em,itemsep=1pt,topsep=2pt}
+\setlist[enumerate]{leftmargin=1.6em,itemsep=1pt,topsep=2pt}
+\title{HƯỚNG DẪN THỰC NGHIỆM V15\\\large Giới hạn tính toán và điểm hòa vốn của sàng lọc tính khả thi SINR trong MU-MIMO}
+\author{Tài liệu kỹ thuật --- IEEE một cột, tiếng Việt}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+Trong hệ thống downlink MU-MIMO, tìm kiếm chính xác tập người dùng và hướng beam hữu hạn có thể tốn thời gian khi số người dùng tăng. Các điều kiện sàng lọc bất khả thi giảm số lần gọi bộ giải nhưng phát sinh chi phí tính beam và kiểm tra cận. Tài liệu này quy định phép kiểm chứng điểm hòa vốn về thời gian chạy tại $K\in\{4,6,8\}$, các kích thước tập beam, và các mức tương quan kênh. Quy tắc lựa chọn được xác định trên dữ liệu phát triển, kiểm tra bằng nhóm validation, khóa trước tập test và đối chiếu với phương pháp chỉ duyệt theo số người dùng. Dữ liệu synthetic chỉ dùng để kiểm tra chương trình; không thay thế kết quả DeepMIMO hoặc kênh 3GPP độc lập.
+\end{abstract}
+\section{Kịch bản và bài toán}
+Xét trạm gốc $M\ge 8$ anten phục vụ tập con $\mathcal S$ của $K$ người dùng. Mỗi tập con có $L$ phương án ZF/RZF ứng viên, tính lại từ CSI ước lượng của chính tập con. Bán kính bất định CSI cố định $q_c=2.960414$; các ngưỡng SINR, công suất phát, nhiễu và mô hình cận giao thoa giữ nguyên V14. Với một cặp tập con--beam, công suất thỏa
+\begin{equation}
+ \mathbf p\ge\mathbf F(\mathcal S,\alpha)\mathbf p+\mathbf u(\mathcal S,\alpha),\quad
+ \mathbf p\ge0,\qquad \mathbf1^T\mathbf p\le P_{\max}.
+\end{equation}
+Hệ này là mô hình điều khiển công suất robust theo hướng beam cố định, với $\mathbf F\ge0$ và $\mathbf u>0$ trong trường hợp độ lợi trực tiếp khác không. Điều kiện bán kính phổ và công suất tối thiểu được đánh giá theo mã V14, không diễn giải thành tối ưu toàn cục theo hướng beam liên tục.
+
+Mục tiêu từ điển ưu tiên số người dùng phục vụ, rồi tối thiểu tổng công suất. Số phương án exhaustive là
+\begin{equation}
+ N_{\mathrm{cand}}(K,L)=L(2^K-1).
+\end{equation}
+Biểu thức này xác định số lượng ứng viên tối đa để kiểm tra; tăng $K$ làm tăng nhanh tìm kiếm nhưng không mặc định làm tăng lợi ích của screening.
+
+\section{Câu hỏi kiểm chứng và mô hình chi phí}
+Đặt $T_{\mathrm{CARD}}$ là thời gian chạy end-to-end của phương pháp duyệt theo cardinality; $T_\pi$ là thời gian của chính sách chọn CARD, EARLY, CACHED hoặc HYBRID tại một cấu hình $(K,L)$. Chỉ tiêu chính
+\begin{equation}
+ \Delta T=T_{\mathrm{CARD}}-T_\pi.
+\end{equation}
+$\Delta T>0$ biểu thị tiết kiệm thời gian; kết luận phải dựa trên khoảng tin cậy theo nhóm kênh độc lập và tính cả chi phí tạo chỉ tiêu, tiền xử lý beam và screening.
+
+Với một certificate $j$, giá trị hòa vốn về mặt kỳ vọng cần so sánh
+\begin{equation}
+ \underbrace{\mathbb E[\mathbf1_{\{R_j=1\}}T_{\mathrm{solve}}]}_{\text{chi phí giải tránh được}}
+ -\underbrace{\mathbb E[T_{\mathrm{scr},j}+T_{\mathrm{extra},j}]}_{\text{chi phí bổ sung}}>0.
+\end{equation}
+Biểu thức là quan hệ chi phí; không phải điều kiện đủ để phát biểu tính mới hay tốc độ vượt trội. Dữ liệu chi phí ứng viên là chẩn đoán và không được lấy từ test để điều chỉnh chính sách.
+
+\section{Thiết kế thực nghiệm}
+\begin{table}[ht]
+\centering\caption{Tham số kiểm chứng (giá trị mặc định)}
+\begin{tabular}{p{.42\linewidth}p{.48\linewidth}}\toprule
+Thành phần & Giá trị / quy tắc\\\midrule
+Số người dùng $K$ & 4, 6, 8 (cùng cấu hình 8 user đầu vào)\\
+Số hướng beam $L$ & 3, 5, 7; danh sách $\alpha$ cố định\\
+Bộ giải tham chiếu & V14, cận robust SINR và LP\\
+SINR, ngân sách & 6 dB, $P_{\max}=1$ W\\
+Sai số CSI & $\sigma_{\mathrm{rel}}=0.04$, $q_c=2.960414$\\
+Mức khó kênh & Tương quan cặp mạnh nhất: thấp $<0.4$, trung bình $[0.4,0.8)$, cao $\ge0.8$\\
+Chính sách & CARD / EARLY / CACHED / HYBRID\\
+Đo runtime & Lặp 5 lần, đảo thứ tự trên mỗi geometry\\
+Kiểm định & Group bootstrap, 1000 lần mặc định\\
+Ngưỡng lựa chọn & Cận dưới 95\% của $\Delta T>0.1$ ms\\\bottomrule
+\end{tabular}
+\end{table}
+
+Ngưỡng tương quan là phân tầng cố định từ trước; không phải phép phân loại độ khó đã được xác thực. $K=4,6,8$ được rút ra từ cùng 8 người dùng để đối chiếu có ghép cặp, vì vậy các quan sát khác $K$ trên một geometry không độc lập. Mỗi tập con phải tính lại ZF/RZF. Việc dùng các vị trí user khác nhau làm mẫu kênh thời gian là không được phép.
+
+\textbf{Development và validation.} Chia theo mã nhóm 60/40, không chia ngẫu nhiên từng bản ghi trong một nhóm. Trên phần development, chọn chính sách có $\Delta T$ trung bình cao nhất cho mỗi ô $(K,L,\text{độ khó})$; ô không đủ ít nhất 5 nhóm phát triển và 5 nhóm validation phải dùng CARD. Chỉ khóa chính sách nếu cận dưới bootstrap trên validation vượt mức cải thiện định trước. Không dùng test để chọn vùng hoặc ngưỡng.
+
+\textbf{Independent test.} Mở dữ liệu DeepMIMO mới sau khi đã tạo tệp khóa, rồi chạy trên dữ liệu 3GPP với cùng khóa và cấu hình. Phải cung cấp nguồn, scenario, vị trí, seed, mô hình path loss, cách tạo nhóm và lịch sử sử dụng dữ liệu. Nhãn nhóm khác nhau hoặc khoảng cách không gian không tự chứng minh độc lập thống kê.
+
+\section{Điều kiện vào và quy trình chạy}
+Các tệp dữ liệu NPZ phải chứa \texttt{H} phức kích thước $N\times M\times K_{\max}$, $M\ge8$, $K_{\max}\ge8$, và \texttt{groups} có độ dài $N$. Mã không thể tạo 8 người dùng từ tệp cũ chỉ có 4 người dùng. Với DeepMIMO, sử dụng \texttt{pack\_deepmimo\_users.py} để đóng gói kênh từng user đã xuất kèm vị trí; dữ liệu từ Sionna cần được chuyển sang cùng quy ước ma trận. Tệp \texttt{provenance.json} phải được kiểm toán thủ công trước khi công bố.
+
+Tại thư mục gốc gói, chạy:
+\begin{verbatim}
+python -m pip install -r code/requirements.txt
+python -m unittest discover -s tests -v
+\end{verbatim}
+Trên PowerShell, tạo dữ liệu synthetic và thực hiện smoke test bằng script:
+\begin{verbatim}
+.\scripts\smoke_v15.ps1
+\end{verbatim}
+Script này chạy kiểm thử, phát triển, khóa, test và xuất báo cáo với $K=4,6,8$, $L=3$ và bốn geometry mỗi nguồn. Kết quả chỉ xác minh chương trình.
+
+Với lần chạy Windows, dùng script \texttt{run\_v15.ps1} trong thư mục \texttt{scripts}. Khai báo đường dẫn development, test, provenance và mã lần chạy. Có thể chạy riêng các bước develop, lock, test và report. Khi chuyển 3GPP, tạo một run mới, giữ nguyên development và thêm \texttt{-LockFrom} trỏ đến tệp \texttt{CP03\_locked\_cells.json} của DeepMIMO; tuyệt đối không khóa lại chính sách trên 3GPP.
+
+\section{Checkpoint, CSV và tự khôi phục}
+\begingroup\footnotesize
+\begin{longtable}{p{.10\linewidth}p{.37\linewidth}p{.40\linewidth}}
+\toprule Checkpoint & Tệp & Nội dung\\\midrule\endfirsthead
+\toprule Checkpoint & Tệp & Nội dung\\\midrule\endhead
+CP00 & \texttt{CP00\_manifest.json} & SHA-256 nguồn, mã, cấu hình, tham số vật lý\\
+CP01 & \texttt{CP01\_development\_repeats.csv} & Runtime và lời gọi giải theo geometry, $K,L$ và policy\\
+CP01 (tùy chọn) & \texttt{CP01\_candidate\_cost.csv} & Chi phí từng ứng viên, trạng thái và phần solver tránh được\\
+CP02 & \texttt{CP02\_development\_paired.csv} & Chênh lệch CARD--policy theo geometry\\
+CP03 & \texttt{CP03\_cell\_validation.csv}; \texttt{CP03\_locked\_cells.json} & Kiểm định validation, chính sách khóa từng vùng\\
+CP04 & \texttt{CP04\_test\_preflight.json} & Nguồn test, chồng lấn dữ liệu, nhóm\\
+CP05 & \texttt{CP05\_test\_repeats.csv} & Runtime tất cả phương pháp ở test; chẩn đoán ngoài chính sách khóa\\
+CP06 & \texttt{CP06\_test\_paired\_all\_policies.csv} & Paired comparison; không dùng tái lựa chọn\\
+CP07 & \texttt{CP07\_frozen\_policy\_geometry.csv}; \texttt{CP07\_break\_even\_summary.csv} & Kết quả chính của chính sách khóa tại từng $K,L$\\
+CP08 & \texttt{CP08\_decision.json} & GO/STOP; sai khác nghiệm exhaustive\\
+CP09 & \texttt{CP09\_SHA256.csv} & Kiểm tra toàn vẹn các tệp tổng hợp\\\bottomrule
+\end{longtable}
+\endgroup
+Mỗi geometry có một checkpoint JSON riêng trong \texttt{tasks/development} hoặc \texttt{tasks/test}. Dữ liệu được ghi bằng tệp tạm, \texttt{fsync} và thay thế nguyên tử. Sau sự cố, chạy lại đúng stage, run-id, mã, nguồn và tham số; các geometry hoàn tất được dùng lại. Nếu có thay đổi mã hoặc nguồn, phải dùng run-id mới. Không trộn smoke test vào kết quả khoa học.
+
+\section{Cổng quyết định và giới hạn}
+Chỉ ghi nhận GO tăng tốc chung nếu (i) không có sai khác nghiệm với exhaustive trong tập beam hữu hạn, (ii) cận dưới 95\% của tiết kiệm runtime ghép cặp lớn hơn 0.1 ms đối với \emph{mọi} cấu hình $(K,L)$ đã khai báo trước, và (iii) có ít nhất một vùng kích hoạt chính sách khác CARD. Phân tích theo vùng là kết quả thứ cấp; không được chọn vùng tốt trên test rồi báo cáo như đánh giá độc lập. Đối với 3GPP phải đánh giá bằng khóa từ DeepMIMO và báo cáo riêng; chứng nhận theo nguồn này không tự suy ra từ nguồn kia.
+
+Nếu không đạt, kết luận là chưa xác định được điểm hòa vốn có thể chuyển giao trong các mức $K,L$ và mô hình kênh thử nghiệm. Không được khẳng định chi phí giảm theo $K$ một cách tổng quát, hoặc rằng số lời gọi bộ giải giảm tương đương tốc độ hệ thống tăng. Trong trường hợp này chỉ sử dụng kết quả để giải thích giới hạn tính toán và quyết định dừng hướng screening.
+\end{document}

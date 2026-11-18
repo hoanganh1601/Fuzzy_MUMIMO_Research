@@ -1,0 +1,17 @@
+{
+  "source": "synthetic_smoke",
+  "scenario": "synthetic_only",
+  "group_definition": "one independent RNG realization per group",
+  "independence_basis": "independent PRNG streams under fixed seed",
+  "prior_use": "smoke",
+  "difficulty_labels": [
+    "low",
+    "medium",
+    "high",
+    "low",
+    "medium",
+    "high",
+    "low",
+    "medium"
+  ]
+}
