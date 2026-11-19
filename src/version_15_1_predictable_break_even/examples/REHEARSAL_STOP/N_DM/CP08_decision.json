@@ -1,0 +1,162 @@
+{
+  "status": "STOP_NO_PREDICTABLE_BREAK_EVEN",
+  "smoke": false,
+  "version": "V15.1",
+  "primary": {
+    "endpoints": {
+      "E1_break_even_Kmax": false,
+      "E2_trend_in_K": false,
+      "E3_exactness": true,
+      "E4_predictability": false
+    },
+    "by_K": [
+      {
+        "K": 4,
+        "mean_rel_saved": 0.0,
+        "rel_ci_lo": 0.0,
+        "rel_ci_hi": 0.0,
+        "mean_saved_ms": 0.0,
+        "abs_ci_lo": 0.0,
+        "abs_ci_hi": 0.0,
+        "activated_fraction": 0.0
+      },
+      {
+        "K": 6,
+        "mean_rel_saved": 0.0,
+        "rel_ci_lo": 0.0,
+        "rel_ci_hi": 0.0,
+        "mean_saved_ms": 0.0,
+        "abs_ci_lo": 0.0,
+        "abs_ci_hi": 0.0,
+        "activated_fraction": 0.0
+      },
+      {
+        "K": 8,
+        "mean_rel_saved": 0.0,
+        "rel_ci_lo": 0.0,
+        "rel_ci_hi": 0.0,
+        "mean_saved_ms": 0.0,
+        "abs_ci_lo": 0.0,
+        "abs_ci_hi": 0.0,
+        "activated_fraction": 0.0
+      }
+    ],
+    "trend": {
+      "K_min": 4,
+      "K_max": 8,
+      "mean_diff": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.0
+    },
+    "activated_at_Kmax": {
+      "rows": 0,
+      "groups": 0,
+      "mean_saved_ms": null,
+      "ci_lo": null,
+      "ci_hi": null
+    },
+    "status": "STOP_NO_PREDICTABLE_BREAK_EVEN",
+    "fail_reasons": [
+      "E1_no_break_even_at_Kmax",
+      "E2_no_increasing_trend_in_K",
+      "E4_activated_cells_not_positive"
+    ]
+  },
+  "secondary_strict_all_KL_gate": false,
+  "oracle_mismatch": 0,
+  "test_source": {
+    "source": "synthetic_dmt",
+    "scenario": "SYNTHETIC_ONLY clustered ULA, NOT DeepMIMO/3GPP",
+    "group_definition": "one drop per group",
+    "independence_basis": "independent PRNG stream, seed 8",
+    "prior_use": "never_seen",
+    "edge_fraction": 0.0
+  },
+  "per_config": [
+    {
+      "K": 4,
+      "L": 3,
+      "geometries": 10,
+      "groups": 10,
+      "mean_card_ms": 11.1597009,
+      "mean_saved_ms": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.0,
+      "mean_rel_saved": 0.0,
+      "mean_calls_saved": 0.0,
+      "activated_fraction": 0.0,
+      "pass_runtime_strict": 0
+    },
+    {
+      "K": 4,
+      "L": 7,
+      "geometries": 10,
+      "groups": 10,
+      "mean_card_ms": 18.073935499999997,
+      "mean_saved_ms": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.0,
+      "mean_rel_saved": 0.0,
+      "mean_calls_saved": 0.0,
+      "activated_fraction": 0.0,
+      "pass_runtime_strict": 0
+    },
+    {
+      "K": 6,
+      "L": 3,
+      "geometries": 10,
+      "groups": 10,
+      "mean_card_ms": 26.722080800000004,
+      "mean_saved_ms": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.0,
+      "mean_rel_saved": 0.0,
+      "mean_calls_saved": 0.0,
+      "activated_fraction": 0.0,
+      "pass_runtime_strict": 0
+    },
+    {
+      "K": 6,
+      "L": 7,
+      "geometries": 10,
+      "groups": 10,
+      "mean_card_ms": 38.744979,
+      "mean_saved_ms": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.0,
+      "mean_rel_saved": 0.0,
+      "mean_calls_saved": 0.0,
+      "activated_fraction": 0.0,
+      "pass_runtime_strict": 0
+    },
+    {
+      "K": 8,
+      "L": 3,
+      "geometries": 10,
+      "groups": 10,
+      "mean_card_ms": 57.711538,
+      "mean_saved_ms": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.0,
+      "mean_rel_saved": 0.0,
+      "mean_calls_saved": 0.0,
+      "activated_fraction": 0.0,
+      "pass_runtime_strict": 0
+    },
+    {
+      "K": 8,
+      "L": 7,
+      "geometries": 10,
+      "groups": 10,
+      "mean_card_ms": 101.3159055,
+      "mean_saved_ms": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.0,
+      "mean_rel_saved": 0.0,
+      "mean_calls_saved": 0.0,
+      "activated_fraction": 0.0,
+      "pass_runtime_strict": 0
+    }
+  ],
+  "interpretation": "Primary endpoints were predeclared in CP00/CP03; cells and thresholds were not tuned on test."
+}

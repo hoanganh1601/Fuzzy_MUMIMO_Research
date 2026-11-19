@@ -1,5 +1,19 @@
 # Changelog
 
+## v15.1.0 — 2026-11-19
+
+- Nhập source, tests, synthetic smoke workflow, official runner, Vietnamese
+  guide, paper, examples và evidence index của V15.1.
+- Chạy 14/14 unit test; development dùng 41 group ASU và khóa policy theo
+  `(K,L,early_ratio)` trước khi mở hai nhánh test.
+- Chạy test mới trên 11 group DeepMIMO Phoenix và 15 group Sionna 3GPP UMi với
+  cùng frozen lock; CP04 ghi zero group/exact-channel overlap.
+- Cả hai nguồn có zero oracle mismatch và E3 đạt, nhưng không geometry nào kích
+  hoạt ER2; solver-call saving bằng 0 và runtime saving K=8 âm.
+- E1, E2 và E4 không đạt trên cả hai nguồn; combined decision là `STOP`.
+- Lưu 26 checkpoint, provenance và report ZIP; loại real channel matrices,
+  downloaded scenarios, per-geometry tasks, bytecode, logs, PID và environments.
+
 ## v15.0.0 — 2026-11-18
 
 - Nhập subset source V15 cần cho smoke workflow trong IEEE guide: unified

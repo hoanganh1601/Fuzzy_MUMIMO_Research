@@ -1,0 +1,57 @@
+{
+  "test_sha256": "0b4f0de1c31acfe06181e9e21190e784b77cf54c399dbb1a4d43b473795a0ba8",
+  "source": {
+    "bs_antenna_shape": [
+      1,
+      16
+    ],
+    "carrier_frequency_hz": 3500000000.0,
+    "channel_normalization": "none",
+    "channel_units": "Absolute complex frequency response; pathloss and shadow fading enabled; no normalization",
+    "created_before_test": true,
+    "dataset_dtype": "complex64",
+    "dataset_sha256": "0b4f0de1c31acfe06181e9e21190e784b77cf54c399dbb1a4d43b473795a0ba8",
+    "dataset_shape": [
+      15,
+      16,
+      8
+    ],
+    "generation_protocol_sha256": "dda0dee2a190398766c2f18b73c6434d57d60b226cf3ecd7f81568df373ffd41",
+    "group_definition": "15 newly generated topology drops; one group per eight-user geometry",
+    "independence_basis": "Fresh Sionna UMi simulation with a predeclared seed, distinct from DeepMIMO development/test and the Sionna dataset used in V12; source separation does not prove statistical independence",
+    "indoor_users": 0,
+    "n_geometries": 15,
+    "n_groups": 15,
+    "noise_power_w": 2e-13,
+    "path_delay_range_s": [
+      0.0,
+      8.935887336730957
+    ],
+    "prior_use": "never_seen",
+    "scenario": "3GPP_TR_38.901_UMi_single_sector",
+    "seed": 20261119,
+    "selected_baseband_frequency_hz": 0.0,
+    "sionna_version": "2.2.0",
+    "source": "Sionna_3GPP",
+    "spec_version": "19.2",
+    "split": "new_independent_test",
+    "standard": "3GPP TR 38.901",
+    "statistical_independence_verified": false,
+    "subcarrier_spacing_hz": 30000.0,
+    "topology_audit_sha256": "7be67086be7170e4b7cc566097c6959f791ef05957dd6e14c5cf9cc35b044fcb",
+    "torch_version": "2.15.0+cpu",
+    "ue_antenna_shape": [
+      1,
+      1
+    ],
+    "velocity_range_mps": [
+      0.0,
+      0.0
+    ]
+  },
+  "test_n": 15,
+  "test_groups": 15,
+  "group_overlap": 0,
+  "exact_channel_overlap": 0,
+  "statistical_independence_requires_source_audit": true
+}

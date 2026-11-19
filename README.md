@@ -25,8 +25,9 @@ Kho nghiên cứu được tổ chức theo ba lớp độc lập:
 | `version_13` | Cost-aware robust-SINR screening với policy khóa trên development | `16cc1d7` | CP01–CP08 complete; 0 false reject; CARD fallback và STOP_NO_RUNTIME_GAIN |
 | `version_14` | Computational limits và cost-aware switching khóa trước test | `187c905` | CP00–CP09 complete; 0 oracle mismatch; CARD fallback và STOP_NO_RUNTIME_GAIN |
 | `version_15` | Unified robust MU-MIMO computational break-even smoke workflow | `7632acc` | 4/4 test; CP00–CP09 smoke complete; 0 oracle mismatch; SMOKE_ONLY |
+| `version_15_1` | Predictable break-even theo `early_ratio`, frozen lock và hai nguồn test | pending | 14/14 test; E3 đạt trên hai nguồn; E1/E2/E4 không đạt; combined STOP |
 
-Version mới nhất là [`src/version_15_robust_mumimo_unified`](src/version_15_robust_mumimo_unified).
+Version mới nhất là [`src/version_15_1_predictable_break_even`](src/version_15_1_predictable_break_even).
 
 ## Hai phiên bản đầu tiên được khôi phục
 
@@ -37,7 +38,27 @@ Hai ZIP gốc được đối chiếu checksum và chạy lại ngày 2026-11-02
 
 Các replay dùng lại dataset `deepmimo_asu35_v1`, vì vậy là tái dựng lịch sử trên development data. Xem [run ver1](log/version_01/runs/DM_ASU35_R1_REPLAY_20261102/RUN.md) và [run ver2](log/version_02/runs/DM_ASU35_E1R_E3R_REPLAY_20261102/RUN.md).
 
-## Kết quả hiện tại (version 15 smoke)
+## Kết quả hiện tại (version 15.1)
+
+Version 15.1 khóa policy theo các ô `early_ratio` trên 41 group ASU rồi đánh
+giá cùng một lock trên DeepMIMO Phoenix mới và Sionna 3GPP UMi mới:
+
+- 14/14 unit test và pipeline chính thức hoàn tất.
+- CP03 chỉ khóa `HYBRID/EARLY` cho các ô `K=8, ER2`; các ô khác dùng `CARD`.
+- DeepMIMO test có 11 group, 3GPP test có 15 group; cả hai ghi zero
+  group/exact-channel overlap với development và zero oracle mismatch.
+- Không test geometry nào thuộc ER2, nên activated fraction và solver-call
+  saving đều bằng 0.
+- Tại K=8, mean runtime saving là -0.0606 ms trên DeepMIMO và -0.0705 ms trên
+  3GPP; E1, E2 và E4 đều không đạt trên cả hai nguồn.
+- Quyết định tổng hợp: `STOP`. Kết quả xác nhận exactness trong finite codebook,
+  không xác nhận predictable runtime break-even hay computational superiority.
+
+Xem [run log version 15.1](log/version_15_1/README.md),
+[combined decision](log/version_15_1/runs/V151_FINAL/CP11_combined_decision.json) và
+[source V15.1](src/version_15_1_predictable_break_even/README.md).
+
+## Kết quả trước đó (version 15 smoke)
 
 Version 15 hợp nhất entrypoint kiểm tra điểm hòa vốn cho `K=4,6,8`:
 
@@ -209,6 +230,7 @@ Real datasets được lưu ngoài Git. Version 6–12 sử dụng kho cục b�
 ```text
 /media/icnlab/Data/hoanganh/datasets/csi_margin_calibration/
 /media/icnlab/Data/hoanganh/datasets/robust_sinr_v12/
+/media/icnlab/Data/hoanganh/datasets/robust_mumimo_v15_1/
 ```
 
 Git chỉ lưu provenance, group audit và checksum cần thiết để kiểm toán.

@@ -1,0 +1,50 @@
+{
+  "version": "V15.1",
+  "policy_cells": {
+    "K4_L3_ER0": "CARD",
+    "K4_L3_ER1": "CARD",
+    "K4_L7_ER0": "CARD",
+    "K4_L7_ER1": "CARD",
+    "K6_L3_ER0": "CARD",
+    "K6_L3_ER1": "CARD",
+    "K6_L7_ER0": "CARD",
+    "K6_L7_ER1": "CARD",
+    "K8_L3_ER0": "CARD",
+    "K8_L3_ER1": "CARD",
+    "K8_L7_ER0": "CARD",
+    "K8_L7_ER1": "CARD"
+  },
+  "config_signature": "1de52f8b44c2852ce48af152ff1a1a8c4d8b98fecb98e2542d31bc1956f3a8b5",
+  "development_sha256": "9a86cbb91d82bc449301d6de73a23e215e0dc64e618e188f6bd71ec86da11d3e",
+  "fit_groups": [
+    "DEV_00000",
+    "DEV_00001",
+    "DEV_00003",
+    "DEV_00004",
+    "DEV_00005",
+    "DEV_00007",
+    "DEV_00009",
+    "DEV_00010",
+    "DEV_00011",
+    "DEV_00012",
+    "DEV_00013",
+    "DEV_00017"
+  ],
+  "valid_groups": [
+    "DEV_00002",
+    "DEV_00006",
+    "DEV_00008",
+    "DEV_00014",
+    "DEV_00015",
+    "DEV_00016",
+    "DEV_00018",
+    "DEV_00019"
+  ],
+  "min_gain_ms": 0.1,
+  "er_bins": [
+    0.1,
+    1.0
+  ],
+  "early_bound": "robust",
+  "conditioned_on": "K, L, early_ratio cell; no test tuning"
+}

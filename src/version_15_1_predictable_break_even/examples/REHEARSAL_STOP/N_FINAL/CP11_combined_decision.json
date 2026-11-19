@@ -1,0 +1,155 @@
+{
+  "status": "STOP",
+  "runs": [
+    "N_DM",
+    "N_3G"
+  ],
+  "sources": [
+    "synthetic_dmt",
+    "synthetic_gpt"
+  ],
+  "lock_sha": "2c628b9c83b6001aca15de4fa52e3f7d63975bb8848d607adcd0dc48b363664a",
+  "per_source": {
+    "N_DM": {
+      "source": {
+        "source": "synthetic_dmt",
+        "scenario": "SYNTHETIC_ONLY clustered ULA, NOT DeepMIMO/3GPP",
+        "group_definition": "one drop per group",
+        "independence_basis": "independent PRNG stream, seed 8",
+        "prior_use": "never_seen",
+        "edge_fraction": 0.0
+      },
+      "primary": {
+        "endpoints": {
+          "E1_break_even_Kmax": false,
+          "E2_trend_in_K": false,
+          "E3_exactness": true,
+          "E4_predictability": false
+        },
+        "by_K": [
+          {
+            "K": 4,
+            "mean_rel_saved": 0.0,
+            "rel_ci_lo": 0.0,
+            "rel_ci_hi": 0.0,
+            "mean_saved_ms": 0.0,
+            "abs_ci_lo": 0.0,
+            "abs_ci_hi": 0.0,
+            "activated_fraction": 0.0
+          },
+          {
+            "K": 6,
+            "mean_rel_saved": 0.0,
+            "rel_ci_lo": 0.0,
+            "rel_ci_hi": 0.0,
+            "mean_saved_ms": 0.0,
+            "abs_ci_lo": 0.0,
+            "abs_ci_hi": 0.0,
+            "activated_fraction": 0.0
+          },
+          {
+            "K": 8,
+            "mean_rel_saved": 0.0,
+            "rel_ci_lo": 0.0,
+            "rel_ci_hi": 0.0,
+            "mean_saved_ms": 0.0,
+            "abs_ci_lo": 0.0,
+            "abs_ci_hi": 0.0,
+            "activated_fraction": 0.0
+          }
+        ],
+        "trend": {
+          "K_min": 4,
+          "K_max": 8,
+          "mean_diff": 0.0,
+          "ci_lo": 0.0,
+          "ci_hi": 0.0
+        },
+        "activated_at_Kmax": {
+          "rows": 0,
+          "groups": 0,
+          "mean_saved_ms": null,
+          "ci_lo": null,
+          "ci_hi": null
+        },
+        "status": "STOP_NO_PREDICTABLE_BREAK_EVEN",
+        "fail_reasons": [
+          "E1_no_break_even_at_Kmax",
+          "E2_no_increasing_trend_in_K",
+          "E4_activated_cells_not_positive"
+        ]
+      }
+    },
+    "N_3G": {
+      "source": {
+        "source": "synthetic_gpt",
+        "scenario": "SYNTHETIC_ONLY clustered ULA, NOT DeepMIMO/3GPP",
+        "group_definition": "one drop per group",
+        "independence_basis": "independent PRNG stream, seed 9",
+        "prior_use": "never_seen",
+        "edge_fraction": 0.0
+      },
+      "primary": {
+        "endpoints": {
+          "E1_break_even_Kmax": false,
+          "E2_trend_in_K": false,
+          "E3_exactness": true,
+          "E4_predictability": false
+        },
+        "by_K": [
+          {
+            "K": 4,
+            "mean_rel_saved": 0.0,
+            "rel_ci_lo": 0.0,
+            "rel_ci_hi": 0.0,
+            "mean_saved_ms": 0.0,
+            "abs_ci_lo": 0.0,
+            "abs_ci_hi": 0.0,
+            "activated_fraction": 0.0
+          },
+          {
+            "K": 6,
+            "mean_rel_saved": 0.0,
+            "rel_ci_lo": 0.0,
+            "rel_ci_hi": 0.0,
+            "mean_saved_ms": 0.0,
+            "abs_ci_lo": 0.0,
+            "abs_ci_hi": 0.0,
+            "activated_fraction": 0.0
+          },
+          {
+            "K": 8,
+            "mean_rel_saved": 0.0,
+            "rel_ci_lo": 0.0,
+            "rel_ci_hi": 0.0,
+            "mean_saved_ms": 0.0,
+            "abs_ci_lo": 0.0,
+            "abs_ci_hi": 0.0,
+            "activated_fraction": 0.0
+          }
+        ],
+        "trend": {
+          "K_min": 4,
+          "K_max": 8,
+          "mean_diff": 0.0,
+          "ci_lo": 0.0,
+          "ci_hi": 0.0
+        },
+        "activated_at_Kmax": {
+          "rows": 0,
+          "groups": 0,
+          "mean_saved_ms": null,
+          "ci_lo": null,
+          "ci_hi": null
+        },
+        "status": "STOP_NO_PREDICTABLE_BREAK_EVEN",
+        "fail_reasons": [
+          "E1_no_break_even_at_Kmax",
+          "E2_no_increasing_trend_in_K",
+          "E4_activated_cells_not_positive"
+        ]
+      }
+    }
+  },
+  "rule": "GO only if every source run is GO_BREAK_EVEN with the same frozen lock and at least two distinct sources"
+}

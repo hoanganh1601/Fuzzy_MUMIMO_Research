@@ -1,0 +1,245 @@
+{
+  "status": "STOP_NO_PREDICTABLE_BREAK_EVEN",
+  "smoke": false,
+  "version": "V15.1",
+  "primary": {
+    "endpoints": {
+      "E1_break_even_Kmax": false,
+      "E2_trend_in_K": false,
+      "E3_exactness": true,
+      "E4_predictability": false
+    },
+    "by_K": [
+      {
+        "K": 4,
+        "mean_rel_saved": 0.0,
+        "rel_ci_lo": 0.0,
+        "rel_ci_hi": 0.0,
+        "mean_saved_ms": 0.0,
+        "abs_ci_lo": 0.0,
+        "abs_ci_hi": 0.0,
+        "activated_fraction": 0.0
+      },
+      {
+        "K": 6,
+        "mean_rel_saved": 0.0,
+        "rel_ci_lo": 0.0,
+        "rel_ci_hi": 0.0,
+        "mean_saved_ms": 0.0,
+        "abs_ci_lo": 0.0,
+        "abs_ci_hi": 0.0,
+        "activated_fraction": 0.0
+      },
+      {
+        "K": 8,
+        "mean_rel_saved": -0.012184953419043514,
+        "rel_ci_lo": -0.013893861619448356,
+        "rel_ci_hi": -0.01020268145310642,
+        "mean_saved_ms": -0.07051433333333333,
+        "abs_ci_lo": -0.07526437222222224,
+        "abs_ci_hi": -0.0657032,
+        "activated_fraction": 0.0
+      }
+    ],
+    "trend": {
+      "K_min": 4,
+      "K_max": 8,
+      "mean_diff": -0.012184953419043514,
+      "ci_lo": -0.01389566027742194,
+      "ci_hi": -0.010132614080859725
+    },
+    "activated_at_Kmax": {
+      "rows": 0,
+      "groups": 0,
+      "mean_saved_ms": null,
+      "ci_lo": null,
+      "ci_hi": null
+    },
+    "status": "STOP_NO_PREDICTABLE_BREAK_EVEN",
+    "fail_reasons": [
+      "E1_no_break_even_at_Kmax",
+      "E2_no_increasing_trend_in_K",
+      "E4_activated_cells_not_positive"
+    ]
+  },
+  "secondary_strict_all_KL_gate": false,
+  "oracle_mismatch": 0,
+  "test_source": {
+    "bs_antenna_shape": [
+      1,
+      16
+    ],
+    "carrier_frequency_hz": 3500000000.0,
+    "channel_normalization": "none",
+    "channel_units": "Absolute complex frequency response; pathloss and shadow fading enabled; no normalization",
+    "created_before_test": true,
+    "dataset_dtype": "complex64",
+    "dataset_sha256": "0b4f0de1c31acfe06181e9e21190e784b77cf54c399dbb1a4d43b473795a0ba8",
+    "dataset_shape": [
+      15,
+      16,
+      8
+    ],
+    "generation_protocol_sha256": "dda0dee2a190398766c2f18b73c6434d57d60b226cf3ecd7f81568df373ffd41",
+    "group_definition": "15 newly generated topology drops; one group per eight-user geometry",
+    "independence_basis": "Fresh Sionna UMi simulation with a predeclared seed, distinct from DeepMIMO development/test and the Sionna dataset used in V12; source separation does not prove statistical independence",
+    "indoor_users": 0,
+    "n_geometries": 15,
+    "n_groups": 15,
+    "noise_power_w": 2e-13,
+    "path_delay_range_s": [
+      0.0,
+      8.935887336730957
+    ],
+    "prior_use": "never_seen",
+    "scenario": "3GPP_TR_38.901_UMi_single_sector",
+    "seed": 20261119,
+    "selected_baseband_frequency_hz": 0.0,
+    "sionna_version": "2.2.0",
+    "source": "Sionna_3GPP",
+    "spec_version": "19.2",
+    "split": "new_independent_test",
+    "standard": "3GPP TR 38.901",
+    "statistical_independence_verified": false,
+    "subcarrier_spacing_hz": 30000.0,
+    "topology_audit_sha256": "7be67086be7170e4b7cc566097c6959f791ef05957dd6e14c5cf9cc35b044fcb",
+    "torch_version": "2.15.0+cpu",
+    "ue_antenna_shape": [
+      1,
+      1
+    ],
+    "velocity_range_mps": [
+      0.0,
+      0.0
+    ]
+  },
+  "per_config": [
+    {
+      "K": 4,
+      "L": 3,
+      "geometries": 15,
+      "groups": 15,
+      "mean_card_ms": 5.5599072,
+      "mean_saved_ms": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.0,
+      "mean_rel_saved": 0.0,
+      "mean_calls_saved": 0.0,
+      "activated_fraction": 0.0,
+      "pass_runtime_strict": 0
+    },
+    {
+      "K": 4,
+      "L": 5,
+      "geometries": 15,
+      "groups": 15,
+      "mean_card_ms": 8.4604186,
+      "mean_saved_ms": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.0,
+      "mean_rel_saved": 0.0,
+      "mean_calls_saved": 0.0,
+      "activated_fraction": 0.0,
+      "pass_runtime_strict": 0
+    },
+    {
+      "K": 4,
+      "L": 7,
+      "geometries": 15,
+      "groups": 15,
+      "mean_card_ms": 11.104717533333336,
+      "mean_saved_ms": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.0,
+      "mean_rel_saved": 0.0,
+      "mean_calls_saved": 0.0,
+      "activated_fraction": 0.0,
+      "pass_runtime_strict": 0
+    },
+    {
+      "K": 6,
+      "L": 3,
+      "geometries": 15,
+      "groups": 15,
+      "mean_card_ms": 4.9944508,
+      "mean_saved_ms": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.0,
+      "mean_rel_saved": 0.0,
+      "mean_calls_saved": 0.0,
+      "activated_fraction": 0.0,
+      "pass_runtime_strict": 0
+    },
+    {
+      "K": 6,
+      "L": 5,
+      "geometries": 15,
+      "groups": 15,
+      "mean_card_ms": 7.767494866666667,
+      "mean_saved_ms": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.0,
+      "mean_rel_saved": 0.0,
+      "mean_calls_saved": 0.0,
+      "activated_fraction": 0.0,
+      "pass_runtime_strict": 0
+    },
+    {
+      "K": 6,
+      "L": 7,
+      "geometries": 15,
+      "groups": 15,
+      "mean_card_ms": 8.7333832,
+      "mean_saved_ms": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.0,
+      "mean_rel_saved": 0.0,
+      "mean_calls_saved": 0.0,
+      "activated_fraction": 0.0,
+      "pass_runtime_strict": 0
+    },
+    {
+      "K": 8,
+      "L": 3,
+      "geometries": 15,
+      "groups": 15,
+      "mean_card_ms": 5.695024266666667,
+      "mean_saved_ms": -0.06327419999999999,
+      "ci_lo": -0.06782176166666667,
+      "ci_hi": -0.060087296666666665,
+      "mean_rel_saved": -0.012830012986563057,
+      "mean_calls_saved": 0.0,
+      "activated_fraction": 0.0,
+      "pass_runtime_strict": 0
+    },
+    {
+      "K": 8,
+      "L": 5,
+      "geometries": 15,
+      "groups": 15,
+      "mean_card_ms": 7.3427022,
+      "mean_saved_ms": -0.0864232,
+      "ci_lo": -0.09900354333333333,
+      "ci_hi": -0.07375276499999998,
+      "mean_rel_saved": -0.014472257662133317,
+      "mean_calls_saved": 0.0,
+      "activated_fraction": 0.0,
+      "pass_runtime_strict": 0
+    },
+    {
+      "K": 8,
+      "L": 7,
+      "geometries": 15,
+      "groups": 15,
+      "mean_card_ms": 8.252061000000001,
+      "mean_saved_ms": -0.061845599999999994,
+      "ci_lo": -0.06496837999999999,
+      "ci_hi": -0.05956297166666666,
+      "mean_rel_saved": -0.009667105463247132,
+      "mean_calls_saved": 0.0,
+      "activated_fraction": 0.0,
+      "pass_runtime_strict": 0
+    }
+  ],
+  "interpretation": "Primary endpoints were predeclared in CP00/CP03; cells and thresholds were not tuned on test."
+}

@@ -1,0 +1,23 @@
+{
+  "source": "DeepMIMO external extraction",
+  "scenario": "city_4_phoenix_3p5",
+  "group_definition": "spatial tile (one 8-user drop per tile)",
+  "independence_basis": "Phoenix city_4_phoenix_3p5 is a newly downloaded ray-tracing scenario distinct from ASU development and DeepMIMO scenarios used in V11-V15; source separation does not prove statistical independence",
+  "prior_use": "never_seen",
+  "cell_m": 50.0,
+  "min_user_distance": 2.0,
+  "selected_geometries": 11,
+  "excluded_tiles": 0,
+  "seed": 20261117,
+  "deepmimo_version": "4.0.5",
+  "carrier_frequency_hz": 3500000000.0,
+  "transmitter": "BS1 / TX set 3 / index 0",
+  "bs_antenna_shape": [16, 1],
+  "ue_antenna_shape": [1, 1],
+  "antenna_spacing_wavelengths": 0.5,
+  "frequency_domain": true,
+  "ofdm_bandwidth_hz": 10000000.0,
+  "ofdm_total_subcarriers": 512,
+  "selected_subcarrier": 0,
+  "channel_normalization": "none; absolute DeepMIMO complex channel scale retained"
+}
