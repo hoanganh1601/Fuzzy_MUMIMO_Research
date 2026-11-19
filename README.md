@@ -25,7 +25,7 @@ Kho nghiên cứu được tổ chức theo ba lớp độc lập:
 | `version_13` | Cost-aware robust-SINR screening với policy khóa trên development | `16cc1d7` | CP01–CP08 complete; 0 false reject; CARD fallback và STOP_NO_RUNTIME_GAIN |
 | `version_14` | Computational limits và cost-aware switching khóa trước test | `187c905` | CP00–CP09 complete; 0 oracle mismatch; CARD fallback và STOP_NO_RUNTIME_GAIN |
 | `version_15` | Unified robust MU-MIMO computational break-even smoke workflow | `7632acc` | 4/4 test; CP00–CP09 smoke complete; 0 oracle mismatch; SMOKE_ONLY |
-| `version_15_1` | Predictable break-even theo `early_ratio`, frozen lock và hai nguồn test | pending | 14/14 test; E3 đạt trên hai nguồn; E1/E2/E4 không đạt; combined STOP |
+| `version_15_1` | Predictable break-even theo `early_ratio`, frozen lock và hai nguồn test | `79f9680` | 14/14 test; E3 đạt trên hai nguồn; E1/E2/E4 không đạt; combined STOP |
 
 Version mới nhất là [`src/version_15_1_predictable_break_even`](src/version_15_1_predictable_break_even).
 

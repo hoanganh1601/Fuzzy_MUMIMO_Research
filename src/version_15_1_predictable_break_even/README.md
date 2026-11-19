@@ -1,10 +1,11 @@
 # Version 15.1: Predictable computational break-even
 
-This snapshot preserves the complete static V15.1 package used to test whether
+This snapshot preserves the static V15.1 workflow used to test whether
 an `early_ratio`-conditioned policy can predict a runtime break-even point as
 the number of users grows from `K=4` to `K=8`. It includes the source, unit
 tests, synthetic smoke workflow, official runner, Vietnamese guide, paper,
-rehearsal examples, and evidence index supplied with the package.
+rehearsal examples, and evidence index supplied with the package. Historical
+source ZIP archives duplicated by earlier repository versions are excluded.
 
 Real DeepMIMO/Sionna channel matrices, downloaded scenarios, virtual
 environments, per-geometry task caches, console logs, and PID files are not
