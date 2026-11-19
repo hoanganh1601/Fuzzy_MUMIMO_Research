@@ -1,0 +1,13 @@
+{
+ "version": "V15.1",
+ "date": "2026-11-18",
+ "unit_tests": "14/14 PASS (robust EARLY safety: 2208 checks incl. 1397 rejections, 0 false rejects; oracle K=4/6/8; tie rule; cells; decision logic; UTF-8)",
+ "smoke": "develop -> lock -> DM test -> 3GPP test (lock-from) -> combine: PASS (SMOKE_ONLY)",
+ "rehearsal_GO": "SYNTHETIC 30 dev + 15 + 15 groups, default config (K=4,6,8; L=3,5,7; repeats 5; bootstrap 1000): both sources GO_BREAK_EVEN; combined GO_PREDICTABLE_BREAK_EVEN; 0 oracle mismatch",
+ "rehearsal_STOP": "SYNTHETIC near-only users (no power-limited drops): all cells CARD; both sources STOP; combined STOP",
+ "converter": "export_users.py -> pack_deepmimo_users.py tested on a mock (U,rx,tx,sc) file",
+ "not_tested": [
+  "PowerShell scripts were not executed (Linux test machine); their Python commands were",
+  "No DeepMIMO or 3GPP data: rehearsal numbers are synthetic and must not be reported"
+ ]
+}

@@ -1,0 +1,200 @@
+{
+  "status": "GO_BREAK_EVEN",
+  "smoke": false,
+  "version": "V15.1",
+  "primary": {
+    "endpoints": {
+      "E1_break_even_Kmax": true,
+      "E2_trend_in_K": true,
+      "E3_exactness": true,
+      "E4_predictability": true
+    },
+    "by_K": [
+      {
+        "K": 4,
+        "mean_rel_saved": 0.1027630781886407,
+        "rel_ci_lo": 0.026873865447133615,
+        "rel_ci_hi": 0.18812207439107803,
+        "mean_saved_ms": 1.2939548444444442,
+        "abs_ci_lo": 0.34303735444444433,
+        "abs_ci_hi": 2.311073556111111,
+        "activated_fraction": 0.4
+      },
+      {
+        "K": 6,
+        "mean_rel_saved": 0.2120904554334695,
+        "rel_ci_lo": 0.08347493709038045,
+        "rel_ci_hi": 0.3640804326252371,
+        "mean_saved_ms": 5.612016955555556,
+        "abs_ci_lo": 2.220494072777777,
+        "abs_ci_hi": 10.057439792777778,
+        "activated_fraction": 0.4666666666666667
+      },
+      {
+        "K": 8,
+        "mean_rel_saved": 0.2999299546734914,
+        "rel_ci_lo": 0.13845059080542896,
+        "rel_ci_hi": 0.4951956973742361,
+        "mean_saved_ms": 24.999419400000004,
+        "abs_ci_lo": 9.138530439444445,
+        "abs_ci_hi": 42.04363100333333,
+        "activated_fraction": 0.4666666666666667
+      }
+    ],
+    "trend": {
+      "K_min": 4,
+      "K_max": 8,
+      "mean_diff": 0.19716687648485068,
+      "ci_lo": 0.08481117448154499,
+      "ci_hi": 0.30828242720543425
+    },
+    "activated_at_Kmax": {
+      "rows": 21,
+      "groups": 7,
+      "mean_saved_ms": 53.61984733333334,
+      "ci_lo": 32.528266322619054,
+      "ci_hi": 72.40829020238094
+    },
+    "status": "GO_BREAK_EVEN",
+    "fail_reasons": []
+  },
+  "secondary_strict_all_KL_gate": true,
+  "oracle_mismatch": 0,
+  "test_source": {
+    "source": "synthetic_gpt",
+    "scenario": "SYNTHETIC_ONLY clustered ULA, NOT DeepMIMO/3GPP",
+    "group_definition": "one drop per group",
+    "independence_basis": "independent PRNG stream, seed 303",
+    "prior_use": "never_seen",
+    "edge_fraction": 0.35
+  },
+  "per_config": [
+    {
+      "K": 4,
+      "L": 3,
+      "geometries": 15,
+      "groups": 15,
+      "mean_card_ms": 8.149005466666667,
+      "mean_saved_ms": 0.7733687333333333,
+      "ci_lo": 0.22530322666666672,
+      "ci_hi": 1.3772536983333339,
+      "mean_rel_saved": 0.10063416562398607,
+      "mean_calls_saved": 13.0,
+      "activated_fraction": 0.4,
+      "pass_runtime_strict": 1
+    },
+    {
+      "K": 4,
+      "L": 5,
+      "geometries": 15,
+      "groups": 15,
+      "mean_card_ms": 12.465366133333333,
+      "mean_saved_ms": 1.3353415333333332,
+      "ci_lo": 0.42826258999999955,
+      "ci_hi": 2.363178396666666,
+      "mean_rel_saved": 0.1039164181250794,
+      "mean_calls_saved": 21.666666666666668,
+      "activated_fraction": 0.4,
+      "pass_runtime_strict": 1
+    },
+    {
+      "K": 4,
+      "L": 7,
+      "geometries": 15,
+      "groups": 15,
+      "mean_card_ms": 15.358580266666666,
+      "mean_saved_ms": 1.7731542666666664,
+      "ci_lo": 0.6081655349999999,
+      "ci_hi": 3.1441186166666646,
+      "mean_rel_saved": 0.10443925717478518,
+      "mean_calls_saved": 30.333333333333332,
+      "activated_fraction": 0.4,
+      "pass_runtime_strict": 1
+    },
+    {
+      "K": 6,
+      "L": 3,
+      "geometries": 15,
+      "groups": 15,
+      "mean_card_ms": 21.2683014,
+      "mean_saved_ms": 3.4810467999999997,
+      "ci_lo": 1.0503799366666666,
+      "ci_hi": 5.962594131666667,
+      "mean_rel_saved": 0.20854749284320956,
+      "mean_calls_saved": 58.6,
+      "activated_fraction": 0.4666666666666667,
+      "pass_runtime_strict": 1
+    },
+    {
+      "K": 6,
+      "L": 5,
+      "geometries": 15,
+      "groups": 15,
+      "mean_card_ms": 30.077195400000004,
+      "mean_saved_ms": 5.478988333333334,
+      "ci_lo": 2.086493189999999,
+      "ci_hi": 9.478240416666665,
+      "mean_rel_saved": 0.2044777489251693,
+      "mean_calls_saved": 97.66666666666667,
+      "activated_fraction": 0.4666666666666667,
+      "pass_runtime_strict": 1
+    },
+    {
+      "K": 6,
+      "L": 7,
+      "geometries": 15,
+      "groups": 15,
+      "mean_card_ms": 35.62100353333334,
+      "mean_saved_ms": 7.876015733333333,
+      "ci_lo": 2.638130853333333,
+      "ci_hi": 13.575671234999998,
+      "mean_rel_saved": 0.22025257002432846,
+      "mean_calls_saved": 136.73333333333332,
+      "activated_fraction": 0.4666666666666667,
+      "pass_runtime_strict": 1
+    },
+    {
+      "K": 8,
+      "L": 3,
+      "geometries": 15,
+      "groups": 15,
+      "mean_card_ms": 70.04164913333334,
+      "mean_saved_ms": 14.833318466666666,
+      "ci_lo": 4.947447311666669,
+      "ci_hi": 25.11380731166666,
+      "mean_rel_saved": 0.283984332017388,
+      "mean_calls_saved": 311.46666666666664,
+      "activated_fraction": 0.4666666666666667,
+      "pass_runtime_strict": 1
+    },
+    {
+      "K": 8,
+      "L": 5,
+      "geometries": 15,
+      "groups": 15,
+      "mean_card_ms": 98.49953133333334,
+      "mean_saved_ms": 25.2242754,
+      "ci_lo": 9.890030876666668,
+      "ci_hi": 42.99512220666667,
+      "mean_rel_saved": 0.29922935776854637,
+      "mean_calls_saved": 432.0,
+      "activated_fraction": 0.4666666666666667,
+      "pass_runtime_strict": 1
+    },
+    {
+      "K": 8,
+      "L": 7,
+      "geometries": 15,
+      "groups": 15,
+      "mean_card_ms": 122.402999,
+      "mean_saved_ms": 34.94066433333333,
+      "ci_lo": 13.514685091666669,
+      "ci_hi": 58.996354456666666,
+      "mean_rel_saved": 0.3076468038830647,
+      "mean_calls_saved": 604.8,
+      "activated_fraction": 0.4666666666666667,
+      "pass_runtime_strict": 1
+    }
+  ],
+  "interpretation": "Primary endpoints were predeclared in CP00/CP03; cells and thresholds were not tuned on test."
+}

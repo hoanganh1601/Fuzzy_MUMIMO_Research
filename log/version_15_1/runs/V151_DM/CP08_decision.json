@@ -1,0 +1,225 @@
+{
+  "status": "STOP_NO_PREDICTABLE_BREAK_EVEN",
+  "smoke": false,
+  "version": "V15.1",
+  "primary": {
+    "endpoints": {
+      "E1_break_even_Kmax": false,
+      "E2_trend_in_K": false,
+      "E3_exactness": true,
+      "E4_predictability": false
+    },
+    "by_K": [
+      {
+        "K": 4,
+        "mean_rel_saved": 0.0,
+        "rel_ci_lo": 0.0,
+        "rel_ci_hi": 0.0,
+        "mean_saved_ms": 0.0,
+        "abs_ci_lo": 0.0,
+        "abs_ci_hi": 0.0,
+        "activated_fraction": 0.0
+      },
+      {
+        "K": 6,
+        "mean_rel_saved": 0.0,
+        "rel_ci_lo": 0.0,
+        "rel_ci_hi": 0.0,
+        "mean_saved_ms": 0.0,
+        "abs_ci_lo": 0.0,
+        "abs_ci_hi": 0.0,
+        "activated_fraction": 0.0
+      },
+      {
+        "K": 8,
+        "mean_rel_saved": -0.003225230111547794,
+        "rel_ci_lo": -0.006957576808336825,
+        "rel_ci_hi": -0.0006041245250010503,
+        "mean_saved_ms": -0.060611909090909084,
+        "abs_ci_lo": -0.06693992121212121,
+        "abs_ci_hi": -0.055262650757575756,
+        "activated_fraction": 0.0
+      }
+    ],
+    "trend": {
+      "K_min": 4,
+      "K_max": 8,
+      "mean_diff": -0.003225230111547794,
+      "ci_lo": -0.007045662874612203,
+      "ci_hi": -0.0005852148052367248
+    },
+    "activated_at_Kmax": {
+      "rows": 0,
+      "groups": 0,
+      "mean_saved_ms": null,
+      "ci_lo": null,
+      "ci_hi": null
+    },
+    "status": "STOP_NO_PREDICTABLE_BREAK_EVEN",
+    "fail_reasons": [
+      "E1_no_break_even_at_Kmax",
+      "E2_no_increasing_trend_in_K",
+      "E4_activated_cells_not_positive"
+    ]
+  },
+  "secondary_strict_all_KL_gate": false,
+  "oracle_mismatch": 0,
+  "test_source": {
+    "source": "DeepMIMO external extraction",
+    "scenario": "city_4_phoenix_3p5",
+    "group_definition": "spatial tile (one 8-user drop per tile)",
+    "independence_basis": "Phoenix city_4_phoenix_3p5 is a newly downloaded ray-tracing scenario distinct from ASU development and DeepMIMO scenarios used in V11-V15; source separation does not prove statistical independence",
+    "prior_use": "never_seen",
+    "cell_m": 50.0,
+    "min_user_distance": 2.0,
+    "selected_geometries": 11,
+    "excluded_tiles": 0,
+    "seed": 20261117,
+    "deepmimo_version": "4.0.5",
+    "carrier_frequency_hz": 3500000000.0,
+    "transmitter": "BS1 / TX set 3 / index 0",
+    "bs_antenna_shape": [
+      16,
+      1
+    ],
+    "ue_antenna_shape": [
+      1,
+      1
+    ],
+    "antenna_spacing_wavelengths": 0.5,
+    "frequency_domain": true,
+    "ofdm_bandwidth_hz": 10000000.0,
+    "ofdm_total_subcarriers": 512,
+    "selected_subcarrier": 0,
+    "channel_normalization": "none; absolute DeepMIMO complex channel scale retained"
+  },
+  "per_config": [
+    {
+      "K": 4,
+      "L": 3,
+      "geometries": 11,
+      "groups": 11,
+      "mean_card_ms": 10.029394181818182,
+      "mean_saved_ms": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.0,
+      "mean_rel_saved": 0.0,
+      "mean_calls_saved": 0.0,
+      "activated_fraction": 0.0,
+      "pass_runtime_strict": 0
+    },
+    {
+      "K": 4,
+      "L": 5,
+      "geometries": 11,
+      "groups": 11,
+      "mean_card_ms": 14.881641454545452,
+      "mean_saved_ms": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.0,
+      "mean_rel_saved": 0.0,
+      "mean_calls_saved": 0.0,
+      "activated_fraction": 0.0,
+      "pass_runtime_strict": 0
+    },
+    {
+      "K": 4,
+      "L": 7,
+      "geometries": 11,
+      "groups": 11,
+      "mean_card_ms": 17.681005272727273,
+      "mean_saved_ms": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.0,
+      "mean_rel_saved": 0.0,
+      "mean_calls_saved": 0.0,
+      "activated_fraction": 0.0,
+      "pass_runtime_strict": 0
+    },
+    {
+      "K": 6,
+      "L": 3,
+      "geometries": 11,
+      "groups": 11,
+      "mean_card_ms": 27.469033636363633,
+      "mean_saved_ms": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.0,
+      "mean_rel_saved": 0.0,
+      "mean_calls_saved": 0.0,
+      "activated_fraction": 0.0,
+      "pass_runtime_strict": 0
+    },
+    {
+      "K": 6,
+      "L": 5,
+      "geometries": 11,
+      "groups": 11,
+      "mean_card_ms": 38.38358690909091,
+      "mean_saved_ms": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.0,
+      "mean_rel_saved": 0.0,
+      "mean_calls_saved": 0.0,
+      "activated_fraction": 0.0,
+      "pass_runtime_strict": 0
+    },
+    {
+      "K": 6,
+      "L": 7,
+      "geometries": 11,
+      "groups": 11,
+      "mean_card_ms": 46.246424272727275,
+      "mean_saved_ms": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.0,
+      "mean_rel_saved": 0.0,
+      "mean_calls_saved": 0.0,
+      "activated_fraction": 0.0,
+      "pass_runtime_strict": 0
+    },
+    {
+      "K": 8,
+      "L": 3,
+      "geometries": 11,
+      "groups": 11,
+      "mean_card_ms": 77.30068945454545,
+      "mean_saved_ms": -0.0557070909090909,
+      "ci_lo": -0.05840677954545455,
+      "ci_hi": -0.053496206818181825,
+      "mean_rel_saved": -0.0029270748535520485,
+      "mean_calls_saved": 0.0,
+      "activated_fraction": 0.0,
+      "pass_runtime_strict": 0
+    },
+    {
+      "K": 8,
+      "L": 5,
+      "geometries": 11,
+      "groups": 11,
+      "mean_card_ms": 115.29364245454545,
+      "mean_saved_ms": -0.0679571818181818,
+      "ci_lo": -0.08044417499999998,
+      "ci_hi": -0.05613654090909092,
+      "mean_rel_saved": -0.004292204890556417,
+      "mean_calls_saved": 0.0,
+      "activated_fraction": 0.0,
+      "pass_runtime_strict": 0
+    },
+    {
+      "K": 8,
+      "L": 7,
+      "geometries": 11,
+      "groups": 11,
+      "mean_card_ms": 148.40059718181817,
+      "mean_saved_ms": -0.05817145454545454,
+      "ci_lo": -0.06193967727272727,
+      "ci_hi": -0.05507519772727273,
+      "mean_rel_saved": -0.002554446955632152,
+      "mean_calls_saved": 0.0,
+      "activated_fraction": 0.0,
+      "pass_runtime_strict": 0
+    }
+  ],
+  "interpretation": "Primary endpoints were predeclared in CP00/CP03; cells and thresholds were not tuned on test."
+}

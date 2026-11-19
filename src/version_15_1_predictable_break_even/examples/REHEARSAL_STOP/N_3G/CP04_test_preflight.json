@@ -1,0 +1,16 @@
+{
+  "test_sha256": "9395aab835f09ae40d8b45dc6359025493c0d609504c29b80d0856c2a68035c3",
+  "source": {
+    "source": "synthetic_gpt",
+    "scenario": "SYNTHETIC_ONLY clustered ULA, NOT DeepMIMO/3GPP",
+    "group_definition": "one drop per group",
+    "independence_basis": "independent PRNG stream, seed 9",
+    "prior_use": "never_seen",
+    "edge_fraction": 0.0
+  },
+  "test_n": 10,
+  "test_groups": 10,
+  "group_overlap": 0,
+  "exact_channel_overlap": 0,
+  "statistical_independence_requires_source_audit": true
+}

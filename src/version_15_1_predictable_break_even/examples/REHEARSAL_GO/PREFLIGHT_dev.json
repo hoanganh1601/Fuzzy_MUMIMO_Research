@@ -1,0 +1,120 @@
+{
+  "stage": "preflight",
+  "version": "V15.1",
+  "n_dev": 30,
+  "n_groups": 30,
+  "configs": [
+    [
+      4,
+      3
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      4,
+      7
+    ],
+    [
+      6,
+      3
+    ],
+    [
+      6,
+      5
+    ],
+    [
+      6,
+      7
+    ],
+    [
+      8,
+      3
+    ],
+    [
+      8,
+      5
+    ],
+    [
+      8,
+      7
+    ]
+  ],
+  "candidates_per_geometry": {
+    "K4_L3": 45,
+    "K4_L5": 75,
+    "K4_L7": 105,
+    "K6_L3": 189,
+    "K6_L5": 315,
+    "K6_L7": 441,
+    "K8_L3": 765,
+    "K8_L5": 1275,
+    "K8_L7": 1785
+  },
+  "machine": {
+    "platform": "Linux-6.18.44-fc-v595-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "processor": "x86_64",
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "cpu_count": 2,
+    "threads": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1"
+    }
+  },
+  "per_K": [
+    {
+      "K": 4,
+      "early_ratio_quantiles": {
+        "0.1": 0.0028853153345817653,
+        "0.25": 0.13630330004007968,
+        "0.5": 1.2705005226774848,
+        "0.75": 14.207593013497188,
+        "0.9": 31.16247711488203
+      },
+      "fraction_er_ge_1": 0.5666666666666667,
+      "groups_per_cell": {
+        "ER0": 6,
+        "ER1": 7,
+        "ER2": 17
+      }
+    },
+    {
+      "K": 6,
+      "early_ratio_quantiles": {
+        "0.1": 0.007819476609324163,
+        "0.25": 0.19672884663885815,
+        "0.5": 1.6187701272799955,
+        "0.75": 21.72691633361487,
+        "0.9": 34.02229328078334
+      },
+      "fraction_er_ge_1": 0.5666666666666667,
+      "groups_per_cell": {
+        "ER0": 6,
+        "ER1": 7,
+        "ER2": 17
+      }
+    },
+    {
+      "K": 8,
+      "early_ratio_quantiles": {
+        "0.1": 0.01254928172935947,
+        "0.25": 0.270069139506948,
+        "0.5": 2.3158672146075086,
+        "0.75": 23.750894802279127,
+        "0.9": 54.26570208956671
+      },
+      "fraction_er_ge_1": 0.6,
+      "groups_per_cell": {
+        "ER0": 6,
+        "ER1": 6,
+        "ER2": 18
+      }
+    }
+  ],
+  "note": "A cell needs >= 5 fit and validation groups (about 13 groups in total, 60/40 split) to be activated; cells with fewer groups stay CARD."
+}

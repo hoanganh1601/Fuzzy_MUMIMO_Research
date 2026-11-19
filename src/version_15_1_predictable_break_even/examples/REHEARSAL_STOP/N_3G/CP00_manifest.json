@@ -1,0 +1,68 @@
+{
+  "signature": "1de52f8b44c2852ce48af152ff1a1a8c4d8b98fecb98e2542d31bc1956f3a8b5",
+  "settings": {
+    "version": "V15.1",
+    "q": 2.960414,
+    "sigma_rel": 0.04,
+    "sinr_db": 6.0,
+    "noise": 2e-13,
+    "pmax": 1.0,
+    "ks": "4,6,8",
+    "alphas": "0,0.001,0.01,0.05,0.1,0.3,1",
+    "beam_counts": [
+      3,
+      7
+    ],
+    "guard": 1e-05,
+    "repeats": 3,
+    "bootstrap": 1000,
+    "min_gain_ms": 0.1,
+    "min_rel_gain": 0.02,
+    "min_cell_groups": 5,
+    "min_dev_groups": 20,
+    "min_test_groups": 10,
+    "er_bins": [
+      0.1,
+      1.0
+    ],
+    "early_bound": "robust",
+    "primary_endpoints": "E1 break-even at K_max (relative and absolute), E2 increasing trend K_min->K_max, E3 exactness, E4 activated cells positive; GO on both DeepMIMO and 3GPP",
+    "smoke": false,
+    "limit": 0,
+    "profile_candidates": false,
+    "seed": 20261117,
+    "dev_hash": "9a86cbb91d82bc449301d6de73a23e215e0dc64e618e188f6bd71ec86da11d3e",
+    "machine": {
+      "platform": "Linux-6.18.44-fc-v595-x86_64-with-glibc2.39",
+      "machine": "x86_64",
+      "processor": "x86_64",
+      "python": "3.13.18",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "cpu_count": 2,
+      "threads": {
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1"
+      }
+    },
+    "code_hashes": {
+      "run_experiment.py": "cf2744f702f2bbc5cddaf4392df9cd663e71645c58da964bf55b6883f3cdccf3",
+      "robust_model.py": "1511351dee03e3b61e2a862df49f5f14cd9f1575f22a42ab14e16d9c4ff1cbab",
+      "screening_policy.py": "8606efa3365de46aa068f699a5b2b452b110b72b78482ce1908ae400652b02e6",
+      "certified_screening.py": "23344bb86360ad3ad0ca78e872dd8f80d08a26c1b6bfd34224da5314d9c21eda",
+      "screening_bounds.py": "edacac604a8afb29349db34b4f8b1d6ae63ebfae71d6a26ed7718d90c3849a7e"
+    }
+  },
+  "source": {
+    "source": "synthetic_dev",
+    "scenario": "SYNTHETIC_ONLY clustered ULA, NOT DeepMIMO/3GPP",
+    "group_definition": "one drop per group",
+    "independence_basis": "independent PRNG stream, seed 7",
+    "prior_use": "development",
+    "edge_fraction": 0.0
+  },
+  "development_n": 20,
+  "development_groups": 20,
+  "scope": "development only"
+}

@@ -1,0 +1,27 @@
+{
+  "status": "AUDIT_PASS",
+  "n_geometries": 160,
+  "n_groups": 32,
+  "n_candidates": 16800,
+  "false_prunes": 0,
+  "n_fail_open": 0,
+  "mean_calls_saved": 17.63125,
+  "mean_runtime_saved_ms": -0.7213676948595094,
+  "mean_cardinality_runtime_ms": 13.191265099521843,
+  "mean_all_runtime_ms": 13.912632794381352,
+  "runtime_reduction_pct": -5.4685254933255605,
+  "runtime_ci95": {
+    "lo": -0.8416735468654224,
+    "hi": -0.598482857885756,
+    "n_groups": 32,
+    "note": "cluster_bootstrap_descriptive"
+  },
+  "calls_ci95": {
+    "lo": 14.330468750000001,
+    "hi": 20.975624999999997,
+    "n_groups": 32,
+    "note": "cluster_bootstrap_descriptive"
+  },
+  "observed_runtime_go": false,
+  "caveat": "Group bootstrap is descriptive; independent-scenario assessment requires credible provenance and channel-source audit. Finite codebook only."
+}
