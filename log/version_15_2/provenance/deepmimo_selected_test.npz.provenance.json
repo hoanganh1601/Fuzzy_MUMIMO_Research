@@ -1,0 +1,76 @@
+{
+  "source": "DeepMIMO 4.0.5 external extraction",
+  "scenario": "city_1_losangeles_3p5",
+  "group_definition": "spatial tile (one 8-user drop per tile)",
+  "independence_basis": "Los Angeles city_1_losangeles_3p5 was not used in V11-V15.1; the pool was generated after the V15.2 CP03 lock. Scenario separation does not mathematically prove independence.",
+  "prior_use": "never_seen",
+  "cell_m": 10.0,
+  "min_user_distance": 2.0,
+  "selected_geometries": 107,
+  "excluded_tiles": 53,
+  "seed": 20261117,
+  "bs_pos": "42.6825,5.72715,6.0",
+  "min_dist": 0.0,
+  "max_dist": null,
+  "split": "new_unmeasured_test_pool",
+  "created_after_v152_cp03_lock": true,
+  "pool_selection_basis": "geometry and received-power covariates only; no runtime or endpoint result used",
+  "extraction_minimum_total_path_power_dbw": -120.0,
+  "transmitter": "BS1 / TX set 3 / index 0",
+  "bs_position": [
+    42.6825,
+    5.72715,
+    6.0
+  ],
+  "pool_geometries": 107,
+  "spatial_groups": 107,
+  "dataset_shape": [
+    107,
+    16,
+    8
+  ],
+  "dataset_dtype": "complex128",
+  "edge_definition_m": 75.0,
+  "edge_groups_by_mean_ue_distance": 19,
+  "group_mean_distance_m": {
+    "minimum": 6.359382047948009,
+    "median": 49.28377097380895,
+    "maximum": 135.3541341026708
+  },
+  "channel_normalization": "none; absolute DeepMIMO complex channel scale retained",
+  "statistical_independence_verified": false,
+  "deepmimo_version": "4.0.5",
+  "max_paths": 10,
+  "bs_antenna_shape": [
+    16,
+    1
+  ],
+  "ue_antenna_shape": [
+    1,
+    1
+  ],
+  "antenna_spacing_wavelengths": 0.5,
+  "frequency_domain": true,
+  "ofdm_bandwidth_hz": 10000000.0,
+  "ofdm_total_subcarriers": 512,
+  "selected_subcarrier": 0,
+  "pool_sha256": "db3672b5ba19b896e6e8374a4870743aa0719867fc636a477904623655078826",
+  "raw_export_sha256": "a11eee58e76d2cc191ba4b48b1f927dabf3f539a45f12246ed11e9d50496f2a6",
+  "normalized_user_file_sha256": "8f550cf6f472418e1a524ed9e14243ae0cd2bd3b7833edf32418989a42699735",
+  "scenario_params_sha256": "4cd4f36df57734012d8c04a2715a9434c3e278370cc9ab007442c12c14fd7c53",
+  "cp03_locked_cells_sha256": "d5aa76d1d09071c3aae5a297a47feca72693c72619a7971c804c6e0bb286a8f6",
+  "packer_sha256": "3656b6c4209bae619b6298414ba68a32e29df65892c25aa483b8959dcfe9f84d",
+  "exporter_sha256": "e84d4c24e1dff39e109acc36c0ea776093df97f1ff2aee6ddbcd1726cbfbc794",
+  "test_selection": {
+    "rule": "covariate-stratified by frozen lock: region = K_max early_ratio cell locked non-CARD",
+    "pool_sha256": "db3672b5ba19b896e6e8374a4870743aa0719867fc636a477904623655078826",
+    "lock_signature": "3431b3d4493d3c868f8cdf44a86095ea04de2e82c46def18c59425f6baf0fcdf",
+    "region_groups_selected": 15,
+    "outside_groups_selected": 15,
+    "pool_region_groups": 82,
+    "pool_outside_groups": 25,
+    "seed": 20261119,
+    "runtime_used_for_selection": false,
+    "selector_code_sha256": "45d541379349a25b96594acac9eec9d3758bff5bb467a47c94c165e5338f1150"
+  }
+}

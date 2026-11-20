@@ -1,5 +1,22 @@
 # Changelog
 
+## v15.2.0 — 2026-11-20
+
+- Nhập source, 22 unit test, three-phase runner, Vietnamese guide, paper,
+  synthetic rehearsal và evidence index của V15.2.
+- Development dùng 107 group ASU; mọi ô ER2 được khóa non-CARD trước khi tạo
+  hoặc chọn test. Không thay đổi code, threshold hay policy sau CP03.
+- Tạo pool mới sau lock: 107 group DeepMIMO Los Angeles và 120 group Sionna 3GPP
+  UMi mixed-distance; cả hai ghi `prior_use=never_seen`.
+- Chọn bằng frozen covariates, không dùng runtime: mỗi nguồn 15 group trong `R`
+  và 15 group ngoài `R`; cả hai vượt cổng vùng 10 group.
+- DeepMIMO và 3GPP đều đạt P1–P4, zero oracle mismatch và `GO_BREAK_EVEN`; tại
+  K=8 trong `R`, mean saving lần lượt là 73.73% và 83.57%.
+- Combined decision là `GO_PREDICTABLE_BREAK_EVEN`; kết quả hỗ trợ prototype/
+  monitored pilot, không phải chứng nhận production hoặc unrestricted precoding.
+- Lưu 30 checkpoint/report files, provenance và ZIP; loại real matrices,
+  downloaded scenarios, task cache, console log, PID và environments.
+
 ## v15.1.0 — 2026-11-19
 
 - Nhập source, tests, synthetic smoke workflow, official runner, Vietnamese

@@ -1,0 +1,50 @@
+{
+  "carrier_frequency_hz": 3500000000.0,
+  "channel_normalization": "none",
+  "channel_units": "Absolute complex frequency response with pathloss and shadow fading",
+  "created_after_v152_lock": true,
+  "dataset_dtype": "complex64",
+  "dataset_sha256": "fbfda83348922473fe16bc0caa58b700b8135fce8a47b82df0f641fd111a99da",
+  "dataset_shape": [
+    120,
+    16,
+    8
+  ],
+  "edge_groups": 60,
+  "generation_protocol_sha256": "fb6c3566c2120cf5ab2cd6ab6bd13be5ca56f34dbf36845ae16126b262add4db",
+  "group_definition": "120 eight-user topology drops: 60 near and 60 edge",
+  "independence_basis": "Fresh Sionna UMi pool generated after the V15.2 lock with fixed seeds and not previously measured",
+  "n_geometries": 120,
+  "n_groups": 120,
+  "near_groups": 60,
+  "prior_use": "never_seen",
+  "scenario": "3GPP_TR_38.901_UMi_mixed_distance_pool",
+  "seeds": [
+    20261120,
+    20261121
+  ],
+  "sionna_version": "2.2.0",
+  "source": "Sionna_3GPP",
+  "spec_version": "19.2",
+  "standard": "3GPP TR 38.901",
+  "statistical_independence_verified": false,
+  "strata": [
+    {
+      "inter_site_distance_m": 200.0,
+      "minimum_bs_ut_distance_m": 10.0,
+      "n_geometries": 60,
+      "name": "near",
+      "seed": 20261120
+    },
+    {
+      "inter_site_distance_m": 1000.0,
+      "minimum_bs_ut_distance_m": 100.0,
+      "n_geometries": 60,
+      "name": "edge",
+      "seed": 20261121
+    }
+  ],
+  "topology_audit_sha256": "5a4e64f0d1b414bd647bd654f6f50fa420817ba83f98bfa48a87d23958eb1038",
+  "torch_version": "2.15.0+cpu",
+  "v152_lock_sha256": "d5aa76d1d09071c3aae5a297a47feca72693c72619a7971c804c6e0bb286a8f6"
+}

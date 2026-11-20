@@ -26,8 +26,9 @@ Kho nghiên cứu được tổ chức theo ba lớp độc lập:
 | `version_14` | Computational limits và cost-aware switching khóa trước test | `187c905` | CP00–CP09 complete; 0 oracle mismatch; CARD fallback và STOP_NO_RUNTIME_GAIN |
 | `version_15` | Unified robust MU-MIMO computational break-even smoke workflow | `7632acc` | 4/4 test; CP00–CP09 smoke complete; 0 oracle mismatch; SMOKE_ONLY |
 | `version_15_1` | Predictable break-even theo `early_ratio`, frozen lock và hai nguồn test | `79f9680` | 14/14 test; E3 đạt trên hai nguồn; E1/E2/E4 không đạt; combined STOP |
+| `version_15_2` | Predictable break-even trong frozen region R, covariate-only test selection | package 2026-11-19 | 22/22 test; hai nguồn đạt P1–P4; combined GO_PREDICTABLE_BREAK_EVEN |
 
-Version mới nhất là [`src/version_15_1_predictable_break_even`](src/version_15_1_predictable_break_even).
+Version mới nhất là [`src/version_15_2_predictable_break_even`](src/version_15_2_predictable_break_even).
 
 ## Hai phiên bản đầu tiên được khôi phục
 
@@ -38,7 +39,29 @@ Hai ZIP gốc được đối chiếu checksum và chạy lại ngày 2026-11-02
 
 Các replay dùng lại dataset `deepmimo_asu35_v1`, vì vậy là tái dựng lịch sử trên development data. Xem [run ver1](log/version_01/runs/DM_ASU35_R1_REPLAY_20261102/RUN.md) và [run ver2](log/version_02/runs/DM_ASU35_E1R_E3R_REPLAY_20261102/RUN.md).
 
-## Kết quả hiện tại (version 15.1)
+## Kết quả hiện tại (version 15.2)
+
+Version 15.2 định nghĩa vùng dự báo `R` bằng policy được khóa trên 107 group ASU,
+sau đó mới tạo hai pool test chưa từng đo và chọn theo hiệp biến, không dùng
+runtime:
+
+- DeepMIMO Los Angeles pool có 107 group; Sionna 3GPP UMi mixed-distance pool có
+  120 group. Mỗi nguồn chọn 15 group trong `R` và 15 group ngoài `R`.
+- Cả hai nguồn vượt region gate, dùng cùng frozen lock, đạt P1–P4 và có zero
+  oracle mismatch.
+- Tại K=8 trong `R`, mean frozen-policy runtime saving là 73.73%/138.69 ms trên
+  DeepMIMO và 83.57%/126.69 ms trên 3GPP; các cận dưới CI95 đều vượt gate P1.
+- Xu hướng K4→K8 có cận dưới CI95 dương ở cả hai nguồn; ngoài `R` không có bằng
+  chứng EARLY mang lại lợi ích bị bỏ lỡ.
+- Quyết định tổng hợp: `GO_PREDICTABLE_BREAK_EVEN`. Kết quả hỗ trợ prototype và
+  monitored pilot, không phải chứng nhận production, OTA hoặc beamforming tối ưu
+  không hạn chế.
+
+Xem [run log version 15.2](log/version_15_2/README.md),
+[combined decision](log/version_15_2/runs/V152_FINAL/CP11_combined_decision.json) và
+[source V15.2](src/version_15_2_predictable_break_even/README.md).
+
+## Kết quả trước đó (version 15.1)
 
 Version 15.1 khóa policy theo các ô `early_ratio` trên 41 group ASU rồi đánh
 giá cùng một lock trên DeepMIMO Phoenix mới và Sionna 3GPP UMi mới:
@@ -231,6 +254,7 @@ Real datasets được lưu ngoài Git. Version 6–12 sử dụng kho cục b�
 /media/icnlab/Data/hoanganh/datasets/csi_margin_calibration/
 /media/icnlab/Data/hoanganh/datasets/robust_sinr_v12/
 /media/icnlab/Data/hoanganh/datasets/robust_mumimo_v15_1/
+/media/icnlab/Data/hoanganh/datasets/robust_mumimo_v15_2/
 ```
 
 Git chỉ lưu provenance, group audit và checksum cần thiết để kiểm toán.
