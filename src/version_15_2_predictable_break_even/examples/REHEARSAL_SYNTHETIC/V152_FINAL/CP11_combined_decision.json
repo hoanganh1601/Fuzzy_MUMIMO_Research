@@ -1,0 +1,204 @@
+{
+  "status": "GO_PREDICTABLE_BREAK_EVEN",
+  "version": "V15.2",
+  "runs": [
+    "V152_DM",
+    "V152_3GPP"
+  ],
+  "sources": [
+    "synthetic_dmp",
+    "synthetic_gpp"
+  ],
+  "source_status": {
+    "V152_DM": "GO_BREAK_EVEN",
+    "V152_3GPP": "GO_BREAK_EVEN"
+  },
+  "lock_sha": "4f9c45b7da4c5ddea241923e0a84b7417166d51d0db85324977e7528b76eddef",
+  "per_source": {
+    "V152_DM": {
+      "source": {
+        "source": "synthetic_dmp",
+        "scenario": "SYNTHETIC_ONLY clustered ULA, NOT DeepMIMO/3GPP",
+        "group_definition": "one drop per group",
+        "independence_basis": "independent PRNG stream, seed 202",
+        "prior_use": "never_seen",
+        "edge_fraction": 0.3,
+        "test_selection": {
+          "rule": "covariate-stratified by frozen lock: region = K_max early_ratio cell locked non-CARD",
+          "pool_sha256": "b3843651b056f451059783c40aeb6740930654ddaa1e1ef7ba507d3029342bbb",
+          "lock_signature": "95deb3d6cd1b6395d02a07a9fd56c3971723304b7e0793c3ccaf3c76dcf24b73",
+          "region_groups_selected": 12,
+          "outside_groups_selected": 12,
+          "pool_region_groups": 38,
+          "pool_outside_groups": 82,
+          "seed": 20261119,
+          "runtime_used_for_selection": false,
+          "selector_code_sha256": "45d541379349a25b96594acac9eec9d3758bff5bb467a47c94c165e5338f1150"
+        }
+      },
+      "primary": {
+        "status": "GO_BREAK_EVEN",
+        "region_gate": {
+          "region_groups": 12,
+          "required": 10,
+          "passed": true
+        },
+        "endpoints": {
+          "P1_break_even_in_region": true,
+          "P2_trend_in_region": true,
+          "P3_exactness": true,
+          "P4_no_missed_gain_outside_region": true
+        },
+        "fail_reasons": [],
+        "by_K_in_region": [
+          {
+            "K": 4,
+            "region_geometries": 12,
+            "frozen_rel_saved": 0.5817210951958278,
+            "frozen_rel_ci_lo": 0.4149478712375147,
+            "frozen_rel_ci_hi": 0.7496851875208383,
+            "frozen_abs_saved_ms": 3.9419886666666666,
+            "frozen_abs_ci_lo": 3.5657552597222217,
+            "frozen_abs_ci_hi": 4.310361020138889,
+            "early_rel_saved": 0.5817210951958278,
+            "early_rel_ci_lo": 0.42008002920322074,
+            "early_rel_ci_hi": 0.765378700856551
+          },
+          {
+            "K": 6,
+            "region_geometries": 12,
+            "frozen_rel_saved": 0.7425024410156366,
+            "frozen_rel_ci_lo": 0.658494932200841,
+            "frozen_rel_ci_hi": 0.8326644122515855,
+            "frozen_abs_saved_ms": 16.85000858333333,
+            "frozen_abs_ci_lo": 15.863656222916669,
+            "frozen_abs_ci_hi": 17.872352963888886,
+            "early_rel_saved": 0.7435513106442707,
+            "early_rel_ci_lo": 0.6557469166322611,
+            "early_rel_ci_hi": 0.8342221943396199
+          },
+          {
+            "K": 8,
+            "region_geometries": 12,
+            "frozen_rel_saved": 0.8530673487682373,
+            "frozen_rel_ci_lo": 0.8043573150353023,
+            "frozen_rel_ci_hi": 0.8993703326893614,
+            "frozen_abs_saved_ms": 69.90601366666668,
+            "frozen_abs_ci_lo": 66.75556232777778,
+            "frozen_abs_ci_hi": 73.13550615694444,
+            "early_rel_saved": 0.8530673487682373,
+            "early_rel_ci_lo": 0.8028845162095946,
+            "early_rel_ci_hi": 0.9008515267904257
+          }
+        ],
+        "trend_in_region": {
+          "K_min": 4,
+          "K_max": 8,
+          "mean_diff": 0.2713462535724096,
+          "ci_lo": 0.12601006742216045,
+          "ci_hi": 0.3933011018216123
+        },
+        "outside_region": {
+          "geometries": 12,
+          "groups": 12,
+          "early_abs_saved_ms": -1.7094170000000017,
+          "ci_lo": -2.822811022222223,
+          "ci_hi": -0.5561375555555574
+        }
+      }
+    },
+    "V152_3GPP": {
+      "source": {
+        "source": "synthetic_gpp",
+        "scenario": "SYNTHETIC_ONLY clustered ULA, NOT DeepMIMO/3GPP",
+        "group_definition": "one drop per group",
+        "independence_basis": "independent PRNG stream, seed 303",
+        "prior_use": "never_seen",
+        "edge_fraction": 0.3,
+        "test_selection": {
+          "rule": "covariate-stratified by frozen lock: region = K_max early_ratio cell locked non-CARD",
+          "pool_sha256": "d75b8610d1f44b70a67edf7da6bed378689d0aaf6bd42a6c597d2e09249e6bdd",
+          "lock_signature": "95deb3d6cd1b6395d02a07a9fd56c3971723304b7e0793c3ccaf3c76dcf24b73",
+          "region_groups_selected": 12,
+          "outside_groups_selected": 12,
+          "pool_region_groups": 40,
+          "pool_outside_groups": 80,
+          "seed": 20261119,
+          "runtime_used_for_selection": false,
+          "selector_code_sha256": "45d541379349a25b96594acac9eec9d3758bff5bb467a47c94c165e5338f1150"
+        }
+      },
+      "primary": {
+        "status": "GO_BREAK_EVEN",
+        "region_gate": {
+          "region_groups": 12,
+          "required": 10,
+          "passed": true
+        },
+        "endpoints": {
+          "P1_break_even_in_region": true,
+          "P2_trend_in_region": true,
+          "P3_exactness": true,
+          "P4_no_missed_gain_outside_region": true
+        },
+        "fail_reasons": [],
+        "by_K_in_region": [
+          {
+            "K": 4,
+            "region_geometries": 12,
+            "frozen_rel_saved": 0.46013115897394347,
+            "frozen_rel_ci_lo": 0.26737282682925334,
+            "frozen_rel_ci_hi": 0.6699682405833449,
+            "frozen_abs_saved_ms": 3.344633805555556,
+            "frozen_abs_ci_lo": 2.3768893520833334,
+            "frozen_abs_ci_hi": 4.120878620138888,
+            "early_rel_saved": 0.44856373719278825,
+            "early_rel_ci_lo": 0.25216445865959936,
+            "early_rel_ci_hi": 0.6646094730843785
+          },
+          {
+            "K": 6,
+            "region_geometries": 12,
+            "frozen_rel_saved": 0.5669489567593089,
+            "frozen_rel_ci_lo": 0.3966064426444498,
+            "frozen_rel_ci_hi": 0.719539273587939,
+            "frozen_abs_saved_ms": 14.698631472222223,
+            "frozen_abs_ci_lo": 10.34794355486111,
+            "frozen_abs_ci_hi": 17.88685703263889,
+            "early_rel_saved": 0.5695232713816576,
+            "early_rel_ci_lo": 0.39569670455230277,
+            "early_rel_ci_hi": 0.7344627477625895
+          },
+          {
+            "K": 8,
+            "region_geometries": 12,
+            "frozen_rel_saved": 0.7004331080467189,
+            "frozen_rel_ci_lo": 0.522103115995484,
+            "frozen_rel_ci_hi": 0.8311098609105702,
+            "frozen_abs_saved_ms": 62.00530333333333,
+            "frozen_abs_ci_lo": 48.091424252777784,
+            "frozen_abs_ci_hi": 72.21022735416666,
+            "early_rel_saved": 0.7004331080467189,
+            "early_rel_ci_lo": 0.513164190374719,
+            "early_rel_ci_hi": 0.8334054788163332
+          }
+        ],
+        "trend_in_region": {
+          "K_min": 4,
+          "K_max": 8,
+          "mean_diff": 0.2518693708539308,
+          "ci_lo": 0.08915338514036997,
+          "ci_hi": 0.4222101317824978
+        },
+        "outside_region": {
+          "geometries": 12,
+          "groups": 12,
+          "early_abs_saved_ms": -3.011165611111109,
+          "ci_lo": -5.152687640277772,
+          "ci_hi": -1.3066416465277775
+        }
+      }
+    }
+  },
+  "rule": "GO only if every source is GO_BREAK_EVEN (same frozen lock, >= 2 distinct sources); any STOP -> STOP; otherwise INCONCLUSIVE"
+}

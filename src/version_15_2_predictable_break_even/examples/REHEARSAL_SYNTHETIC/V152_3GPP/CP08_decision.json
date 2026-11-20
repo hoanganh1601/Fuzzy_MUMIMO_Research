@@ -1,0 +1,282 @@
+{
+  "status": "GO_BREAK_EVEN",
+  "smoke": false,
+  "version": "V15.2",
+  "primary": {
+    "status": "GO_BREAK_EVEN",
+    "region_gate": {
+      "region_groups": 12,
+      "required": 10,
+      "passed": true
+    },
+    "endpoints": {
+      "P1_break_even_in_region": true,
+      "P2_trend_in_region": true,
+      "P3_exactness": true,
+      "P4_no_missed_gain_outside_region": true
+    },
+    "fail_reasons": [],
+    "by_K_in_region": [
+      {
+        "K": 4,
+        "region_geometries": 12,
+        "frozen_rel_saved": 0.46013115897394347,
+        "frozen_rel_ci_lo": 0.26737282682925334,
+        "frozen_rel_ci_hi": 0.6699682405833449,
+        "frozen_abs_saved_ms": 3.344633805555556,
+        "frozen_abs_ci_lo": 2.3768893520833334,
+        "frozen_abs_ci_hi": 4.120878620138888,
+        "early_rel_saved": 0.44856373719278825,
+        "early_rel_ci_lo": 0.25216445865959936,
+        "early_rel_ci_hi": 0.6646094730843785
+      },
+      {
+        "K": 6,
+        "region_geometries": 12,
+        "frozen_rel_saved": 0.5669489567593089,
+        "frozen_rel_ci_lo": 0.3966064426444498,
+        "frozen_rel_ci_hi": 0.719539273587939,
+        "frozen_abs_saved_ms": 14.698631472222223,
+        "frozen_abs_ci_lo": 10.34794355486111,
+        "frozen_abs_ci_hi": 17.88685703263889,
+        "early_rel_saved": 0.5695232713816576,
+        "early_rel_ci_lo": 0.39569670455230277,
+        "early_rel_ci_hi": 0.7344627477625895
+      },
+      {
+        "K": 8,
+        "region_geometries": 12,
+        "frozen_rel_saved": 0.7004331080467189,
+        "frozen_rel_ci_lo": 0.522103115995484,
+        "frozen_rel_ci_hi": 0.8311098609105702,
+        "frozen_abs_saved_ms": 62.00530333333333,
+        "frozen_abs_ci_lo": 48.091424252777784,
+        "frozen_abs_ci_hi": 72.21022735416666,
+        "early_rel_saved": 0.7004331080467189,
+        "early_rel_ci_lo": 0.513164190374719,
+        "early_rel_ci_hi": 0.8334054788163332
+      }
+    ],
+    "trend_in_region": {
+      "K_min": 4,
+      "K_max": 8,
+      "mean_diff": 0.2518693708539308,
+      "ci_lo": 0.08915338514036997,
+      "ci_hi": 0.4222101317824978
+    },
+    "outside_region": {
+      "geometries": 12,
+      "groups": 12,
+      "early_abs_saved_ms": -3.011165611111109,
+      "ci_lo": -5.152687640277772,
+      "ci_hi": -1.3066416465277775
+    }
+  },
+  "secondary_all_geometry_V15_1": {
+    "endpoints": {
+      "E1_break_even_Kmax": true,
+      "E2_trend_in_K": true,
+      "E3_exactness": true,
+      "E4_predictability": true
+    },
+    "by_K": [
+      {
+        "K": 4,
+        "mean_rel_saved": 0.22409811374563002,
+        "rel_ci_lo": 0.08033986450982415,
+        "rel_ci_hi": 0.36700839062593194,
+        "mean_saved_ms": 1.638033208333333,
+        "abs_ci_lo": 0.8043796461805555,
+        "abs_ci_hi": 2.503264578125,
+        "activated_fraction": 0.4166666666666667
+      },
+      {
+        "K": 6,
+        "mean_rel_saved": 0.2816777130163492,
+        "rel_ci_lo": 0.1418223633595526,
+        "rel_ci_hi": 0.4246600159848873,
+        "mean_saved_ms": 7.324347194444445,
+        "abs_ci_lo": 4.204768192013889,
+        "abs_ci_hi": 11.034344058680555,
+        "activated_fraction": 0.5
+      },
+      {
+        "K": 8,
+        "mean_rel_saved": 0.3498212548789546,
+        "rel_ci_lo": 0.20920682369869045,
+        "rel_ci_hi": 0.5244289250236398,
+        "mean_saved_ms": 30.98148575,
+        "abs_ci_lo": 17.357513840972224,
+        "abs_ci_hi": 44.818643796875,
+        "activated_fraction": 0.5
+      }
+    ],
+    "trend": {
+      "K_min": 4,
+      "K_max": 8,
+      "mean_diff": 0.12572314113332467,
+      "ci_lo": 0.03524297346089076,
+      "ci_hi": 0.22351871017917976
+    },
+    "activated_at_Kmax": {
+      "rows": 36,
+      "groups": 12,
+      "mean_saved_ms": 62.00530333333332,
+      "ci_lo": 48.36615129652777,
+      "ci_hi": 72.36923262777778
+    },
+    "status": "GO_BREAK_EVEN",
+    "fail_reasons": []
+  },
+  "secondary_strict_all_KL_gate": true,
+  "oracle_mismatch": 0,
+  "test_source": {
+    "source": "synthetic_gpp",
+    "scenario": "SYNTHETIC_ONLY clustered ULA, NOT DeepMIMO/3GPP",
+    "group_definition": "one drop per group",
+    "independence_basis": "independent PRNG stream, seed 303",
+    "prior_use": "never_seen",
+    "edge_fraction": 0.3,
+    "test_selection": {
+      "rule": "covariate-stratified by frozen lock: region = K_max early_ratio cell locked non-CARD",
+      "pool_sha256": "d75b8610d1f44b70a67edf7da6bed378689d0aaf6bd42a6c597d2e09249e6bdd",
+      "lock_signature": "95deb3d6cd1b6395d02a07a9fd56c3971723304b7e0793c3ccaf3c76dcf24b73",
+      "region_groups_selected": 12,
+      "outside_groups_selected": 12,
+      "pool_region_groups": 40,
+      "pool_outside_groups": 80,
+      "seed": 20261119,
+      "runtime_used_for_selection": false,
+      "selector_code_sha256": "45d541379349a25b96594acac9eec9d3758bff5bb467a47c94c165e5338f1150"
+    }
+  },
+  "per_config": [
+    {
+      "K": 4,
+      "L": 3,
+      "geometries": 24,
+      "groups": 24,
+      "mean_card_ms": 6.231015499999999,
+      "mean_saved_ms": 0.9827416666666666,
+      "ci_lo": 0.4788077062500001,
+      "ci_hi": 1.5316985916666668,
+      "mean_rel_saved": 0.2100289619884289,
+      "mean_calls_saved": 17.0,
+      "activated_fraction": 0.4166666666666667,
+      "pass_runtime_strict": 1
+    },
+    {
+      "K": 4,
+      "L": 5,
+      "geometries": 24,
+      "groups": 24,
+      "mean_card_ms": 9.467033083333334,
+      "mean_saved_ms": 1.6502878333333333,
+      "ci_lo": 0.8743114010416665,
+      "ci_hi": 2.4644439124999997,
+      "mean_rel_saved": 0.2277211953930344,
+      "mean_calls_saved": 28.333333333333332,
+      "activated_fraction": 0.4166666666666667,
+      "pass_runtime_strict": 1
+    },
+    {
+      "K": 4,
+      "L": 7,
+      "geometries": 24,
+      "groups": 24,
+      "mean_card_ms": 11.438860208333333,
+      "mean_saved_ms": 2.281070125,
+      "ci_lo": 1.1152802510416666,
+      "ci_hi": 3.3128989291666664,
+      "mean_rel_saved": 0.22948925172841203,
+      "mean_calls_saved": 39.666666666666664,
+      "activated_fraction": 0.4166666666666667,
+      "pass_runtime_strict": 1
+    },
+    {
+      "K": 6,
+      "L": 3,
+      "geometries": 24,
+      "groups": 24,
+      "mean_card_ms": 21.202934833333334,
+      "mean_saved_ms": 4.609703958333333,
+      "ci_lo": 2.4242374916666667,
+      "ci_hi": 6.744684510416666,
+      "mean_rel_saved": 0.2777297934777058,
+      "mean_calls_saved": 76.125,
+      "activated_fraction": 0.5,
+      "pass_runtime_strict": 1
+    },
+    {
+      "K": 6,
+      "L": 5,
+      "geometries": 24,
+      "groups": 24,
+      "mean_card_ms": 30.176550916666667,
+      "mean_saved_ms": 7.407412666666668,
+      "ci_lo": 4.250233762500001,
+      "ci_hi": 11.015269869791668,
+      "mean_rel_saved": 0.28282599938740466,
+      "mean_calls_saved": 126.875,
+      "activated_fraction": 0.5,
+      "pass_runtime_strict": 1
+    },
+    {
+      "K": 6,
+      "L": 7,
+      "geometries": 24,
+      "groups": 24,
+      "mean_card_ms": 36.32829291666667,
+      "mean_saved_ms": 9.955924958333334,
+      "ci_lo": 4.955320796875,
+      "ci_hi": 14.976313283333333,
+      "mean_rel_saved": 0.2828277217538075,
+      "mean_calls_saved": 193.54166666666666,
+      "activated_fraction": 0.5,
+      "pass_runtime_strict": 1
+    },
+    {
+      "K": 8,
+      "L": 3,
+      "geometries": 24,
+      "groups": 24,
+      "mean_card_ms": 76.46472266666667,
+      "mean_saved_ms": 19.185557458333335,
+      "ci_lo": 11.352815042708334,
+      "ci_hi": 27.88932745520833,
+      "mean_rel_saved": 0.34073572887597803,
+      "mean_calls_saved": 327.125,
+      "activated_fraction": 0.5,
+      "pass_runtime_strict": 1
+    },
+    {
+      "K": 8,
+      "L": 5,
+      "geometries": 24,
+      "groups": 24,
+      "mean_card_ms": 110.650398,
+      "mean_saved_ms": 31.492882374999997,
+      "ci_lo": 18.694957322916665,
+      "ci_hi": 45.898688078125005,
+      "mean_rel_saved": 0.3505054903840252,
+      "mean_calls_saved": 545.2083333333334,
+      "activated_fraction": 0.5,
+      "pass_runtime_strict": 1
+    },
+    {
+      "K": 8,
+      "L": 7,
+      "geometries": 24,
+      "groups": 24,
+      "mean_card_ms": 135.21125741666665,
+      "mean_saved_ms": 42.266017416666664,
+      "ci_lo": 22.500808894791664,
+      "ci_hi": 60.83907365937498,
+      "mean_rel_saved": 0.3535492033732521,
+      "mean_calls_saved": 763.2916666666666,
+      "activated_fraction": 0.5,
+      "pass_runtime_strict": 1
+    }
+  ],
+  "interpretation": "Primary endpoints were predeclared in CP00/CP03; cells and thresholds were not tuned on test."
+}

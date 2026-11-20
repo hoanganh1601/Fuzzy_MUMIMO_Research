@@ -1,0 +1,46 @@
+{
+  "test_sha256": "913ecca659ba3f28ff0c0995941b07aef7c853e64675b598c1a45fbdbc368845",
+  "n": 24,
+  "groups": 24,
+  "per_K": [
+    {
+      "K": 4,
+      "groups_per_cell": {
+        "ER0": 10,
+        "ER1": 2,
+        "ER2": 12
+      }
+    },
+    {
+      "K": 6,
+      "groups_per_cell": {
+        "ER0": 9,
+        "ER1": 3,
+        "ER2": 12
+      }
+    },
+    {
+      "K": 8,
+      "groups_per_cell": {
+        "ER0": 7,
+        "ER1": 5,
+        "ER2": 12
+      }
+    }
+  ],
+  "region_groups": 12,
+  "outside_groups": 12,
+  "min_region_groups": 10,
+  "accepted": true,
+  "non_card_cells": [
+    "K4_L3_ER2",
+    "K4_L5_ER2",
+    "K4_L7_ER2",
+    "K6_L3_ER2",
+    "K6_L5_ER2",
+    "K6_L7_ER2",
+    "K8_L3_ER2",
+    "K8_L5_ER2",
+    "K8_L7_ER2"
+  ]
+}

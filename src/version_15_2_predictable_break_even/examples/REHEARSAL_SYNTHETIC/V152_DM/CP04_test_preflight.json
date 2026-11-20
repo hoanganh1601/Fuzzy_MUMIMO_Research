@@ -1,0 +1,28 @@
+{
+  "test_sha256": "913ecca659ba3f28ff0c0995941b07aef7c853e64675b598c1a45fbdbc368845",
+  "source": {
+    "source": "synthetic_dmp",
+    "scenario": "SYNTHETIC_ONLY clustered ULA, NOT DeepMIMO/3GPP",
+    "group_definition": "one drop per group",
+    "independence_basis": "independent PRNG stream, seed 202",
+    "prior_use": "never_seen",
+    "edge_fraction": 0.3,
+    "test_selection": {
+      "rule": "covariate-stratified by frozen lock: region = K_max early_ratio cell locked non-CARD",
+      "pool_sha256": "b3843651b056f451059783c40aeb6740930654ddaa1e1ef7ba507d3029342bbb",
+      "lock_signature": "95deb3d6cd1b6395d02a07a9fd56c3971723304b7e0793c3ccaf3c76dcf24b73",
+      "region_groups_selected": 12,
+      "outside_groups_selected": 12,
+      "pool_region_groups": 38,
+      "pool_outside_groups": 82,
+      "seed": 20261119,
+      "runtime_used_for_selection": false,
+      "selector_code_sha256": "45d541379349a25b96594acac9eec9d3758bff5bb467a47c94c165e5338f1150"
+    }
+  },
+  "test_n": 24,
+  "test_groups": 24,
+  "group_overlap": 0,
+  "exact_channel_overlap": 0,
+  "statistical_independence_requires_source_audit": true
+}
