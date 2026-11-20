@@ -1,0 +1,24 @@
+{
+  "status": "STOP_NO_RUNTIME_GAIN",
+  "policy": {
+    "policy": "CARD",
+    "feature": "",
+    "threshold": 0.0,
+    "direction": ""
+  },
+  "n_geometries": 92,
+  "n_groups": 23,
+  "activated_geometries": 0,
+  "activation_fraction": 0.0,
+  "mean_saved_ms": -0.014485032608695552,
+  "median_saved_ms": -0.0036204999999999155,
+  "ci95_saved_ms": [
+    -0.03190595244565203,
+    -3.662364130444481e-05
+  ],
+  "mean_calls_saved": 0.0,
+  "runtime_ratio": 0.9993218815604777,
+  "oracle_mismatch": 0,
+  "false_certificate": 0,
+  "scope": "No claim of exactness outside finite codebook or runtime benefit without independent GO; group independence requires source-level validation"
+}

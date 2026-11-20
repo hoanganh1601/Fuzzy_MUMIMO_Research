@@ -1,0 +1,11 @@
+{
+ "version": "V15.2",
+ "date": "2026-11-19",
+ "unit_tests": "22/22 PASS (V15.1 tests + region endpoints GO/INCONCLUSIVE/STOP/P4/mismatch, stratified split, covariate preflight)",
+ "smoke": "develop -> lock -> stratify_test_pool -> test refused before test-preflight -> test-preflight -> test: PASS",
+ "rehearsal": "SYNTHETIC, default config (K=4,6,8; L=3,5,7; repeats 5; bootstrap 1000), 80 dev groups (37 ER2): all 9 ER2 cells locked non-CARD (13-14 validation groups each); near-only candidate test set REJECTED by test-preflight (0 region groups, logged); stratified DM-like and 3GPP-like tests (12 region + 12 outside groups) both GO_BREAK_EVEN; combined GO_PREDICTABLE_BREAK_EVEN; 0 oracle mismatch",
+ "not_tested": [
+  "PowerShell scripts not executed (Linux test machine); the Python command sequence they issue was executed",
+  "Synthetic channels exaggerate savings (58-85% in R) relative to the V15.1 ASU development data (14-36% in ER2); rehearsal numbers must not be reported"
+ ]
+}

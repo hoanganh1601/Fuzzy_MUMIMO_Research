@@ -59,6 +59,8 @@ datasets/
 !src/version_14_robust_cost_limits/data/smoke_test.npz
 !src/version_15_robust_mumimo_unified/data/smoke_dev.npz
 !src/version_15_robust_mumimo_unified/data/smoke_test.npz
+!src/version_15_1_predictable_break_even/data/smoke_dev.npz
+!src/version_15_2_predictable_break_even/data/smoke_dev.npz
 
 # Generated runs: only curated files under log/ are versioned
 outputs/
@@ -78,6 +80,8 @@ reports/
 !log/version_11/reports/**
 !log/version_12/reports/
 !log/version_12/reports/**
+!log/version_15_2/reports/
+!log/version_15_2/reports/**
 
 # LaTeX intermediate files
 *.aux
