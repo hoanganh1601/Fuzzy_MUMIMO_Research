@@ -27,8 +27,13 @@ Kho nghiên cứu được tổ chức theo ba lớp độc lập:
 | `version_15` | Unified robust MU-MIMO computational break-even smoke workflow | `7632acc` | 4/4 test; CP00–CP09 smoke complete; 0 oracle mismatch; SMOKE_ONLY |
 | `version_15_1` | Predictable break-even theo `early_ratio`, frozen lock và hai nguồn test | `79f9680` | 14/14 test; E3 đạt trên hai nguồn; E1/E2/E4 không đạt; combined STOP |
 | `version_15_2` | Predictable break-even trong frozen region R, covariate-only test selection | package 2026-11-19 | 22/22 test; hai nguồn đạt P1–P4; combined GO_PREDICTABLE_BREAK_EVEN |
+| `version_16` | Mở rộng V15.2: bộ giải C, mô hình hòa vốn và tỷ lệ vùng R tự nhiên | package 2026-11-20 | Đang kiểm tra: 30/30 test PASS; pha compiled dừng tại `COMPILED MISMATCH`; chưa có kết quả V16 chính thức |
 
-Version mới nhất là [`src/version_15_2_predictable_break_even`](src/version_15_2_predictable_break_even).
+Source mới nhất đang được kiểm tra là [`src/version_16_compiled_break_even`](src/version_16_compiled_break_even). Kết quả hoàn tất mới nhất vẫn là V15.2.
+
+## Trạng thái version 16
+
+Pha `check` đã qua 30/30 unit test và xác nhận lock V15.2 dùng lại được trên máy hiện tại. Pha `compiled` dừng tại geometry 8, K=6, L=3, policy CARD: bản C và Python chọn cùng subset `24`, alpha `0.01`, cardinality 2, nhưng giá trị công suất chênh khoảng `4.47e-8 W` và vượt ngưỡng so sánh. Theo hướng dẫn V16, cần gửi log và xử lý nguyên nhân trước khi chạy tiếp. Chưa có kết quả chính thức cho `C16_DM`, `C16_3GPP`, mô hình hòa vốn hoặc tỷ lệ tự nhiên; các số trong rehearsal tổng hợp chỉ là kiểm thử chương trình. Xem [log V16](log/version_16/README.md).
 
 ## Hai phiên bản đầu tiên được khôi phục
 
