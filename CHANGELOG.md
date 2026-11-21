@@ -1,5 +1,14 @@
 # Changelog
 
+## V16 — đang kiểm tra (chưa phát hành)
+
+- Nhập gói nguồn V16, hướng dẫn, kiểm thử, ví dụ rehearsal tổng hợp và manifest checksum.
+- Pha `check` qua 30/30 unit test; lock V15.2 tái sử dụng được nguyên vẹn.
+- Pha `compiled` dừng tại `C16_DEV`, geometry 8, K=6, L=3, policy CARD do
+  `COMPILED MISMATCH` về công suất. Lưu log lỗi để tác giả xem xét.
+- Không có quyết định V16 chính thức; chưa chạy `C16_DM`, `C16_3GPP`, `model`
+  hoặc `natural`. Không tạo tag phát hành V16.
+
 ## v15.2.0 — 2026-11-20
 
 - Nhập source, 22 unit test, three-phase runner, Vietnamese guide, paper,

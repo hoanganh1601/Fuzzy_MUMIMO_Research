@@ -1,0 +1,19 @@
+nohup: ignoring input
+>> /media/icnlab/Data/hoanganh/.venv/bin/python code/compiled_benchmark.py --data /media/icnlab/Data/hoanganh/datasets/robust_mumimo_v15_2/development/dev.npz --manifest outputs/V152_DM/CP00_manifest.json --lock outputs/V152_DM/CP03_locked_cells.json --run-id C16_DEV --out-root outputs
+Traceback (most recent call last):
+  File "/media/icnlab/Data/hoanganh/Robust_MUMIMO_V16_20261120/code/compiled_benchmark.py", line 196, in <module>
+    if __name__ == '__main__': main()
+                               ^^^^^^
+  File "/media/icnlab/Data/hoanganh/Robust_MUMIMO_V16_20261120/code/compiled_benchmark.py", line 171, in main
+    t = {'signature': signature, 'rows': measure(H[i], G[i], i, ks, Ls, alphas, cfg, s['guard'], lock['policy_cells'], bins,
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/icnlab/Data/hoanganh/Robust_MUMIMO_V16_20261120/code/compiled_benchmark.py", line 67, in measure
+    if not same_choice(res[name][0], ref): raise AssertionError(f'COMPILED MISMATCH geometry={gi} K={k} L={l} {name}: {res[name][0]} vs {ref}')
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: COMPILED MISMATCH geometry=8 K=6 L=3 CARD: {'subset': '24', 'alpha': 0.01, 'cardinality': 2, 'p_req_w': 0.379298587602968} vs {'subset': '24', 'alpha': 0.01, 'cardinality': 2, 'p_req_w': 0.37929854287093945}
+[31;1mException: [0m/media/icnlab/Data/hoanganh/Robust_MUMIMO_V16_20261120/scripts/run_v16.ps1:33:30
+[36;1mLine |[0m
+[36;1m[36;1m  33 | [0m … if ($LASTEXITCODE -ne 0) { [36;1mthrow "Step failed (exit $LASTEXITCODE)"[0m }
+[36;1m     | [31;1m                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[36;1m[31;1m[31;1m[36;1m     | [31;1mStep failed (exit 1)[0m
+[36;1m[31;1m[31;1m[36;1m[31;1m[0m
