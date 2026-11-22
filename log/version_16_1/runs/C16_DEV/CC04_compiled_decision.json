@@ -1,0 +1,25 @@
+{
+  "version": "V16.1-compiled",
+  "dataset_sha256": "f93a0c8c16b15b90e1796fdaea8edcb9f076633d5883fde5cdb2939ffba706fb",
+  "n": 107,
+  "C1_exactness_checked_all": false,
+  "numeric_events": 1005,
+  "decisions_checked": 2889,
+  "numeric_event_fraction": 0.34787123572170303,
+  "numeric_event_types": {
+    "POWER_WITHIN_FP_SENSITIVITY": 1005
+  },
+  "region_groups": 39,
+  "outside_groups": 68,
+  "C2_break_even_in_R": true,
+  "C3_trend_in_R": true,
+  "C4_bounded_loss_outside": true,
+  "trend_in_R": {
+    "mean_diff": 0.32286769295882634,
+    "ci_lo": 0.2563889427328599,
+    "ci_hi": 0.3852464663253946
+  },
+  "status": "STOP_COMPILED",
+  "speedup_card_median_by_K": null,
+  "note": "HYBRID cells are executed as EARLY in the compiled path; LP audit not compiled (does not change decisions)."
+}

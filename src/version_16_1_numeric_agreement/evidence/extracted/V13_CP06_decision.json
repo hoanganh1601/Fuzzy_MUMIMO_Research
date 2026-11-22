@@ -1,0 +1,16 @@
+{
+  "status": "STOP_NO_RUNTIME_GAIN",
+  "policy": "SELECTED_CARD",
+  "n": 160,
+  "groups": 40,
+  "mean_saved_ms": 0.0,
+  "ci95_saved_ms": [
+    0.0,
+    0.0
+  ],
+  "ratio_mean_runtime": 1.0,
+  "mean_calls_saved": 0.0,
+  "oracle_mismatch": 0,
+  "scope": "exact finite ZF/RZF set only; statistical independence requires provenance",
+  "no_retraining_on_test": true
+}
