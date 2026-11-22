@@ -1,0 +1,33 @@
+{
+  "signature": "2bd47c13f6d6e2e80ef319ad9bd17d6b020f6811ccbaa62b8d6850f5e6ee89ee",
+  "version": "V16.1-compiled",
+  "data": "305e86df769463e75bcd6e93fd5d4004e328d34dfa3c1d05d10a1327848671a1",
+  "lock": "d5aa76d1d09071c3aae5a297a47feca72693c72619a7971c804c6e0bb286a8f6",
+  "manifest": "3431b3d4493d3c868f8cdf44a86095ea04de2e82c46def18c59425f6baf0fcdf",
+  "repeats": 7,
+  "min_ms": 20.0,
+  "oracle_check": "all",
+  "limit": 0,
+  "code": {
+    "compiled_benchmark.py": "a391f6c2dcfbd86045ae01cb4253f8fbe8a046bf0e7ee181ab05b75779437fc2",
+    "native_search.py": "f05c88c6d9818f1c865f620cc95ecd3debdff05cc3cfbd23269b1714af60d9fa",
+    "native/screen_core.c": "f9de5f6e5c88609d7ed83c8553989eba336f5cb5cd3b191824fad7f39cda5bf3",
+    "numeric_agreement.py": "8962f3412442e5b7157e4ee7a68da9a2704f36ff04d69e3ce9be4d717d506c09"
+  },
+  "machine": {
+    "platform": "Linux-7.0.0-43-generic-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "processor": "x86_64",
+    "python": "3.12.3",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "cpu_count": 20,
+    "threads": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1"
+    }
+  },
+  "compiler": "gcc: gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "lib_sha256": "62ef051f27da9b603c0103f344c7f3fc4c7bd4e0f9c741c01b716221a5641b0b"
+}

@@ -1,5 +1,17 @@
 # Changelog
 
+## V16.1 — đang kiểm tra (chưa phát hành)
+
+- Nhập gói nguồn V16.1 gồm 93 file theo manifest, bổ sung phép đối chiếu số,
+  regression test và hướng dẫn cập nhật; giữ nguyên năm module lõi V15.2 và C core.
+- Pha `check` qua 31/31 unit test và xác nhận dùng lại lock V15.2.
+- Pha `compiled` hoàn tất trên development, DeepMIMO và 3GPP. C2–C4 đạt cả ba;
+  C1 chỉ đạt DeepMIMO (0/810 numeric events). Development có 1005/2889 (34,79%),
+  3GPP có 162/810 (20%); cả hai vượt cổng C1 1% và trả `STOP_COMPILED`.
+- Lưu 19 checkpoint chọn lọc, log và ZIP 6 file để thầy đánh giá; không nhập
+  dataset, task cache, PID hoặc mô tả synthetic rehearsal như kết quả thật.
+- Chưa chạy `model` và `natural`; không tạo tag phát hành V16.1.
+
 ## V16 — đang kiểm tra (chưa phát hành)
 
 - Nhập gói nguồn V16, hướng dẫn, kiểm thử, ví dụ rehearsal tổng hợp và manifest checksum.

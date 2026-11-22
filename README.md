@@ -28,8 +28,13 @@ Kho nghiên cứu được tổ chức theo ba lớp độc lập:
 | `version_15_1` | Predictable break-even theo `early_ratio`, frozen lock và hai nguồn test | `79f9680` | 14/14 test; E3 đạt trên hai nguồn; E1/E2/E4 không đạt; combined STOP |
 | `version_15_2` | Predictable break-even trong frozen region R, covariate-only test selection | package 2026-11-19 | 22/22 test; hai nguồn đạt P1–P4; combined GO_PREDICTABLE_BREAK_EVEN |
 | `version_16` | Mở rộng V15.2: bộ giải C, mô hình hòa vốn và tỷ lệ vùng R tự nhiên | package 2026-11-20 | Đang kiểm tra: 30/30 test PASS; pha compiled dừng tại `COMPILED MISMATCH`; chưa có kết quả V16 chính thức |
+| `version_16_1` | Quy tắc đối chiếu số và ghi sự kiện sai khác giữa C với Python | package 2026-11-21 | 31/31 test PASS; compiled xong, C16_DM GO nhưng C16_DEV và C16_3GPP STOP do tỷ lệ numeric events vượt 1% |
 
-Source mới nhất đang được kiểm tra là [`src/version_16_compiled_break_even`](src/version_16_compiled_break_even). Kết quả hoàn tất mới nhất vẫn là V15.2.
+Source mới nhất đang được kiểm tra là [`src/version_16_1_numeric_agreement`](src/version_16_1_numeric_agreement). Kết quả hoàn tất mới nhất vẫn là V15.2.
+
+## Trạng thái version 16.1
+
+Pha `check` đạt 31/31 unit test và lock V15.2 vẫn dùng lại được. Pha `compiled` chạy xong cả ba tập: `C16_DM` trả `GO_COMPILED_BREAK_EVEN`, nhưng `C16_DEV` có 1005/2889 numeric events (34,79%) và `C16_3GPP` có 162/810 (20%), đều vượt ngưỡng C1 là 1% nên trả `STOP_COMPILED`. C2–C4 đạt trong cả ba run; điều này không thay thế C1. Chưa chạy `model` hay `natural`, chưa có kết luận V16.1 tổng hợp. Xem [log và kết quả V16.1](log/version_16_1/README.md).
 
 ## Trạng thái version 16
 
