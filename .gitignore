@@ -62,6 +62,7 @@ datasets/
 !src/version_15_robust_mumimo_unified/data/smoke_test.npz
 !src/version_15_1_predictable_break_even/data/smoke_dev.npz
 !src/version_15_2_predictable_break_even/data/smoke_dev.npz
+!src/version_16_2_compiled_break_even/data/smoke_dev.npz
 
 # Generated runs: only curated files under log/ are versioned
 outputs/
@@ -69,6 +70,7 @@ reports/
 **/outputs/
 **/tasks/
 *.log
+!log/version_16_2/console/*.log
 *.tmp
 *.temp
 *.bak

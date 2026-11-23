@@ -1,0 +1,32 @@
+nohup: ignoring input
+  compiled: 10/100
+  compiled: 20/100
+  compiled: 30/100
+  compiled: 40/100
+  compiled: 50/100
+  compiled: 60/100
+  compiled: 70/100
+  compiled: 80/100
+  compiled: 90/100
+  compiled: 100/100
+# Compiled solver — C16_NAT: **INCONCLUSIVE_REGION_TOO_SMALL**
+
+| Zone | K | Policy | n | Rel. saving | CI95 | CARD ms (sum over L) |
+|---|---|---|---|---|---|---|
+| R | 4 | EARLY | 1 | 81.32% | [—, —] | 0.0527 |
+| R | 4 | ROUTED | 1 | 81.01% | [—, —] | 0.0527 |
+| R | 6 | EARLY | 1 | 66.92% | [—, —] | 0.5892 |
+| R | 6 | ROUTED | 1 | 67.01% | [—, —] | 0.5892 |
+| R | 8 | EARLY | 1 | 61.38% | [—, —] | 4.1483 |
+| R | 8 | ROUTED | 1 | 61.45% | [—, —] | 4.1483 |
+| outside | 4 | EARLY | 99 | -0.25% | [-0.32%, -0.18%] | 0.0377 |
+| outside | 4 | ROUTED | 99 | -0.87% | [-1.00%, -0.73%] | 0.0377 |
+| outside | 6 | EARLY | 99 | -0.30% | [-0.36%, -0.23%] | 0.3751 |
+| outside | 6 | ROUTED | 99 | -0.14% | [-0.22%, -0.06%] | 0.3751 |
+| outside | 8 | EARLY | 99 | -0.31% | [-0.41%, -0.20%] | 3.0448 |
+| outside | 8 | ROUTED | 99 | -0.07% | [-0.16%, 0.03%] | 3.0448 |
+
+C1: 2700 decisions checked; 0 differ only within floating-point sensitivity ({}); see CC06.
+Input dtype complex64; V15.2 single-precision Python decisions vs double: 0 changes in 900 configurations, max relative power difference 0.00047207475213082036
+
+Median speed-up of the compiled CARD over Python CARD by K: {4: 559.2402500680791, 6: 173.68817615833353, 8: 87.03767880971479}

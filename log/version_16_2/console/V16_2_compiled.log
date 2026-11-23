@@ -1,0 +1,81 @@
+nohup: ignoring input
+>> /media/icnlab/Data/hoanganh/.venv/bin/python code/compiled_benchmark.py --data /media/icnlab/Data/hoanganh/datasets/robust_mumimo_v15_2/development/dev.npz --manifest outputs/V152_DM/CP00_manifest.json --lock outputs/V152_DM/CP03_locked_cells.json --run-id C16_DEV --out-root outputs
+  compiled: 10/107
+  compiled: 20/107
+  compiled: 30/107
+  compiled: 40/107
+  compiled: 50/107
+  compiled: 60/107
+  compiled: 70/107
+  compiled: 80/107
+  compiled: 90/107
+  compiled: 100/107
+# Compiled solver — C16_DEV: **GO_COMPILED_BREAK_EVEN**
+
+| Zone | K | Policy | n | Rel. saving | CI95 | CARD ms (sum over L) |
+|---|---|---|---|---|---|---|
+| R | 4 | EARLY | 39 | 40.29% | [29.03%, 50.41%] | 0.145 |
+| R | 4 | ROUTED | 39 | 40.16% | [29.78%, 50.96%] | 0.145 |
+| R | 6 | EARLY | 39 | 59.35% | [48.46%, 68.98%] | 1.1637 |
+| R | 6 | ROUTED | 39 | 59.29% | [49.53%, 69.08%] | 1.1637 |
+| R | 8 | EARLY | 39 | 72.45% | [64.47%, 79.71%] | 7.5854 |
+| R | 8 | ROUTED | 39 | 72.44% | [64.57%, 79.66%] | 7.5854 |
+| outside | 4 | EARLY | 68 | -0.37% | [-0.44%, -0.29%] | 0.1125 |
+| outside | 4 | ROUTED | 68 | -0.51% | [-0.61%, -0.41%] | 0.1125 |
+| outside | 6 | EARLY | 68 | -0.28% | [-0.33%, -0.23%] | 0.9943 |
+| outside | 6 | ROUTED | 68 | -0.10% | [-0.14%, -0.05%] | 0.9943 |
+| outside | 8 | EARLY | 68 | -0.24% | [-0.29%, -0.19%] | 7.1853 |
+| outside | 8 | ROUTED | 68 | -0.01% | [-0.06%, 0.04%] | 7.1853 |
+
+C1: 2889 decisions checked; 0 differ only within floating-point sensitivity ({}); see CC06.
+Input dtype complex64; V15.2 single-precision Python decisions vs double: 0 changes in 963 configurations, max relative power difference 3.188195523732105e-05
+>> /media/icnlab/Data/hoanganh/.venv/bin/python code/compiled_benchmark.py --data data/V152_dm_test.npz --manifest outputs/V152_DM/CP00_manifest.json --lock outputs/V152_DM/CP03_locked_cells.json --run-id C16_DM --out-root outputs --python-run outputs/V152_DM
+  compiled: 10/30
+  compiled: 20/30
+  compiled: 30/30
+# Compiled solver — C16_DM: **GO_COMPILED_BREAK_EVEN**
+
+| Zone | K | Policy | n | Rel. saving | CI95 | CARD ms (sum over L) |
+|---|---|---|---|---|---|---|
+| R | 4 | EARLY | 15 | 72.23% | [52.66%, 89.11%] | 0.1614 |
+| R | 4 | ROUTED | 15 | 72.03% | [50.79%, 90.67%] | 0.1614 |
+| R | 6 | EARLY | 15 | 81.04% | [65.31%, 93.83%] | 1.2696 |
+| R | 6 | ROUTED | 15 | 81.03% | [66.42%, 94.11%] | 1.2696 |
+| R | 8 | EARLY | 15 | 85.75% | [73.19%, 96.42%] | 8.3581 |
+| R | 8 | ROUTED | 15 | 85.76% | [72.71%, 96.20%] | 8.3581 |
+| outside | 4 | EARLY | 15 | -0.22% | [-0.31%, -0.13%] | 0.1018 |
+| outside | 4 | ROUTED | 15 | -0.68% | [-0.94%, -0.43%] | 0.1018 |
+| outside | 6 | EARLY | 15 | -0.22% | [-0.35%, -0.04%] | 0.7681 |
+| outside | 6 | ROUTED | 15 | -0.24% | [-0.37%, -0.11%] | 0.7681 |
+| outside | 8 | EARLY | 15 | -0.15% | [-0.26%, -0.05%] | 5.7978 |
+| outside | 8 | ROUTED | 15 | -0.03% | [-0.16%, 0.10%] | 5.7978 |
+
+C1: 810 decisions checked; 0 differ only within floating-point sensitivity ({}); see CC06.
+Input dtype complex128
+
+Median speed-up of the compiled CARD over Python CARD by K: {4: 348.673142343059, 6: 146.21083577617242, 8: 67.06138535608565}
+>> /media/icnlab/Data/hoanganh/.venv/bin/python code/compiled_benchmark.py --data data/V152_3gpp_test.npz --manifest outputs/V152_DM/CP00_manifest.json --lock outputs/V152_DM/CP03_locked_cells.json --run-id C16_3GPP --out-root outputs --python-run outputs/V152_3GPP
+  compiled: 10/30
+  compiled: 20/30
+  compiled: 30/30
+# Compiled solver — C16_3GPP: **GO_COMPILED_BREAK_EVEN**
+
+| Zone | K | Policy | n | Rel. saving | CI95 | CARD ms (sum over L) |
+|---|---|---|---|---|---|---|
+| R | 4 | EARLY | 15 | 80.56% | [61.89%, 93.63%] | 0.1029 |
+| R | 4 | ROUTED | 15 | 80.23% | [61.32%, 93.50%] | 0.1029 |
+| R | 6 | EARLY | 15 | 90.10% | [76.58%, 97.69%] | 0.7519 |
+| R | 6 | ROUTED | 15 | 90.00% | [76.21%, 97.74%] | 0.7519 |
+| R | 8 | EARLY | 15 | 97.83% | [95.80%, 99.25%] | 4.7884 |
+| R | 8 | ROUTED | 15 | 97.82% | [95.87%, 99.28%] | 4.7884 |
+| outside | 4 | EARLY | 15 | -0.27% | [-0.40%, -0.12%] | 0.0324 |
+| outside | 4 | ROUTED | 15 | -1.19% | [-1.30%, -1.09%] | 0.0324 |
+| outside | 6 | EARLY | 15 | -0.22% | [-0.31%, -0.13%] | 0.0701 |
+| outside | 6 | ROUTED | 15 | -0.87% | [-0.96%, -0.79%] | 0.0701 |
+| outside | 8 | EARLY | 15 | -0.09% | [-0.17%, -0.00%] | 0.1527 |
+| outside | 8 | ROUTED | 15 | -0.48% | [-0.57%, -0.40%] | 0.1527 |
+
+C1: 810 decisions checked; 0 differ only within floating-point sensitivity ({}); see CC06.
+Input dtype complex64; V15.2 single-precision Python decisions vs double: 0 changes in 270 configurations, max relative power difference 7.747536833958508e-06
+
+Median speed-up of the compiled CARD over Python CARD by K: {4: 606.5174547831768, 6: 218.86350294412674, 8: 87.19471412159238}

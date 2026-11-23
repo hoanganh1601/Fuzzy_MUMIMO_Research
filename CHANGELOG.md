@@ -1,5 +1,20 @@
 # Changelog
 
+## V16.2 — 2026-11-23 (run đã hoàn tất; chưa tag phát hành)
+
+- Nhập gói nguồn V16.2 gồm 93 file đúng checksum upstream; giữ nguyên năm module
+  lõi V15.2 và policy lock, bổ sung phép đối chiếu complex128 nhất quán.
+- `check` qua 32/32 unit test. C16_DEV, C16_DM và C16_3GPP đều đạt C1–C4,
+  không có numeric events; phiên bản trước V16.1 vẫn được giữ nguyên trong lịch sử.
+- M16_PY và M16_C fit trên development, kiểm tra trên DeepMIMO/3GPP. K=10/12
+  là ngoại suy, không phải kết quả đo.
+- Khóa protocol trước khi lấy một mẫu ngẫu nhiên 100 nhóm từ pool Sionna UMi
+  200 nhóm mới. `NP16` trả `NATURAL_NO_HARM`: R = 1/100, N2=false, N3=true,
+  N4 không đánh giá được. Lần chạy `natural` đầu dừng do thiếu metadata
+  provenance; chỉ metadata được hoàn thiện, rồi tiếp tục trên cùng mẫu.
+- Lưu 45 checkpoint trong ZIP và thư mục log, provenance và mã tạo pool; không
+  commit NPZ thật, task cache, native binary, môi trường hoặc PID.
+
 ## V16.1 — đang kiểm tra (chưa phát hành)
 
 - Nhập gói nguồn V16.1 gồm 93 file theo manifest, bổ sung phép đối chiếu số,

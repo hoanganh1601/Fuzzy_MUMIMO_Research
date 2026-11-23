@@ -1,0 +1,13 @@
+nohup: ignoring input
+  test: 10/100 geometries
+  test: 20/100 geometries
+  test: 30/100 geometries
+  test: 40/100 geometries
+  test: 50/100 geometries
+  test: 60/100 geometries
+  test: 70/100 geometries
+  test: 80/100 geometries
+  test: 90/100 geometries
+  test: 100/100 geometries
+TEST DECISION: INCONCLUSIVE_REGION_TOO_SMALL | endpoints: {'P1_break_even_in_region': False, 'P2_trend_in_region': False, 'P3_exactness': True, 'P4_no_missed_gain_outside_region': True}
+STAGE test OK outputs/V16_NAT
