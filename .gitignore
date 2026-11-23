@@ -63,6 +63,7 @@ datasets/
 !src/version_15_1_predictable_break_even/data/smoke_dev.npz
 !src/version_15_2_predictable_break_even/data/smoke_dev.npz
 !src/version_16_2_compiled_break_even/data/smoke_dev.npz
+!src/version_16_3_natural_uma/data/smoke_dev.npz
 
 # Generated runs: only curated files under log/ are versioned
 outputs/
@@ -71,6 +72,7 @@ reports/
 **/tasks/
 *.log
 !log/version_16_2/console/*.log
+!log/version_16_3/console/*.log
 *.tmp
 *.temp
 *.bak

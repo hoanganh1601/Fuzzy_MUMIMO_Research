@@ -1,0 +1,21 @@
+{
+  "version": "V16-natural",
+  "created_utc": "2026-11-20T13:30:05Z",
+  "lock_sha256": "af5581af7fedf06c5c447b753bb445daa14437b52fb7f9162a1537e368137b22",
+  "lock_signature": "c236dd25ea321bd43d0707677cfad49627981b1e1d89509ba4eb3c063de2d7e7",
+  "manifest_sha256": "8c1831b2b1ba9f497577ded7f66f809a59939280e8e49d7c64f31198559e9b4d",
+  "pool_sha256": "dcaa5a606908f09f110648ef3ff4b501d74a6e0176c09cf240115ff5c507c5cb",
+  "pool_groups": 80,
+  "n_groups": 30,
+  "seed": 20261120,
+  "sampling": "simple random sample of whole groups without replacement; no covariate, no runtime",
+  "endpoints": {
+    "N1": "prevalence of R with Wilson CI (estimate)",
+    "N2": "CI_lo mean relative saving at K_max (all geometries) > 0",
+    "N3": "CI_lo mean relative saving at every K > -0.02",
+    "N4": "if R >= 5 groups: CI_lo mean relative saving in R at K_max > 0"
+  },
+  "max_rel_loss": 0.02,
+  "bootstrap": 1000,
+  "code_sha256": "79e13dc51b25cae7606506e47f462dbf601f368f04937a2e0e70973f9e5290ab"
+}

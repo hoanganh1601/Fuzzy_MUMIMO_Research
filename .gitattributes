@@ -10,6 +10,8 @@ src/version_01_fuzzy_mumimo_r1/** -text
 src/version_02_e1r_e3r_r1/** -text
 log/version_01/** -text
 log/version_02/** -text
+src/version_16_3_natural_uma/** -text
+log/version_16_3/** -text
 src/version_07_beam_feasibility_diagnosis/** -text
 log/version_07/** -text
 src/version_08_robust_user_scheduling/** -text
@@ -21,3 +23,4 @@ src/version_11_robust_sinr_screening_r2/CHAY_TOAN_BO.ps1 -diff
 
 # Upstream/output CSV files use standard CRLF record endings.
 *.csv whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+*.ps1 whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

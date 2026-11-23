@@ -1,5 +1,21 @@
 # Changelog
 
+## V16.3 — 2026-11-23 (mẫu tự nhiên UMa)
+
+- Nhập 97 file nguồn đúng checksum upstream; thêm kịch bản UMa và protocol mẫu
+  tự nhiên được khóa trước khi sinh kênh và đo runtime. Năm module lõi V15.2
+  và policy lock giữ nguyên.
+- Pha `check` đạt 216/216 C self-test và 36/36 unit test. Kho Sionna UMa 200
+  drop được chấp nhận; mẫu ngẫu nhiên 100 nhóm chạy xong.
+- V15.2 test trả `GO_BREAK_EVEN`, 0 oracle mismatch. Bản C trả
+  `GO_COMPILED_BREAK_EVEN`, 0 numeric events trong 2,700 quyết định.
+- `NP16B` trả `NATURAL_GAIN`: R=99/100 nhóm, tiết kiệm tương đối trung bình
+  tại K=8 là 84.33% (CI95 81.81–86.49%). So sánh với lần UMi trước là phân
+  tích phụ và không tách được tác động của bố trí macro với tỷ lệ trong nhà.
+- Lưu 25 file báo cáo đã chọn, log, provenance kho và checksum. Không commit
+  ma trận kênh, task cache hoặc môi trường chạy. Ngoài R chỉ có một nhóm nên
+  P4 chưa đánh giá được.
+
 ## V16.2 — 2026-11-23 (run đã hoàn tất; chưa tag phát hành)
 
 - Nhập gói nguồn V16.2 gồm 93 file đúng checksum upstream; giữ nguyên năm module

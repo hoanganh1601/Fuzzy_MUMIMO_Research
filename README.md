@@ -30,8 +30,18 @@ Kho nghiên cứu được tổ chức theo ba lớp độc lập:
 | `version_16` | Mở rộng V15.2: bộ giải C, mô hình hòa vốn và tỷ lệ vùng R tự nhiên | package 2026-11-20 | Đang kiểm tra: 30/30 test PASS; pha compiled dừng tại `COMPILED MISMATCH`; chưa có kết quả V16 chính thức |
 | `version_16_1` | Quy tắc đối chiếu số và ghi sự kiện sai khác giữa C với Python | package 2026-11-21 | 31/31 test PASS; compiled xong, C16_DM GO nhưng C16_DEV và C16_3GPP STOP do tỷ lệ numeric events vượt 1% |
 | `version_16_2` | Đối chiếu complex128 nhất quán, mô hình hòa vốn và tỷ lệ R tự nhiên | package 2026-11-22 | 32/32 test; C1–C4 đạt trên DEV/DM/3GPP; natural `NATURAL_NO_HARM`, chưa xác nhận lợi ích toàn cell |
+| `version_16_3` | Khóa kịch bản UMa và chạy mẫu tự nhiên thứ hai với lock V15.2 | package 2026-11-23 | 36/36 test; `NATURAL_GAIN` trên 100 nhóm; R=99/100, tiết kiệm K=8 84.33% |
 
-Source mới nhất là [`src/version_16_2_compiled_break_even`](src/version_16_2_compiled_break_even). Kết quả và provenance V16.2 nằm trong [`log/version_16_2`](log/version_16_2); V15.2 vẫn là policy lock được dùng lại.
+Source mới nhất là [`src/version_16_3_natural_uma`](src/version_16_3_natural_uma). Kết quả và provenance V16.3 nằm trong [`log/version_16_3`](log/version_16_3); V15.2 vẫn là policy lock được dùng lại.
+
+## Trạng thái version 16.3
+
+Mẫu tự nhiên mới gồm 100 nhóm từ kho Sionna UMa đã khóa trước khi sinh kênh.
+R xuất hiện ở 99/100 nhóm; tiết kiệm runtime tương đối trung bình tại K=8 là
+84.33% (CI95 81.81–86.49%). N2–N4 đạt; bản C kiểm 2,700 quyết định không có
+numeric events. Ngoài R chỉ có một nhóm, nên P4 không đánh giá được. So sánh
+với UMi đổi đồng thời bố trí macro và tỷ lệ người dùng trong nhà, vì vậy không
+tách được tác động của từng yếu tố. Xem [run log V16.3](log/version_16_3/README.md).
 
 ## Trạng thái version 16.2
 

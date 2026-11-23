@@ -1,0 +1,25 @@
+{
+  "version": "V16-natural",
+  "created_utc": "2026-11-23T06:30:06Z",
+  "lock_sha256": "d5aa76d1d09071c3aae5a297a47feca72693c72619a7971c804c6e0bb286a8f6",
+  "lock_signature": "3431b3d4493d3c868f8cdf44a86095ea04de2e82c46def18c59425f6baf0fcdf",
+  "manifest_sha256": "6a867572021ac300dda80a361eb0a5b174cca590a6d584c0eda8cada8a4f1f6c",
+  "pool_sha256": "4f1c03e38c028d02d60e5d1d68131e523b158d551f8f6b734f2deeee0dd95469",
+  "pool_groups": 200,
+  "n_groups": 100,
+  "seed": 20261125,
+  "sampling": "simple random sample of whole groups without replacement; no covariate, no runtime",
+  "endpoints": {
+    "N1": "prevalence of R with Wilson CI (estimate)",
+    "N2": "CI_lo mean relative saving at K_max (all geometries) > 0",
+    "N3": "CI_lo mean relative saving at every K > -0.02",
+    "N4": "if R >= 5 groups: CI_lo mean relative saving in R at K_max > 0"
+  },
+  "max_rel_loss": 0.02,
+  "bootstrap": 1000,
+  "code_sha256": "d201b56afaff919cf9ff726b4ea3764c3d1b698c7c3abc7f2a84294c29f282d3",
+  "scenario_spec_sha256": "440e9465b7b83613e41225f58346c4641354bd0295493bea0d15e9000bcd1428",
+  "scenario": "3GPP_TR_38.901_UMa_single_sector_ISD500",
+  "pool_validation_sha256": "8a7289bd7c9641780238f081e9e021601c08715da0a09e3ecf7c154d0fc13b15",
+  "comparison": "secondary: prevalence and K_max saving versus the UMi natural run, reported with --stage compare"
+}

@@ -1,0 +1,121 @@
+nohup: ignoring input
+>> /media/icnlab/Data/hoanganh/.venv/bin/python code/natural_prevalence.py --stage sample --run-id NP16B --out-root outputs --pool /media/icnlab/Data/hoanganh/datasets/robust_mumimo_v16_3/natural2/nat2_pool.npz --pool-provenance /media/icnlab/Data/hoanganh/datasets/robust_mumimo_v16_3/natural2/nat2_pool.npz.provenance.json --output data/V16_natural2_sample.npz
+WROTE data/V16_natural2_sample.npz (100, 16, 8)
+>> /media/icnlab/Data/hoanganh/.venv/bin/python code/run_experiment.py --development data/dev.npz --dev-provenance data/dev.npz.provenance.json --out-root outputs --run-id V16_NAT2 --lock-from outputs/V152_DM/CP03_locked_cells.json --stage test-preflight --test data/V16_natural2_sample.npz
+{
+  "test_sha256": "a94ad4981b68141085df0d419bc9d41f13c99ae61f90fe0bf4f8f0b5b788dee3",
+  "n": 100,
+  "groups": 100,
+  "per_K": [
+    {
+      "K": 4,
+      "groups_per_cell": {
+        "ER0": 2,
+        "ER1": 6,
+        "ER2": 92
+      }
+    },
+    {
+      "K": 6,
+      "groups_per_cell": {
+        "ER1": 2,
+        "ER2": 98
+      }
+    },
+    {
+      "K": 8,
+      "groups_per_cell": {
+        "ER1": 1,
+        "ER2": 99
+      }
+    }
+  ],
+  "region_groups": 99,
+  "outside_groups": 1,
+  "min_region_groups": 10,
+  "accepted": true,
+  "non_card_cells": [
+    "K4_L3_ER2",
+    "K4_L5_ER2",
+    "K4_L7_ER2",
+    "K6_L3_ER2",
+    "K6_L5_ER2",
+    "K6_L7_ER2",
+    "K8_L3_ER2",
+    "K8_L5_ER2",
+    "K8_L7_ER2"
+  ]
+}
+TEST-PREFLIGHT ACCEPTED
+STAGE test-preflight OK outputs/V16_NAT2
+>> /media/icnlab/Data/hoanganh/.venv/bin/python code/run_experiment.py --development data/dev.npz --dev-provenance data/dev.npz.provenance.json --out-root outputs --run-id V16_NAT2 --lock-from outputs/V152_DM/CP03_locked_cells.json --stage test --test data/V16_natural2_sample.npz --test-provenance data/V16_natural2_sample.npz.provenance.json --allow-small-region
+  test: 10/100 geometries
+  test: 20/100 geometries
+  test: 30/100 geometries
+  test: 40/100 geometries
+  test: 50/100 geometries
+  test: 60/100 geometries
+  test: 70/100 geometries
+  test: 80/100 geometries
+  test: 90/100 geometries
+  test: 100/100 geometries
+TEST DECISION: GO_BREAK_EVEN | endpoints: {'P1_break_even_in_region': True, 'P2_trend_in_region': True, 'P3_exactness': True, 'P4_no_missed_gain_outside_region': None}
+STAGE test OK outputs/V16_NAT2
+>> /media/icnlab/Data/hoanganh/.venv/bin/python code/run_experiment.py --development data/dev.npz --dev-provenance data/dev.npz.provenance.json --out-root outputs --run-id V16_NAT2 --lock-from outputs/V152_DM/CP03_locked_cells.json --stage report
+REPORT outputs/V16_NAT2
+STAGE report OK outputs/V16_NAT2
+>> /media/icnlab/Data/hoanganh/.venv/bin/python code/compiled_benchmark.py --data data/V16_natural2_sample.npz --manifest outputs/V152_DM/CP00_manifest.json --lock outputs/V152_DM/CP03_locked_cells.json --run-id C16_NAT2 --out-root outputs --python-run outputs/V16_NAT2
+  compiled: 10/100
+  compiled: 20/100
+  compiled: 30/100
+  compiled: 40/100
+  compiled: 50/100
+  compiled: 60/100
+  compiled: 70/100
+  compiled: 80/100
+  compiled: 90/100
+  compiled: 100/100
+# Compiled solver — C16_NAT2: **GO_COMPILED_BREAK_EVEN**
+
+| Zone | K | Policy | n | Rel. saving | CI95 | CARD ms (sum over L) |
+|---|---|---|---|---|---|---|
+| R | 4 | EARLY | 99 | 83.22% | [77.79%, 87.75%] | 0.0771 |
+| R | 4 | ROUTED | 99 | 82.96% | [77.65%, 87.52%] | 0.0771 |
+| R | 6 | EARLY | 99 | 93.20% | [90.58%, 95.18%] | 0.5709 |
+| R | 6 | ROUTED | 99 | 93.17% | [90.37%, 95.23%] | 0.5709 |
+| R | 8 | EARLY | 99 | 96.85% | [96.01%, 97.69%] | 3.9879 |
+| R | 8 | ROUTED | 99 | 96.85% | [95.87%, 97.70%] | 3.9879 |
+| outside | 4 | EARLY | 1 | -0.27% | [—, —] | 0.0544 |
+| outside | 4 | ROUTED | 1 | -0.30% | [—, —] | 0.0544 |
+| outside | 6 | EARLY | 1 | -0.32% | [—, —] | 0.4145 |
+| outside | 6 | ROUTED | 1 | 0.12% | [—, —] | 0.4145 |
+| outside | 8 | EARLY | 1 | 0.31% | [—, —] | 2.7408 |
+| outside | 8 | ROUTED | 1 | 0.52% | [—, —] | 2.7408 |
+
+C1: 2700 decisions checked; 0 differ only within floating-point sensitivity ({}); see CC06.
+Input dtype complex64; V15.2 single-precision Python decisions vs double: 0 changes in 900 configurations, max relative power difference 1.2505292111317812e-05
+
+Median speed-up of the compiled CARD over Python CARD by K: {4: 459.1706341133158, 6: 159.745948037745, 8: 94.03960586751148}
+>> /media/icnlab/Data/hoanganh/.venv/bin/python code/natural_prevalence.py --stage analyze --run-id NP16B --out-root outputs --v152-run outputs/V16_NAT2 --compiled-run outputs/C16_NAT2
+# Natural-prevalence test: **NATURAL_GAIN**
+
+Prevalence of the predicted region R: 99/100 groups = 99.0% (Wilson 95% CI 94.55% – 99.82%).
+
+| K | Mean relative saving (all geometries) | CI95 | Total-time saving | CI95 |
+|---|---|---|---|---|
+| 4 | 42.33% | [38.73%, 46.53%] | 42.29% | [38.41%, 46.07%] |
+| 6 | 70.97% | [67.85%, 73.67%] | 72.56% | [69.62%, 75.07%] |
+| 8 | 84.33% | [81.81%, 86.49%] | 84.76% | [82.48%, 86.62%] |
+
+Inside R at K=8: 85.18% [83.44%, 86.76%] (99 geometries). N2=True, N3=True, N4=True.
+Compiled ROUTED (same sample): K=4: 82.12% [76.68%, 86.84%]; K=6: 92.24% [88.99%, 94.71%]; K=8: 95.89% [93.42%, 97.47%]
+>> /media/icnlab/Data/hoanganh/.venv/bin/python code/natural_prevalence.py --stage compare --run-id NP16B --out-root outputs --compare-with outputs/NP16
+# Natural runs compared (secondary)
+
+| Run | Scenario | Status | Prevalence of R | Wilson CI | Saving at K_max (all) | CI95 |
+|---|---|---|---|---|---|---|
+| A | not recorded | NATURAL_NO_HARM | 1/100 = 1.00% | [0.18%, 5.45%] | 0.27% | [-0.06%, 0.93%] |
+| B | 3GPP_TR_38.901_UMa_single_sector_ISD500 | NATURAL_GAIN | 99/100 = 99.00% | [94.55%, 99.82%] | 84.33% | [81.81%, 86.49%] |
+
+Difference of prevalence (B - A): 98.00%, Newcombe 95% CI [91.71%, 99.16%].
+DONE. Send back KET_QUA_V16_NAT2.zip

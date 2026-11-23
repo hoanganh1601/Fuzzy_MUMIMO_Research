@@ -1,0 +1,26 @@
+{
+  "ok": true,
+  "errors": [],
+  "pool_sha256": "4f1c03e38c028d02d60e5d1d68131e523b158d551f8f6b734f2deeee0dd95469",
+  "provenance_sha256": "163fc65a873a0654ebd1d1d14b81539444e29c2961d01dabf71d72cd8d1d05ad",
+  "scenario_spec_sha256": "440e9465b7b83613e41225f58346c4641354bd0295493bea0d15e9000bcd1428",
+  "n_drops": 200,
+  "dtype": "complex64",
+  "summary": {
+    "per_antenna_gain_db_quantiles": {
+      "p01": -162.0000126654298,
+      "p05": -152.8362696666683,
+      "p25": -141.56075730729165,
+      "p50": -130.7918818514747,
+      "p75": -113.17519869502165,
+      "p95": -94.2201391451982,
+      "p99": -81.49068625222935
+    },
+    "ut_distance_m_quantiles": {
+      "min": 35.33390426635742,
+      "p50": 184.86575317382812,
+      "max": 283.4141845703125
+    }
+  },
+  "note": "early ratio intentionally not computed on the pool (the region R is evaluated only on the random sample)"
+}

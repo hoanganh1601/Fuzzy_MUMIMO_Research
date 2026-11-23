@@ -1,0 +1,55 @@
+{
+  "A": {
+    "run": "outputs/NP16",
+    "scenario": "not recorded",
+    "status": "NATURAL_NO_HARM",
+    "prevalence": {
+      "region_groups": 1,
+      "groups": 100,
+      "prevalence": 0.01,
+      "wilson_ci": [
+        0.001767432044609646,
+        0.0544861967490067
+      ]
+    },
+    "Kmax_all": {
+      "K": 8,
+      "mean_rel_saving": 0.002700136358509755,
+      "ci_lo": -0.00064740936197828,
+      "ci_hi": 0.009314925827668165,
+      "total_time_saving": 0.005355555386502225,
+      "total_ci_lo": -0.00047333444329014716,
+      "total_ci_hi": 0.017830581426307668,
+      "mean_card_ms_sum_L": 298.4594005
+    }
+  },
+  "B": {
+    "run": "outputs/NP16B",
+    "scenario": "3GPP_TR_38.901_UMa_single_sector_ISD500",
+    "status": "NATURAL_GAIN",
+    "prevalence": {
+      "region_groups": 99,
+      "groups": 100,
+      "prevalence": 0.99,
+      "wilson_ci": [
+        0.9455138032509934,
+        0.9982325679553906
+      ]
+    },
+    "Kmax_all": {
+      "K": 8,
+      "mean_rel_saving": 0.8433173107881303,
+      "ci_lo": 0.8181106025669463,
+      "ci_hi": 0.8648863839490244,
+      "total_time_saving": 0.8476462435004116,
+      "total_ci_lo": 0.8248047444815801,
+      "total_ci_hi": 0.8662248311709998,
+      "mean_card_ms_sum_L": 372.57689895
+    }
+  },
+  "prevalence_difference_B_minus_A": 0.98,
+  "newcombe_ci95": [
+    0.917087017219157,
+    0.9916426092556714
+  ]
+}
