@@ -1,0 +1,23 @@
+nohup: ignoring input
+>> /media/icnlab/Data/hoanganh/datasets/robust_sinr_v12/.venv_sionna/bin/python code/gen_sionna_uma.py
+  generated 10/200
+  generated 20/200
+  generated 30/200
+  generated 40/200
+  generated 50/200
+  generated 60/200
+  generated 70/200
+  generated 80/200
+  generated 90/200
+  generated 100/200
+  generated 110/200
+  generated 120/200
+  generated 130/200
+  generated 140/200
+  generated 150/200
+  generated 160/200
+  generated 170/200
+  generated 180/200
+  generated 190/200
+  generated 200/200
+WROTE /media/icnlab/Data/hoanganh/datasets/robust_mumimo_v16_3/natural2/nat2_pool.npz (200, 16, 8) complex64 | per-antenna gain median (dB): -130.7918818514747

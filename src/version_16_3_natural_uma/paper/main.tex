@@ -1,0 +1,186 @@
+\documentclass[journal]{IEEEtran}
+\usepackage{amsmath,amssymb,booktabs,array,graphicx,cite}
+\usepackage[hidelinks]{hyperref}
+\title{Computational Limits of Feasibility Screening for Robust MU-MIMO User Scheduling}
+\author{Working manuscript---author and affiliation metadata to be finalized}
+\begin{document}\maketitle
+\begin{abstract}
+A multiuser multiple-input multiple-output (MU-MIMO) downlink transmitter must select an admitted-user set and a beam candidate under uncertain channel state information (CSI) and a total power limit. This study evaluates whether analytically safe feasibility screening reduces the overall computational cost of exact scheduling over prescribed zero-forcing (ZF) and regularized ZF (RZF) beam sets. The fixed-beam robust signal-to-interference-plus-noise ratio (SINR) constraints admit a nonnegative power-control representation, for which interference-cycle tests and power lower bounds can reject infeasible candidates without changing the finite-candidate optimum. On 160 previously used DeepMIMO development geometries, all scheduled solutions match exhaustive enumeration and full solver calls decrease from 19.3375 to 8.5375 per geometry. Repeated measurements, however, increase mean runtime from 15.5838 to 16.4046 ms. Separate DeepMIMO and 3GPP channel evaluations also report a runtime penalty for full screening. Cost profiling shows that infeasible candidates rejected by the certificates are often inexpensive to solve. A further experiment, with $K\in\{4,6,8\}$ and varying beam-set sizes, is specified to identify whether a computational break-even region exists; its official results are not yet available. The present findings support finite-candidate solution preservation and identify limitations of screening-based acceleration, without claiming a computational gain not demonstrated by the data.
+\end{abstract}
+\begin{IEEEkeywords}
+MU-MIMO downlink, robust SINR, user admission, beam selection, feasibility screening, computational break-even, runtime.
+\end{IEEEkeywords}
+\section{Introduction}
+In a downlink base station with multiple transmit antennas, admitting all candidate users can be infeasible when estimated user channels are strongly coupled or transmit power is limited. Under imperfect CSI, the transmitter must select users, a beam-generation rule, and nonnegative stream powers while meeting robust SINR constraints. Exact enumeration over a finite ZF/RZF candidate family provides a reference solution, but the number of subset--beam combinations is $L(2^K-1)$ for $K$ users and $L$ candidate beam configurations per subset.
+
+Low-cost feasibility screening is attractive because some candidates can be ruled out using nonnegative-interference conditions before complete power allocation. Nevertheless, constructing a certificate also consumes time, and a baseline solver may detect infeasibility at negligible cost. The relevant system objective is consequently the complete runtime of scheduling and power allocation, not the number of solver calls alone.
+
+This work consolidates an experimental sequence with three questions. First, are the prescribed screening tests consistent with exact enumeration in the conservative fixed-beam robust SINR model? Second, do certificate evaluations provide incremental runtime savings over descending-cardinality enumeration alone? Third, can the sign of the runtime benefit be predicted from the number of users, the beam-candidate count, and measurable channel conditions? The first two questions have experimental evidence from earlier versions. The third motivates the ongoing V15 experiment and remains open.
+
+\section{Related Work and Scope}
+The standard interference-function formulation of power control provides a foundation for reasoning about feasible powers and nonnegative interference coupling \cite{Yates1995}. Joint downlink beamforming and admission control have also been investigated with convex-approximation techniques \cite{Matskani2008}; joint power and admission control has been addressed using linear-programming deflation \cite{Liu2013}. These lines of work establish that admission, power control and computational reduction are not new problems. The present study does not claim novelty in the spectral-radius criterion, the nonnegative Neumann expansion or the generic principle of safe branch elimination.
+
+The investigated problem is deliberately narrower: all beam directions are generated from a prescribed finite ZF/RZF family for each user subset, and power control uses the particular conservative gain bounds implemented in the code. The reported exactness is conditional on this finite family and this robust approximation. A complete review of recent branch-and-bound and robust scheduling methods remains necessary before a journal-level novelty claim can be finalized.
+
+\section{System Model and Optimization Problem}
+Consider a transmitter with $M$ antennas and a nonempty admitted set $\mathcal S\subseteq\{1,\ldots,K\}$. With unit-norm beam $\mathbf w_k^{(b)}$ from candidate $b$, its transmitted signal is
+\begin{equation}
+\mathbf x=\sum_{k\in\mathcal S}\sqrt{p_k}\mathbf w_k^{(b)}s_k,
+\qquad\|\mathbf w_k^{(b)}\|_2=1.
+\label{eq:signal}
+\end{equation}
+Equation~\eqref{eq:signal} connects the selected user subset and beam directions to the transmit-power allocation. The CSI estimate is $\widehat{\mathbf h}_k$ and the actual channel is $\widehat{\mathbf h}_k+\mathbf e_k$.
+
+For each fixed user subset and beam configuration, conservative received-power bounds give
+\begin{equation}
+\mathbf p\geq\mathbf F_{\mathcal S,b}\mathbf p+\mathbf u_{\mathcal S,b},
+\quad\mathbf F_{\mathcal S,b}\geq0,\quad\mathbf u_{\mathcal S,b}>0.
+\label{eq:power}
+\end{equation}
+Equation~\eqref{eq:power} represents the robust SINR requirements used by the implementation; it may be more restrictive than directly enforcing the original coupled worst-case SINR constraints. The total power must additionally satisfy $\mathbf1^T\mathbf p\leq P_{\max}$.
+
+The finite-candidate scheduling objective is
+\begin{equation}
+\operatorname*{lex\,max}_{\mathcal S,b,\mathbf p}
+\left(|\mathcal S|,-\mathbf1^T\mathbf p\right)
+\label{eq:lex}
+\end{equation}
+subject to~\eqref{eq:power}, the total-power constraint, nonnegative power and $b\in\mathcal B(\mathcal S)$. Equation~\eqref{eq:lex} first maximizes admitted-user cardinality and then selects the least-power feasible candidate at that cardinality. Ties are resolved using a fixed ordering of beam parameter and subset identifier.
+
+\section{Feasibility Screening and Computational Cost}
+\subsection{Safe rejection within the fixed-beam model}
+For nonnegative $\mathbf F$ and strictly positive $\mathbf u$, the unconstrained power-control system in~\eqref{eq:power} has a finite solution exactly when $\rho(\mathbf F)<1$, with componentwise minimum
+\begin{equation}
+\mathbf p^*=(\mathbf I-\mathbf F)^{-1}\mathbf u
+=\sum_{n=0}^{\infty}\mathbf F^n\mathbf u.
+\label{eq:pstar}
+\end{equation}
+Equation~\eqref{eq:pstar} specifies the power required before enforcing the total budget. The nonnegative Neumann terms give the safe lower bound
+\begin{equation}
+L_N=\mathbf1^T\sum_{n=0}^{N}\mathbf F^n\mathbf u
+>P_{\max}\ \Longrightarrow\ \text{infeasible candidate}.
+\label{eq:neumann}
+\end{equation}
+Equation~\eqref{eq:neumann} rejects any candidate whose partial-sum power already exceeds the available budget. A two-user interference cycle gives
+\begin{equation}
+F_{ij}F_{ji}\geq1\ \Longrightarrow\ \rho(\mathbf F)\geq1.
+\label{eq:cycle}
+\end{equation}
+Equation~\eqref{eq:cycle} permits rejection from a two-user coupling test without computing a full spectral radius. Conservative direct-gain and noise-based power lower bounds are also tested in the implementation.
+
+\emph{Conditional solution preservation:} If every rejection removes only an infeasible candidate of~\eqref{eq:power}, the algorithm examines every surviving candidate at the highest feasible cardinality, and feasible power comparisons are sufficiently accurate, it returns the same lexicographic optimum as complete enumeration over $\mathcal B(\mathcal S)$. The reasoning follows because no feasible candidate is removed and lower cardinalities cannot improve the primary objective. This statement is a correctness property of the specified search, not a new general optimality theorem. Numerically uncertain screening decisions trigger the fail-open path and are sent to the solver.
+
+\subsection{Runtime accounting and break-even condition}
+The gain from screening depends on the cost of solving candidates it actually rejects, not the mean cost over all candidates. For certificate family $j$, define $R_j\in\{0,1\}$ as the rejection event; denote its screening and overhead time by $T_{j,\mathrm{screen}}$ and $T_{j,\mathrm{overhead}}$. A necessary expected accounting condition for positive saving is
+\begin{equation}
+\mathbb E\left[R_jT_{\mathrm{solve}}\right]
+>\mathbb E\left[T_{j,\mathrm{screen}}+T_{j,\mathrm{overhead}}\right].
+\label{eq:break}
+\end{equation}
+Equation~\eqref{eq:break} identifies the computational break-even criterion: the solver time avoided on rejected candidates must exceed all additional screening work. This is a runtime accounting identity, not a new bound on wireless-system performance. It motivates measuring conditional solver time by feasibility reason and testing channel-dependent, cost-aware activation.
+
+\section{Experimental Evidence to V14}
+\subsection{Common configuration and provenance}
+The historical $K=4$ experiments use $M=16$, a target SINR of 6 dB, $P_{\max}=1$ W, a fixed CSI margin $q=2.960414$, and seven ZF/RZF beam candidates. The earlier 160-geometry set was used during development. Later DeepMIMO scenarios and a Sionna urban microcell (UMi) channel source were evaluated separately. Across versions, different timing runs must not be pooled as identical hardware measurements. The source archives, CSV tables and decision checkpoints are retained in the accompanying package.
+
+\subsection{Finite-candidate exactness and solver calls}
+On the original 160 development geometries, exhaustive enumeration serves four users in 97 cases, three in 58 and two in five. Screened and unscreened cardinality-ordered search return matching decisions. In the V10 ablation, certificate screening reduces the mean full-solver calls from 19.3375 to 8.5375 per geometry (55.85\%). The corresponding runtime changes from 20.4568 to 18.9708 ms in that run. However, the separate repeated-timing V11 experiment does not confirm an advantage: as shown in Table~\ref{tab:v11}, screening is slower than the cardinality-only baseline. These observations must not be interpreted as a reproducible overall speedup.
+\begin{table}[t]
+\caption{V11 repeated timing on 160 development geometries.}
+\label{tab:v11}\centering\footnotesize
+\begin{tabular}{lrr}\toprule
+Metric & CARD & ALL\\\midrule
+Full solver calls/geometry & 19.3375 & 8.5375\\
+Mean runtime (ms) & 15.5838 & 16.4046\\
+Screening time (ms) & 0 & 1.3677\\
+Matched exhaustive & 160/160 & 160/160\\\bottomrule
+\end{tabular}
+\end{table}
+
+
+\begin{table}[t]
+\caption{V10 ablation: extra full solves relative to all certificates (160 development geometries).}
+\label{tab:v10abl}\centering\footnotesize
+\begin{tabular}{lr}\toprule
+Removed screening rule & Extra solves/geometry\\\midrule
+Neumann lower bound & 0.8750\\
+Two-user cycle & 0.2500\\
+Zero direct gain & 0.0625\\
+Noise lower bound & 0\\
+Norm--noise lower bound & 0\\\bottomrule
+\end{tabular}
+\end{table}
+Table~\ref{tab:v10abl} isolates the additional solver calls attributable to each screening rule in the tested ordering. Removing Neumann increases full-solver calls, but this does not independently establish a lower runtime for the full certificate set; multiple rules may reject the same candidate.
+
+The V11 boundary audit constructs 1,030 cases near interference and power limits, recording zero false rejections and 324 fail-open decisions. These are stage-level numerical checks on the derived coefficients. They do not establish an interval-arithmetic guarantee for upstream channel and beam calculations.
+
+\subsection{Evaluation on other channel sources}
+\begin{table}[t]
+\caption{V12 runtime saving against CARD; positive means faster screening.}
+\label{tab:v12}\centering\footnotesize
+\begin{tabular}{lrr}\toprule
+Source ($160$ cases each) & FAST (ms) & LITE (ms)\\\midrule
+DeepMIMO holdout & $-0.8026$ & $-0.8199$\\
+Sionna 3GPP UMi & $-0.7271$ & $-0.6408$\\\bottomrule
+\end{tabular}
+\end{table}
+Table~\ref{tab:v12} reports a runtime penalty for the screening policies on both sources, although candidate decisions matched exhaustive and no false pruning was recorded in the reported audits. The raw 3GPP generator metadata, including the exported delay units and temporal/spatial grouping, still requires a source-level reproducibility check. Statistical independence cannot be established from group labels alone.
+
+In V13 a candidate EARLY policy showed a small positive development saving but failed its prespecified gain threshold; the frozen policy was CARD. Consequently, the subsequent test of CARD against the frozen CARD policy does not measure a test-set improvement from EARLY. In V14 a candidate threshold policy likewise failed internal validation and was replaced with CARD before the Denver holdout. That test contains 92 channel configurations across 23 labelled groups and reports 92/92 matching exhaustive decisions. These negative selection results are retained rather than reinterpreted as algorithmic acceleration.
+
+\begin{table}[t]
+\caption{V13--V14 validation gates for learned screening activation.}
+\label{tab:selection}\centering\footnotesize
+\begin{tabular}{lrrl}\toprule
+Run & Dev. gain (ms) & Val. gain (ms) & Frozen\\\midrule
+V13 EARLY & $+0.1139$ & --- & CARD\\
+V14 threshold rule & $+0.1477$ & $+0.0840$ & CARD\\\bottomrule
+\end{tabular}
+\end{table}
+For V13, the displayed gain is a paired development mean; its confidence-bound threshold for selection was not met. In V14 the validation confidence interval spans zero, so the development-fitted threshold is not transferred to test. Table~\ref{tab:selection} records these selections without interpreting fallback CARD-versus-CARD measurements as a comparison between screening methods.
+
+\subsection{Conditional solver costs}
+\begin{table}[t]
+\caption{V14 development candidate solver cost by classification.}
+\label{tab:cost}\centering\footnotesize
+\begin{tabular}{lrr}\toprule
+Candidate class & Count & Solver time (ms)\\\midrule
+Feasible & 14222 & 1.1477\\
+Coupling failure & 1484 & 0.1160\\
+Power-budget failure & 1083 & 0.1473\\
+Zero robust gain & 11 & 0.1293\\\bottomrule
+\end{tabular}
+\end{table}
+Table~\ref{tab:cost} shows why the screening overhead is difficult to recover: candidates classified as coupling- or power-infeasible are much cheaper to solve than feasible ones. The observed conditional times explain the failure of V11--V14 to translate solver-call savings into consistent end-to-end acceleration.
+
+\section{V15 Computational Break-Even Protocol}
+The active V15 program retains the robust SINR model and exhaustive oracle but evaluates $K\in\{4,6,8\}$ and beam-set sizes $L\in\{3,5,7\}$. The total candidate counts are 45--105 for $K=4$, 189--441 for $K=6$, and 765--1785 for $K=8$. This increase in search size is an experimental factor, not an assumed source of speedup.
+
+Development observations are grouped by $K$, $L$ and a prespecified channel-coherence class. The four policies are cardinality-only (CARD), prebeam lower-bound screening (EARLY), postbeam cached screening (CACHED) and their combination (HYBRID). For each cell, a candidate policy is selected using one portion of development data and independently screened for runtime savings on disjoint development groups. Cells without sufficient support revert to CARD. The complete mapping is frozen before testing. The score includes channel-feature overhead and all runtime components.
+
+On unseen DeepMIMO geometries, each policy must match an exhaustive all-subset/all-beam oracle. The fixed mapping is then carried to an independent 3GPP source without retuning. Paired runtime differences are summarized by independent spatial or scenario groups. The prespecified decision requires a positive lower confidence bound above 0.1 ms for each declared $K,L$ configuration, no oracle mismatch, and no false certificate rejection. Such a criterion may return STOP even if selected cells show positive sample means.
+
+\begin{table}[t]
+\caption{V15 predeclared search size and pending output.}
+\label{tab:v15}\centering\footnotesize
+\begin{tabular}{rrrr}\toprule
+$K$ & $L=3$ & $L=5$ & $L=7$\\\midrule
+4 & 45 & 75 & 105\\
+6 & 189 & 315 & 441\\
+8 & 765 & 1275 & 1785\\\bottomrule
+\end{tabular}
+\end{table}
+Table~\ref{tab:v15} lists the exact number of subset--beam candidates per channel configuration. Computational savings are to be reported by each predeclared $K,L$ cell, not by choosing a favorable cell after test inspection.
+
+\textbf{Pending result:} No official DeepMIMO or 3GPP V15 results have yet been supplied. Consequently, this section reports the experimental protocol only, and no break-even boundary or increased-$K$ speedup is claimed.
+
+\section{Discussion and Conclusion}
+The experiments establish consistent preservation of the exhaustive decisions in the evaluated finite-candidate power-control model. They also expose a specific computational limitation: screening often rejects cheap-to-solve infeasible candidates, so substantially fewer full solver calls can coexist with longer execution time. The standard interference-feasibility criteria and generic safe-pruning logic are not presented as new theoretical findings.
+
+The remaining question is whether a stable and prospectively identifiable break-even region exists when user count, beam count and channel conditions vary. V15 is designed to test that question with a frozen development-based policy and independent test sources. Until such evidence is available, the paper should not be submitted as a new low-runtime algorithm, and its novelty should be positioned as an experimentally controlled study of screening costs and limits.
+\begin{thebibliography}{3}
+\bibitem{Yates1995} R. D. Yates, ``A framework for uplink power control in cellular radio systems,'' \emph{IEEE J. Sel. Areas Commun.}, vol. 13, no. 7, 1995, doi: 10.1109/49.414651.
+\bibitem{Matskani2008} E. Matskani, N. D. Sidiropoulos, Z.-Q. Luo, and L. Tassiulas, ``Convex approximation techniques for joint multiuser downlink beamforming and admission control,'' \emph{IEEE Trans. Wireless Commun.}, vol. 7, no. 7, 2008, doi: 10.1109/TWC.2008.070104.
+\bibitem{Liu2013} Y.-F. Liu, Y.-H. Dai, and Z.-Q. Luo, ``Joint power and admission control via linear programming deflation,'' \emph{IEEE Trans. Signal Process.}, vol. 61, no. 6, 2013, doi: 10.1109/TSP.2012.2236319.
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,8 @@
+version,claim,reported evidence,limitation
+V9,finite-candidate oracle match,"160/160, 1,728 certificate rejects without false prune",development only
+V10,solver-call ablation,"CARD=19.3375, ALL=8.5375 solves/geometry; runtime 20.4568 vs 18.9708 ms","single-run positive runtime, not stable"
+V11,repeated runtime and boundary,"CARD=15.5838, ALL=16.4046 ms; 1030 stress cases, 324 fail-open, 0 false prune",development channels; positive speedup not reproduced
+V12,other-source runtime,FAST saved -0.8026 ms DeepMIMO and -0.7271 ms Sionna UMi vs CARD,3GPP provenance and delay-unit audit pending
+V13,cost-aware gate,policy locked CARD; test selected CARD=baseline CARD,not a test of EARLY on new data
+V14,solver cost; rule selection,"feasible solve 1.1477 ms, coupling-failure solve 0.1160 ms; frozen CARD","Denver test 92 geometries, 23 groups; no gain"
+V15,active break-even hypothesis,"K=4,6,8; L=3,5,7; no official test results yet",synthetic SMOKE_ONLY

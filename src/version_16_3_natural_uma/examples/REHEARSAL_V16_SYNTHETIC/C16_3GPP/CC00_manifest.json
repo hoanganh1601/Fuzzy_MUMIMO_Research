@@ -1,0 +1,31 @@
+{
+  "signature": "e2faded4d3468054efb79dcd23e6c5e8b480979fd343fc1326d405a45110ac03",
+  "version": "V16-compiled",
+  "data": "79e8f433777f5ab3b60d7b0737f7ea43313bb684afe166fb931dd6df1777c371",
+  "lock": "af5581af7fedf06c5c447b753bb445daa14437b52fb7f9162a1537e368137b22",
+  "manifest": "c236dd25ea321bd43d0707677cfad49627981b1e1d89509ba4eb3c063de2d7e7",
+  "repeats": 3,
+  "oracle_check": "all",
+  "limit": 0,
+  "code": {
+    "compiled_benchmark.py": "d8383c70296399a602720a3b329606263c8cdca79d07ce3ad30be167e3537319",
+    "native_search.py": "3fc0f7cbb9626947e41acc53ea69eb5b2e8353e6f738c544b6898a0d9adcac28",
+    "native/screen_core.c": "f9de5f6e5c88609d7ed83c8553989eba336f5cb5cd3b191824fad7f39cda5bf3"
+  },
+  "machine": {
+    "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "processor": "x86_64",
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "cpu_count": 2,
+    "threads": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1"
+    }
+  },
+  "compiler": "gcc: gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "lib_sha256": "62ef051f27da9b603c0103f344c7f3fc4c7bd4e0f9c741c01b716221a5641b0b"
+}

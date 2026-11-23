@@ -1,0 +1,75 @@
+{
+  "status": "NATURAL_GAIN",
+  "N1_prevalence": {
+    "region_groups": 99,
+    "groups": 100,
+    "prevalence": 0.99,
+    "wilson_ci": [
+      0.9455138032509934,
+      0.9982325679553906
+    ]
+  },
+  "N2_expected_gain_Kmax": true,
+  "N3_no_harm_all_K": true,
+  "N4_region_consistent": true,
+  "by_K_all_geometries": [
+    {
+      "K": 4,
+      "mean_rel_saving": 0.4233208892269175,
+      "ci_lo": 0.3872570184136808,
+      "ci_hi": 0.46525945096808996,
+      "total_time_saving": 0.42290439487020504,
+      "total_ci_lo": 0.38408004522963984,
+      "total_ci_hi": 0.4607375098869046,
+      "mean_card_ms_sum_L": 37.04616528
+    },
+    {
+      "K": 6,
+      "mean_rel_saving": 0.7096862019215672,
+      "ci_lo": 0.6784970969756225,
+      "ci_hi": 0.7366808601401075,
+      "total_time_saving": 0.725585331867869,
+      "total_ci_lo": 0.696224320869901,
+      "total_ci_hi": 0.7507417931900618,
+      "mean_card_ms_sum_L": 93.63170195999997
+    },
+    {
+      "K": 8,
+      "mean_rel_saving": 0.8433173107881303,
+      "ci_lo": 0.8181106025669463,
+      "ci_hi": 0.8648863839490244,
+      "total_time_saving": 0.8476462435004116,
+      "total_ci_lo": 0.8248047444815801,
+      "total_ci_hi": 0.8662248311709998,
+      "mean_card_ms_sum_L": 372.57689895
+    }
+  ],
+  "region_at_Kmax": {
+    "geometries": 99,
+    "mean_rel_saving": 0.8518422188394711,
+    "ci_lo": 0.8344177466711357,
+    "ci_hi": 0.8675886070261463
+  },
+  "v152_run": "outputs/V16_NAT2",
+  "test_sha256": "a94ad4981b68141085df0d419bc9d41f13c99ae61f90fe0bf4f8f0b5b788dee3",
+  "compiled_by_K": [
+    {
+      "K": 4,
+      "mean_rel_saving_routed": 0.8212444215645874,
+      "ci_lo": 0.7668154955857346,
+      "ci_hi": 0.8683932489843402
+    },
+    {
+      "K": 6,
+      "mean_rel_saving_routed": 0.9223545327677044,
+      "ci_lo": 0.8898942041794787,
+      "ci_hi": 0.947075041873605
+    },
+    {
+      "K": 8,
+      "mean_rel_saving_routed": 0.9588718138033306,
+      "ci_lo": 0.9342088925800732,
+      "ci_hi": 0.9746692062085434
+    }
+  ]
+}

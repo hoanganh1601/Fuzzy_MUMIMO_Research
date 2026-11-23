@@ -1,0 +1,73 @@
+{
+  "selected_rule": {
+    "policy": "CARD",
+    "feature": "",
+    "threshold": 0.0,
+    "direction": ""
+  },
+  "candidate_rule": {
+    "policy": "EARLY",
+    "feature": "early_ratio",
+    "threshold": 0.4690403640270233,
+    "direction": "ge"
+  },
+  "development_fit": {
+    "rule_index": 10,
+    "rule": {
+      "policy": "EARLY",
+      "feature": "early_ratio",
+      "threshold": 0.4690403640270233,
+      "direction": "ge"
+    },
+    "mean_saved_ms": 0.1476541250000001,
+    "ci_lo": 0.0028803880208334667,
+    "ci_hi": 0.34192634687500006,
+    "activation_fraction": 0.20833333333333334,
+    "median_saved_ms": -0.017896499999999982
+  },
+  "development_validation": {
+    "mean_saved_ms": 0.08403429687500015,
+    "ci_lo": -0.0369027203124997,
+    "ci_hi": 0.2552930382812501,
+    "activation_fraction": 0.28125,
+    "median_saved_ms": -0.017958499999999766
+  },
+  "passed_gate": false,
+  "development_sha256": "1d479a06b94fff565a8997ceb870c670bda7458dbf5e5cd54c2fc0afc14b1f50",
+  "profile_sha256": "ae624c6537a3310c711b2b51f8f109c04bf90046a9c90c437c8e4825ce074c42",
+  "group_counts": {
+    "fit": 96,
+    "validation": 64
+  },
+  "source_code_hashes": {
+    "cost_limits_v14.py": "5999687332803bf4b14a9294b5e9e00c2c40ec6ab81e0ca3dd219546d035822e",
+    "cost_aware_v13.py": "4cc74431fcf570863be8a5eeea90be25f1bd1af96102728b0b48755da0e9760d",
+    "reference_model.py": "163bd7b2fb2b0a1333cf06d8b1f1df9624c2d75b3bf7b864b1fdf26e00b9bba3",
+    "ablation_audit.py": "bb425163bb71da1036d8addfb5d7edab6fe1164752c25a33bcf23cb971792fa3",
+    "ablation_certified.py": "37f3a9dfd7c22c8f2117ed7007836d5105a433ec8988e592d6ee0424d149c866"
+  },
+  "settings": {
+    "cfg": {
+      "q": 2.960414,
+      "sigma": 0.04,
+      "gamma": 3.9810717055349722,
+      "noise": 2e-13,
+      "pmax": 1.0
+    },
+    "repeats": 7,
+    "guard": 1e-05,
+    "bootstrap": 2000,
+    "min_gain_ms": 0.1,
+    "min_groups": 20,
+    "seed": 217,
+    "code_hashes": {
+      "cost_limits_v14.py": "5999687332803bf4b14a9294b5e9e00c2c40ec6ab81e0ca3dd219546d035822e",
+      "cost_aware_v13.py": "4cc74431fcf570863be8a5eeea90be25f1bd1af96102728b0b48755da0e9760d",
+      "reference_model.py": "163bd7b2fb2b0a1333cf06d8b1f1df9624c2d75b3bf7b864b1fdf26e00b9bba3",
+      "ablation_audit.py": "bb425163bb71da1036d8addfb5d7edab6fe1164752c25a33bcf23cb971792fa3",
+      "ablation_certified.py": "37f3a9dfd7c22c8f2117ed7007836d5105a433ec8988e592d6ee0424d149c866"
+    },
+    "dev_hash": "1d479a06b94fff565a8997ceb870c670bda7458dbf5e5cd54c2fc0afc14b1f50"
+  },
+  "note": "Rule and threshold locked before test; CARD if holdout fails"
+}

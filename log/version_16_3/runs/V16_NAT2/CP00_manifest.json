@@ -1,0 +1,79 @@
+{
+  "signature": "3431b3d4493d3c868f8cdf44a86095ea04de2e82c46def18c59425f6baf0fcdf",
+  "settings": {
+    "version": "V15.2",
+    "q": 2.960414,
+    "sigma_rel": 0.04,
+    "sinr_db": 6.0,
+    "noise": 2e-13,
+    "pmax": 1.0,
+    "ks": "4,6,8",
+    "alphas": "0,0.001,0.01,0.05,0.1,0.3,1",
+    "beam_counts": [
+      3,
+      5,
+      7
+    ],
+    "guard": 1e-05,
+    "repeats": 5,
+    "bootstrap": 1000,
+    "min_gain_ms": 0.1,
+    "min_rel_gain": 0.02,
+    "min_cell_groups": 5,
+    "min_dev_groups": 80,
+    "min_test_groups": 10,
+    "er_bins": [
+      0.1,
+      1.0
+    ],
+    "early_bound": "robust",
+    "min_region_groups": 10,
+    "min_dev_region_groups": 20,
+    "split": "groups 60/40, stratified by K_max early_ratio cell",
+    "primary_endpoints": "Inside predicted region (gate >= min_region_groups, else INCONCLUSIVE): P1 break-even of frozen map at K_max (relative and absolute), P2 EARLY trend K_min->K_max, P3 exactness, P4 no missed gain outside region (CI_lo of EARLY saving < min_gain_ms); GO on both DeepMIMO and 3GPP with the same lock",
+    "smoke": false,
+    "limit": 0,
+    "profile_candidates": false,
+    "seed": 20261117,
+    "dev_hash": "f93a0c8c16b15b90e1796fdaea8edcb9f076633d5883fde5cdb2939ffba706fb",
+    "machine": {
+      "platform": "Linux-7.0.0-43-generic-x86_64-with-glibc2.39",
+      "machine": "x86_64",
+      "processor": "x86_64",
+      "python": "3.12.3",
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "cpu_count": 20,
+      "threads": {
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1"
+      }
+    },
+    "code_hashes": {
+      "run_experiment.py": "e510940030494140e5b584c50e2c60da6dab59b25d9648b6cb309799a7c2e84c",
+      "robust_model.py": "1511351dee03e3b61e2a862df49f5f14cd9f1575f22a42ab14e16d9c4ff1cbab",
+      "screening_policy.py": "8606efa3365de46aa068f699a5b2b452b110b72b78482ce1908ae400652b02e6",
+      "certified_screening.py": "23344bb86360ad3ad0ca78e872dd8f80d08a26c1b6bfd34224da5314d9c21eda",
+      "screening_bounds.py": "edacac604a8afb29349db34b4f8b1d6ae63ebfae71d6a26ed7718d90c3849a7e"
+    }
+  },
+  "source": {
+    "source": "DeepMIMO external extraction",
+    "scenario": "asu_campus_3p5",
+    "group_definition": "spatial tile (one 8-user drop per tile)",
+    "independence_basis": "spatially disjoint tiles; independence NOT mathematically proven",
+    "prior_use": "development",
+    "cell_m": 25.0,
+    "min_user_distance": 2.0,
+    "selected_geometries": 107,
+    "excluded_tiles": 7,
+    "seed": 20261117,
+    "bs_pos": "",
+    "min_dist": 0.0,
+    "max_dist": null
+  },
+  "development_n": 107,
+  "development_groups": 107,
+  "scope": "development only"
+}
