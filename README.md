@@ -29,8 +29,13 @@ Kho nghiên cứu được tổ chức theo ba lớp độc lập:
 | `version_15_2` | Predictable break-even trong frozen region R, covariate-only test selection | package 2026-11-19 | 22/22 test; hai nguồn đạt P1–P4; combined GO_PREDICTABLE_BREAK_EVEN |
 | `version_16` | Mở rộng V15.2: bộ giải C, mô hình hòa vốn và tỷ lệ vùng R tự nhiên | package 2026-11-20 | Đang kiểm tra: 30/30 test PASS; pha compiled dừng tại `COMPILED MISMATCH`; chưa có kết quả V16 chính thức |
 | `version_16_1` | Quy tắc đối chiếu số và ghi sự kiện sai khác giữa C với Python | package 2026-11-21 | 31/31 test PASS; compiled xong, C16_DM GO nhưng C16_DEV và C16_3GPP STOP do tỷ lệ numeric events vượt 1% |
+| `version_16_2` | Đối chiếu complex128 nhất quán, mô hình hòa vốn và tỷ lệ R tự nhiên | package 2026-11-22 | 32/32 test; C1–C4 đạt trên DEV/DM/3GPP; natural `NATURAL_NO_HARM`, chưa xác nhận lợi ích toàn cell |
 
-Source mới nhất đang được kiểm tra là [`src/version_16_1_numeric_agreement`](src/version_16_1_numeric_agreement). Kết quả hoàn tất mới nhất vẫn là V15.2.
+Source mới nhất là [`src/version_16_2_compiled_break_even`](src/version_16_2_compiled_break_even). Kết quả và provenance V16.2 nằm trong [`log/version_16_2`](log/version_16_2); V15.2 vẫn là policy lock được dùng lại.
+
+## Trạng thái version 16.2
+
+Pha `check` đạt 32/32 unit test và dùng lại lock V15.2 nguyên trạng. Pha C đạt C1–C4 trên development, DeepMIMO và 3GPP với 0 numeric events. Hai mô hình hòa vốn đã fit trên development và kiểm tra trên hai nguồn test. Pool tự nhiên Sionna UMi một ISD 200 m cho R = 1/100 nhóm; kết luận `NATURAL_NO_HARM` theo ngưỡng −2% đã khóa, nhưng CI tại K=8 chứa 0 nên chưa xác nhận tăng tốc toàn cell. N4 không đánh giá được vì R dưới năm nhóm. Xem [run log V16.2](log/version_16_2/README.md).
 
 ## Trạng thái version 16.1
 

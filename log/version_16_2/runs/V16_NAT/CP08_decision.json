@@ -1,0 +1,314 @@
+{
+  "status": "INCONCLUSIVE_REGION_TOO_SMALL",
+  "smoke": false,
+  "version": "V15.2",
+  "primary": {
+    "status": "INCONCLUSIVE_REGION_TOO_SMALL",
+    "region_gate": {
+      "region_groups": 1,
+      "required": 10,
+      "passed": false
+    },
+    "endpoints": {
+      "P1_break_even_in_region": false,
+      "P2_trend_in_region": false,
+      "P3_exactness": true,
+      "P4_no_missed_gain_outside_region": true
+    },
+    "fail_reasons": [
+      "region_too_small",
+      "P1_no_break_even_in_region",
+      "P2_no_increasing_trend_in_region"
+    ],
+    "by_K_in_region": [
+      {
+        "K": 4,
+        "region_geometries": 1,
+        "frozen_rel_saved": 0.4105888678529362,
+        "frozen_rel_ci_lo": null,
+        "frozen_rel_ci_hi": null,
+        "frozen_abs_saved_ms": 2.0758216666666667,
+        "frozen_abs_ci_lo": null,
+        "frozen_abs_ci_hi": null,
+        "early_rel_saved": 0.4105888678529362,
+        "early_rel_ci_lo": null,
+        "early_rel_ci_hi": null
+      },
+      {
+        "K": 6,
+        "region_geometries": 1,
+        "frozen_rel_saved": 0.3881903068779793,
+        "frozen_rel_ci_lo": null,
+        "frozen_rel_ci_hi": null,
+        "frozen_abs_saved_ms": 12.772698,
+        "frozen_abs_ci_lo": null,
+        "frozen_abs_ci_hi": null,
+        "early_rel_saved": 0.3881903068779793,
+        "early_rel_ci_lo": null,
+        "early_rel_ci_hi": null
+      },
+      {
+        "K": 8,
+        "region_geometries": 1,
+        "frozen_rel_saved": 0.3283636070198731,
+        "frozen_rel_ci_lo": null,
+        "frozen_rel_ci_hi": null,
+        "frozen_abs_saved_ms": 57.58834033333333,
+        "frozen_abs_ci_lo": null,
+        "frozen_abs_ci_hi": null,
+        "early_rel_saved": 0.33391613962269373,
+        "early_rel_ci_lo": null,
+        "early_rel_ci_hi": null
+      }
+    ],
+    "trend_in_region": {
+      "K_min": 4,
+      "K_max": 8,
+      "mean_diff": -0.07667272823024246,
+      "ci_lo": null,
+      "ci_hi": null
+    },
+    "outside_region": {
+      "geometries": 99,
+      "groups": 99,
+      "early_abs_saved_ms": -4.983480185185186,
+      "ci_lo": -5.3571228384680145,
+      "ci_hi": -4.606945020454545
+    }
+  },
+  "secondary_all_geometry_V15_1": {
+    "endpoints": {
+      "E1_break_even_Kmax": false,
+      "E2_trend_in_K": true,
+      "E3_exactness": true,
+      "E4_predictability": false
+    },
+    "by_K": [
+      {
+        "K": 4,
+        "mean_rel_saved": -0.00820232841063063,
+        "rel_ci_lo": -0.013830547171448897,
+        "rel_ci_hi": 0.0022760861241145455,
+        "mean_saved_ms": -0.030789549999999995,
+        "abs_ci_lo": -0.05310671050000001,
+        "abs_ci_hi": 0.01270767858333333,
+        "activated_fraction": 0.01
+      },
+      {
+        "K": 6,
+        "mean_rel_saved": 0.000872918034917652,
+        "rel_ci_lo": -0.0034978377735643876,
+        "rel_ci_hi": 0.008936430467998633,
+        "mean_saved_ms": 0.08238985999999998,
+        "abs_ci_lo": -0.04684381508333333,
+        "abs_ci_hi": 0.3395311261666666,
+        "activated_fraction": 0.01
+      },
+      {
+        "K": 8,
+        "mean_rel_saved": 0.002700136358509755,
+        "rel_ci_lo": -0.0006449053257233913,
+        "rel_ci_hi": 0.009348484885724285,
+        "mean_saved_ms": 0.5328052833333333,
+        "abs_ci_lo": -0.04378250974999999,
+        "abs_ci_hi": 1.6857049213333335,
+        "activated_fraction": 0.01
+      }
+    ],
+    "trend": {
+      "K_min": 4,
+      "K_max": 8,
+      "mean_diff": 0.010902464769140386,
+      "ci_lo": 0.008211542143291138,
+      "ci_hi": 0.013377347881705994
+    },
+    "activated_at_Kmax": {
+      "rows": 3,
+      "groups": 1,
+      "mean_saved_ms": 57.58834033333333,
+      "ci_lo": null,
+      "ci_hi": null
+    },
+    "status": "STOP_NO_PREDICTABLE_BREAK_EVEN",
+    "fail_reasons": [
+      "E1_no_break_even_at_Kmax",
+      "E4_activated_cells_not_positive"
+    ]
+  },
+  "secondary_strict_all_KL_gate": false,
+  "oracle_mismatch": 0,
+  "test_source": {
+    "batch_size": 10,
+    "bs_antennas": 16,
+    "bs_height_m": 10.0,
+    "carrier_frequency_hz": 3500000000.0,
+    "channel_normalization": "none",
+    "dataset_dtype": "complex64",
+    "dataset_sha256": "0c92e8393cd6f6abacba5ff53d559648513cea58019f6c664206a3d34d92fcc4",
+    "dataset_shape": [
+      100,
+      16,
+      8
+    ],
+    "generation_code_sha256": "62196273ae6e7d3fa862145fa1bea6bd2307bc8c0b0568a717a717941cb24ee2",
+    "generation_protocol_sha256": "6d818c5e51a5415560a5698c82a08782c1d6989fa276bcd55c1ac317e83854fe",
+    "group_definition": "One independent topology drop with eight users per group",
+    "independence_basis": "Fresh Sionna 3GPP UMi single-ISD topology drops generated after the V15.2 rule lock, with a separate seed and no use in development or earlier runtime tests; statistical independence is not formally verified.",
+    "indoor_probability": 0.0,
+    "inter_site_distance_m": 200.0,
+    "minimum_bs_ut_distance_m": 10.0,
+    "n_geometries": 100,
+    "n_groups": 100,
+    "natural_sample": {
+      "n_groups": 100,
+      "pool_sha256": "099a26d5e46c9b585a4b03e5c2e6284ffee13241c7727bfee6384593c4c06645",
+      "protocol_sha256": "6baa4bea7436ef5fe990c878ea598cfefbd3f375ba265f13362779ed94ecf8d7",
+      "rule": "simple random sample of whole groups without replacement; no covariate, no runtime",
+      "seed": 20261120
+    },
+    "parent_pool_sha256": "099a26d5e46c9b585a4b03e5c2e6284ffee13241c7727bfee6384593c4c06645",
+    "prior_use": "never_seen",
+    "sampling": "Sionna uniform random drops in one sector, single ISD; no near/edge strata or channel-based selection",
+    "scenario": "3GPP_TR_38.901_UMi_single_sector_ISD200",
+    "seed": 20261123,
+    "selected_baseband_frequency_hz": 0.0,
+    "sionna_version": "2.2.0",
+    "source": "Sionna_3GPP",
+    "spec_version": "19.2",
+    "split": "natural_prevalence_test",
+    "statistical_independence_verified": false,
+    "subcarrier_spacing_hz": 30000.0,
+    "torch_version": "2.15.0+cpu",
+    "users_per_geometry": 8,
+    "ut_height_m": 1.5
+  },
+  "per_config": [
+    {
+      "K": 4,
+      "L": 3,
+      "geometries": 100,
+      "groups": 100,
+      "mean_card_ms": 6.54797505,
+      "mean_saved_ms": -0.04797745,
+      "ci_lo": -0.06353929350000001,
+      "ci_hi": -0.01988817475,
+      "mean_rel_saved": -0.0140782137342381,
+      "mean_calls_saved": 0.12,
+      "activated_fraction": 0.01,
+      "pass_runtime_strict": 0
+    },
+    {
+      "K": 4,
+      "L": 5,
+      "geometries": 100,
+      "groups": 100,
+      "mean_card_ms": 8.25840379,
+      "mean_saved_ms": -0.028073380000000002,
+      "ci_lo": -0.050861662249999995,
+      "ci_hi": 0.01570384600000001,
+      "mean_rel_saved": -0.007049304674661747,
+      "mean_calls_saved": 0.2,
+      "activated_fraction": 0.01,
+      "pass_runtime_strict": 0
+    },
+    {
+      "K": 4,
+      "L": 7,
+      "geometries": 100,
+      "groups": 100,
+      "mean_card_ms": 9.12261479,
+      "mean_saved_ms": -0.016317820000000007,
+      "ci_lo": -0.04664557050000001,
+      "ci_hi": 0.06997068574999997,
+      "mean_rel_saved": -0.004885278049985448,
+      "mean_calls_saved": 0.28,
+      "activated_fraction": 0.01,
+      "pass_runtime_strict": 0
+    },
+    {
+      "K": 6,
+      "L": 3,
+      "geometries": 100,
+      "groups": 100,
+      "mean_card_ms": 21.511768590000003,
+      "mean_saved_ms": 0.031478650000000025,
+      "ci_lo": -0.04714513424999999,
+      "ci_hi": 0.18675459400000008,
+      "mean_rel_saved": -0.000715741592629733,
+      "mean_calls_saved": 0.78,
+      "activated_fraction": 0.01,
+      "pass_runtime_strict": 0
+    },
+    {
+      "K": 6,
+      "L": 5,
+      "geometries": 100,
+      "groups": 100,
+      "mean_card_ms": 27.215216420000004,
+      "mean_saved_ms": 0.08109844,
+      "ci_lo": -0.04857187624999999,
+      "ci_hi": 0.338993664,
+      "mean_rel_saved": 0.0008440265514802822,
+      "mean_calls_saved": 1.3,
+      "activated_fraction": 0.01,
+      "pass_runtime_strict": 0
+    },
+    {
+      "K": 6,
+      "L": 7,
+      "geometries": 100,
+      "groups": 100,
+      "mean_card_ms": 32.047192079999995,
+      "mean_saved_ms": 0.13459249,
+      "ci_lo": -0.04500220125,
+      "ci_hi": 0.49346836425,
+      "mean_rel_saved": 0.0018693439776160965,
+      "mean_calls_saved": 1.82,
+      "activated_fraction": 0.01,
+      "pass_runtime_strict": 0
+    },
+    {
+      "K": 8,
+      "L": 3,
+      "geometries": 100,
+      "groups": 100,
+      "mean_card_ms": 71.56096926999999,
+      "mean_saved_ms": 0.26295814,
+      "ci_lo": -0.04311192075,
+      "ci_hi": 0.8747335560000001,
+      "mean_rel_saved": 0.0015339594340790914,
+      "mean_calls_saved": 5.99,
+      "activated_fraction": 0.01,
+      "pass_runtime_strict": 0
+    },
+    {
+      "K": 8,
+      "L": 5,
+      "geometries": 100,
+      "groups": 100,
+      "mean_card_ms": 99.91307907999999,
+      "mean_saved_ms": 0.5477373999999998,
+      "ci_lo": -0.044847228249999996,
+      "ci_hi": 2.3227599329999995,
+      "mean_rel_saved": 0.0027599515925314584,
+      "mean_calls_saved": 6.0,
+      "activated_fraction": 0.01,
+      "pass_runtime_strict": 0
+    },
+    {
+      "K": 8,
+      "L": 7,
+      "geometries": 100,
+      "groups": 100,
+      "mean_card_ms": 126.98535215,
+      "mean_saved_ms": 0.7877203099999999,
+      "ci_lo": -0.0437165995,
+      "ci_hi": 2.4503531189999994,
+      "mean_rel_saved": 0.0033207565592232795,
+      "mean_calls_saved": 8.4,
+      "activated_fraction": 0.01,
+      "pass_runtime_strict": 0
+    }
+  ],
+  "interpretation": "Primary endpoints were predeclared in CP00/CP03; cells and thresholds were not tuned on test."
+}

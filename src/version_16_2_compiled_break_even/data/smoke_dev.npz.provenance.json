@@ -1,0 +1,8 @@
+{
+  "source": "synthetic_dev",
+  "scenario": "SYNTHETIC_ONLY clustered ULA, NOT DeepMIMO/3GPP",
+  "group_definition": "one drop per group",
+  "independence_basis": "independent PRNG stream, seed 12",
+  "prior_use": "smoke",
+  "edge_fraction": 0.5
+}

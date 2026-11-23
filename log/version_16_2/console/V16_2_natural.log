@@ -1,0 +1,70 @@
+nohup: ignoring input
+>> /media/icnlab/Data/hoanganh/.venv/bin/python code/natural_prevalence.py --stage sample --run-id NP16 --out-root outputs --pool /media/icnlab/Data/hoanganh/datasets/robust_mumimo_v16_2/natural_gpp_umi200/natural_pool.npz --pool-provenance /media/icnlab/Data/hoanganh/datasets/robust_mumimo_v16_2/natural_gpp_umi200/natural_pool.npz.provenance.json --output data/V16_natural_sample.npz
+WROTE data/V16_natural_sample.npz (100, 16, 8)
+>> /media/icnlab/Data/hoanganh/.venv/bin/python code/run_experiment.py --development /media/icnlab/Data/hoanganh/datasets/robust_mumimo_v15_2/development/dev.npz --dev-provenance /media/icnlab/Data/hoanganh/datasets/robust_mumimo_v15_2/development/dev.npz.provenance.json --out-root outputs --run-id V16_NAT --lock-from outputs/V152_DM/CP03_locked_cells.json --stage test-preflight --test data/V16_natural_sample.npz
+{
+  "test_sha256": "0c92e8393cd6f6abacba5ff53d559648513cea58019f6c664206a3d34d92fcc4",
+  "n": 100,
+  "groups": 100,
+  "per_K": [
+    {
+      "K": 4,
+      "groups_per_cell": {
+        "ER0": 95,
+        "ER1": 4,
+        "ER2": 1
+      }
+    },
+    {
+      "K": 6,
+      "groups_per_cell": {
+        "ER0": 92,
+        "ER1": 7,
+        "ER2": 1
+      }
+    },
+    {
+      "K": 8,
+      "groups_per_cell": {
+        "ER0": 90,
+        "ER1": 9,
+        "ER2": 1
+      }
+    }
+  ],
+  "region_groups": 1,
+  "outside_groups": 99,
+  "min_region_groups": 10,
+  "accepted": false,
+  "non_card_cells": [
+    "K4_L3_ER2",
+    "K4_L5_ER2",
+    "K4_L7_ER2",
+    "K6_L3_ER2",
+    "K6_L5_ER2",
+    "K6_L7_ER2",
+    "K8_L3_ER2",
+    "K8_L5_ER2",
+    "K8_L7_ER2"
+  ]
+}
+TEST-PREFLIGHT REJECTED (region too small)
+STAGE test-preflight OK outputs/V16_NAT
+>> /media/icnlab/Data/hoanganh/.venv/bin/python code/run_experiment.py --development /media/icnlab/Data/hoanganh/datasets/robust_mumimo_v15_2/development/dev.npz --dev-provenance /media/icnlab/Data/hoanganh/datasets/robust_mumimo_v15_2/development/dev.npz.provenance.json --out-root outputs --run-id V16_NAT --lock-from outputs/V152_DM/CP03_locked_cells.json --stage test --test data/V16_natural_sample.npz --test-provenance data/V16_natural_sample.npz.provenance.json --allow-small-region
+Traceback (most recent call last):
+  File "/media/icnlab/Data/hoanganh/Robust_MUMIMO_V16_2_20261122/Robust_MUMIMO_V16_20261120/code/run_experiment.py", line 737, in <module>
+    if __name__ == '__main__': main()
+                               ^^^^^^
+  File "/media/icnlab/Data/hoanganh/Robust_MUMIMO_V16_2_20261122/Robust_MUMIMO_V16_20261120/code/run_experiment.py", line 703, in main
+    tp = provenance(a.test_provenance, a.smoke)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/icnlab/Data/hoanganh/Robust_MUMIMO_V16_2_20261122/Robust_MUMIMO_V16_20261120/code/run_experiment.py", line 523, in provenance
+    if not d.get(n): raise ValueError('Missing provenance ' + n)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Missing provenance independence_basis
+[31;1mException: [0m/media/icnlab/Data/hoanganh/Robust_MUMIMO_V16_2_20261122/Robust_MUMIMO_V16_20261120/scripts/run_v16.ps1:46:30
+[36;1mLine |[0m
+[36;1m[36;1m  46 | [0m … if ($LASTEXITCODE -ne 0) { [36;1mthrow "Step failed (exit $LASTEXITCODE)"[0m }
+[36;1m     | [31;1m                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[36;1m[31;1m[31;1m[36;1m     | [31;1mStep failed (exit 1)[0m
+[36;1m[31;1m[31;1m[36;1m[31;1m[0m

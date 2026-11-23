@@ -1,0 +1,40 @@
+{
+  "n_cases": 1030,
+  "false_prunes": 0,
+  "fail_open_cases": 324,
+  "feasible_reference_cases": 515,
+  "pruned_cases": 161,
+  "by_family": {
+    "algebraic:COUPLING": {
+      "cases": 10,
+      "feasible_truth": 5,
+      "prune": 2,
+      "fail_open": 1,
+      "false_prune": 0
+    },
+    "algebraic:POWER": {
+      "cases": 10,
+      "feasible_truth": 5,
+      "prune": 1,
+      "fail_open": 0,
+      "false_prune": 0
+    },
+    "algebraic:POWER_TIGHT": {
+      "cases": 10,
+      "feasible_truth": 5,
+      "prune": 2,
+      "fail_open": 1,
+      "false_prune": 0
+    },
+    "channel:POWER": {
+      "cases": 1000,
+      "feasible_truth": 500,
+      "prune": 156,
+      "fail_open": 322,
+      "false_prune": 0
+    }
+  },
+  "outcome": "PASS",
+  "fail_reasons": [],
+  "scope": "Positive-F,u algebraic boundary and single-user CSI-derived power boundary; exact rational reference on double coefficients, not interval guarantee for beam generation."
+}

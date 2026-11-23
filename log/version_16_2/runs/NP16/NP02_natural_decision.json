@@ -1,0 +1,75 @@
+{
+  "status": "NATURAL_NO_HARM",
+  "N1_prevalence": {
+    "region_groups": 1,
+    "groups": 100,
+    "prevalence": 0.01,
+    "wilson_ci": [
+      0.001767432044609646,
+      0.0544861967490067
+    ]
+  },
+  "N2_expected_gain_Kmax": false,
+  "N3_no_harm_all_K": true,
+  "N4_region_consistent": null,
+  "by_K_all_geometries": [
+    {
+      "K": 4,
+      "mean_rel_saving": -0.00820232841063063,
+      "ci_lo": -0.014047245794294266,
+      "ci_hi": 0.002203885060554511,
+      "total_time_saving": -0.0038601142792815393,
+      "total_ci_lo": -0.00738304188264448,
+      "total_ci_hi": 0.0016226957240235128,
+      "mean_card_ms_sum_L": 23.92899363
+    },
+    {
+      "K": 6,
+      "mean_rel_saving": 0.000872918034917652,
+      "ci_lo": -0.0034759522804015362,
+      "ci_hi": 0.009132223441529757,
+      "total_time_saving": 0.0030600074046511095,
+      "total_ci_lo": -0.0019232331815519377,
+      "total_ci_hi": 0.014172013170544945,
+      "mean_card_ms_sum_L": 80.77417709
+    },
+    {
+      "K": 8,
+      "mean_rel_saving": 0.002700136358509755,
+      "ci_lo": -0.00064740936197828,
+      "ci_hi": 0.009314925827668165,
+      "total_time_saving": 0.005355555386502225,
+      "total_ci_lo": -0.00047333444329014716,
+      "total_ci_hi": 0.017830581426307668,
+      "mean_card_ms_sum_L": 298.4594005
+    }
+  ],
+  "region_at_Kmax": {
+    "geometries": 1,
+    "mean_rel_saving": 0.3283636070198731,
+    "ci_lo": null,
+    "ci_hi": null
+  },
+  "v152_run": "outputs/V16_NAT",
+  "test_sha256": "0c92e8393cd6f6abacba5ff53d559648513cea58019f6c664206a3d34d92fcc4",
+  "compiled_by_K": [
+    {
+      "K": 4,
+      "mean_rel_saving_routed": -0.0004817837299869442,
+      "ci_lo": -0.009672820834488761,
+      "ci_hi": 0.0165589956956518
+    },
+    {
+      "K": 6,
+      "mean_rel_saving_routed": 0.005333409806159741,
+      "ci_lo": -0.0019902269894960935,
+      "ci_hi": 0.01906287354510089
+    },
+    {
+      "K": 8,
+      "mean_rel_saving_routed": 0.005421674668973806,
+      "ci_lo": -0.0014236910529568552,
+      "ci_hi": 0.01821733463885123
+    }
+  ]
+}

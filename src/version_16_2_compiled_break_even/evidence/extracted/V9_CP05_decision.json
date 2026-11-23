@@ -1,0 +1,10 @@
+{
+  "n_geometries": 160,
+  "all_oracle_matched": true,
+  "mean_executed_full_solve_calls": 8.5375,
+  "mean_certificate_pruned": 10.8,
+  "mean_cardinality_pruned": 85.6625,
+  "mean_runtime_oracle_ms": 132.71218980517006,
+  "mean_runtime_pruned_ms": 15.954564243111236,
+  "scope": "Exact optimum only within 15 user subsets and listed ZF/RZF beams; not global beamforming; no outage or fairness certificate."
+}

@@ -1,0 +1,20 @@
+{
+  "batch_size": 10,
+  "bs_antennas": 16,
+  "bs_height_m": 10.0,
+  "carrier_frequency_hz": 3500000000.0,
+  "channel_normalization": "none",
+  "indoor_probability": 0.0,
+  "inter_site_distance_m": 200.0,
+  "minimum_bs_ut_distance_m": 10.0,
+  "n_geometries": 200,
+  "sampling": "Sionna uniform random drops in one sector, single ISD; no near/edge strata or channel-based selection",
+  "scenario": "3GPP_TR_38.901_UMi_single_sector_ISD200",
+  "seed": 20261123,
+  "selected_baseband_frequency_hz": 0.0,
+  "source": "Sionna_3GPP",
+  "spec_version": "19.2",
+  "subcarrier_spacing_hz": 30000.0,
+  "users_per_geometry": 8,
+  "ut_height_m": 1.5
+}
