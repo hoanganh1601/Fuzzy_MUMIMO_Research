@@ -31,8 +31,18 @@ Kho nghiên cứu được tổ chức theo ba lớp độc lập:
 | `version_16_1` | Quy tắc đối chiếu số và ghi sự kiện sai khác giữa C với Python | package 2026-11-21 | 31/31 test PASS; compiled xong, C16_DM GO nhưng C16_DEV và C16_3GPP STOP do tỷ lệ numeric events vượt 1% |
 | `version_16_2` | Đối chiếu complex128 nhất quán, mô hình hòa vốn và tỷ lệ R tự nhiên | package 2026-11-22 | 32/32 test; C1–C4 đạt trên DEV/DM/3GPP; natural `NATURAL_NO_HARM`, chưa xác nhận lợi ích toàn cell |
 | `version_16_3` | Khóa kịch bản UMa và chạy mẫu tự nhiên thứ hai với lock V15.2 | package 2026-11-23 | 36/36 test; `NATURAL_GAIN` trên 100 nhóm; R=99/100, tiết kiệm K=8 84.33% |
+| `version_17` | Chuyển giao frozen policy qua bốn mức Pmax trên UMi và UMa | package 2026-11-24 | 38/38 test; 8 run đạt X1; 30/35/46/49 dBm đều `TRANSFER_OK` |
 
-Source mới nhất là [`src/version_16_3_natural_uma`](src/version_16_3_natural_uma). Kết quả và provenance V16.3 nằm trong [`log/version_16_3`](log/version_16_3); V15.2 vẫn là policy lock được dùng lại.
+Source mới nhất là [`src/version_17_pmax_transfer`](src/version_17_pmax_transfer). Kết quả và checkpoint V17 nằm trong [`log/version_17`](log/version_17); V15.2 vẫn là policy lock được dùng lại.
+
+## Trạng thái version 17
+
+Policy V15.2 được giữ nguyên và đo trên hai tập phần bù 100 nhóm của UMi/UMa
+tại 30, 35, 46 và 49 dBm. Cả 8 run đạt X1: 21.600 quyết định khớp oracle,
+zero numeric events và zero single/double decision changes. Cả bốn mức Pmax
+trả `TRANSFER_OK`. UMa tiết kiệm tại K=8 từ 97.05% ở 30 dBm đến 39.28% ở
+49 dBm. UMi không có nhóm trong R, nên không chứng minh tăng tốc nhưng overhead
+vẫn nằm trong ngưỡng −2%. Xem [run log V17](log/version_17/README.md).
 
 ## Trạng thái version 16.3
 

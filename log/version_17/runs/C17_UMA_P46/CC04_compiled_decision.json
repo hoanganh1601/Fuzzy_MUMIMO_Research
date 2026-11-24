@@ -1,0 +1,31 @@
+{
+  "version": "V17-compiled",
+  "dataset_sha256": "c9f629ee4bb648243816332baf39365776a84f47971cc8b4b47b911217a81251",
+  "pmax_w": 39.810717055349734,
+  "pmax_dbm": 46.0,
+  "n": 100,
+  "C1_exactness_checked_all": true,
+  "numeric_events": 0,
+  "decisions_checked": 2700,
+  "numeric_event_fraction": 0.0,
+  "single_vs_double_precision_audit": {
+    "input_dtype": "complex64",
+    "configurations_checked": 900,
+    "decision_changes": 0,
+    "max_rel_power_diff": 8.19947842873869e-05
+  },
+  "numeric_event_types": {},
+  "region_groups": 71,
+  "outside_groups": 29,
+  "C2_break_even_in_R": true,
+  "C3_trend_in_R": true,
+  "C4_bounded_loss_outside": true,
+  "trend_in_R": {
+    "mean_diff": 0.35423069175412647,
+    "ci_lo": 0.2720339724521668,
+    "ci_hi": 0.4327848235824401
+  },
+  "status": "GO_COMPILED_BREAK_EVEN",
+  "speedup_card_median_by_K": null,
+  "note": "HYBRID cells are executed as EARLY in the compiled path; LP audit not compiled (does not change decisions)."
+}

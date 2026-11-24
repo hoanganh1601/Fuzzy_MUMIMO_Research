@@ -1,0 +1,78 @@
+{
+  "checkpoint": "CK2",
+  "time_utc": "2026-11-24T16:31:01Z",
+  "runs": [
+    {
+      "run": "C17_UMI_P30",
+      "state": "DONE",
+      "data_ok": true,
+      "pmax_ok": true,
+      "X1": true,
+      "decisions": 2700,
+      "numeric_events": 0
+    },
+    {
+      "run": "C17_UMI_P35",
+      "state": "DONE",
+      "data_ok": true,
+      "pmax_ok": true,
+      "X1": true,
+      "decisions": 2700,
+      "numeric_events": 0
+    },
+    {
+      "run": "C17_UMI_P46",
+      "state": "DONE",
+      "data_ok": true,
+      "pmax_ok": true,
+      "X1": true,
+      "decisions": 2700,
+      "numeric_events": 0
+    },
+    {
+      "run": "C17_UMI_P49",
+      "state": "DONE",
+      "data_ok": true,
+      "pmax_ok": true,
+      "X1": true,
+      "decisions": 2700,
+      "numeric_events": 0
+    },
+    {
+      "run": "C17_UMA_P30",
+      "state": "DONE",
+      "data_ok": true,
+      "pmax_ok": true,
+      "X1": true,
+      "decisions": 2700,
+      "numeric_events": 0
+    },
+    {
+      "run": "C17_UMA_P35",
+      "state": "DONE",
+      "data_ok": true,
+      "pmax_ok": true,
+      "X1": true,
+      "decisions": 2700,
+      "numeric_events": 0
+    },
+    {
+      "run": "C17_UMA_P46",
+      "state": "DONE",
+      "data_ok": true,
+      "pmax_ok": true,
+      "X1": true,
+      "decisions": 2700,
+      "numeric_events": 0
+    },
+    {
+      "run": "C17_UMA_P49",
+      "state": "DONE",
+      "data_ok": true,
+      "pmax_ok": true,
+      "X1": true,
+      "decisions": 2700,
+      "numeric_events": 0
+    }
+  ]
+}

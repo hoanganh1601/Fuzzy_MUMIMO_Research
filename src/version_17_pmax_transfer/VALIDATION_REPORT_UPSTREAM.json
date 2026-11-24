@@ -1,0 +1,18 @@
+{
+ "version": "V16",
+ "date": "2026-11-20",
+ "core_unchanged": "run_experiment/robust_model/screening_policy/certified_screening/screening_bounds byte-identical to V15.2 (hashes e5109400, 1511351d, 8606efa3, 23344bb8, edacac60); V15.2 locks remain valid",
+ "unit_tests": "30/30 PASS (22 V15.2 + 8 V16: compiled vs Python/oracle, counters, routing, Lemma 1, Lemma 2, NNLS recovery, Wilson)",
+ "compiled": "screen_core.c: gcc -std=c99 -pedantic -Wall -Wextra and clang clean; selftest 216/216 decisions identical to Python; every benchmark decision checked against the Python exhaustive oracle",
+ "rehearsal_SYNTHETIC": {
+  "lock_transfer": "kernel string changed in the test VM -> check reported machine-only difference -> transfer with identical policy cells",
+  "compiled": "speed-up of compiled CARD over Python CARD 64-782x; inside R EARLY/ROUTED saving 96-99%; outside R ROUTED about -0.5% with default timing (C16_DM GO; C16_3GPP GO)",
+  "model": "fitted on development only; test R^2 0.95-0.98, sign agreement on material effects 91-99%, 0 violations of Lemma 1 and Lemma 2 (Python and compiled timings)",
+  "natural": "30-group simple random sample from a pool with 25% edge drops: prevalence 26.7% [14.2, 44.5]; cell-wide saving at K=8 21.1% [9.3, 33.8]; NATURAL_GAIN"
+ },
+ "not_tested": [
+  "PowerShell script not executed (Linux); its Python sequence was executed",
+  "MSVC build path not tested (gcc/clang tested)",
+  "Synthetic numbers are rehearsal only"
+ ]
+}
