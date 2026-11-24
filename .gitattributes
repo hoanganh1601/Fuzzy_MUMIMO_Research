@@ -12,6 +12,8 @@ log/version_01/** -text
 log/version_02/** -text
 src/version_16_3_natural_uma/** -text
 log/version_16_3/** -text
+src/version_17_pmax_transfer/** -text
+log/version_17/** -text
 src/version_07_beam_feasibility_diagnosis/** -text
 log/version_07/** -text
 src/version_08_robust_user_scheduling/** -text

@@ -1,0 +1,36 @@
+{
+  "code_hashes": {
+    "reference_model.py": "1a420499f48f88a8ee75ada1d833723a810187bf5974f92cfff8426a62a79db8",
+    "ablation_audit.py": "c283faa4d84a045162f4763d5c10c7e58821b96eef0006d9da9acd19ace6f10a",
+    "ablation_certified.py": "6de914ad38e8b59be4ab0bf0bad679f0f87375059c4a9504178911eb18adea33",
+    "independent_validation.py": "1a06334735598692bf1e9539f6faf93f16c3ac52535ebfe616fde5f996f12f02"
+  },
+  "cfg": {
+    "q": 2.960414,
+    "sigma": 0.04,
+    "gamma": 3.9810717055349722,
+    "noise": 2e-13,
+    "pmax": 1.0,
+    "alphas": [
+      0.0,
+      0.001,
+      0.01,
+      0.05,
+      0.1,
+      0.3,
+      1.0
+    ],
+    "guard": 1e-05
+  },
+  "analysis": {
+    "repeats": 5,
+    "bootstrap": 2000,
+    "min_groups": 20,
+    "order_seed_base": 7531,
+    "bootstrap_seed": 1729
+  },
+  "goal": "test fixed finite beam-codebook screening, no margin optimization",
+  "created_without_test": "true",
+  "legacy_development_dataset_sha": "1d479a06b94fff565a8997ceb870c670bda7458dbf5e5cd54c2fc0afc14b1f50",
+  "design_note": "The full test set must remain unopened before lock; source provenance is mandatory."
+}

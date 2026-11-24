@@ -1,0 +1,23 @@
+{
+  "version": "V16-compiled",
+  "dataset_sha256": "79e8f433777f5ab3b60d7b0737f7ea43313bb684afe166fb931dd6df1777c371",
+  "n": 24,
+  "C1_exactness_checked_all": true,
+  "region_groups": 12,
+  "outside_groups": 12,
+  "C2_break_even_in_R": true,
+  "C3_trend_in_R": true,
+  "C4_bounded_loss_outside": true,
+  "trend_in_R": {
+    "mean_diff": 0.08997567743987685,
+    "ci_lo": 0.022646705574893605,
+    "ci_hi": 0.17498597966450552
+  },
+  "status": "GO_COMPILED_BREAK_EVEN",
+  "speedup_card_median_by_K": {
+    "4": 505.8026822840927,
+    "6": 153.5385143263813,
+    "8": 71.55955981654625
+  },
+  "note": "HYBRID cells are executed as EARLY in the compiled path; LP audit not compiled (does not change decisions)."
+}

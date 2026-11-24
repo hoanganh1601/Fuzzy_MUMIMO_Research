@@ -1,0 +1,321 @@
+nohup: ignoring input
+>> /media/icnlab/Data/hoanganh/.venv/bin/python code/pmax_sweep.py --stage check --out-root outputs --manifest outputs/V152_DM/CP00_manifest.json --lock outputs/V152_DM/CP03_locked_cells.json
+{
+ "checkpoint": "CK1",
+ "ok": true,
+ "problems": [],
+ "protocol_sha256": "541c2790b6dce6f5503feb54c7e6feb22786661b356a7aa7e1767a79445bd41b",
+ "time_utc": "2026-11-24T11:58:47Z"
+}
+>> /media/icnlab/Data/hoanganh/.venv/bin/python code/compiled_benchmark.py --data data/V17_umi_complement.npz --manifest outputs/V152_DM/CP00_manifest.json --lock outputs/V152_DM/CP03_locked_cells.json --run-id C17_UMI_P30 --out-root outputs --pmax-dbm 30
+  compiled: 10/100
+  compiled: 20/100
+  compiled: 30/100
+  compiled: 40/100
+  compiled: 50/100
+  compiled: 60/100
+  compiled: 70/100
+  compiled: 80/100
+  compiled: 90/100
+  compiled: 100/100
+# Compiled solver — C17_UMI_P30: **INCONCLUSIVE_REGION_TOO_SMALL**
+
+| Zone | K | Policy | n | Rel. saving | CI95 | CARD ms (sum over L) |
+|---|---|---|---|---|---|---|
+| R | 4 | EARLY | 0 | — | [—, —] | None |
+| R | 4 | ROUTED | 0 | — | [—, —] | None |
+| R | 6 | EARLY | 0 | — | [—, —] | None |
+| R | 6 | ROUTED | 0 | — | [—, —] | None |
+| R | 8 | EARLY | 0 | — | [—, —] | None |
+| R | 8 | ROUTED | 0 | — | [—, —] | None |
+| outside | 4 | EARLY | 100 | -0.18% | [-0.26%, -0.10%] | 0.0362 |
+| outside | 4 | ROUTED | 100 | -1.17% | [-1.28%, -1.06%] | 0.0362 |
+| outside | 6 | EARLY | 100 | -0.31% | [-0.38%, -0.23%] | 0.37 |
+| outside | 6 | ROUTED | 100 | -0.28% | [-0.37%, -0.19%] | 0.37 |
+| outside | 8 | EARLY | 100 | -0.32% | [-0.40%, -0.25%] | 3.0346 |
+| outside | 8 | ROUTED | 100 | -0.07% | [-0.14%, -0.01%] | 3.0346 |
+
+C1: 2700 decisions checked; 0 differ only within floating-point sensitivity ({}); see CC06.
+Input dtype complex64; V15.2 single-precision Python decisions vs double: 0 changes in 900 configurations, max relative power difference 0.0008250138686044221
+>> /media/icnlab/Data/hoanganh/.venv/bin/python code/pmax_sweep.py --stage progress --out-root outputs
+{'run': 'C17_UMI_P30', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMI_P35', 'state': 'NOT FINISHED', 'groups_done': 0}
+{'run': 'C17_UMI_P46', 'state': 'NOT FINISHED', 'groups_done': 0}
+{'run': 'C17_UMI_P49', 'state': 'NOT FINISHED', 'groups_done': 0}
+{'run': 'C17_UMA_P30', 'state': 'NOT FINISHED', 'groups_done': 0}
+{'run': 'C17_UMA_P35', 'state': 'NOT FINISHED', 'groups_done': 0}
+{'run': 'C17_UMA_P46', 'state': 'NOT FINISHED', 'groups_done': 0}
+{'run': 'C17_UMA_P49', 'state': 'NOT FINISHED', 'groups_done': 0}
+>> /media/icnlab/Data/hoanganh/.venv/bin/python code/compiled_benchmark.py --data data/V17_umi_complement.npz --manifest outputs/V152_DM/CP00_manifest.json --lock outputs/V152_DM/CP03_locked_cells.json --run-id C17_UMI_P35 --out-root outputs --pmax-dbm 35
+  compiled: 10/100
+  compiled: 20/100
+  compiled: 30/100
+  compiled: 40/100
+  compiled: 50/100
+  compiled: 60/100
+  compiled: 70/100
+  compiled: 80/100
+  compiled: 90/100
+  compiled: 100/100
+# Compiled solver — C17_UMI_P35: **INCONCLUSIVE_REGION_TOO_SMALL**
+
+| Zone | K | Policy | n | Rel. saving | CI95 | CARD ms (sum over L) |
+|---|---|---|---|---|---|---|
+| R | 4 | EARLY | 0 | — | [—, —] | None |
+| R | 4 | ROUTED | 0 | — | [—, —] | None |
+| R | 6 | EARLY | 0 | — | [—, —] | None |
+| R | 6 | ROUTED | 0 | — | [—, —] | None |
+| R | 8 | EARLY | 0 | — | [—, —] | None |
+| R | 8 | ROUTED | 0 | — | [—, —] | None |
+| outside | 4 | EARLY | 100 | -0.16% | [-0.23%, -0.09%] | 0.0341 |
+| outside | 4 | ROUTED | 100 | -0.58% | [-0.73%, -0.42%] | 0.0341 |
+| outside | 6 | EARLY | 100 | -0.28% | [-0.33%, -0.22%] | 0.3574 |
+| outside | 6 | ROUTED | 100 | 0.20% | [0.15%, 0.26%] | 0.3574 |
+| outside | 8 | EARLY | 100 | -0.29% | [-0.36%, -0.22%] | 2.942 |
+| outside | 8 | ROUTED | 100 | 0.08% | [0.03%, 0.13%] | 2.942 |
+
+C1: 2700 decisions checked; 0 differ only within floating-point sensitivity ({}); see CC06.
+Input dtype complex64; V15.2 single-precision Python decisions vs double: 0 changes in 900 configurations, max relative power difference 0.0013038157218395682
+>> /media/icnlab/Data/hoanganh/.venv/bin/python code/pmax_sweep.py --stage progress --out-root outputs
+{'run': 'C17_UMI_P30', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMI_P35', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMI_P46', 'state': 'NOT FINISHED', 'groups_done': 0}
+{'run': 'C17_UMI_P49', 'state': 'NOT FINISHED', 'groups_done': 0}
+{'run': 'C17_UMA_P30', 'state': 'NOT FINISHED', 'groups_done': 0}
+{'run': 'C17_UMA_P35', 'state': 'NOT FINISHED', 'groups_done': 0}
+{'run': 'C17_UMA_P46', 'state': 'NOT FINISHED', 'groups_done': 0}
+{'run': 'C17_UMA_P49', 'state': 'NOT FINISHED', 'groups_done': 0}
+>> /media/icnlab/Data/hoanganh/.venv/bin/python code/compiled_benchmark.py --data data/V17_umi_complement.npz --manifest outputs/V152_DM/CP00_manifest.json --lock outputs/V152_DM/CP03_locked_cells.json --run-id C17_UMI_P46 --out-root outputs --pmax-dbm 46
+  compiled: 10/100
+  compiled: 20/100
+  compiled: 30/100
+  compiled: 40/100
+  compiled: 50/100
+  compiled: 60/100
+  compiled: 70/100
+  compiled: 80/100
+  compiled: 90/100
+  compiled: 100/100
+# Compiled solver — C17_UMI_P46: **INCONCLUSIVE_REGION_TOO_SMALL**
+
+| Zone | K | Policy | n | Rel. saving | CI95 | CARD ms (sum over L) |
+|---|---|---|---|---|---|---|
+| R | 4 | EARLY | 0 | — | [—, —] | None |
+| R | 4 | ROUTED | 0 | — | [—, —] | None |
+| R | 6 | EARLY | 0 | — | [—, —] | None |
+| R | 6 | ROUTED | 0 | — | [—, —] | None |
+| R | 8 | EARLY | 0 | — | [—, —] | None |
+| R | 8 | ROUTED | 0 | — | [—, —] | None |
+| outside | 4 | EARLY | 100 | -0.19% | [-0.25%, -0.13%] | 0.033 |
+| outside | 4 | ROUTED | 100 | -0.67% | [-0.79%, -0.53%] | 0.033 |
+| outside | 6 | EARLY | 100 | -0.31% | [-0.35%, -0.27%] | 0.3477 |
+| outside | 6 | ROUTED | 100 | -0.13% | [-0.18%, -0.08%] | 0.3477 |
+| outside | 8 | EARLY | 100 | -0.29% | [-0.37%, -0.21%] | 2.9012 |
+| outside | 8 | ROUTED | 100 | -0.04% | [-0.09%, 0.02%] | 2.9012 |
+
+C1: 2700 decisions checked; 0 differ only within floating-point sensitivity ({}); see CC06.
+Input dtype complex64; V15.2 single-precision Python decisions vs double: 0 changes in 900 configurations, max relative power difference 0.0024041433128187987
+>> /media/icnlab/Data/hoanganh/.venv/bin/python code/pmax_sweep.py --stage progress --out-root outputs
+{'run': 'C17_UMI_P30', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMI_P35', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMI_P46', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMI_P49', 'state': 'NOT FINISHED', 'groups_done': 0}
+{'run': 'C17_UMA_P30', 'state': 'NOT FINISHED', 'groups_done': 0}
+{'run': 'C17_UMA_P35', 'state': 'NOT FINISHED', 'groups_done': 0}
+{'run': 'C17_UMA_P46', 'state': 'NOT FINISHED', 'groups_done': 0}
+{'run': 'C17_UMA_P49', 'state': 'NOT FINISHED', 'groups_done': 0}
+>> /media/icnlab/Data/hoanganh/.venv/bin/python code/compiled_benchmark.py --data data/V17_umi_complement.npz --manifest outputs/V152_DM/CP00_manifest.json --lock outputs/V152_DM/CP03_locked_cells.json --run-id C17_UMI_P49 --out-root outputs --pmax-dbm 49
+  compiled: 10/100
+  compiled: 20/100
+  compiled: 30/100
+  compiled: 40/100
+  compiled: 50/100
+  compiled: 60/100
+  compiled: 70/100
+  compiled: 80/100
+  compiled: 90/100
+  compiled: 100/100
+# Compiled solver — C17_UMI_P49: **INCONCLUSIVE_REGION_TOO_SMALL**
+
+| Zone | K | Policy | n | Rel. saving | CI95 | CARD ms (sum over L) |
+|---|---|---|---|---|---|---|
+| R | 4 | EARLY | 0 | — | [—, —] | None |
+| R | 4 | ROUTED | 0 | — | [—, —] | None |
+| R | 6 | EARLY | 0 | — | [—, —] | None |
+| R | 6 | ROUTED | 0 | — | [—, —] | None |
+| R | 8 | EARLY | 0 | — | [—, —] | None |
+| R | 8 | ROUTED | 0 | — | [—, —] | None |
+| outside | 4 | EARLY | 100 | -0.19% | [-0.24%, -0.13%] | 0.0335 |
+| outside | 4 | ROUTED | 100 | -1.01% | [-1.14%, -0.88%] | 0.0335 |
+| outside | 6 | EARLY | 100 | -0.33% | [-0.38%, -0.29%] | 0.352 |
+| outside | 6 | ROUTED | 100 | -0.09% | [-0.13%, -0.05%] | 0.352 |
+| outside | 8 | EARLY | 100 | -0.29% | [-0.35%, -0.23%] | 2.9309 |
+| outside | 8 | ROUTED | 100 | -0.03% | [-0.07%, 0.01%] | 2.9309 |
+
+C1: 2700 decisions checked; 0 differ only within floating-point sensitivity ({}); see CC06.
+Input dtype complex64; V15.2 single-precision Python decisions vs double: 0 changes in 900 configurations, max relative power difference 0.00581504998563362
+>> /media/icnlab/Data/hoanganh/.venv/bin/python code/pmax_sweep.py --stage progress --out-root outputs
+{'run': 'C17_UMI_P30', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMI_P35', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMI_P46', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMI_P49', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMA_P30', 'state': 'NOT FINISHED', 'groups_done': 0}
+{'run': 'C17_UMA_P35', 'state': 'NOT FINISHED', 'groups_done': 0}
+{'run': 'C17_UMA_P46', 'state': 'NOT FINISHED', 'groups_done': 0}
+{'run': 'C17_UMA_P49', 'state': 'NOT FINISHED', 'groups_done': 0}
+>> /media/icnlab/Data/hoanganh/.venv/bin/python code/compiled_benchmark.py --data data/V17_uma_complement.npz --manifest outputs/V152_DM/CP00_manifest.json --lock outputs/V152_DM/CP03_locked_cells.json --run-id C17_UMA_P30 --out-root outputs --pmax-dbm 30
+  compiled: 10/100
+  compiled: 20/100
+  compiled: 30/100
+  compiled: 40/100
+  compiled: 50/100
+  compiled: 60/100
+  compiled: 70/100
+  compiled: 80/100
+  compiled: 90/100
+  compiled: 100/100
+# Compiled solver — C17_UMA_P30: **GO_COMPILED_BREAK_EVEN**
+
+| Zone | K | Policy | n | Rel. saving | CI95 | CARD ms (sum over L) |
+|---|---|---|---|---|---|---|
+| R | 4 | EARLY | 100 | 81.86% | [76.49%, 86.65%] | 0.0748 |
+| R | 4 | ROUTED | 100 | 81.54% | [76.54%, 86.37%] | 0.0748 |
+| R | 6 | EARLY | 100 | 93.16% | [90.17%, 95.55%] | 0.5792 |
+| R | 6 | ROUTED | 100 | 93.11% | [89.89%, 95.49%] | 0.5792 |
+| R | 8 | EARLY | 100 | 97.06% | [96.04%, 97.88%] | 3.886 |
+| R | 8 | ROUTED | 100 | 97.05% | [96.05%, 97.86%] | 3.886 |
+| outside | 4 | EARLY | 0 | — | [—, —] | None |
+| outside | 4 | ROUTED | 0 | — | [—, —] | None |
+| outside | 6 | EARLY | 0 | — | [—, —] | None |
+| outside | 6 | ROUTED | 0 | — | [—, —] | None |
+| outside | 8 | EARLY | 0 | — | [—, —] | None |
+| outside | 8 | ROUTED | 0 | — | [—, —] | None |
+
+C1: 2700 decisions checked; 0 differ only within floating-point sensitivity ({}); see CC06.
+Input dtype complex64; V15.2 single-precision Python decisions vs double: 0 changes in 900 configurations, max relative power difference 3.6947456250591626e-05
+>> /media/icnlab/Data/hoanganh/.venv/bin/python code/pmax_sweep.py --stage progress --out-root outputs
+{'run': 'C17_UMI_P30', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMI_P35', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMI_P46', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMI_P49', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMA_P30', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMA_P35', 'state': 'NOT FINISHED', 'groups_done': 0}
+{'run': 'C17_UMA_P46', 'state': 'NOT FINISHED', 'groups_done': 0}
+{'run': 'C17_UMA_P49', 'state': 'NOT FINISHED', 'groups_done': 0}
+>> /media/icnlab/Data/hoanganh/.venv/bin/python code/compiled_benchmark.py --data data/V17_uma_complement.npz --manifest outputs/V152_DM/CP00_manifest.json --lock outputs/V152_DM/CP03_locked_cells.json --run-id C17_UMA_P35 --out-root outputs --pmax-dbm 35
+  compiled: 10/100
+  compiled: 20/100
+  compiled: 30/100
+  compiled: 40/100
+  compiled: 50/100
+  compiled: 60/100
+  compiled: 70/100
+  compiled: 80/100
+  compiled: 90/100
+  compiled: 100/100
+# Compiled solver — C17_UMA_P35: **GO_COMPILED_BREAK_EVEN**
+
+| Zone | K | Policy | n | Rel. saving | CI95 | CARD ms (sum over L) |
+|---|---|---|---|---|---|---|
+| R | 4 | EARLY | 99 | 73.92% | [67.19%, 79.89%] | 0.0692 |
+| R | 4 | ROUTED | 99 | 73.55% | [67.62%, 79.23%] | 0.0692 |
+| R | 6 | EARLY | 99 | 89.04% | [85.34%, 92.20%] | 0.5291 |
+| R | 6 | ROUTED | 99 | 88.98% | [85.45%, 92.21%] | 0.5291 |
+| R | 8 | EARLY | 99 | 94.00% | [92.18%, 95.62%] | 3.6633 |
+| R | 8 | ROUTED | 99 | 93.98% | [91.96%, 95.47%] | 3.6633 |
+| outside | 4 | EARLY | 1 | -0.09% | [—, —] | 0.0163 |
+| outside | 4 | ROUTED | 1 | -1.61% | [—, —] | 0.0163 |
+| outside | 6 | EARLY | 1 | -0.28% | [—, —] | 0.1756 |
+| outside | 6 | ROUTED | 1 | -0.21% | [—, —] | 0.1756 |
+| outside | 8 | EARLY | 1 | -0.03% | [—, —] | 0.4298 |
+| outside | 8 | ROUTED | 1 | -0.18% | [—, —] | 0.4298 |
+
+C1: 2700 decisions checked; 0 differ only within floating-point sensitivity ({}); see CC06.
+Input dtype complex64; V15.2 single-precision Python decisions vs double: 0 changes in 900 configurations, max relative power difference 3.6947456250591626e-05
+>> /media/icnlab/Data/hoanganh/.venv/bin/python code/pmax_sweep.py --stage progress --out-root outputs
+{'run': 'C17_UMI_P30', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMI_P35', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMI_P46', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMI_P49', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMA_P30', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMA_P35', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMA_P46', 'state': 'NOT FINISHED', 'groups_done': 0}
+{'run': 'C17_UMA_P49', 'state': 'NOT FINISHED', 'groups_done': 0}
+>> /media/icnlab/Data/hoanganh/.venv/bin/python code/compiled_benchmark.py --data data/V17_uma_complement.npz --manifest outputs/V152_DM/CP00_manifest.json --lock outputs/V152_DM/CP03_locked_cells.json --run-id C17_UMA_P46 --out-root outputs --pmax-dbm 46
+  compiled: 10/100
+  compiled: 20/100
+  compiled: 30/100
+  compiled: 40/100
+  compiled: 50/100
+  compiled: 60/100
+  compiled: 70/100
+  compiled: 80/100
+  compiled: 90/100
+  compiled: 100/100
+# Compiled solver — C17_UMA_P46: **GO_COMPILED_BREAK_EVEN**
+
+| Zone | K | Policy | n | Rel. saving | CI95 | CARD ms (sum over L) |
+|---|---|---|---|---|---|---|
+| R | 4 | EARLY | 71 | 40.21% | [30.64%, 48.24%] | 0.0547 |
+| R | 4 | ROUTED | 71 | 39.77% | [30.51%, 49.21%] | 0.0547 |
+| R | 6 | EARLY | 71 | 59.61% | [51.81%, 67.11%] | 0.4436 |
+| R | 6 | ROUTED | 71 | 59.59% | [51.15%, 67.49%] | 0.4436 |
+| R | 8 | EARLY | 71 | 75.64% | [71.79%, 79.63%] | 2.9923 |
+| R | 8 | ROUTED | 71 | 75.63% | [71.28%, 79.58%] | 2.9923 |
+| outside | 4 | EARLY | 29 | -0.21% | [-0.34%, -0.10%] | 0.0316 |
+| outside | 4 | ROUTED | 29 | -1.27% | [-1.50%, -1.02%] | 0.0316 |
+| outside | 6 | EARLY | 29 | -0.26% | [-0.31%, -0.20%] | 0.2662 |
+| outside | 6 | ROUTED | 29 | -0.23% | [-0.37%, -0.10%] | 0.2662 |
+| outside | 8 | EARLY | 29 | -0.26% | [-0.37%, -0.15%] | 2.0691 |
+| outside | 8 | ROUTED | 29 | -0.08% | [-0.21%, 0.03%] | 2.0691 |
+
+C1: 2700 decisions checked; 0 differ only within floating-point sensitivity ({}); see CC06.
+Input dtype complex64; V15.2 single-precision Python decisions vs double: 0 changes in 900 configurations, max relative power difference 8.19947842873869e-05
+>> /media/icnlab/Data/hoanganh/.venv/bin/python code/pmax_sweep.py --stage progress --out-root outputs
+{'run': 'C17_UMI_P30', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMI_P35', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMI_P46', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMI_P49', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMA_P30', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMA_P35', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMA_P46', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMA_P49', 'state': 'NOT FINISHED', 'groups_done': 0}
+>> /media/icnlab/Data/hoanganh/.venv/bin/python code/compiled_benchmark.py --data data/V17_uma_complement.npz --manifest outputs/V152_DM/CP00_manifest.json --lock outputs/V152_DM/CP03_locked_cells.json --run-id C17_UMA_P49 --out-root outputs --pmax-dbm 49
+  compiled: 10/100
+  compiled: 20/100
+  compiled: 30/100
+  compiled: 40/100
+  compiled: 50/100
+  compiled: 60/100
+  compiled: 70/100
+  compiled: 80/100
+  compiled: 90/100
+  compiled: 100/100
+# Compiled solver — C17_UMA_P49: **GO_COMPILED_BREAK_EVEN**
+
+| Zone | K | Policy | n | Rel. saving | CI95 | CARD ms (sum over L) |
+|---|---|---|---|---|---|---|
+| R | 4 | EARLY | 56 | 29.45% | [19.28%, 39.57%] | 0.0487 |
+| R | 4 | ROUTED | 56 | 28.91% | [18.12%, 38.71%] | 0.0487 |
+| R | 6 | EARLY | 56 | 48.60% | [38.22%, 57.94%] | 0.3782 |
+| R | 6 | ROUTED | 56 | 48.67% | [38.84%, 58.00%] | 0.3782 |
+| R | 8 | EARLY | 56 | 70.16% | [65.45%, 74.21%] | 2.7901 |
+| R | 8 | ROUTED | 56 | 70.15% | [65.74%, 74.32%] | 2.7901 |
+| outside | 4 | EARLY | 44 | -0.21% | [-0.29%, -0.11%] | 0.0288 |
+| outside | 4 | ROUTED | 44 | -1.11% | [-1.30%, -0.90%] | 0.0288 |
+| outside | 6 | EARLY | 44 | -0.34% | [-0.43%, -0.24%] | 0.2504 |
+| outside | 6 | ROUTED | 44 | -0.17% | [-0.31%, -0.05%] | 0.2504 |
+| outside | 8 | EARLY | 44 | -0.26% | [-0.39%, -0.14%] | 1.9159 |
+| outside | 8 | ROUTED | 44 | -0.01% | [-0.10%, 0.08%] | 1.9159 |
+
+C1: 2700 decisions checked; 0 differ only within floating-point sensitivity ({}); see CC06.
+Input dtype complex64; V15.2 single-precision Python decisions vs double: 0 changes in 900 configurations, max relative power difference 8.19947842873869e-05
+>> /media/icnlab/Data/hoanganh/.venv/bin/python code/pmax_sweep.py --stage progress --out-root outputs
+{'run': 'C17_UMI_P30', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMI_P35', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMI_P46', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMI_P49', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMA_P30', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMA_P35', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMA_P46', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}
+{'run': 'C17_UMA_P49', 'state': 'DONE', 'data_ok': True, 'pmax_ok': True, 'X1': True, 'decisions': 2700, 'numeric_events': 0}

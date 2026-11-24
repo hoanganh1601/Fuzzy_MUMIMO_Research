@@ -1,5 +1,19 @@
 # Changelog
 
+## V17 — 2026-11-24 (Pmax transfer sweep)
+
+- Nhập 100 file source đúng checksum upstream; giữ nguyên năm module lõi,
+  frozen policy V15.2 và các ngưỡng đã khóa.
+- Khóa protocol trên hai tập phần bù 100 nhóm từ các pool tự nhiên UMi/UMa;
+  đo tuần tự ở 30, 35, 46 và 49 dBm bằng compiled solver.
+- Cả 8 run đạt X1: 21.600 quyết định được kiểm tra, zero numeric events và
+  zero single/double decision changes. CK1–CK3 không phát hiện sai dữ liệu,
+  sai Pmax hoặc thiếu run.
+- Cả bốn mức trả `TRANSFER_OK`. UMa có saving K=8 lần lượt 97.05%, 93.04%,
+  53.67% và 39.28%; UMi không có nhóm trong R nhưng vượt cổng no-harm −2%.
+- Lưu ZIP chính thức và 45 checkpoint `CC*`/`PX*`, console log và checksum;
+  loại NPZ thực, phần bù, task cache, native binary, PID và environments.
+
 ## V16.3 — 2026-11-23 (mẫu tự nhiên UMa)
 
 - Nhập 97 file nguồn đúng checksum upstream; thêm kịch bản UMa và protocol mẫu
