@@ -1,0 +1,16 @@
+file,sha256,role,section,origin
+data/v11_dev_k4.npz,1d479a06b94fff565a8997ceb870c670bda7458dbf5e5cd54c2fc0afc14b1f50,"DeepMIMO development set, 160 realizations, K=4",V-B,primary (DeepMIMO export)
+data/dev.npz,f93a0c8c16b15b90e1796fdaea8edcb9f076633d5883fde5cdb2939ffba706fb,"DeepMIMO ASU development set, 107 drops","V-D, V-E, V-F",primary (DeepMIMO export)
+data/dm_pool.npz,db3672b5ba19b896e6e8374a4870743aa0719867fc636a477904623655078826,DeepMIMO Los Angeles channel set before selection,V-A select,primary (DeepMIMO export)
+data/gpp_pool.npz,fbfda83348922473fe16bc0caa58b700b8135fce8a47b82df0f641fd111a99da,3GPP UMi near/edge channel set before selection,V-A select,"primary (Sionna, TR 38.901 UMi)"
+data/V152_dm_test.npz,305e86df769463e75bcd6e93fd5d4004e328d34dfa3c1d05d10a1327848671a1,DeepMIMO test set (15 in R + 15 outside),"V-D, V-E",derived by `lrs.py select`
+data/V152_3gpp_test.npz,e47bf86a2ee123f4922c818a0288d728140b8ae4e27d50c38a18e0ba947bd77f,3GPP UMi test set (15 in R + 15 outside),"V-D, V-E",derived by `lrs.py select`
+data/natural_umi_pool.npz,099a26d5e46c9b585a4b03e5c2e6284ffee13241c7727bfee6384593c4c06645,"UMi ISD 200 m natural set, 200 drops","V-G, V-H","primary (Sionna, TR 38.901 UMi)"
+data/V16_natural_sample.npz,0c92e8393cd6f6abacba5ff53d559648513cea58019f6c664206a3d34d92fcc4,"UMi natural sample, 100 drops",V-G,derived by `lrs.py natural`
+data/nat2_pool.npz,4f1c03e38c028d02d60e5d1d68131e523b158d551f8f6b734f2deeee0dd95469,"UMa ISD 500 m natural set, 200 drops, 80% indoor","V-G, V-H",primary (`lrs.py natural2-generate`)
+data/V16_natural2_sample.npz,a94ad4981b68141085df0d419bc9d41f13c99ae61f90fe0bf4f8f0b5b788dee3,"UMa natural sample, 100 drops",V-G,derived by `lrs.py natural2`
+data/V17_umi_complement.npz,24a55c453f039b4b35f1fae22ca01b59a4f149021e240f1edf86eae72d2efafe,"UMi unsampled drops, 100",V-H,derived by `lrs.py pmax-protocol`
+data/V17_uma_complement.npz,c9f629ee4bb648243816332baf39365776a84f47971cc8b4b47b911217a81251,"UMa unsampled drops, 100",V-H,derived by `lrs.py pmax-protocol`
+data/v151_dev.npz,4677e7f39255dc2cf97ea5aa0c52c553aabebb058c15c0184e5badb6a697af8a,"DeepMIMO ASU development set of the preliminary test, 41 drops",V-C,primary (DeepMIMO export)
+data/v151_dm_test.npz,16788e7691cef03444db953dcafa2a65cf6eaf493664d8d27ea4f72c05cae574,"DeepMIMO Phoenix test set, 11 drops",V-C,primary (DeepMIMO export)
+data/v151_3gpp_test.npz,0b4f0de1c31acfe06181e9e21190e784b77cf54c399dbb1a4d43b473795a0ba8,"3GPP UMi test set, 15 drops",V-C,"primary (Sionna, TR 38.901 UMi)"
