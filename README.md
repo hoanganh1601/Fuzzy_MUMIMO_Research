@@ -33,7 +33,7 @@ Kho nghiên cứu được tổ chức theo ba lớp độc lập:
 | `version_16_3` | Khóa kịch bản UMa và chạy mẫu tự nhiên thứ hai với lock V15.2 | package 2026-11-23 | 36/36 test; `NATURAL_GAIN` trên 100 nhóm; R=99/100, tiết kiệm K=8 84.33% |
 | `version_17` | Chuyển giao frozen policy qua bốn mức Pmax trên UMi và UMa | package 2026-11-24 | 38/38 test; 8 run đạt X1; 30/35/46/49 dBm đều `TRANSFER_OK` |
 
-Source mới nhất là [`src/version_17_pmax_transfer`](src/version_17_pmax_transfer). Kết quả và checkpoint V17 nằm trong [`log/version_17`](log/version_17); V15.2 vẫn là policy lock được dùng lại. Danh mục 15 tập kênh nằm trong [`DATASETS.csv`](DATASETS.csv), còn chính sách chia sẻ nằm trong [`DATA_AVAILABILITY.md`](DATA_AVAILABILITY.md); các file NPZ không được lưu trong Git.
+Source mới nhất là [`src/version_17_pmax_transfer`](src/version_17_pmax_transfer). Kết quả và checkpoint V17 nằm trong [`log/version_17`](log/version_17); V15.2 vẫn là policy lock được dùng lại. Danh mục 15 tập kênh nằm trong [`DATASETS.csv`](DATASETS.csv), chính sách chia sẻ nằm trong [`DATA_AVAILABILITY.md`](DATA_AVAILABILITY.md), và bộ sinh UMi dùng chung nằm trong [`reproducibility/sionna`](reproducibility/sionna); các file NPZ không được lưu trong Git.
 
 ## Trạng thái version 17
 

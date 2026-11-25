@@ -21,28 +21,3 @@ established bounded overhead rather than positive gain.
 
 Generated channel matrices, complement NPZ files, task checkpoints, native
 binaries, PID files and environments are intentionally excluded from Git.
-
-## Sionna UMi reproduction
-
-`code/gen_sionna_umi.py` restores the UMi generator that was previously run
-only as local scripts. It has three frozen modes:
-
-- `v151`: 15 V15.1 UMi test geometries;
-- `near-edge`: 60 near plus 60 edge geometries for the V15.2 pool;
-- `natural`: 200 unstratified UMi ISD-200 geometries for V16.
-
-Each mode requires `--stage freeze` before `--stage build`. The committed
-protocols are under `protocols/`. With Sionna 2.2.0 and PyTorch 2.15.0+cpu,
-the three reproduced NPZ files matched the historical SHA-256 values recorded
-in the root `DATASETS.csv`.
-
-Example:
-
-```bash
-python code/gen_sionna_umi.py --mode natural --stage build \
-  --protocol protocols/sionna_umi_natural.json \
-  --output data/natural_umi_pool.npz
-```
-
-The generated NPZ and provenance remain outside Git. See the root
-`DATA_AVAILABILITY.md` for distribution and verification policy.

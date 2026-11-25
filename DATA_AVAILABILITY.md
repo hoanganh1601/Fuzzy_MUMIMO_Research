@@ -23,7 +23,6 @@ available from the authors upon reasonable request. Do not commit the NPZ
 files to this repository.
 
 The Sionna UMi datasets can also be regenerated with
-`src/version_17_pmax_transfer/code/gen_sionna_umi.py` and the frozen protocols
-under `src/version_17_pmax_transfer/protocols/`. The V12 runtime validation
-entry point is
+`reproducibility/sionna/gen_sionna_umi.py` and the frozen protocols under
+`reproducibility/sionna/protocols/`. The V12 runtime validation entry point is
 `src/version_12_robust_sinr_final_validation/code/final_runtime_validation.py`.
