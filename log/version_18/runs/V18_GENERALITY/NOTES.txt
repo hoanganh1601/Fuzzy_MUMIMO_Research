@@ -1,0 +1,97 @@
+V18 RUN NOTES
+===============
+
+Run dates: 2026-11-25 to 2026-11-26 (Asia/Ho_Chi_Minh)
+Package: lrs-mumimo V18.0
+Host: icnlab-Pro-E500-G6-WS720T
+CPU: Intel(R) Core(TM) i9-10900K CPU @ 3.70GHz
+Platform: Linux-7.0.0-43-generic-x86_64-with-glibc2.39
+Python: 3.12.3; NumPy: 2.5.4; GCC: 13.3.0
+Timing threads: OMP_NUM_THREADS=1, OPENBLAS_NUM_THREADS=1,
+MKL_NUM_THREADS=1.
+
+1. Software checks
+------------------
+- Native untimed and timed libraries built successfully.
+- V18 self-test passed: 576 configurations x 7 schedulers,
+  96 oracle checks, 0 failures.
+- Unit tests passed: 8/8.
+
+2. Fresh held-out channel sets
+------------------------------
+Three new Sionna 2.2.0 sets were frozen before generation, generated once,
+and accepted by scenario_spec.py. Each has shape (150, 32, 8), dtype
+complex64, and was used only as held-out data.
+
+- UMI_F pool SHA-256:
+  134f58ff65b24d5ce707dc9ca5cf5f2adbeba17590efc323f4fd75cf7762b791
+- UMA_F pool SHA-256:
+  a1639b6f8e4eac9eceb278ae5f650596449e103e88071d37a1e7f9b0c2658685
+- RMA_F pool SHA-256:
+  0c949de711f9b3c1f404a683af98aa82e612fda2e3c0820f9750246c95b49271
+
+The UMi/RMa deployment values were used exactly as specified in the supplied
+HUONG_DAN_V18.md. No independent standards audit of the FACT-marked values
+was performed during this run. The inherited scenario-spec purpose string
+mentions V16.3; this is metadata only and did not change generation.
+
+3. Protocol, development, and locked maps
+-----------------------------------------
+- Protocol fixed once with 27 configurations, 338 development drops, and
+  746 held-out drops.
+- All 18 M=8/M=16 configurations completed development (2,028 raw
+  measurements per configuration; 36,504 total).
+- All 18 evaluable maps were LOCKED and had only_top_bin_active=true.
+- The nine M=32 configurations are NOT_EVALUABLE because the supplied
+  protocol had no independent 32-antenna development set. This is the
+  documented default behavior; no extra development set was introduced.
+- Development was not rerun after locking.
+
+4. Held-out test and endpoint analysis
+--------------------------------------
+- All 18 evaluable held-out configurations completed (4,476 raw records per
+  configuration; 80,568 total).
+- No exactness warning was printed. G1 exactness passed for all 18
+  configurations.
+- G2 passed for all 18 configurations.
+- G4 passed for all 18 configurations.
+- Overall verdict: 15 PASS and 3 FAIL. The three failures were solely G3
+  outside-region loss-bound failures:
+    * M8_G6_E0.08:  G3 worst CI lower bound = -4.97191%
+    * M16_G0_E0.04: G3 worst CI lower bound = -2.29324%
+    * M16_G6_E0.02: G3 worst CI lower bound = -3.00148%
+  The locked G3 threshold was -2%.
+- Therefore the run does not support the claim that G1-G4 pass for every
+  evaluated configuration. Exactness and strong in-region savings remain
+  established on the evaluated finite candidate family.
+
+The first interactive analyze invocation produced an empty log and no
+artifacts. The identical immutable analyze command was immediately reissued
+with stderr captured; it completed successfully. No protocol, data, map,
+measurement, seed, or endpoint setting was changed.
+
+5. Stage timing and cost model
+------------------------------
+- Median stage closure passed the >=0.9 check for CBD, DCS, LRS, and PBS
+  (range 0.9419 to 0.9758).
+- Beam generation dominated runtime (about 69%), followed by coefficient
+  construction (about 23-24%).
+- Cost-model development R2: 0.99884.
+- Cost-model held-out R2: 0.98032.
+- Held-out sign accuracy for |saving| >=2%: 0.99803.
+- Held-out cost-bound validity: 0.94482 (reported as measured; below 0.95).
+
+6. Hardware scope
+-----------------
+- A full bundle was produced for this Intel i9-10900K machine.
+- G09_HARDWARE.md was generated from this single bundle.
+- No second-machine bundle was available, so the coefficient-transfer table
+  is empty and cross-hardware independence is NOT established.
+- On this machine, eta*=1.000 with CI [0.006, 1.000] and the eta>=1 sign-rule
+  accuracy is 0.999 for the reference hardware bundle.
+
+7. Archive contents
+-------------------
+The archive includes the complete outputs_v18 directory: G00-G10, all G01
+and G03 raw JSONL measurements, NS18_* validation folders, the HW_* bundle,
+logs, and this NOTES.txt. No native/build directory is included.
