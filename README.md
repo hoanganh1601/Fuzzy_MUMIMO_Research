@@ -32,8 +32,18 @@ Kho nghiên cứu được tổ chức theo ba lớp độc lập:
 | `version_16_2` | Đối chiếu complex128 nhất quán, mô hình hòa vốn và tỷ lệ R tự nhiên | package 2026-11-22 | 32/32 test; C1–C4 đạt trên DEV/DM/3GPP; natural `NATURAL_NO_HARM`, chưa xác nhận lợi ích toàn cell |
 | `version_16_3` | Khóa kịch bản UMa và chạy mẫu tự nhiên thứ hai với lock V15.2 | package 2026-11-23 | 36/36 test; `NATURAL_GAIN` trên 100 nhóm; R=99/100, tiết kiệm K=8 84.33% |
 | `version_17` | Chuyển giao frozen policy qua bốn mức Pmax trên UMi và UMa | package 2026-11-24 | 38/38 test; 8 run đạt X1; 30/35/46/49 dBm đều `TRANSFER_OK` |
+| `version_18` | Kiểm tra tính tổng quát của LRS qua M, SINR, sai số và nhiều scene | package 2026-11-26 | 18 cấu hình M8/M16: G1/G2/G4 đạt; 15 PASS, 3 G3 FAIL; M32 chưa đánh giá |
 
-Source mới nhất là [`src/version_17_pmax_transfer`](src/version_17_pmax_transfer). Kết quả và checkpoint V17 nằm trong [`log/version_17`](log/version_17); V15.2 vẫn là policy lock được dùng lại.
+Source mới nhất là [`src/version_18_lrs_generality`](src/version_18_lrs_generality). Kết quả chọn lọc và ZIP đầy đủ V18 nằm trong [`log/version_18`](log/version_18).
+
+## Trạng thái version 18
+
+Protocol V18 khóa 27 cấu hình và đo 18 cấu hình M8/M16 trên 338 drop
+development, 746 drop held-out. G1 exactness, G2 lợi ích trong R và G4 dự đoán
+dấu đều đạt 18/18; 15 cấu hình PASS toàn bộ. Ba cấu hình không đạt G3 do cận
+dưới tổn thất ngoài R thấp hơn −2%. M32 không đánh giá được vì không có tập
+development 32 anten; bundle phần cứng mới có một máy. Vì vậy không được tuyên
+bố full PASS hoặc độc lập phần cứng. Xem [run log V18](log/version_18/README.md).
 
 ## Trạng thái version 17
 

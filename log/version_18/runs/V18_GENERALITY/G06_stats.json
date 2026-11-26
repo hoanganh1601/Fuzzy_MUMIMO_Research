@@ -1,0 +1,596 @@
+{
+  "M8_G0_E0.02": {
+    "cellwide_LRS_Kmax": {
+      "stratified": {
+        "mean": 0.6290641600948681,
+        "lo": 0.6085905118521128,
+        "hi": 0.6500643033189094,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "drop bootstrap stratified by scene"
+      },
+      "two_level": {
+        "mean": 0.6290641600948681,
+        "lo": 0.35115017436274304,
+        "hi": 0.8320093184060334,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "two-level bootstrap (scenes, then drops)",
+        "reliable": true
+      },
+      "icc": {
+        "icc": 0.5979956761773929,
+        "n_scenes": 8,
+        "n": 746,
+        "mean_cluster_size": 93.25,
+        "design_effect": 56.165101127364494,
+        "n_effective": 13.282269327857355,
+        "sd_within": 0.2870452995701048,
+        "sd_between": 0.35009354180819857
+      },
+      "drops_for_halfwidth_2pp": 100396,
+      "note": "with a large ICC, the precision is limited by the number of scenes; add scenes, not only drops"
+    }
+  },
+  "M8_G0_E0.04": {
+    "cellwide_LRS_Kmax": {
+      "stratified": {
+        "mean": 0.6284393901752813,
+        "lo": 0.6079967581512937,
+        "hi": 0.6489563016787047,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "drop bootstrap stratified by scene"
+      },
+      "two_level": {
+        "mean": 0.6284393901752813,
+        "lo": 0.35173457923960233,
+        "hi": 0.8314853628536242,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "two-level bootstrap (scenes, then drops)",
+        "reliable": true
+      },
+      "icc": {
+        "icc": 0.5990465678723089,
+        "n_scenes": 8,
+        "n": 746,
+        "mean_cluster_size": 93.25,
+        "design_effect": 56.2620458862205,
+        "n_effective": 13.259382737496713,
+        "sd_within": 0.28515722064258403,
+        "sd_between": 0.34855209510544777
+      },
+      "drops_for_halfwidth_2pp": 99493,
+      "note": "with a large ICC, the precision is limited by the number of scenes; add scenes, not only drops"
+    }
+  },
+  "M8_G0_E0.08": {
+    "cellwide_LRS_Kmax": {
+      "stratified": {
+        "mean": 0.6286405879152449,
+        "lo": 0.6087082530707104,
+        "hi": 0.6487385069692576,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "drop bootstrap stratified by scene"
+      },
+      "two_level": {
+        "mean": 0.6286405879152449,
+        "lo": 0.35889867049316393,
+        "hi": 0.8290198848007451,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "two-level bootstrap (scenes, then drops)",
+        "reliable": true
+      },
+      "icc": {
+        "icc": 0.6026909426585345,
+        "n_scenes": 8,
+        "n": 746,
+        "mean_cluster_size": 93.25,
+        "design_effect": 56.59823946024981,
+        "n_effective": 13.180621996624687,
+        "sd_within": 0.28061042658019,
+        "sd_between": 0.3456104803159125
+      },
+      "drops_for_halfwidth_2pp": 97750,
+      "note": "with a large ICC, the precision is limited by the number of scenes; add scenes, not only drops"
+    }
+  },
+  "M8_G6_E0.02": {
+    "cellwide_LRS_Kmax": {
+      "stratified": {
+        "mean": 0.7400153373041043,
+        "lo": 0.7231456071257575,
+        "hi": 0.7567424414088539,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "drop bootstrap stratified by scene"
+      },
+      "two_level": {
+        "mean": 0.7400153373041043,
+        "lo": 0.4846079126854768,
+        "hi": 0.900646884528564,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "two-level bootstrap (scenes, then drops)",
+        "reliable": true
+      },
+      "icc": {
+        "icc": 0.6328784955624397,
+        "n_scenes": 8,
+        "n": 746,
+        "mean_cluster_size": 93.25,
+        "design_effect": 59.38304121563506,
+        "n_effective": 12.562509173133835,
+        "sd_within": 0.24417037677278947,
+        "sd_between": 0.32058871497764696
+      },
+      "drops_for_halfwidth_2pp": 83607,
+      "note": "with a large ICC, the precision is limited by the number of scenes; add scenes, not only drops"
+    }
+  },
+  "M8_G6_E0.04": {
+    "cellwide_LRS_Kmax": {
+      "stratified": {
+        "mean": 0.7406926803759161,
+        "lo": 0.7238567781841042,
+        "hi": 0.757436904520975,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "drop bootstrap stratified by scene"
+      },
+      "two_level": {
+        "mean": 0.7406926803759161,
+        "lo": 0.4857379040253669,
+        "hi": 0.899826745384148,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "two-level bootstrap (scenes, then drops)",
+        "reliable": true
+      },
+      "icc": {
+        "icc": 0.632269244063283,
+        "n_scenes": 8,
+        "n": 746,
+        "mean_cluster_size": 93.25,
+        "design_effect": 59.326837764837855,
+        "n_effective": 12.574410302417016,
+        "sd_within": 0.24306611273248385,
+        "sd_between": 0.3187208438438859
+      },
+      "drops_for_halfwidth_2pp": 82646,
+      "note": "with a large ICC, the precision is limited by the number of scenes; add scenes, not only drops"
+    }
+  },
+  "M8_G6_E0.08": {
+    "cellwide_LRS_Kmax": {
+      "stratified": {
+        "mean": 0.7380311782555443,
+        "lo": 0.7214039777383754,
+        "hi": 0.7546684249540324,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "drop bootstrap stratified by scene"
+      },
+      "two_level": {
+        "mean": 0.7380311782555443,
+        "lo": 0.48277585380493027,
+        "hi": 0.8980235301933402,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "two-level bootstrap (scenes, then drops)",
+        "reliable": true
+      },
+      "icc": {
+        "icc": 0.633658669227624,
+        "n_scenes": 8,
+        "n": 746,
+        "mean_cluster_size": 93.25,
+        "design_effect": 59.455012236248315,
+        "n_effective": 12.547302101893798,
+        "sd_within": 0.24080136066043722,
+        "sd_between": 0.31669679457225364
+      },
+      "drops_for_halfwidth_2pp": 81577,
+      "note": "with a large ICC, the precision is limited by the number of scenes; add scenes, not only drops"
+    }
+  },
+  "M8_G10_E0.02": {
+    "cellwide_LRS_Kmax": {
+      "stratified": {
+        "mean": 0.7914351118087045,
+        "lo": 0.776416247188402,
+        "hi": 0.8063594518480632,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "drop bootstrap stratified by scene"
+      },
+      "two_level": {
+        "mean": 0.7914351118087045,
+        "lo": 0.5295753027070869,
+        "hi": 0.9328775580225193,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "two-level bootstrap (scenes, then drops)",
+        "reliable": true
+      },
+      "icc": {
+        "icc": 0.6687412350403272,
+        "n_scenes": 8,
+        "n": 746,
+        "mean_cluster_size": 93.25,
+        "design_effect": 62.69137893247019,
+        "n_effective": 11.899562790022138,
+        "sd_within": 0.2193029271442421,
+        "sd_between": 0.3115945053649122
+      },
+      "drops_for_halfwidth_2pp": 78429,
+      "note": "with a large ICC, the precision is limited by the number of scenes; add scenes, not only drops"
+    }
+  },
+  "M8_G10_E0.04": {
+    "cellwide_LRS_Kmax": {
+      "stratified": {
+        "mean": 0.7896812587769889,
+        "lo": 0.7746965509438151,
+        "hi": 0.8045843054892122,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "drop bootstrap stratified by scene"
+      },
+      "two_level": {
+        "mean": 0.7896812587769889,
+        "lo": 0.529658552907328,
+        "hi": 0.9314226284771574,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "two-level bootstrap (scenes, then drops)",
+        "reliable": true
+      },
+      "icc": {
+        "icc": 0.6676262829396263,
+        "n_scenes": 8,
+        "n": 746,
+        "mean_cluster_size": 93.25,
+        "design_effect": 62.58852460118053,
+        "n_effective": 11.919117837552111,
+        "sd_within": 0.2191798216675683,
+        "sd_between": 0.310637544807343
+      },
+      "drops_for_halfwidth_2pp": 77965,
+      "note": "with a large ICC, the precision is limited by the number of scenes; add scenes, not only drops"
+    }
+  },
+  "M8_G10_E0.08": {
+    "cellwide_LRS_Kmax": {
+      "stratified": {
+        "mean": 0.7853659245402884,
+        "lo": 0.7701474403831702,
+        "hi": 0.7998639885947365,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "drop bootstrap stratified by scene"
+      },
+      "two_level": {
+        "mean": 0.7853659245402884,
+        "lo": 0.5296910514010711,
+        "hi": 0.9276108004532351,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "two-level bootstrap (scenes, then drops)",
+        "reliable": true
+      },
+      "icc": {
+        "icc": 0.6710712964188814,
+        "n_scenes": 8,
+        "n": 746,
+        "mean_cluster_size": 93.25,
+        "design_effect": 62.90632709464181,
+        "n_effective": 11.858902505588222,
+        "sd_within": 0.21559058493209202,
+        "sd_between": 0.30793796525169814
+      },
+      "drops_for_halfwidth_2pp": 76564,
+      "note": "with a large ICC, the precision is limited by the number of scenes; add scenes, not only drops"
+    }
+  },
+  "M16_G0_E0.02": {
+    "cellwide_LRS_Kmax": {
+      "stratified": {
+        "mean": 0.5579318574332629,
+        "lo": 0.5352770884918455,
+        "hi": 0.5798179653387979,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "drop bootstrap stratified by scene"
+      },
+      "two_level": {
+        "mean": 0.5579318574332629,
+        "lo": 0.27306116096604965,
+        "hi": 0.7811022469098211,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "two-level bootstrap (scenes, then drops)",
+        "reliable": true
+      },
+      "icc": {
+        "icc": 0.5787180016883489,
+        "n_scenes": 8,
+        "n": 746,
+        "mean_cluster_size": 93.25,
+        "design_effect": 54.38673565575018,
+        "n_effective": 13.716579805817545,
+        "sd_within": 0.3125108496490503,
+        "sd_between": 0.36627910526502944
+      },
+      "drops_for_halfwidth_2pp": 110317,
+      "note": "with a large ICC, the precision is limited by the number of scenes; add scenes, not only drops"
+    }
+  },
+  "M16_G0_E0.04": {
+    "cellwide_LRS_Kmax": {
+      "stratified": {
+        "mean": 0.5633196421575375,
+        "lo": 0.5407357944687801,
+        "hi": 0.5849180873169135,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "drop bootstrap stratified by scene"
+      },
+      "two_level": {
+        "mean": 0.5633196421575375,
+        "lo": 0.28193765717487584,
+        "hi": 0.7823752656158112,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "two-level bootstrap (scenes, then drops)",
+        "reliable": true
+      },
+      "icc": {
+        "icc": 0.573960469992269,
+        "n_scenes": 8,
+        "n": 746,
+        "mean_cluster_size": 93.25,
+        "design_effect": 53.947853356786815,
+        "n_effective": 13.828168380793427,
+        "sd_within": 0.31240528822608526,
+        "sd_between": 0.3626055270474656
+      },
+      "drops_for_halfwidth_2pp": 108219,
+      "note": "with a large ICC, the precision is limited by the number of scenes; add scenes, not only drops"
+    }
+  },
+  "M16_G0_E0.08": {
+    "cellwide_LRS_Kmax": {
+      "stratified": {
+        "mean": 0.5649971602949482,
+        "lo": 0.5429477596486789,
+        "hi": 0.5862716274067931,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "drop bootstrap stratified by scene"
+      },
+      "two_level": {
+        "mean": 0.5649971602949482,
+        "lo": 0.28380126400844585,
+        "hi": 0.7838799934740789,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "two-level bootstrap (scenes, then drops)",
+        "reliable": true
+      },
+      "icc": {
+        "icc": 0.5757325150573918,
+        "n_scenes": 8,
+        "n": 746,
+        "mean_cluster_size": 93.25,
+        "design_effect": 54.11132451404439,
+        "n_effective": 13.786393267944836,
+        "sd_within": 0.31020657305525073,
+        "sd_between": 0.36136118346108664
+      },
+      "drops_for_halfwidth_2pp": 107439,
+      "note": "with a large ICC, the precision is limited by the number of scenes; add scenes, not only drops"
+    }
+  },
+  "M16_G6_E0.02": {
+    "cellwide_LRS_Kmax": {
+      "stratified": {
+        "mean": 0.6885659451652877,
+        "lo": 0.6681039235651091,
+        "hi": 0.7093234882670522,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "drop bootstrap stratified by scene"
+      },
+      "two_level": {
+        "mean": 0.6885659451652877,
+        "lo": 0.42285511692577654,
+        "hi": 0.8760593722905883,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "two-level bootstrap (scenes, then drops)",
+        "reliable": true
+      },
+      "icc": {
+        "icc": 0.5809503326883961,
+        "n_scenes": 8,
+        "n": 746,
+        "mean_cluster_size": 93.25,
+        "design_effect": 54.59266819050454,
+        "n_effective": 13.66483860793882,
+        "sd_within": 0.29224833909410863,
+        "sd_between": 0.3441032733333471
+      },
+      "drops_for_halfwidth_2pp": 97320,
+      "note": "with a large ICC, the precision is limited by the number of scenes; add scenes, not only drops"
+    }
+  },
+  "M16_G6_E0.04": {
+    "cellwide_LRS_Kmax": {
+      "stratified": {
+        "mean": 0.6930637661153727,
+        "lo": 0.6736463457813125,
+        "hi": 0.7135212236484684,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "drop bootstrap stratified by scene"
+      },
+      "two_level": {
+        "mean": 0.6930637661153727,
+        "lo": 0.43073769373041915,
+        "hi": 0.8765109494289897,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "two-level bootstrap (scenes, then drops)",
+        "reliable": true
+      },
+      "icc": {
+        "icc": 0.5905346064551615,
+        "n_scenes": 8,
+        "n": 746,
+        "mean_cluster_size": 93.25,
+        "design_effect": 55.47681744548865,
+        "n_effective": 13.447058327255656,
+        "sd_within": 0.2813460600562446,
+        "sd_between": 0.3378741086090454
+      },
+      "drops_for_halfwidth_2pp": 93649,
+      "note": "with a large ICC, the precision is limited by the number of scenes; add scenes, not only drops"
+    }
+  },
+  "M16_G6_E0.08": {
+    "cellwide_LRS_Kmax": {
+      "stratified": {
+        "mean": 0.6951942142297105,
+        "lo": 0.6757577631858137,
+        "hi": 0.7153829605789923,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "drop bootstrap stratified by scene"
+      },
+      "two_level": {
+        "mean": 0.6951942142297105,
+        "lo": 0.43545715272242835,
+        "hi": 0.876750218348991,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "two-level bootstrap (scenes, then drops)",
+        "reliable": true
+      },
+      "icc": {
+        "icc": 0.5886063859350797,
+        "n_scenes": 8,
+        "n": 746,
+        "mean_cluster_size": 93.25,
+        "design_effect": 55.298939102511106,
+        "n_effective": 13.490313053150858,
+        "sd_within": 0.280456960264834,
+        "sd_between": 0.33546710002183366
+      },
+      "drops_for_halfwidth_2pp": 92355,
+      "note": "with a large ICC, the precision is limited by the number of scenes; add scenes, not only drops"
+    }
+  },
+  "M16_G10_E0.02": {
+    "cellwide_LRS_Kmax": {
+      "stratified": {
+        "mean": 0.7578727399694724,
+        "lo": 0.7402862223666721,
+        "hi": 0.7747399241614137,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "drop bootstrap stratified by scene"
+      },
+      "two_level": {
+        "mean": 0.7578727399694724,
+        "lo": 0.498199898869824,
+        "hi": 0.9161072755901009,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "two-level bootstrap (scenes, then drops)",
+        "reliable": true
+      },
+      "icc": {
+        "icc": 0.6269411063835936,
+        "n_scenes": 8,
+        "n": 746,
+        "mean_cluster_size": 93.25,
+        "design_effect": 58.83531706388651,
+        "n_effective": 12.67945916208718,
+        "sd_within": 0.24916427525599735,
+        "sd_between": 0.3230058947200918
+      },
+      "drops_for_halfwidth_2pp": 84972,
+      "note": "with a large ICC, the precision is limited by the number of scenes; add scenes, not only drops"
+    }
+  },
+  "M16_G10_E0.04": {
+    "cellwide_LRS_Kmax": {
+      "stratified": {
+        "mean": 0.7574956841950022,
+        "lo": 0.7394610093225846,
+        "hi": 0.7748491534519693,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "drop bootstrap stratified by scene"
+      },
+      "two_level": {
+        "mean": 0.7574956841950022,
+        "lo": 0.49707416461141474,
+        "hi": 0.9159141319289731,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "two-level bootstrap (scenes, then drops)",
+        "reliable": true
+      },
+      "icc": {
+        "icc": 0.6201265105437511,
+        "n_scenes": 8,
+        "n": 746,
+        "mean_cluster_size": 93.25,
+        "design_effect": 58.20667059766104,
+        "n_effective": 12.816400463042067,
+        "sd_within": 0.2527236821182049,
+        "sd_between": 0.3228989229418129
+      },
+      "drops_for_halfwidth_2pp": 85030,
+      "note": "with a large ICC, the precision is limited by the number of scenes; add scenes, not only drops"
+    }
+  },
+  "M16_G10_E0.08": {
+    "cellwide_LRS_Kmax": {
+      "stratified": {
+        "mean": 0.755184493348011,
+        "lo": 0.7372320103962022,
+        "hi": 0.7718877123847742,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "drop bootstrap stratified by scene"
+      },
+      "two_level": {
+        "mean": 0.755184493348011,
+        "lo": 0.49630462166136036,
+        "hi": 0.9125832894023368,
+        "n": 746,
+        "n_scenes": 8,
+        "method": "two-level bootstrap (scenes, then drops)",
+        "reliable": true
+      },
+      "icc": {
+        "icc": 0.622951080916962,
+        "n_scenes": 8,
+        "n": 746,
+        "mean_cluster_size": 93.25,
+        "design_effect": 58.46723721458975,
+        "n_effective": 12.75928255788774,
+        "sd_within": 0.24914442541677004,
+        "sd_between": 0.32024274235569217
+      },
+      "drops_for_halfwidth_2pp": 83591,
+      "note": "with a large ICC, the precision is limited by the number of scenes; add scenes, not only drops"
+    }
+  }
+}
