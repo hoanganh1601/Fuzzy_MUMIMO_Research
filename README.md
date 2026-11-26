@@ -36,6 +36,8 @@ Kho nghiên cứu được tổ chức theo ba lớp độc lập:
 
 Source mới nhất là [`src/version_18_lrs_generality`](src/version_18_lrs_generality). Kết quả chọn lọc và ZIP đầy đủ V18 nằm trong [`log/version_18`](log/version_18).
 
+Danh mục 15 tập kênh nằm trong [`DATASETS.csv`](DATASETS.csv), chính sách chia sẻ nằm trong [`DATA_AVAILABILITY.md`](DATA_AVAILABILITY.md), và bộ sinh UMi dùng chung nằm trong [`reproducibility/sionna`](reproducibility/sionna). Các file NPZ không được lưu trong Git. Kết quả và checkpoint V17 vẫn nằm trong [`log/version_17`](log/version_17); V15.2 là policy lock được dùng lại.
+
 ## Trạng thái version 18
 
 Protocol V18 khóa 27 cấu hình và đo 18 cấu hình M8/M16 trên 338 drop

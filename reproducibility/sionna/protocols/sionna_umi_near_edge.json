@@ -1,0 +1,44 @@
+{
+  "batch_size": 60,
+  "bs_antennas": 16,
+  "bs_height_m": 10.0,
+  "carrier_frequency_hz": 3500000000.0,
+  "channel_normalization": "none",
+  "direction": "downlink",
+  "enable_blockage": false,
+  "enable_pathloss": true,
+  "enable_shadow_fading": true,
+  "enable_spatial_consistency": true,
+  "indoor_probability": 0.0,
+  "n_geometries": 120,
+  "name": "V15.2_3GPP_UMi_near_edge_pool",
+  "o2i_model": "low",
+  "prior_use": "never_seen",
+  "scenario_label": "Sionna_3GPP_UMi_V152",
+  "selected_baseband_frequency_hz": 0.0,
+  "source": "Sionna_3GPP",
+  "spec_version": "19.2",
+  "standard": "3GPP TR 38.901",
+  "strata": [
+    {
+      "inter_site_distance_m": 200.0,
+      "minimum_bs_ut_distance_m": 10.0,
+      "n_geometries": 60,
+      "name": "near",
+      "seed": 20261120
+    },
+    {
+      "inter_site_distance_m": 1000.0,
+      "minimum_bs_ut_distance_m": 100.0,
+      "n_geometries": 60,
+      "name": "edge",
+      "seed": 20261121
+    }
+  ],
+  "subcarrier_spacing_hz": 30000.0,
+  "users_per_geometry": 8,
+  "ut_antenna_pattern": "38.901",
+  "ut_antennas": 1,
+  "ut_height_m": 1.5,
+  "v152_lock_sha256": "d5aa76d1d09071c3aae5a297a47feca72693c72619a7971c804c6e0bb286a8f6"
+}
