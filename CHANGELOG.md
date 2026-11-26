@@ -1,5 +1,19 @@
 # Changelog
 
+## V18 — 2026-11-26 (LRS generality study)
+
+- Bổ sung gói V18 tách biệt, dùng chung published modules nhưng có compiled core,
+  self-test, thống kê phân tầng và mô hình chi phí riêng.
+- Khóa protocol 27 cấu hình trên tám nguồn kênh; ba nguồn Sionna UMi/UMa/RMa
+  mới có 150 drop, 32 anten và chỉ dùng held-out.
+- Hoàn tất 36.504 số đo development và 80.568 số đo held-out cho 18 cấu hình
+  M8/M16. G1 exactness, G2 và G4 đạt toàn bộ; 15 cấu hình PASS, ba cấu hình
+  không đạt cổng G3 −2% ngoài vùng R.
+- M32 ghi `NOT_EVALUABLE` do không có development 32 anten. Hardware bundle chỉ
+  có một Intel i9-10900K; chưa kiểm tra chuyển hệ số giữa máy.
+- Lưu các checkpoint/tóm tắt đã chọn và ZIP 18 MB chứa toàn bộ G01/G03 raw;
+  không commit NPZ, native binary, PID hay console log.
+
 ## V17 — 2026-11-24 (Pmax transfer sweep)
 
 - Nhập 100 file source đúng checksum upstream; giữ nguyên năm module lõi,
