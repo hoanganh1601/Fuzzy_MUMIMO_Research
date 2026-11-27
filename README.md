@@ -33,8 +33,11 @@ Kho nghiên cứu được tổ chức theo ba lớp độc lập:
 | `version_16_3` | Khóa kịch bản UMa và chạy mẫu tự nhiên thứ hai với lock V15.2 | package 2026-11-23 | 36/36 test; `NATURAL_GAIN` trên 100 nhóm; R=99/100, tiết kiệm K=8 84.33% |
 | `version_17` | Chuyển giao frozen policy qua bốn mức Pmax trên UMi và UMa | package 2026-11-24 | 38/38 test; 8 run đạt X1; 30/35/46/49 dBm đều `TRANSFER_OK` |
 | `version_18` | Kiểm tra tính tổng quát của LRS qua M, SINR, sai số và nhiều scene | package 2026-11-26 | 18 cấu hình M8/M16: G1/G2/G4 đạt; 15 PASS, 3 G3 FAIL; M32 chưa đánh giá |
+| `version_18_2` | Mở rộng V18 sang M32 bằng tập development 32 anten riêng | package 2026-11-26 | 9 cấu hình: G1/G2/G4 đạt; 4 PASS, 5 G3 FAIL; một máy đo |
 
-Source mới nhất là [`src/version_18_lrs_generality`](src/version_18_lrs_generality). Kết quả chọn lọc và ZIP đầy đủ V18 nằm trong [`log/version_18`](log/version_18).
+Source V18 nằm trong [`src/version_18_lrs_generality`](src/version_18_lrs_generality). Kết quả chọn lọc và ZIP đầy đủ V18 nằm trong [`log/version_18`](log/version_18).
+
+Bản mở rộng M32 nằm trong [`src/version_18_2_lrs_m32`](src/version_18_2_lrs_m32); kết quả chọn lọc và ZIP số đo gốc ở [`log/version_18_2`](log/version_18_2).
 
 Danh mục 15 tập kênh nằm trong [`DATASETS.csv`](DATASETS.csv), chính sách chia sẻ nằm trong [`DATA_AVAILABILITY.md`](DATA_AVAILABILITY.md), và bộ sinh UMi dùng chung nằm trong [`reproducibility/sionna`](reproducibility/sionna). Các file NPZ không được lưu trong Git. Kết quả và checkpoint V17 vẫn nằm trong [`log/version_17`](log/version_17); V15.2 là policy lock được dùng lại.
 
@@ -46,6 +49,15 @@ dấu đều đạt 18/18; 15 cấu hình PASS toàn bộ. Ba cấu hình không
 dưới tổn thất ngoài R thấp hơn −2%. M32 không đánh giá được vì không có tập
 development 32 anten; bundle phần cứng mới có một máy. Vì vậy không được tuyên
 bố full PASS hoặc độc lập phần cứng. Xem [run log V18](log/version_18/README.md).
+
+## Trạng thái version 18.2 M32
+
+Bản mở rộng có tập development 32 anten riêng và đã đo 9 cấu hình M32 trên
+450 drop held-out từ ba kịch bản. G1/G2/G4 đạt cả 9; bốn cấu hình PASS toàn bộ,
+năm cấu hình không đạt G3 do cận dưới tổn thất ngoài vùng R thấp hơn −2%.
+`extras` đạt ngưỡng khép kín stage trên một máy. Tập held-out từng được đo
+ở M8/M16 nhưng chưa dùng để phát triển hay đo ở M32. Xem
+[kết quả V18.2](log/version_18_2/README.md).
 
 ## Trạng thái version 17
 

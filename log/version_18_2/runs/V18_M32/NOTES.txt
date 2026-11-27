@@ -1,0 +1,20 @@
+V18.2 M32 run notes
+Run dates: 2026-11-26 to 2026-11-27
+Machine: icnlab-Pro-E500-G6-WS720T; Intel Core i9-10900K
+Environment: Linux, Python 3.12.3, NumPy 2.5.4; OMP/OPENBLAS/MKL threads = 1
+
+Checks:
+- Native selftest: 576 configurations x 7 schedulers, 96 oracle checks, 0 failures.
+- Unit tests: 8/8 passed.
+- Three M32 development pools accepted; V18 held-out dataset hashes matched.
+- Protocol fixed: 9 configurations, 450 development and 450 held-out drops.
+- Nine policy maps locked. No exactness warning in the completed test.
+- G1 exactness passed in all 9 configurations.
+- G07 verdict: 4 PASS, 5 FAIL. The five FAIL cases did not meet G3 outside-region loss criterion; these results are retained unchanged.
+- Stage measurements: 36/36 drops. Median closure: CBD 0.9873, DCS 0.9881, LRS 0.9638, PBS 0.9648; all meet the 0.9 threshold.
+- Hardware bundle generated in outputs_v18_m32/HW_*.
+
+Run incident:
+- The first run stopped because the published V15.2 policy map was missing from results/RESULTS_V15_2/V152_DM/.
+- Restored the published CP03_locked_cells.json with verified SHA-256 d5aa76d1d09071c3aae5a297a47feca72693c72619a7971c804c6e0bb286a8f6, then resumed the same run.
+- V18 held-out drops had previously been used at M=8 and M=16, but had not been timed at M=32 or used for M32 development, as declared in G00.
