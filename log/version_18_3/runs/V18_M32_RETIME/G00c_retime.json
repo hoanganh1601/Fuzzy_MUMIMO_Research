@@ -1,0 +1,33 @@
+{
+  "version": "V18.3",
+  "created_utc": "2026-11-27T15:00:50Z",
+  "source": "outputs_v18_m32",
+  "configs": [
+    "M32_G10_E0.02",
+    "M32_G10_E0.04"
+  ],
+  "reason": "timing QC of the first run failed (identical-path discordance above 1%); decisions are not re-run",
+  "source_G03_sha256": {
+    "M32_G10_E0.02": "32215f10a71fbe74bafdc5f2ed01e8bfdc7329757d8b2b0d49d4c0314880e397",
+    "M32_G10_E0.04": "f40f9575c2cb6185355d7d27696b9ec8c7c2fae47f8fccf0ec70366a9e17a3c7"
+  },
+  "source_timing_qc": {
+    "M32_G10_E0.02": {
+      "pairs": 2700,
+      "discordant": 248,
+      "rate": 0.09185185185185185,
+      "pass": false,
+      "median_abs_log_ratio": 0.044364320831422825
+    },
+    "M32_G10_E0.04": {
+      "pairs": 2700,
+      "discordant": 160,
+      "rate": 0.05925925925925926,
+      "pass": false,
+      "median_abs_log_ratio": 0.028216198680255607
+    }
+  },
+  "qc_rule": "identical-path pairs (LRS vs the DCS or PBS search it executes) differing by more than 1.5x must be <= 1%",
+  "reporting_rule": "the re-timed run replaces the original runtime endpoints only if its timing QC passes and every decision equals the original run; otherwise both runs are reported and the configuration is marked timing-unresolved. Decisions (G1, G4 inputs) of the original run are kept.",
+  "one_retime_only": true
+}

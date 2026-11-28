@@ -1,0 +1,18 @@
+V18.3 M32 re-timing notes
+Date: 2026-11-27
+Machine: icnlab-Pro-E500-G6-WS720T, same machine as the original M32 run
+Re-timing start: 2026-11-27 22:03:35 ICT
+Measurements completed: 2026-11-27 22:31:58 ICT
+Background tasks disabled: None; no tasks were manually stopped before re-timing.
+Other incidents: None observed; the run completed without interruption.
+Code checks: 11/11 tests passed.
+Probe attempts: 1.
+Probe result: STABLE; 216 pairs, 0 discordant, median |log ratio| 0.001553.
+TIMING UNSTABLE warnings: none found in retime_m32.log.
+
+M32_G10_E0.02: original QC 248/2700 (9.19%); re-timed QC 3/2700
+(0.11%); decisions identical; reported run = re-timed; G3 PASS.
+M32_G10_E0.04: original QC 160/2700 (5.93%); re-timed QC 1/2700
+(0.04%); decisions identical; reported run = re-timed; G3 PASS.
+
+The original run and its G1/G4 decision inputs are preserved.

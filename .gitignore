@@ -6,6 +6,7 @@ ENV/
 __pycache__/
 *.py[cod]
 **/code/native/build/
+**/v18/native/build/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/

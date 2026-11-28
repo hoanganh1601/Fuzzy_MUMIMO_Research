@@ -1,0 +1,54 @@
+{
+  "M32_G10_E0.02": {
+    "RMA_F": {
+      "map_without_scene": [
+        2
+      ],
+      "n": 150,
+      "mean_rel_saving_Kmax_Lmax": 0.9181325008698159,
+      "min": -0.042580950307428644
+    },
+    "UMA_F": {
+      "map_without_scene": [
+        2
+      ],
+      "n": 150,
+      "mean_rel_saving_Kmax_Lmax": 0.9849571742097643,
+      "min": 0.782978893156619
+    },
+    "UMI_F": {
+      "map_without_scene": [
+        2
+      ],
+      "n": 150,
+      "mean_rel_saving_Kmax_Lmax": 0.6179054939973816,
+      "min": -0.039376970830105766
+    }
+  },
+  "M32_G10_E0.04": {
+    "RMA_F": {
+      "map_without_scene": [
+        2
+      ],
+      "n": 150,
+      "mean_rel_saving_Kmax_Lmax": 0.9167366722086204,
+      "min": -0.00502600563619269
+    },
+    "UMA_F": {
+      "map_without_scene": [
+        2
+      ],
+      "n": 150,
+      "mean_rel_saving_Kmax_Lmax": 0.9844576393891282,
+      "min": 0.7829717335504763
+    },
+    "UMI_F": {
+      "map_without_scene": [
+        2
+      ],
+      "n": 150,
+      "mean_rel_saving_Kmax_Lmax": 0.6218764433217984,
+      "min": -0.03806557450707104
+    }
+  }
+}
