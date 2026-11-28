@@ -34,10 +34,13 @@ Kho nghiên cứu được tổ chức theo ba lớp độc lập:
 | `version_17` | Chuyển giao frozen policy qua bốn mức Pmax trên UMi và UMa | package 2026-11-24 | 38/38 test; 8 run đạt X1; 30/35/46/49 dBm đều `TRANSFER_OK` |
 | `version_18` | Kiểm tra tính tổng quát của LRS qua M, SINR, sai số và nhiều scene | package 2026-11-26 | 18 cấu hình M8/M16: G1/G2/G4 đạt; 15 PASS, 3 G3 FAIL; M32 chưa đánh giá |
 | `version_18_2` | Mở rộng V18 sang M32 bằng tập development 32 anten riêng | package 2026-11-26 | 9 cấu hình: G1/G2/G4 đạt; 4 PASS, 5 G3 FAIL; một máy đo |
+| `version_18_3` | Timing QC và đo lại một lần cho hai cấu hình M32 có thời gian bất thường | package 2026-11-27 | 11/11 test; cả hai QC đo lại đạt và quyết định trùng; theo quy tắc báo cáo có 6/9 cấu hình M32 đạt G1–G4 |
 
 Source V18 nằm trong [`src/version_18_lrs_generality`](src/version_18_lrs_generality). Kết quả chọn lọc và ZIP đầy đủ V18 nằm trong [`log/version_18`](log/version_18).
 
 Bản mở rộng M32 nằm trong [`src/version_18_2_lrs_m32`](src/version_18_2_lrs_m32); kết quả chọn lọc và ZIP số đo gốc ở [`log/version_18_2`](log/version_18_2).
+
+Bản vá timing QC và đo lại M32 nằm trong [`src/version_18_3_lrs_retime_qc`](src/version_18_3_lrs_retime_qc); kết quả và ZIP đo lại ở [`log/version_18_3`](log/version_18_3).
 
 Danh mục 15 tập kênh nằm trong [`DATASETS.csv`](DATASETS.csv), chính sách chia sẻ nằm trong [`DATA_AVAILABILITY.md`](DATA_AVAILABILITY.md), và bộ sinh UMi dùng chung nằm trong [`reproducibility/sionna`](reproducibility/sionna). Các file NPZ không được lưu trong Git. Kết quả và checkpoint V17 vẫn nằm trong [`log/version_17`](log/version_17); V15.2 là policy lock được dùng lại.
 
@@ -58,6 +61,16 @@ năm cấu hình không đạt G3 do cận dưới tổn thất ngoài vùng R t
 `extras` đạt ngưỡng khép kín stage trên một máy. Tập held-out từng được đo
 ở M8/M16 nhưng chưa dùng để phát triển hay đo ở M32. Xem
 [kết quả V18.2](log/version_18_2/README.md).
+
+## Trạng thái version 18.3 M32 re-timing
+
+QC hồi cứu phát hiện hai cấu hình `M32_G10_E0.02` và `M32_G10_E0.04` có tỷ lệ
+cặp thời gian bất thường 9,19% và 5,93%, vượt ngưỡng 1%. Sau một lần đo lại,
+QC còn 0,11% và 0,04%; tất cả quyết định trùng lần đầu. Theo quy tắc đã khai
+báo trước, hai bộ chỉ số runtime đo lại được dùng báo cáo và cả hai đạt G3.
+Tổng cộng 6/9 cấu hình M32 đạt G1–G4; ba cấu hình G3 FAIL khác vẫn giữ nguyên.
+Người chạy không chủ động tắt tác vụ nền, đã ghi rõ trong NOTES. Xem
+[kết quả V18.3](log/version_18_3/README.md).
 
 ## Trạng thái version 17
 

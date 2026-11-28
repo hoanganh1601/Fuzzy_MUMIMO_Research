@@ -1,0 +1,194 @@
+{
+  "version": "V18.2",
+  "created_utc": "2026-11-26T12:02:16Z",
+  "sets": [
+    {
+      "label": "UMI_D32",
+      "path": "data/v18_umi_dev32.npz",
+      "role": "dev",
+      "sha256": "c8247469bf02f885ab201da0caef71215361915d41985df9e92167b4370c50ce",
+      "n_drops": 150,
+      "M": 32,
+      "K_max": 8,
+      "groups": 150,
+      "prior_use": "never_seen",
+      "scenario": "3GPP_TR_38.901_UMi_single_sector_ISD200"
+    },
+    {
+      "label": "UMA_D32",
+      "path": "data/v18_uma_dev32.npz",
+      "role": "dev",
+      "sha256": "971ae75a0909831d3aaa8b2519cea0b35f812cd25cb977e52fb289e3f70f28b8",
+      "n_drops": 150,
+      "M": 32,
+      "K_max": 8,
+      "groups": 150,
+      "prior_use": "never_seen",
+      "scenario": "3GPP_TR_38.901_UMa_single_sector_ISD500"
+    },
+    {
+      "label": "RMA_D32",
+      "path": "data/v18_rma_dev32.npz",
+      "role": "dev",
+      "sha256": "bed7fc5f0d0721b6213a91510a2054ae5aa585dd190ffc7d37d3dcbade9fa9d3",
+      "n_drops": 150,
+      "M": 32,
+      "K_max": 8,
+      "groups": 150,
+      "prior_use": "never_seen",
+      "scenario": "3GPP_TR_38.901_RMa_single_sector_ISD1732"
+    },
+    {
+      "label": "UMI_F",
+      "path": "data/v18_umi_fresh.npz",
+      "role": "hold",
+      "sha256": "134f58ff65b24d5ce707dc9ca5cf5f2adbeba17590efc323f4fd75cf7762b791",
+      "n_drops": 150,
+      "M": 32,
+      "K_max": 8,
+      "groups": 150,
+      "prior_use": "V18 held-out at M=8 and M=16 (first antennas); never timed at M=32; never used for development",
+      "scenario": "3GPP_TR_38.901_UMi_single_sector_ISD200"
+    },
+    {
+      "label": "UMA_F",
+      "path": "data/v18_uma_fresh.npz",
+      "role": "hold",
+      "sha256": "a1639b6f8e4eac9eceb278ae5f650596449e103e88071d37a1e7f9b0c2658685",
+      "n_drops": 150,
+      "M": 32,
+      "K_max": 8,
+      "groups": 150,
+      "prior_use": "V18 held-out at M=8 and M=16 (first antennas); never timed at M=32; never used for development",
+      "scenario": "3GPP_TR_38.901_UMa_single_sector_ISD500"
+    },
+    {
+      "label": "RMA_F",
+      "path": "data/v18_rma_fresh.npz",
+      "role": "hold",
+      "sha256": "0c949de711f9b3c1f404a683af98aa82e612fda2e3c0820f9750246c95b49271",
+      "n_drops": 150,
+      "M": 32,
+      "K_max": 8,
+      "groups": 150,
+      "prior_use": "V18 held-out at M=8 and M=16 (first antennas); never timed at M=32; never used for development",
+      "scenario": "3GPP_TR_38.901_RMa_single_sector_ISD1732"
+    }
+  ],
+  "grid": [
+    {
+      "M": 32,
+      "gamma_db": 0.0,
+      "eps": 0.02
+    },
+    {
+      "M": 32,
+      "gamma_db": 0.0,
+      "eps": 0.04
+    },
+    {
+      "M": 32,
+      "gamma_db": 0.0,
+      "eps": 0.08
+    },
+    {
+      "M": 32,
+      "gamma_db": 6.0,
+      "eps": 0.02
+    },
+    {
+      "M": 32,
+      "gamma_db": 6.0,
+      "eps": 0.04
+    },
+    {
+      "M": 32,
+      "gamma_db": 6.0,
+      "eps": 0.08
+    },
+    {
+      "M": 32,
+      "gamma_db": 10.0,
+      "eps": 0.02
+    },
+    {
+      "M": 32,
+      "gamma_db": 10.0,
+      "eps": 0.04
+    },
+    {
+      "M": 32,
+      "gamma_db": 10.0,
+      "eps": 0.08
+    }
+  ],
+  "pmax_dbm": 30.0,
+  "noise_w": 2e-13,
+  "q_c": 2.960414,
+  "guard": 1e-05,
+  "alphas": [
+    0.0,
+    0.001,
+    0.01,
+    0.05,
+    0.1,
+    0.3,
+    1.0
+  ],
+  "ks": [
+    4,
+    6,
+    8
+  ],
+  "Ls": [
+    3,
+    7
+  ],
+  "bins": [
+    0.1,
+    1.0
+  ],
+  "split_fraction_dev": 0.5,
+  "inner_fit_fraction": 0.6,
+  "seed": 20261125,
+  "timing": {
+    "min_ms": 5.0,
+    "repeats": 3,
+    "statistic": "median of order-randomized interleaved repeats"
+  },
+  "bootstrap": 2000,
+  "n_perm": 100000,
+  "oracle_fraction": 0.02,
+  "max_drops_per_set": 150,
+  "reference_config": "M32_G6_E0.04",
+  "note": "V18.2: extends results/RESULTS_V18 to M = 32 with a separate 32-antenna development set; same timing, map rule, endpoints and seed",
+  "antenna_subarray": "configuration M uses the first M antennas of each channel set with at least M antennas (contiguous sub-array)",
+  "map_rule": "cell (K,L,load bin) -> PBS iff n_fit>=5, n_valid>=5, mean_fit>0 and CI95_lo(valid, drop bootstrap stratified by scene) of the relative saving > min_rel_gain",
+  "min_rel_gain": 0.02,
+  "max_rel_loss": 0.02,
+  "min_region_drops": 10,
+  "region": "held-out drop in R iff its (K_max, L_max, load bin) cell is mapped to PBS",
+  "endpoints": {
+    "G1": "every exact scheduler (PBS, LRS, LRSPUB, CBD, CBPBS, ACS) returns the DCS decision on every held-out (drop,K,L); audited DCS decisions equal the Python oracle",
+    "G2": "if R has >= 10 drops: CI95_lo of the LRS relative saving at K_max in R > 2% and paired permutation p < 0.05 (LRS faster than DCS)",
+    "G3": "outside R (>= 5 drops): CI95_lo of the LRS relative saving > -2% at every K",
+    "G4": "at K_max, among held-out realizations with |PBS saving| > 2%, the rule eta >= 1 predicts the sign in >= 95%"
+  },
+  "machine": {
+    "host": "icnlab-Pro-E500-G6-WS720T",
+    "platform": "Linux-7.0.0-43-generic-x86_64-with-glibc2.39",
+    "cpu": "Intel(R) Core(TM) i9-10900K CPU @ 3.70GHz",
+    "cpu_count": 20,
+    "python": "3.12.3",
+    "numpy": "2.5.4",
+    "compiler": "gcc: gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "threads": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1"
+    }
+  },
+  "split_sha256": "c4f182fa3e5d8351064797e5dd510a368ff2d77b1a644e9815a9ab11cf50efd5",
+  "n_dev": 450,
+  "n_hold": 450
+}

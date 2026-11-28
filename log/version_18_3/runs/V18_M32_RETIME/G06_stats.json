@@ -1,0 +1,68 @@
+{
+  "M32_G10_E0.02": {
+    "cellwide_LRS_Kmax": {
+      "stratified": {
+        "mean": 0.8398582735109057,
+        "lo": 0.8153186355355899,
+        "hi": 0.8646377975875709,
+        "n": 450,
+        "n_scenes": 3,
+        "method": "drop bootstrap stratified by scene"
+      },
+      "two_level": {
+        "mean": 0.8398582735109057,
+        "lo": 0.6253386221703066,
+        "hi": 0.9840767781809286,
+        "n": 450,
+        "n_scenes": 3,
+        "method": "two-level bootstrap (scenes, then drops)",
+        "reliable": false
+      },
+      "icc": {
+        "icc": 0.3475171946586514,
+        "n_scenes": 3,
+        "n": 450,
+        "mean_cluster_size": 150.0,
+        "design_effect": 52.780062004139054,
+        "n_effective": 8.525946785828154,
+        "sd_within": 0.26605374203087656,
+        "sd_between": 0.19416591102552014
+      },
+      "drops_for_halfwidth_2pp": 48650,
+      "note": "with a large ICC, the precision is limited by the number of scenes; add scenes, not only drops"
+    }
+  },
+  "M32_G10_E0.04": {
+    "cellwide_LRS_Kmax": {
+      "stratified": {
+        "mean": 0.8406291283364454,
+        "lo": 0.8158617261682601,
+        "hi": 0.8652926950660298,
+        "n": 450,
+        "n_scenes": 3,
+        "method": "drop bootstrap stratified by scene"
+      },
+      "two_level": {
+        "mean": 0.8406291283364454,
+        "lo": 0.6292427470739786,
+        "hi": 0.9835606763706269,
+        "n": 450,
+        "n_scenes": 3,
+        "method": "two-level bootstrap (scenes, then drops)",
+        "reliable": false
+      },
+      "icc": {
+        "icc": 0.34262834730458264,
+        "n_scenes": 3,
+        "n": 450,
+        "mean_cluster_size": 150.0,
+        "design_effect": 52.051623748382816,
+        "n_effective": 8.64526344413955,
+        "sd_within": 0.2651700613593319,
+        "sd_between": 0.19143910207813714
+      },
+      "drops_for_halfwidth_2pp": 47392,
+      "note": "with a large ICC, the precision is limited by the number of scenes; add scenes, not only drops"
+    }
+  }
+}
